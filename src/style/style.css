@@ -7,46 +7,11 @@ html body {
   margin: 0px;
   padding: 0px; }
 
-html button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 48px;
-  font-weight: bold;
-  cursor: pointer; }
-
-html #game-container {
-  display: flex;
-  flex-wrap: wrap; }
-
-html #game-container .number-box {
-  background-color: azure;
-  border: #333;
-  margin: 8px;
-  font-size: 32px; }
-
-html .start {
-  background-color: green;
-  color: white;
-  border: none;
-  animation: pulse 1s ease-in-out infinite; }
-
-html .end {
-  background-color: red;
-  color: white;
-  border: none;
-  animation: pulse 1s ease-in-out infinite; }
-
-html .main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 32px; }
-
-html header {
+html body header {
   height: 80px;
   background-color: #0e8ae8; }
 
-html header ul {
+html body header ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,10 +19,10 @@ html header ul {
   margin: 0px;
   padding: 0px; }
 
-html header ul li img {
+html body header ul li img {
   padding-left: 32px; }
 
-html header ul li h1 {
+html body header ul li h1 {
   padding-right: 32px;
   margin: 0px;
   text-align: center;
@@ -66,19 +31,73 @@ html header ul li h1 {
   color: #333;
   text-shadow: 2px 2px #ddd; }
 
-html header #game-container {
+html body header #game-container {
   display: flex;
   flex-wrap: wrap; }
 
-html header .number-box {
+html body header .number-box {
   width: 50px;
   height: 50px;
   border: 1px solid black;
   text-align: center;
   line-height: 50px; }
 
+html body main {
+  padding: 32px; }
+
+html body main #button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+html body main button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer; }
+
+html body main .start {
+  background-color: green;
+  color: white;
+  border: none;
+  animation: pulse 1s ease-in-out infinite; }
+
+html body main .end {
+  background-color: red;
+  color: white;
+  border: none;
+  animation: pulse 1s ease-in-out infinite; }
+
+html body main #game-container {
+  display: flex;
+  flex-wrap: wrap; }
+
+html body main #game-container .number-box {
+  background-color: #ffa929;
+  border: #333;
+  font-size: 32px;
+  padding: 8px;
+  color: white;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 25px;
+  float: left;
+  margin: 10px;
+  animation: moveIn 0.5s ease-in-out; }
+
 @keyframes pulse {
   from {
     transform: scale(1); }
   to {
     transform: scale(1.05); } }
+
+@keyframes moveIn {
+  0% {
+    transform: translateX(-100%) scale(0); }
+  50% {
+    transform: translateX(0) scale(2); }
+  100% {
+    transform: scale(1); } }

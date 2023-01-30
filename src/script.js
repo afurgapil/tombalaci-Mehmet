@@ -25,7 +25,7 @@ function playGame() {
     numberBox.classList.add("number-box");
     numberBox.textContent = number;
     gameContainer.appendChild(numberBox);
-  }, 5000);
+  }, 3000);
 }
 
 function endGame() {
