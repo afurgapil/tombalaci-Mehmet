@@ -1,7 +1,7 @@
 const startButton = document.querySelector("#start-button");
 const endButton = document.querySelector("#end-button");
 const gameContainer = document.querySelector("#game-container");
-
+let intervalId;
 startButton.addEventListener("click", function () {
   startButton.style.display = "none";
   endButton.style.display = "block";
@@ -14,14 +14,11 @@ endButton.addEventListener("click", function () {
 
 function playGame() {
   const drawnNumbers = [];
-
-  const intervalId = setInterval(() => {
+  intervalId = setInterval(() => {
     const number = Math.floor(Math.random() * 90) + 1;
-
     if (drawnNumbers.includes(number)) {
       return;
     }
-
     drawnNumbers.push(number);
 
     const numberBox = document.createElement("div");
@@ -35,4 +32,5 @@ function endGame() {
   startButton.style.display = "block";
   endButton.style.display = "none";
   gameContainer.innerHTML = "";
+  clearInterval(intervalId);
 }

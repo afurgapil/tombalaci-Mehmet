@@ -5,10 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tombala Game</title>
+    <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
-    <button id="start-button">Başla</button>
-    <button id="end-button" style="display: none">Bitir</button>
+    <header>
+      <ul>
+        <li>
+          <img src="../assets/logo.svg" alt="" width="80px" height="80px" />
+        </li>
+        <li><h1>Tombala</h1></li>
+      </ul>
+    </header>
+    <div class="main">
+      <button id="start-button" class="start">Başla</button>
+      <button id="end-button" class="end" style="display: none">Bitir</button>
+    </div>
+
     <div id="game-container"></div>
   </body>
   <script src="script.js"></script>

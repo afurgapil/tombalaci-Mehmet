@@ -1,0 +1,16 @@
+{
+  "name": "tombalaapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "deneme.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w ./src/style  -o ./src/style "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^8.0.0"
+  }
+}
