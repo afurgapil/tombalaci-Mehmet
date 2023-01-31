@@ -49,7 +49,8 @@ function playGame() {
       numberBox.classList.add("number-box");
       numberBox.textContent = number;
       gameContainer.appendChild(numberBox);
-    }, 1000);
+    }, 100);
+    console.log(drawnNumbers);
   } else {
     intervalId = setInterval(intervalId);
     pauseButton.textContent = "Duraklat";
@@ -66,4 +67,7 @@ function endGame() {
   drawnNumbers = [];
   gameContainer.innerHTML = "";
   clearInterval(intervalId);
+  if (pauseButton.textContent == "Devam et") {
+    pauseButton.textContent = "Duraklat";
+  }
 }
