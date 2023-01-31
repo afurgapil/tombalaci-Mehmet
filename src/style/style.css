@@ -50,6 +50,34 @@ html body main #button-container {
   justify-content: center;
   align-items: center; }
 
+html body main .pauseAlert {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 2px 2px #ddd;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 48px;
+  border-radius: 50px; }
+
+html body main .finishAlert {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  text-align: center;
+  font-size: 48px;
+  color: #fff;
+  text-shadow: 2px 2px #ddd;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 48px;
+  border-radius: 50px; }
+
 html body main button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -61,13 +89,21 @@ html body main .start {
   background-color: green;
   color: white;
   border: none;
-  animation: pulse 1s ease-in-out infinite; }
+  animation: pulse 2s ease-in-out infinite; }
 
 html body main .end {
   background-color: red;
   color: white;
   border: none;
-  animation: pulse 1s ease-in-out infinite; }
+  margin-right: 32px;
+  animation: pulse 2s ease-in-out infinite; }
+
+html body main .pause {
+  background-color: #00bfff;
+  color: #fff;
+  border: none;
+  animation: pulse 2s ease-in-out infinite;
+  display: none; }
 
 html body main #game-container {
   display: flex;

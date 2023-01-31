@@ -52,6 +52,34 @@ html {
         justify-content: center;
         align-items: center;
       }
+      .pauseAlert {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        text-align: center;
+        font-size: 48px;
+        color: #fff;
+        text-shadow: 2px 2px #ddd;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        padding: 48px;
+        border-radius: 50px;
+      }
+      .finishAlert {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        text-align: center;
+        font-size: 48px;
+        color: #fff;
+        text-shadow: 2px 2px #ddd;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+        padding: 48px;
+        border-radius: 50px;
+      }
       button {
         padding: 10px 20px;
         border-radius: 5px;
@@ -63,14 +91,22 @@ html {
         background-color: green;
         color: white;
         border: none;
-        animation: pulse 1s ease-in-out infinite;
+        animation: pulse 2s ease-in-out infinite;
       }
 
       .end {
         background-color: red;
         color: white;
         border: none;
-        animation: pulse 1s ease-in-out infinite;
+        margin-right: 32px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      .pause {
+        background-color: #00bfff;
+        color: #fff;
+        border: none;
+        animation: pulse 2s ease-in-out infinite;
+        display: none;
       }
       #game-container {
         display: flex;
