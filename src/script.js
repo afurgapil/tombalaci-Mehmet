@@ -5,10 +5,14 @@ const pauseButton = document.querySelector("#pause-button");
 const pauseAlert = document.querySelector(".pauseAlert");
 const finishAlert = document.querySelector(".finishAlert");
 let intervalId;
+
 startButton.addEventListener("click", function () {
+  intervalId = null;
   startButton.style.display = "none";
   endButton.style.display = "block";
   pauseButton.style.display = "block";
+  drawnNumbers = [];
+
   playGame();
 });
 
@@ -28,24 +32,29 @@ pauseButton.addEventListener("click", function () {
   }
 });
 function playGame() {
-  const drawnNumbers = [];
-  intervalId = setInterval(() => {
-    const number = Math.floor(Math.random() * 90) + 1;
-    if (drawnNumbers.includes(number)) {
-      return;
-    }
-    drawnNumbers.push(number);
-    if (drawnNumbers.length === 90) {
-      pauseButton.style.display = "none";
-      clearInterval(intervalId);
-      finishAlert.style.display = "inline-block";
-    }
+  if (!intervalId) {
+    intervalId = setInterval(() => {
+      const number = Math.floor(Math.random() * 90) + 1;
+      if (drawnNumbers.includes(number)) {
+        return;
+      }
+      drawnNumbers.push(number);
+      if (drawnNumbers.length === 90) {
+        pauseButton.style.display = "none";
+        clearInterval(intervalId);
+        finishAlert.style.display = "inline-block";
+      }
 
-    const numberBox = document.createElement("div");
-    numberBox.classList.add("number-box");
-    numberBox.textContent = number;
-    gameContainer.appendChild(numberBox);
-  }, 1);
+      const numberBox = document.createElement("div");
+      numberBox.classList.add("number-box");
+      numberBox.textContent = number;
+      gameContainer.appendChild(numberBox);
+    }, 1000);
+  } else {
+    intervalId = setInterval(intervalId);
+    pauseButton.textContent = "Duraklat";
+    pauseAlert.style.display = "none";
+  }
 }
 
 function endGame() {
@@ -54,6 +63,7 @@ function endGame() {
   pauseButton.style.display = "none";
   pauseAlert.style.display = "none";
   finishAlert.style.display = "none";
+  drawnNumbers = [];
   gameContainer.innerHTML = "";
   clearInterval(intervalId);
 }

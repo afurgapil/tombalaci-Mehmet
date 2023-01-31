@@ -57,7 +57,7 @@ html body main .pauseAlert {
   transform: translate(-50%, -50%);
   display: none;
   text-align: center;
-  font-size: 48px;
+  font-size: 72px;
   color: #fff;
   text-shadow: 2px 2px #ddd;
   background-color: rgba(0, 0, 0, 0.5);
