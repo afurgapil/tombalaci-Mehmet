@@ -4,7 +4,9 @@ const gameContainer = document.querySelector("#game-container");
 const pauseButton = document.querySelector("#pause-button");
 const pauseAlert = document.querySelector(".pauseAlert");
 const finishAlert = document.querySelector(".finishAlert");
+
 let intervalId;
+numbers = Array.from({ length: 90 }, (_, i) => i + 1);
 
 startButton.addEventListener("click", function () {
   intervalId = null;
@@ -12,12 +14,12 @@ startButton.addEventListener("click", function () {
   endButton.style.display = "block";
   pauseButton.style.display = "block";
   drawnNumbers = [];
-
   playGame();
 });
 
 endButton.addEventListener("click", function () {
   endGame();
+  getNumber();
 });
 pauseButton.addEventListener("click", function () {
   if (pauseButton.textContent === "Duraklat") {
@@ -31,10 +33,17 @@ pauseButton.addEventListener("click", function () {
     pauseAlert.style.display = "none";
   }
 });
+
+function getRandomNumber() {
+  return numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
+}
+function getNumber() {
+  numbers = Array.from({ length: 90 }, (_, i) => i + 1);
+}
 function playGame() {
   if (!intervalId) {
     intervalId = setInterval(() => {
-      const number = Math.floor(Math.random() * 90) + 1;
+      const number = getRandomNumber();
       if (drawnNumbers.includes(number)) {
         return;
       }
@@ -49,8 +58,7 @@ function playGame() {
       numberBox.classList.add("number-box");
       numberBox.textContent = number;
       gameContainer.appendChild(numberBox);
-    }, 100);
-    console.log(drawnNumbers);
+    }, 2000);
   } else {
     intervalId = setInterval(intervalId);
     pauseButton.textContent = "Duraklat";

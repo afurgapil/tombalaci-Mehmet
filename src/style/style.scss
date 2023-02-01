@@ -6,6 +6,7 @@ html {
     margin: 0px;
     padding: 0px;
     header {
+      width: 100%;
       height: 80px;
       background-color: #0e8ae8;
 
@@ -16,11 +17,23 @@ html {
         list-style: none;
         margin: 0px;
         padding: 0px;
+        .logo {
+          margin-left: 32px;
+        }
+        .bar {
+          display: none;
+        }
         .header-right {
           display: flex;
           justify-content: center;
           align-items: center;
           margin-right: 16px;
+          .header-bar {
+            color: #fff;
+            font-size: 32px;
+            margin: 0px;
+            padding: 0px;
+          }
           .header-right-item:hover {
             background-color: #fff;
             border-radius: 15px;
@@ -36,12 +49,6 @@ html {
               font-size: 32px;
               color: white;
             }
-          }
-        }
-
-        li {
-          img {
-            padding-left: 32px;
           }
         }
       }
@@ -60,10 +67,13 @@ html {
     }
     main {
       padding: 32px;
+
       #button-container {
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        height: auto;
       }
       .pauseAlert {
         position: absolute;
@@ -95,10 +105,33 @@ html {
         padding: 48px;
         border-radius: 50px;
       }
+      .tittle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .tittle {
+        color: rgb(84, 73, 57);
+        font-size: 48px;
+        text-align: center;
+        text-align-last: center;
+        margin-top: 48px;
+        margin-bottom: 8px;
+      }
+      .author {
+        color: rgb(84, 73, 57);
+        font-size: 48px;
+        text-align: center;
+        text-align-last: center;
+      }
       button {
+        font-size: 48px;
+      }
+      .button {
         padding: 10px 20px;
         border-radius: 5px;
-        font-size: 48px;
         font-weight: bold;
         cursor: pointer;
       }
@@ -145,6 +178,7 @@ html {
     }
   }
 }
+
 @keyframes pulse {
   from {
     transform: scale(1);
