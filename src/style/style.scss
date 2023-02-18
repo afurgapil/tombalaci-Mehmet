@@ -1,3 +1,7 @@
+$blue: #0e8ae8;
+$bg-color: blanchedalmond;
+$white: #fff;
+$black: #000000;
 html {
   margin: 0px;
   padding: 0px;
@@ -40,6 +44,15 @@ html {
             a {
               color: #0e8ae8;
             }
+          }
+          #menu-icon {
+            color: white;
+            font-size: 36px;
+            display: none;
+          }
+          #menu-icon:hover {
+            color: $blue;
+            background-color: $white;
           }
           li {
             padding: 12px;
@@ -176,6 +189,24 @@ html {
       }
     }
   }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .header-right-item {
+    display: none;
+  }
+  #menu-icon {
+    display: block;
+  }
+  html body header ul .header-right #menu-icon {
+    display: block;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+}
+@media (min-width: 768px) and (max-width: 992px) {
+}
+@media (min-width: 992px) and (max-width: 1200px) {
 }
 
 @keyframes pulse {
