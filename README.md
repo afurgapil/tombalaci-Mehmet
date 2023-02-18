@@ -12,7 +12,6 @@ Tombalaci Mehmet is a character from the Turkish TV series "Kurtlar Vadisi". He 
 
 ## Planned Features
 
-- Responsive design
 - New games
 - 0x
 
