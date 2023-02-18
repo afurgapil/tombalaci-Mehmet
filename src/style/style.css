@@ -45,6 +45,15 @@ html body header ul .header-right .header-right-item:hover {
 html body header ul .header-right .header-right-item:hover a {
   color: #0e8ae8; }
 
+html body header ul .header-right #menu-icon {
+  color: white;
+  font-size: 36px;
+  display: none; }
+
+html body header ul .header-right #menu-icon:hover {
+  color: #0e8ae8;
+  background-color: #fff; }
+
 html body header ul .header-right li {
   padding: 12px;
   margin: 12px; }
@@ -171,6 +180,14 @@ html body main #game-container .number-box {
   float: left;
   margin: 10px;
   animation: moveIn 0.5s ease-in-out; }
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .header-right-item {
+    display: none; }
+  #menu-icon {
+    display: block; }
+  html body header ul .header-right #menu-icon {
+    display: block; } }
 
 @keyframes pulse {
   from {
