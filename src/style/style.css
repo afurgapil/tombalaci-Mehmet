@@ -45,15 +45,6 @@ html body header ul .header-right .header-right-item:hover {
 html body header ul .header-right .header-right-item:hover a {
   color: #0e8ae8; }
 
-html body header ul .header-right #menu-icon {
-  color: white;
-  font-size: 36px;
-  display: none; }
-
-html body header ul .header-right #menu-icon:hover {
-  color: #0e8ae8;
-  background-color: #fff; }
-
 html body header ul .header-right li {
   padding: 12px;
   margin: 12px; }
@@ -182,12 +173,26 @@ html body main #game-container .number-box {
   animation: moveIn 0.5s ease-in-out; }
 
 @media (min-width: 320px) and (max-width: 600px) {
-  .header-right-item {
-    display: none; }
-  #menu-icon {
-    display: block; }
-  html body header ul .header-right #menu-icon {
-    display: block; } }
+  html body header ul .header-right .header-right-item {
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 12px; }
+  html body header ul .header-right li a {
+    font-size: 24px; }
+  html body header ul {
+    flex-direction: column; }
+  html body header {
+    height: 150px; }
+  html body main .pauseAlert {
+    width: 50%;
+    font-size: 32px;
+    text-align: center; }
+  html body main .tittle-container h1 {
+    font-size: 32px; } }
+
+@media (min-width: 600px) and (max-width: 768px) {
+  html body header ul .header-right li a {
+    font-size: 24px; } }
 
 @keyframes pulse {
   from {

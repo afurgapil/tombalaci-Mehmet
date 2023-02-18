@@ -32,6 +32,7 @@ html {
           justify-content: center;
           align-items: center;
           margin-right: 16px;
+
           .header-bar {
             color: #fff;
             font-size: 32px;
@@ -45,15 +46,7 @@ html {
               color: #0e8ae8;
             }
           }
-          #menu-icon {
-            color: white;
-            font-size: 36px;
-            display: none;
-          }
-          #menu-icon:hover {
-            color: $blue;
-            background-color: $white;
-          }
+
           li {
             padding: 12px;
             margin: 12px;
@@ -192,21 +185,34 @@ html {
 }
 
 @media (min-width: 320px) and (max-width: 600px) {
-  .header-right-item {
-    display: none;
+  html body header ul .header-right .header-right-item {
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 12px;
   }
-  #menu-icon {
-    display: block;
+  html body header ul .header-right li a {
+    font-size: 24px;
   }
-  html body header ul .header-right #menu-icon {
-    display: block;
+
+  html body header ul {
+    flex-direction: column;
+  }
+  html body header {
+    height: 150px;
+  }
+  html body main .pauseAlert {
+    width: 50%;
+    font-size: 32px;
+    text-align: center;
+  }
+  html body main .tittle-container h1 {
+    font-size: 32px;
   }
 }
 @media (min-width: 600px) and (max-width: 768px) {
-}
-@media (min-width: 768px) and (max-width: 992px) {
-}
-@media (min-width: 992px) and (max-width: 1200px) {
+  html body header ul .header-right li a {
+    font-size: 24px;
+  }
 }
 
 @keyframes pulse {

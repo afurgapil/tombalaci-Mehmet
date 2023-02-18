@@ -4,6 +4,7 @@ const gameContainer = document.querySelector("#game-container");
 const pauseButton = document.querySelector("#pause-button");
 const pauseAlert = document.querySelector(".pauseAlert");
 const finishAlert = document.querySelector(".finishAlert");
+const menuIcon = document.querySelector("#menu-icon");
 
 let intervalId;
 numbers = Array.from({ length: 90 }, (_, i) => i + 1);
@@ -33,7 +34,9 @@ pauseButton.addEventListener("click", function () {
     pauseAlert.style.display = "none";
   }
 });
-
+menuIcon.addEventListener("click", () => {
+  menuIcon.classList.toggle("passive");
+});
 function getRandomNumber() {
   return numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
 }
