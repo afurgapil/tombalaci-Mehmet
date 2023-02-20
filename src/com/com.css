@@ -1,0 +1,26 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  background-color: blanchedalmond; }
+  html body {
+    margin: 0px;
+    padding: 0px; }
+    html body main {
+      padding: 32px; }
+      html body main .tittle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; }
+      html body main .tittle {
+        color: #544939;
+        font-size: 48px;
+        text-align: center;
+        text-align-last: center;
+        margin-top: 48px;
+        margin-bottom: 8px; }
+      html body main .author {
+        color: #544939;
+        font-size: 48px;
+        text-align: center;
+        text-align-last: center; }

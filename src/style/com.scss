@@ -1,0 +1,32 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  background-color: blanchedalmond;
+  body {
+    margin: 0px;
+    padding: 0px;
+    main {
+      padding: 32px;
+      .tittle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .tittle {
+        color: rgb(84, 73, 57);
+        font-size: 48px;
+        text-align: center;
+        text-align-last: center;
+        margin-top: 48px;
+        margin-bottom: 8px;
+      }
+      .author {
+        color: rgb(84, 73, 57);
+        font-size: 48px;
+        text-align: center;
+        text-align-last: center;
+      }
+    }
+  }
+}

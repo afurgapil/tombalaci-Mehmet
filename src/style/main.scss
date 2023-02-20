@@ -1,0 +1,95 @@
+$blue: #0e8ae8;
+$bg-color: blanchedalmond;
+$white: #fff;
+$black: #000000;
+
+html {
+  margin: 0px;
+  padding: 0px;
+  background-color: blanchedalmond;
+  body {
+    margin: 0px;
+    padding: 0px;
+    header {
+      width: 100%;
+      height: 80px;
+      background-color: #0e8ae8;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        .logo {
+          margin-left: 32px;
+        }
+        .bar {
+          display: none;
+        }
+        .header-right {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 16px;
+
+          .header-bar {
+            color: #fff;
+            font-size: 32px;
+            margin: 0px;
+            padding: 0px;
+          }
+          .header-right-item:hover {
+            background-color: #fff;
+            border-radius: 15px;
+            a {
+              color: #0e8ae8;
+            }
+          }
+
+          li {
+            padding: 12px;
+            margin: 12px;
+            a {
+              text-decoration: none;
+              font-size: 32px;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  html body header ul .header-right .header-right-item {
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 12px;
+  }
+  html body header ul .header-right li a {
+    font-size: 24px;
+  }
+
+  html body header ul {
+    flex-direction: column;
+  }
+  html body header {
+    height: 150px;
+  }
+  html body main .pauseAlert {
+    width: 50%;
+    font-size: 32px;
+    text-align: center;
+  }
+  html body main .tittle-container h1 {
+    font-size: 32px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  html body header ul .header-right li a {
+    font-size: 24px;
+  }
+}

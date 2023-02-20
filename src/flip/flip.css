@@ -1,0 +1,30 @@
+html body h1 {
+  text-align: center; }
+
+html body #flip-container {
+  display: flex;
+  flex-direction: column; }
+  html body #flip-container p {
+    text-align: center;
+    font-size: 36px; }
+
+html body .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  html body .buttons button {
+    margin: 0 1em;
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    cursor: pointer; }
+    html body .buttons button button:hover {
+      background-color: #d3d3d3; }
+
+html #result {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-top: 1em; }
