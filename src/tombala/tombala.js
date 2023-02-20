@@ -23,19 +23,16 @@ endButton.addEventListener("click", function () {
   getNumber();
 });
 pauseButton.addEventListener("click", function () {
-  if (pauseButton.textContent === "Duraklat") {
+  if (pauseButton.textContent === "Pause") {
     clearInterval(intervalId);
     intervalId = null;
-    pauseButton.textContent = "Devam et";
+    pauseButton.textContent = "Resume";
     pauseAlert.style.display = "inline-block";
   } else {
     playGame();
-    pauseButton.textContent = "Duraklat";
+    pauseButton.textContent = "Pause";
     pauseAlert.style.display = "none";
   }
-});
-menuIcon.addEventListener("click", () => {
-  menuIcon.classList.toggle("passive");
 });
 function getRandomNumber() {
   return numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0];
@@ -64,7 +61,7 @@ function playGame() {
     }, 2000);
   } else {
     intervalId = setInterval(intervalId);
-    pauseButton.textContent = "Duraklat";
+    pauseButton.textContent = "Pause";
     pauseAlert.style.display = "none";
   }
 }
@@ -78,7 +75,7 @@ function endGame() {
   drawnNumbers = [];
   gameContainer.innerHTML = "";
   clearInterval(intervalId);
-  if (pauseButton.textContent == "Devam et") {
-    pauseButton.textContent = "Duraklat";
+  if (pauseButton.textContent == "Resume") {
+    pauseButton.textContent = "Pause";
   }
 }
