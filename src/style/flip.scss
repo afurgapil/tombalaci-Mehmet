@@ -6,6 +6,8 @@ html {
     #flip-container {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       p {
         text-align: center;
         font-size: 36px;
@@ -15,24 +17,99 @@ html {
       display: flex;
       justify-content: center;
       align-items: center;
+      #heads {
+        background-color: #383c48;
+      }
+      #heads:hover {
+        background-color: #383c4899;
+      }
+      #tails {
+        background-color: #896941;
+      }
+      #tails:hover {
+        background-color: #89694199;
+      }
+      .activeButton {
+        // animation: click 1s ease-out forwards;
+        border: 4mm ridge #f08e1c;
+      }
+
       button {
+        width: 200px;
+        height: 100px;
+        color: white;
         margin: 0 1em;
-        font-size: 1.2em;
         padding: 0.5em 1em;
         border: none;
         border-radius: 5px;
-        background-color: #e8e8e8;
+        font-size: 36px;
+        text-align: center;
         cursor: pointer;
-        button:hover {
-          background-color: #d3d3d3;
-        }
       }
     }
   }
-  #result {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.5em;
-    margin-top: 1em;
+  .result-container {
+    transform: translateX(100%);
+    margin: 20px;
+    height: 300px;
+    width: 600px;
+    position: relative;
+    #result {
+      color: white;
+      font-family: "Gajraj One", cursive;
+      text-align: center;
+      font-weight: bold;
+      font-size: 3em;
+      margin-top: 1em;
+
+      text-align: center;
+    }
+  }
+
+  .lose {
+    animation: moveLeft 1s forwards;
+    background: rgb(255, 0, 0);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 235, 205, 1) 100%
+    );
+  }
+
+  .win {
+    animation: moveRight 1s forwards;
+    background: rgb(0, 255, 4);
+    background: linear-gradient(
+      180deg,
+      rgb(0, 255, 4) 0%,
+      rgba(255, 235, 205, 1) 100%
+    );
+  }
+}
+@keyframes moveLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes moveRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes click {
+  0% {
+    border: 0px solid #ccc;
+  }
+  50% {
+    border: 2mm ridge #f08e1c;
+  }
+  100% {
+    border: 4mm ridge #f08e1c;
   }
 }
