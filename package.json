@@ -8,8 +8,9 @@
     "tombala-sass": "node-sass -w src/style/tombala.scss  src/tombala/tombala.css ",
     "com-sass": "node-sass -w src/style/com.scss  src/com/com.css ",
     "flip-sass": "node-sass -w src/style/flip.scss  src/flip/flip.css ",
-    "style-sass": "node-sass -w src/style/main.scss  src/style/main.css ",
-    "all": "npm-run-all -p tombala-sass com-sass flip-sass style-sass"
+    "main-sass": "node-sass -w src/style/main.scss  src/style/main.css ",
+    "style-sass": "node-sass -w src/style/style.scss  src/style.css ",
+    "all": "npm-run-all -p tombala-sass com-sass flip-sass main-sass style-sass"
   },
   "keywords": [],
   "author": "",
