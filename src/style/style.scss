@@ -29,17 +29,18 @@ main {
     img {
       width: 300px;
       height: 300px;
-      filter: grayscale(1);
+      filter: grayscale(0.5);
     }
     img:hover {
-      filter: grayscale(0);
-    }
-    .card {
-      border: solid;
-      border-radius: 50px;
+      animation: colorChange 1s ease-in-out infinite;
     }
   }
+  .card {
+    border: solid;
+    border-radius: 50px;
+  }
 }
+
 @media (min-width: 320px) and (max-width: 600px) {
   html body main .cards {
     flex-direction: column;
@@ -47,9 +48,33 @@ main {
   html body main .cards .card {
     margin: 5px;
   }
+  html body main .cards .card a img {
+    filter: grayscale(0);
+  }
 }
 @media (min-width: 600px) and (max-width: 768px) {
   html body main .cards {
     flex-direction: column;
+  }
+  html body main .cards .card {
+    margin: 5px;
+  }
+  html body main .cards .card a img {
+    filter: grayscale(0);
+  }
+}
+@keyframes colorChange {
+  0% {
+    -webkit-filter: grayscale(0.5);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-filter: grayscale(0);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-filter: grayscale(0.5);
+
+    transform: scale(1);
   }
 }
