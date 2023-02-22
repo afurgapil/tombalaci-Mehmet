@@ -6,9 +6,30 @@ html body #flip-container {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  html body #flip-container p {
-    text-align: center;
-    font-size: 36px; }
+  html body #flip-container .prozent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    html body #flip-container .prozent p {
+      text-align: center;
+      font-size: 36px; }
+  html body #flip-container .reset-button {
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #7cb9e8;
+    color: #fff;
+    margin-right: 10px;
+    padding: 12px 24px;
+    border: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer; }
+  html body #flip-container .reset-button:hover {
+    background-color: #67a0d8;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); }
 
 html body .buttons {
   display: flex;
