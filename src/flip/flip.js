@@ -3,6 +3,7 @@ const tails = document.querySelector("#tails");
 const resultP = document.querySelector("#result");
 const resultContainer = document.querySelector(".result-container");
 const flipTittle = document.querySelector("#flip-tittle");
+const resetButton = document.querySelector(".reset-button");
 const HEADS = "Heads";
 const TAILS = "Tails";
 const headsList = heads.classList;
@@ -15,11 +16,17 @@ var button;
 heads.addEventListener("click", function () {
   playGame2(HEADS);
   setBorder1();
+  setButton();
 });
 
 tails.addEventListener("click", function () {
   playGame2(TAILS);
   setBorder2();
+  setButton();
+});
+resetButton.addEventListener("click", function () {
+  resetProzent();
+  resetButton.style.display = "none";
 });
 
 function playGame2(choice) {
@@ -57,4 +64,18 @@ function setBorder2() {
   headsList.remove("activeButton");
   tailsList.remove("activeButton");
   tailsList.add("activeButton");
+}
+function setButton() {
+  resetButton.style.display = "block";
+}
+function resetProzent() {
+  prozent = 0;
+  gameNumber = 0;
+  correctNumber = 0;
+  flipTittle.innerHTML = "MAKE YOUR CHOICE!";
+  containerList.remove("lose");
+  containerList.remove("win");
+  resultP.innerHTML = " ";
+  headsList.remove("activeButton");
+  tailsList.remove("activeButton");
 }

@@ -19,6 +19,7 @@ html {
         }
       }
       .reset-button {
+        display: none;
         width: 100px;
         height: 50px;
         border-radius: 30px;
@@ -73,6 +74,9 @@ html {
     }
   }
   .result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transform: translateX(100%);
     margin: 20px;
     height: 300px;
@@ -136,4 +140,21 @@ html {
   100% {
     border: 4mm ridge #f08e1c;
   }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  html body .buttons button {
+    width: 150px;
+    height: 75px;
+    font-size: 24px;
+  }
+  html .result-container {
+    width: 300px;
+    height: 100px;
+  }
+  html .result-container #result {
+    margin: 0px;
+    font-size: 24px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
 }

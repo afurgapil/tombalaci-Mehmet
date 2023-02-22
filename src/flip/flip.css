@@ -15,6 +15,7 @@ html body #flip-container {
       text-align: center;
       font-size: 36px; }
   html body #flip-container .reset-button {
+    display: none;
     width: 100px;
     height: 50px;
     border-radius: 30px;
@@ -58,6 +59,9 @@ html body .buttons {
     cursor: pointer; }
 
 html .result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: translateX(100%);
   margin: 20px;
   height: 300px;
@@ -101,3 +105,15 @@ html .win {
     border: 2mm ridge #f08e1c; }
   100% {
     border: 4mm ridge #f08e1c; } }
+
+@media (min-width: 320px) and (max-width: 600px) {
+  html body .buttons button {
+    width: 150px;
+    height: 75px;
+    font-size: 24px; }
+  html .result-container {
+    width: 300px;
+    height: 100px; }
+  html .result-container #result {
+    margin: 0px;
+    font-size: 24px; } }
