@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tombalaci Mehmet|To Dice</title>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="../style/main.css" />
+    <link rel="stylesheet" href="dice.css" />
+  </head>
+  <body>
+    <header>
+      <ul>
+        <li class="logo">
+          <img src="../../assets/logo.png" alt="" width="120px" height="80px" />
+        </li>
+        <div class="header-right">
+          <li class="header-right-item">
+            <a href="../index.html">Home</a>
+          </li>
+          <li class="header-right-item">
+            <a href="../tombala/tombala.html">Tombala</a>
+          </li>
+          <li class="header-right-item">
+            <a href="../flip/flip.html">Coin Flip</a>
+          </li>
+          <li class="header-right-item">
+            <a href="#">To Dice</a>
+          </li>
+          <li class="header-right-item">
+            <a href="../com/com.html">Contact</a>
+          </li>
+        </div>
+      </ul>
+    </header>
+    <main>
+      <div class="dice-container">
+        <div id="dice-panel">
+          <div id="dice">
+            <div id="dice-punkts"></div>
+          </div>
+          <div id="dice-result"></div>
+        </div>
+        <div class="dice-buttons">
+          <button id="todice1" onclick="toDice(1)">To Dice!</button>
+          <!-- <button id="todice2" onclick="toDice(2)">2 Zar At</button> -->
+        </div>
+      </div>
+    </main>
+    <script src="dice.js"></script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+.dice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px; }
+
+#dice-panel {
+  width: 120px;
+  height: 120px;
+  margin: 20px auto;
+  position: relative; }
+
+.dice-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; }
+
+#dice {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border: 5px solid #000;
+  border-radius: 10px;
+  display: none;
+  animation: dice-animation 1s ease-in-out; }
+  #dice #dice-punkts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+
+#dice-result {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 10px; }
+
+.dice-punkt {
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background-color: #000;
+  margin: 2%; }
+
+#todice1,
+#todice2 {
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #008080;
+  color: #fff;
+  margin: 20px;
+  cursor: pointer; }
+
+@keyframes dice-animation {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(360deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+.diced #dice {
+  display: block;
+  animation: zar-animasyonu 1s ease-in-out; }
+
+.diced #dice-punkts {
+  display: block; }
+
+.diced {
+  display: block; }
