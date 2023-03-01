@@ -1,6 +1,7 @@
 # TombalaWebApp
 
 ## _Just a fun project_
+>This repository has been stopped permanently, I am re-developing this project  using react.
 
 ### What is Tombala?
 
