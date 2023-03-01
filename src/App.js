@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./comps/Footer/Footer";
+import Header from "./comps/Header/Header";
+import Homepage from "./comps/Homepage/Homepage";
+import Tombala from "./comps/Tombala/Tombala";
+import CoinFlip from "./comps/CoinFlip/CoinFlip";
+import ToDice from "./comps/ToDice/ToDice";
+// import Layout from "./comps/Layout/Layout";
+import NotFound from "./comps/NotFound/NotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Header></Header>
+
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/tombala" element={<Tombala />} />
+          <Route path="/coinflip" element={<CoinFlip />} />
+          <Route path="/todice" element={<ToDice />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer></Footer>
+      </BrowserRouter>
     </div>
   );
 }

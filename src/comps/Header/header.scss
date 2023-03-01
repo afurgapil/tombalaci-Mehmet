@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Dancing+Script&family=Gajraj+One&display=swap");
+
+html {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    header {
+      width: 100%;
+      height: 5rem;
+      background-color: #00253b;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        .logo {
+          margin-left: 32px;
+        }
+
+        .header-right {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 16px;
+          .header-right-item {
+            margin: 0.2rem;
+            a {
+              margin: 0px;
+              font-size: 2rem;
+            }
+            a:hover {
+              background-color: #363636;
+              border: none;
+              border-radius: 0px;
+              padding: 0px;
+            }
+          }
+          .header-right-item:hover {
+            background-color: #363636;
+            border-radius: 15px;
+          }
+          li {
+            padding: 12px;
+            margin: 12px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  html body header ul .header-right .header-right-item {
+    margin-left: 10px;
+    padding: 0px;
+    font-size: 12px;
+  }
+  html body header ul .header-right li a {
+    font-size: 24px;
+  }
+
+  html body header ul {
+    flex-direction: column;
+  }
+  html body header {
+    height: 150px;
+  }
+  html body main .pauseAlert {
+    width: 50%;
+    font-size: 32px;
+    text-align: center;
+  }
+  html body main .tittle-container h1 {
+    font-size: 32px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  html body header ul .header-right li a {
+    font-size: 24px;
+  }
+}

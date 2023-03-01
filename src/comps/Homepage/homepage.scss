@@ -1,0 +1,90 @@
+html {
+  background-color: #ffebcd;
+}
+main {
+  margin: 0px;
+  padding: 0px;
+}
+main .main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0px;
+}
+main .main-container h1 {
+  margin-top: 0px;
+  font-size: 72px;
+  font-family: "Comfortaa", cursive;
+  text-align: center;
+  margin-bottom: 0px;
+}
+main .main-container h2 {
+  font-size: 48px;
+  font-family: "Dancing Script", cursive;
+  text-align: center;
+  margin-top: 0px;
+}
+main .cards {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+main .cards img {
+  width: 300px;
+  height: 300px;
+  filter: grayscale(0.5);
+}
+main .cards img:hover {
+  animation: colorChange 1s ease-in-out infinite;
+}
+main .card {
+  border: solid;
+  border-radius: 50px;
+
+  a:hover {
+    background-color: #ffebcd;
+    border: none;
+    padding: 0px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  html body main .cards {
+    flex-direction: column;
+  }
+  html body main .cards .card {
+    margin: 5px;
+  }
+  html body main .cards .card a img {
+    filter: grayscale(0);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+  html body main .cards {
+    flex-direction: column;
+  }
+  html body main .cards .card {
+    margin: 5px;
+  }
+  html body main .cards .card a img {
+    filter: grayscale(0);
+  }
+}
+
+@keyframes colorChange {
+  0% {
+    -webkit-filter: grayscale(0.5);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-filter: grayscale(0);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-filter: grayscale(0.5);
+    transform: scale(1);
+  }
+}
