@@ -1,100 +1,129 @@
+body {
+}
+#score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fbff0067;
+  width: fit-content;
+  border-radius: 20px;
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+  }
+}
 .dice-container {
   text-align: center;
   padding: 20px;
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4.5rem;
+  .dice {
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 2rem;
+    .dot {
+      width: 30px;
+      height: 30px;
+      background-color: black;
+      border-radius: 50%;
+      margin: 5px;
+      position: absolute;
+    }
+    .dot:nth-child(1) {
+      top: 10px;
+      left: 10px;
+    }
+    .dot:nth-child(2) {
+      top: 10px;
+      right: 10px;
+    }
+    .dot:nth-child(3) {
+      bottom: 10px;
+      left: 10px;
+    }
+    .dot:nth-child(4) {
+      bottom: 10px;
+      right: 10px;
+    }
+    .dot:nth-child(5) {
+      top: 55px;
+      left: 55px;
+    }
+    .dot:nth-child(6) {
+      top: 10px;
+      left: 55px;
+    }
+    .dot:nth-child(7) {
+      bottom: 10px;
+      right: 55px;
+    }
+  }
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-button {
-  background-color: #333;
-  color: white;
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  outline: none;
+    button {
+      width: 100px;
+      height: 50px;
+      background-color: #333;
+      color: white;
+      font-size: 1.5rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      outline: none;
+      left: 0px;
+    }
+    .enjoy {
+      font-size: 1rem;
+    }
+    .guess {
+      margin-left: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
-.dice {
-  width: 150px;
-  height: 150px;
-  background-color: white;
-  border: 2px solid black;
+//
+input[type="number"] {
+  width: 100px;
+  font-size: 18px;
+  padding: 10px;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 5rem;
-  font-weight: bold;
-  position: relative;
+  outline: none;
+  -moz-appearance: textfield;
 }
-
-.dot {
-  width: 30px;
-  height: 30px;
-  background-color: black;
-  border-radius: 50%;
-  margin: 5px;
-  position: absolute;
+input:focus {
+  border-color: dodgerblue;
 }
-
-.dot:nth-child(1) {
-  top: 10px;
-  left: 10px;
-}
-
-.dot:nth-child(2) {
-  top: 10px;
-  right: 10px;
-}
-
-.dot:nth-child(3) {
-  bottom: 10px;
-  left: 10px;
-}
-
-.dot:nth-child(4) {
-  bottom: 10px;
-  right: 10px;
-}
-
-.dot:nth-child(5) {
-  top: 55px;
-  left: 55px;
-}
-
-.dot:nth-child(6) {
-  top: 10px;
-  left: 55px;
-}
-
-.dot:nth-child(7) {
-  bottom: 10px;
-  right: 55px;
-}
-
-.rolling .dot {
-  animation: rolling 1s infinite;
-}
-
-@keyframes rolling {
-  0% {
-    transform: rotate(0deg) scale(0.2);
-  }
-  50% {
-    transform: rotate(180deg) scale(0.5);
-  }
-  100% {
-    transform: rotate(360deg) scale(0.2);
-  }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
