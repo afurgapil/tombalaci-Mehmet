@@ -67,8 +67,8 @@ const CoinFlip = () => {
                 Reset
               </button>
             )}
-            Guess percentage:{" "}
-            {Math.round((correctGuesses / totalGuesses) * 100)}%
+            Guess percentage: {correctGuesses}/{totalGuesses}-%
+            {((correctGuesses / totalGuesses) * 100).toFixed(2)}
           </p>
         )}
         {totalGuesses === 0 && showResetButton && (

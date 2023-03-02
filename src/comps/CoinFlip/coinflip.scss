@@ -84,3 +84,8 @@ $whitesmoke: #fafafa;
     }
   }
 }
+@media screen and (max-width: 810px) {
+  #main {
+    margin-top: 0px;
+  }
+}
