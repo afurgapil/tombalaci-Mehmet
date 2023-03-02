@@ -59,6 +59,9 @@ html {
 }
 
 @media (min-width: 320px) and (max-width: 600px) {
+  html body header ul .header-right .header-right-item a {
+    font-size: 1.5rem;
+  }
   html body header ul .header-right .header-right-item {
     margin-left: 10px;
     padding: 0px;

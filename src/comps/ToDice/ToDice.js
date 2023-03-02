@@ -3,6 +3,8 @@ import "./todice.scss";
 import point from "../../assets/score.png";
 
 import alertify from "alertifyjs";
+alertify.set("notifier", "position", "top-right");
+alertify.set("notifier", "delay", 1);
 
 export default function ToDice() {
   const [diceNumber, setDiceNumber] = useState(1);
@@ -92,7 +94,7 @@ export default function ToDice() {
     if (randomNumberr === userGuess) {
       alertify.success("Congrats!");
       setScore(score + 20);
-      localStorage.setItem("score", score + 20);
+      localStorage.setItem("score", score + 50);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}.`);
       setScore(score - 10);
