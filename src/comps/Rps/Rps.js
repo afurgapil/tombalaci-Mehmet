@@ -4,7 +4,6 @@ import Rock from "../../assets/6.png";
 import Paper from "../../assets/7.png";
 import Scissors from "../../assets/8.png";
 import Robot from "../../assets/robot.png";
-import Vs from "../../assets/vs.png";
 import point from "../../assets/score.png";
 
 import alertify from "alertifyjs";
@@ -88,7 +87,7 @@ const Game = () => {
           <img id="robot2" alt=" "></img>
         </div>
         <div id="vs">
-          <img src={Vs} id="vs" alt=" "></img>
+          <h1 className="versus">VS</h1>
         </div>
         <div id="buttons">
           <img

@@ -1,14 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap");
 #game-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  #vs {
-    margin: 0px;
-    padding: 0px;
-    width: 200px;
-    height: 500px;
+
+  .versus {
+    font-family: "Teko", sans-serif;
+    animation: color-cycle 5s linear infinite;
+    font-size: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
+
   #robo {
     display: flex;
     flex-direction: row;
@@ -65,5 +69,45 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes color-cycle {
+  0% {
+    color: red;
+  }
+  25% {
+    color: blue;
+  }
+  50% {
+    color: yellow;
+  }
+  75% {
+    color: green;
+  }
+  100% {
+    color: red;
+  }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  #game-container {
+    flex-direction: column;
+    #robo {
+      flex-direction: column-reverse;
+    }
+    #vs {
+      margin: 0px;
+      padding: 0px;
+    }
+    .versus {
+      padding: 0px;
+    }
+    #buttons {
+      margin: 0px;
+      flex-direction: row;
+      .button {
+        width: 100px;
+        height: 100px;
+      }
+    }
   }
 }
