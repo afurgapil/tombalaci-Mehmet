@@ -27,11 +27,11 @@ const CoinFlip = () => {
       setCorrectGuesses(correctGuesses + 1);
       setScore(score + 20);
       localStorage.setItem("score", score + 10);
-      alertify.success("Congrats!", 1);
+      alertify.success("Congrats! +10", 1);
     } else {
       setScore(score - 10);
       localStorage.setItem("score", score - 10);
-      alertify.error(`Ups! Unlucky.`, 1);
+      alertify.error(`Ups! Unlucky. -10`, 1);
     }
   };
 

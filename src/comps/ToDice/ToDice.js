@@ -92,11 +92,11 @@ export default function ToDice() {
     } //
 
     if (randomNumberr === userGuess) {
-      alertify.success("Congrats!");
+      alertify.success("Congrats! +50");
       setScore(score + 20);
       localStorage.setItem("score", score + 50);
     } else {
-      alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}.`);
+      alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
       setScore(score - 10);
       localStorage.setItem("score", score - 10);
     }
