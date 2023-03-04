@@ -1,0 +1,63 @@
+#game-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  #vs {
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    height: 500px;
+  }
+  #robo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    #robot {
+      width: 200px;
+      height: 200px;
+      margin-top: -60px;
+    }
+    .pulse {
+      animation: pulse 3s ease-in-out infinite;
+    }
+    #robot2 {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  #buttons {
+    img {
+      width: 125px;
+      height: 125px;
+      margin: 1rem;
+    }
+    .button:hover {
+      background-color: rgba(255, 0, 0, 0.5);
+      border-radius: 100px;
+    }
+    .button:focus {
+      border-radius: 10px;
+      background-color: aqua;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

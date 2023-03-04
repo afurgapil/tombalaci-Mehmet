@@ -26,6 +26,9 @@ export default class Header extends Component {
                 <Link to="/todice">To Dice</Link>
               </li>
               <li className="header-right-item">
+                <Link to="/rps">RPS</Link>
+              </li>
+              <li className="header-right-item">
                 <Link to="/contact">Contact</Link>
               </li>
             </div>
