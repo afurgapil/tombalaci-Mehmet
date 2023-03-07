@@ -20,6 +20,21 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 4.5rem;
+  .enjoy {
+    font-size: 1rem;
+    width: 150px;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    outline: none;
+    left: 0px;
+  }
   .dice {
     width: 150px;
     height: 150px;
@@ -90,11 +105,24 @@
       outline: none;
       left: 0px;
     }
-    .enjoy {
-      font-size: 1rem;
-    }
+
     .guess {
       margin-left: 2rem;
+      margin-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .oddeven {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .lowhigh {
+      margin-left: 2rem;
+      margin-right: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
