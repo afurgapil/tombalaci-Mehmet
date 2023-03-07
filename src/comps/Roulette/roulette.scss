@@ -1,6 +1,12 @@
 // #main {
 //   height: 100vh;
 // }
+.mainpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 #table {
   display: flex;
   flex-direction: column;
@@ -111,12 +117,13 @@
   align-items: center;
   text-align: center;
   .last-numbers {
+    margin-top: 1rem;
     font-size: 5rem;
+    margin-bottom: 0.1rem;
   }
 }
 
 .number-container {
-  margin: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,5 +141,48 @@
     font-size: 2rem;
     border: 1px white solid;
     border-radius: 5px;
+  }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  #table {
+    margin: 2rem;
+  }
+  #table button {
+    font-size: 0.5rem;
+  }
+  #table .roww .col2 .row .box {
+    width: 25px;
+    height: 25px;
+  }
+  #table .roww .col1 {
+    width: 25px;
+    height: 81px;
+  }
+  #table .roww2 .row2 .box {
+    height: 25px;
+    width: 114.33px;
+  }
+  #table .roww2 .row3 .box {
+    height: 25px;
+    width: 55.83px;
+  }
+  .last {
+    .last-numbers {
+      font-size: 2rem;
+    }
+  }
+  .number-container {
+    .number-box {
+      width: 25px;
+      height: 25px;
+      background-color: orangered;
+      color: whitesmoke;
+      font-size: 1rem;
+      border: 1px white solid;
+      border-radius: 5px;
+    }
+    margin-bottom: 20rem;
+    .number-box:last-child {
+    }
   }
 }

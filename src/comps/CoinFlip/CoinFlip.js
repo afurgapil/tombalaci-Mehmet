@@ -7,9 +7,8 @@ alertify.set("notifier", "delay", 1);
 const CoinFlip = () => {
   const [choice, setChoice] = useState(null);
   const [result, setResult] = useState(null);
-  const [totalGuesses, setTotalGuesses] = useState(0);
   const [correctGuesses, setCorrectGuesses] = useState(0);
-
+  const [totalGuesses, setTotalGuesses] = useState(0);
   const [score, setScore] = useState(localStorage.getItem("score"));
   useEffect(() => {
     const cachedScore = localStorage.getItem("score");
@@ -23,9 +22,9 @@ const CoinFlip = () => {
     const newResult = randomNum < 0.5 ? "Heads" : "Tails";
     setResult(newResult);
     setTotalGuesses(totalGuesses + 1);
-    if (choice === newResult) {
+    if (choice === result) {
       setCorrectGuesses(correctGuesses + 1);
-      setScore(score + 20);
+      setScore(score + 10);
       localStorage.setItem("score", score + 10);
       alertify.success("Congrats! +10", 1);
     } else {

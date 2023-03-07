@@ -8,7 +8,7 @@ alertify.set("notifier", "delay", 1);
 
 export default function ToDice() {
   const [diceNumber, setDiceNumber] = useState(1);
-  const [score, setScore] = useState(50);
+  const [score, setScore] = useState(localStorage.getItem("score"));
   useEffect(() => {
     const cachedScore = localStorage.getItem("score");
     if (cachedScore !== null) {
