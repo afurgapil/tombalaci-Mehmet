@@ -3,6 +3,7 @@ import tombala from "../../assets/1.png";
 import coin from "../../assets/2.png";
 import dice from "../../assets/3.png";
 import rps from "../../assets/4.png";
+import roulette from "../../assets/roulette.png";
 import "./homepage.scss";
 import { Link } from "react-router-dom";
 
@@ -33,6 +34,11 @@ export default class Homepage extends Component {
           <div className="card">
             <Link to="rps">
               <img src={rps} alt="RPS" />
+            </Link>
+          </div>{" "}
+          <div className="card">
+            <Link to="roulette">
+              <img src={roulette} alt="Roulette" />
             </Link>
           </div>
         </div>

@@ -1,0 +1,138 @@
+// #main {
+//   height: 100vh;
+// }
+#table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  border: 5px black;
+  border-style: groove;
+  button {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    outline: none;
+  }
+  .roww {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .col1 {
+      text-align: center;
+      background-color: green;
+      width: 50px;
+      height: 154px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .col2 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .black {
+          background-color: black;
+        }
+        .red {
+          background-color: red;
+        }
+
+        .box {
+          width: 50px;
+          height: 50px;
+          border: 1px white solid;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+  .roww2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .row2 {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .box {
+        width: 222.66px;
+        height: 50px;
+        background-color: grey;
+        border: 1px white solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    .row3 {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .black {
+        background-color: black !important;
+      }
+      .red {
+        background-color: red !important;
+      }
+      .box {
+        background-color: grey;
+        width: 110.33px;
+
+        height: 50px;
+        border: 1px white solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+.last {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .last-numbers {
+    font-size: 5rem;
+  }
+}
+
+.number-container {
+  margin: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .number-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    background-color: orangered;
+    color: whitesmoke;
+    font-size: 2rem;
+    border: 1px white solid;
+    border-radius: 5px;
+  }
+}

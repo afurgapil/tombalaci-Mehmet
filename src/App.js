@@ -22,7 +22,7 @@ function App() {
           <Route path="/tombala" element={<Tombala />} />
           <Route path="/coinflip" element={<CoinFlip />} />
           <Route path="/todice" element={<ToDice />} />
-          {/* <Route path="/roulette" element={<Roulette />} /> */}
+          <Route path="/roulette" element={<Roulette />} />
           <Route path="/rps" element={<Rps />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

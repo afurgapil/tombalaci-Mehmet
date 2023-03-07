@@ -42,7 +42,7 @@ const CoinFlip = () => {
         <h1>Your Score: {score}</h1>
       </div>
       <div id="main">
-        <h2>Make Your Choice!</h2>
+        <h2 className="cf-title">Make Your Choice!</h2>
         <div id="buttons">
           <button
             className="heads buton"

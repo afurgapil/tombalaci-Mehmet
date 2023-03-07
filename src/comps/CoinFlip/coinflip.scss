@@ -15,21 +15,20 @@ $whitesmoke: #fafafa;
   }
 }
 #main {
-  height: calc(100vh - (7rem));
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #ffebcd;
-  h2 {
-    margin-top: -15rem;
+  .cf-title {
+    margin-top: 2rem;
     margin-bottom: 2rem;
     font-size: 4rem;
     color: #05050599;
   }
   #buttons {
+    margin-bottom: 11rem;
     .heads {
       background-color: #f5f242;
       color: #000000;
