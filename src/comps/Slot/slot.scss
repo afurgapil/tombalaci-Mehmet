@@ -1,0 +1,69 @@
+.slot-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 2rem;
+  color: white;
+  //   background-color: black;
+  //   width: fit-content;
+  .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: brown;
+    border: 10px gold solid;
+
+    .number {
+      width: 75px;
+      height: 50px;
+      box-shadow: 0 3px 0 0 blue inset, 0 6px 0 0 dotted yellow inset;
+      text-align: center;
+    }
+  }
+}
+
+.slot-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .spin-button {
+    background-color: #ffffff00;
+    border: 1px black solid;
+    #slot-bar {
+      width: 80px;
+      height: 200px;
+    }
+    .slot-bar {
+      animation: spin2 1s forwards;
+    }
+    .spinned {
+      animation: spin 1s forwards;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(60deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+@keyframes spin2 {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(60deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}

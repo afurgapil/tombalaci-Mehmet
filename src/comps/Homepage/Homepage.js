@@ -4,6 +4,7 @@ import coin from "../../assets/2.png";
 import dice from "../../assets/3.png";
 import rps from "../../assets/4.png";
 import roulette from "../../assets/roulette.png";
+import slot from "../../assets/slot.png";
 import "./homepage.scss";
 import { Link } from "react-router-dom";
 
@@ -45,6 +46,11 @@ function Homepage() {
         <div className="card">
           <Link to="roulette">
             <img src={roulette} alt="Roulette" />
+          </Link>
+        </div>
+        <div className="card">
+          <Link to="slot">
+            <img src={slot} alt="Slot" />
           </Link>
         </div>
       </div>

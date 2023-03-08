@@ -7,6 +7,7 @@ import Tombala from "./comps/Tombala/Tombala";
 import CoinFlip from "./comps/CoinFlip/CoinFlip";
 import ToDice from "./comps/ToDice/ToDice";
 import Roulette from "./comps/Roulette/Roulette";
+import Slot from "./comps/Slot/Slot";
 import Rps from "./comps/Rps/Rps";
 
 // import Layout from "./comps/Layout/Layout";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/todice" element={<ToDice />} />
           <Route path="/roulette" element={<Roulette />} />
           <Route path="/rps" element={<Rps />} />
+          <Route path="/slot" element={<Slot />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer></Footer>

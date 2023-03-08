@@ -32,6 +32,9 @@ export default class Header extends Component {
                 <Link to="/roulette">Roulette</Link>
               </li>
               <li className="header-right-item">
+                <Link to="/slot">Slot</Link>
+              </li>
+              <li className="header-right-item">
                 <Link to="/contact">Contact</Link>
               </li>
             </div>

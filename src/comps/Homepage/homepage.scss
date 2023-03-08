@@ -30,6 +30,7 @@ main .cards {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 }
 main .cards img {
   width: 300px;
@@ -42,6 +43,7 @@ main .cards img:hover {
 main .card {
   border: solid;
   border-radius: 50px;
+  margin: 0.5rem;
 
   a:hover {
     background-color: #ffebcd;
