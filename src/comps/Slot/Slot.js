@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import "./slot.scss";
 import stick from "../../assets/stick.png";
@@ -26,7 +26,102 @@ function Slot() {
     setSpinstick1(!spinstick1);
     setSpinstick2(!spinstick2);
   };
+  function spin() {
+    let numbergenerator1 = setInterval(() => {
+      let nu1 = Math.floor(Math.random() * (9 + 1));
+      let nu2 = Math.floor(Math.random() * (9 + 1));
+      let nu3 = Math.floor(Math.random() * (9 + 1));
+      setCol11(nu1);
+      setCol12(nu2);
+      setCol13(nu3);
+    }, 100);
+    let numbergenerator2 = setInterval(() => {
+      let nu4 = Math.floor(Math.random() * (9 + 1));
+      let nu5 = Math.floor(Math.random() * (9 + 1));
+      let nu6 = Math.floor(Math.random() * (9 + 1));
 
+      setCol21(nu4);
+      setCol22(nu5);
+      setCol23(nu6);
+    }, 100);
+    let numbergenerator3 = setInterval(() => {
+      let nu7 = Math.floor(Math.random() * (9 + 1));
+      let nu8 = Math.floor(Math.random() * (9 + 1));
+      let nu9 = Math.floor(Math.random() * (9 + 1));
+
+      setCol31(nu7);
+      setCol32(nu8);
+      setCol33(nu9);
+    }, 100);
+    let numbergenerator4 = setInterval(() => {
+      let nu10 = Math.floor(Math.random() * (9 + 1));
+      let nu11 = Math.floor(Math.random() * (9 + 1));
+      let nu12 = Math.floor(Math.random() * (9 + 1));
+
+      setCol41(nu10);
+      setCol42(nu11);
+      setCol43(nu12);
+    }, 100);
+    let numbergenerator5 = setInterval(() => {
+      let nu13 = Math.floor(Math.random() * (9 + 1));
+      let nu14 = Math.floor(Math.random() * (9 + 1));
+      let nu15 = Math.floor(Math.random() * (9 + 1));
+
+      setCol51(nu13);
+      setCol52(nu14);
+      setCol53(nu15);
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(numbergenerator1);
+      let no1 = Math.floor(Math.random() * (9 + 1));
+      let no2 = Math.floor(Math.random() * (9 + 1));
+      let no3 = Math.floor(Math.random() * (9 + 1));
+      setCol11(no1);
+      setCol12(no2);
+      setCol13(no3);
+    }, 4000);
+    setTimeout(() => {
+      clearInterval(numbergenerator2);
+
+      let no1 = Math.floor(Math.random() * (9 + 1));
+      let no2 = Math.floor(Math.random() * (9 + 1));
+      let no3 = Math.floor(Math.random() * (9 + 1));
+      setCol21(no1);
+      setCol22(no2);
+      setCol23(no3);
+    }, 5000);
+    setTimeout(() => {
+      clearInterval(numbergenerator3);
+
+      let no1 = Math.floor(Math.random() * (9 + 1));
+      let no2 = Math.floor(Math.random() * (9 + 1));
+      let no3 = Math.floor(Math.random() * (9 + 1));
+      setCol31(no1);
+      setCol32(no2);
+      setCol33(no3);
+    }, 6000);
+    setTimeout(() => {
+      clearInterval(numbergenerator4);
+
+      let no1 = Math.floor(Math.random() * (9 + 1));
+      let no2 = Math.floor(Math.random() * (9 + 1));
+      let no3 = Math.floor(Math.random() * (9 + 1));
+      setCol41(no1);
+      setCol42(no2);
+      setCol43(no3);
+    }, 7000);
+    setTimeout(() => {
+      clearInterval(numbergenerator5);
+
+      let no1 = Math.floor(Math.random() * (9 + 1));
+      let no2 = Math.floor(Math.random() * (9 + 1));
+      let no3 = Math.floor(Math.random() * (9 + 1));
+      setCol51(no1);
+      setCol52(no2);
+      setCol53(no3);
+    }, 8000);
+  }
   function spin1() {
     let no1 = Math.floor(Math.random() * (9 + 1));
     let no2 = Math.floor(Math.random() * (9 + 1));
@@ -35,6 +130,7 @@ function Slot() {
     setCol12(no2);
     setCol13(no3);
   }
+
   function spin2() {
     let no1 = Math.floor(Math.random() * (9 + 1));
     let no2 = Math.floor(Math.random() * (9 + 1));
@@ -72,7 +168,10 @@ function Slot() {
     <div>
       <div className="slot-table">
         <div className="col">
-          <p className="number">{col11}</p>
+          <p className="number">
+            {col11}
+            &#x1F347;
+          </p>
           <p className="number">{col12}</p>
           <p className="number">{col13}</p>
         </div>
@@ -100,11 +199,12 @@ function Slot() {
           <button
             className="spin-button"
             onClick={() => {
-              spin1();
-              spin2();
-              spin3();
-              spin4();
-              spin5();
+              // spin1();
+              // spin2();
+              // spin3();
+              // spin4();
+              // spin5();
+              spin();
             }}
           >
             <img
@@ -120,5 +220,4 @@ function Slot() {
     </div>
   );
 }
-
 export default Slot;
