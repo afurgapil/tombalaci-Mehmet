@@ -7,7 +7,7 @@ import Tombala from "./comps/Tombala/Tombala";
 import CoinFlip from "./comps/CoinFlip/CoinFlip";
 import ToDice from "./comps/ToDice/ToDice";
 import Roulette from "./comps/Roulette/Roulette";
-import Slot from "./comps/Slot/Slot";
+import Slot from "./comps/Slot/SlotGame";
 import Rps from "./comps/Rps/Rps";
 
 // import Layout from "./comps/Layout/Layout";

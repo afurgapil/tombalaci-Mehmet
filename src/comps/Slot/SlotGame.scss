@@ -1,0 +1,13 @@
+#slot-games-container {
+  .gamechange {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    button {
+      width: 350px;
+      height: 100px;
+    }
+  }
+}
