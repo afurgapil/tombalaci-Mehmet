@@ -10,8 +10,11 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
     align-items: center;
     flex-direction: row;
     animation: cycle 30s linear infinite alternate;
-    background-color: grey;
+    // background-color: rgb(0, 41, 117);
     border-radius: 50px;
+    border: 10px goldenrod groove;
+    border-bottom: none;
+    padding: 1rem;
   }
 }
 
@@ -22,9 +25,9 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   flex-direction: row;
   font-size: 2rem;
   color: white;
-  // background-color: gray;
-  // width: 900px;
-  // height: 664px;
+  padding: 5rem;
+  border-radius: 100px;
+  background-color: rgb(45, 0, 117);
 
   .col {
     display: flex;
@@ -54,10 +57,11 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   flex-direction: column;
   .spin-button {
     background-color: #ffffff00;
-    border: 1px black solid;
+    // border: 1px black solid;
+    border: none;
     #slot-bar {
-      width: 80px;
-      height: 200px;
+      // width: 80px;
+      // height: 200px;
     }
     .slot-bar {
       animation: spin2 1s forwards;
@@ -111,5 +115,19 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   }
   100% {
     color: nth($h1-colors, 1);
+  }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  .slot-table {
+    margin-top: 5rem;
+    margin-bottom: 20rem;
+    .col {
+      border-width: 5px;
+      .number {
+        font-size: 2rem;
+        width: 50px;
+        height: 20px;
+      }
+    }
   }
 }

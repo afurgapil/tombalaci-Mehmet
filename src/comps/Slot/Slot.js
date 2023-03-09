@@ -634,7 +634,7 @@ function Slot() {
       // setCol11(no1);
       // setCol12(no2);
       // setCol13(no3);
-    }, 4000);
+    }, 1000);
     setTimeout(() => {
       clearInterval(numbergenerator2);
 
@@ -644,7 +644,7 @@ function Slot() {
       // setCol21(no1);
       // setCol22(no2);
       // setCol23(no3);
-    }, 5000);
+    }, 1500);
     setTimeout(() => {
       clearInterval(numbergenerator3);
 
@@ -654,7 +654,7 @@ function Slot() {
       // setCol31(no1);
       // setCol32(no2);
       // setCol33(no3);
-    }, 6000);
+    }, 2000);
     setTimeout(() => {
       clearInterval(numbergenerator4);
 
@@ -664,7 +664,7 @@ function Slot() {
       // setCol41(no1);
       // setCol42(no2);
       // setCol43(no3);
-    }, 7000);
+    }, 2500);
     setTimeout(() => {
       clearInterval(numbergenerator5);
       function checkResult1() {
@@ -750,7 +750,7 @@ function Slot() {
       // setCol51(no1);
       // setCol52(no2);
       // setCol53(no3);
-    }, 8000);
+    }, 3000);
   }
   // function spin1() {
   //   let no1 = Math.floor(Math.random() * (9 + 1));
@@ -801,7 +801,9 @@ function Slot() {
         <h1>Your Score: {score}</h1>
       </div>
       <div className="slot-table-container">
-        <div className="slot-title">{/* <h1>SLOT MACHINE</h1> */}</div>
+        {/* <div className="slot-title">
+          <h1>SLOT MACHINE</h1>
+        </div> */}
         <div className="slot-table">
           <div className="col">
             <p className="number">{col11}</p>
