@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
 #slot-games-container {
   .gamechange {
     margin-top: 5rem;
@@ -5,9 +6,41 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    #easy {
+      background-color: green;
+    }
+    #easy:hover {
+      span {
+        display: block;
+      }
+    }
+
+    #medium {
+      background-color: rgb(129, 129, 0);
+    }
+    #medium:hover {
+      span {
+        display: block;
+      }
+    }
+
+    #hard {
+      background-color: red;
+    }
+    #hard:hover {
+      span {
+        display: block;
+      }
+    }
     button {
       width: 350px;
+      font-family: "Gloock", serif;
       height: 100px;
+      font-size: 2rem;
+      span {
+        display: none;
+        color: bisque;
+      }
     }
   }
 }

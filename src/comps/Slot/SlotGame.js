@@ -18,9 +18,15 @@ const SlotGame = () => {
       {selectedGame === "Game3" && <Slot3 />}
 
       <div className="gamechange">
-        <button onClick={() => handleButtonClick("Game1")}>Game 1</button>
-        <button onClick={() => handleButtonClick("Game2")}>Game 2</button>
-        <button onClick={() => handleButtonClick("Game3")}>Game 3</button>
+        <button id="easy" onClick={() => handleButtonClick("Game3")}>
+          Çapsız Abidin <span id="easys">3 Col 5 Fruit</span>
+        </button>
+        <button id="medium" onClick={() => handleButtonClick("Game2")}>
+          Süleyman Çakır<span id="mediums">5 Col 5 Fruit</span>
+        </button>
+        <button id="hard" onClick={() => handleButtonClick("Game1")}>
+          Koko Muharrem<span id="hards">5 Col 10 Fruit</span>
+        </button>
       </div>
     </div>
   );
