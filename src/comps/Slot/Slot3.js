@@ -38,7 +38,7 @@ function Slot() {
 
   function cccccc() {
     function checkResult1() {
-      if ((col11 === col21) === col31) {
+      if (col11 === col21 && col21 === col31) {
         return true;
       } else {
         return false;
@@ -53,7 +53,7 @@ function Slot() {
     }
 
     function checkResult3() {
-      if ((col13 === col23) === col33) {
+      if (col13 === col23 && col23 === col33) {
         return true;
       } else {
         return false;
@@ -61,10 +61,12 @@ function Slot() {
     }
     function checkJackpot() {
       if (
-        (((((((col11 === col12) === col13) === col21) === col22) === col23) ===
-          col31) ===
-          col32) ===
-        col33
+        col11 === col21 &&
+        col21 === col31 &&
+        col12 === col22 &&
+        col22 === col32 &&
+        col13 === col23 &&
+        col23 === col33
       ) {
         return true;
       } else {
@@ -87,7 +89,7 @@ function Slot() {
       if (row2 === true) {
         setScore(score + 10000);
         localStorage.setItem("score", score + 10000);
-        alertify.success("Congrats! +10000", 1);
+        alertify.success("Congrats!row2 +10000", 1);
       } else {
         alertify.error(`Ups! Unlucky.`, 1);
       }
@@ -95,17 +97,17 @@ function Slot() {
       if (row1 === true && row2 === true) {
         setScore(score + 20000);
         localStorage.setItem("score", score + 20000);
-        alertify.success("Congrats! +20000", 1);
+        alertify.success("Congrats!row1-2 +20000", 1);
       }
       if (row3 === true && row2 === true) {
         setScore(score + 20000);
         localStorage.setItem("score", score + 20000);
-        alertify.success("Congrats! +20000", 1);
+        alertify.success("Congrats!row3-2 +20000", 1);
       }
       if (row3 === true && row2 === true && row1 === true) {
         setScore(score + 50000);
         localStorage.setItem("score", score + 50000);
-        alertify.success("Congrats! +50000", 1);
+        alertify.success("Congrats!jackpot +50000", 1);
       }
       if (jackpot) {
         setScore(score + 100000);
@@ -118,6 +120,7 @@ function Slot() {
 
   function gameResult() {
     spin();
+
     setTimeout(() => {
       cccccc();
     }, 3000);
