@@ -635,13 +635,21 @@ function Slot() {
   }, [col13, col23, col33, col43, col53]);
   useEffect(() => {
     if (row1 === true) {
-      alertify.success("row1! +10000", 1);
+      alertify.success("ROW1! +30000", 1);
+      setScore(score + 30000);
+      localStorage.setItem("score", score + 30000);
     } else if (row2 === true) {
-      alertify.success("row2! +10000", 1);
+      setScore(score + 30000);
+      localStorage.setItem("score", score + 30000);
+      alertify.success("ROW2! +30000", 1);
     } else if (row3 === true) {
-      alertify.success("row3! +10000", 1);
+      setScore(score + 30000);
+      localStorage.setItem("score", score + 30000);
+      alertify.success("ROW3! +30000", 1);
     } else if (row1 === true && row2 === true && row3 === true) {
-      alertify.success("mucize! +10000", 1);
+      setScore(score + 100000);
+      localStorage.setItem("score", score + 100000);
+      alertify.success("JACKPOT! +100000", 1);
     }
   }, [row1, row2, row3]);
   return (

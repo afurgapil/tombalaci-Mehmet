@@ -46,21 +46,21 @@ function Slot() {
     setRow1(false);
     setRow2(false);
     setRow3(false);
-    let nu1 = Math.floor(Math.random() * (1 + 1));
-    let nu2 = Math.floor(Math.random() * (1 + 1));
-    let nu3 = Math.floor(Math.random() * (1 + 1));
-    let nu4 = Math.floor(Math.random() * (1 + 1));
-    let nu5 = Math.floor(Math.random() * (1 + 1));
-    let nu6 = Math.floor(Math.random() * (1 + 1));
-    let nu7 = Math.floor(Math.random() * (1 + 1));
-    let nu8 = Math.floor(Math.random() * (1 + 1));
-    let nu9 = Math.floor(Math.random() * (1 + 1));
-    let nu10 = Math.floor(Math.random() * (1 + 1));
-    let nu11 = Math.floor(Math.random() * (1 + 1));
-    let nu12 = Math.floor(Math.random() * (1 + 1));
-    let nu13 = Math.floor(Math.random() * (1 + 1));
-    let nu14 = Math.floor(Math.random() * (1 + 1));
-    let nu15 = Math.floor(Math.random() * (1 + 1));
+    let nu1 = Math.floor(Math.random() * (9 + 1));
+    let nu2 = Math.floor(Math.random() * (9 + 1));
+    let nu3 = Math.floor(Math.random() * (9 + 1));
+    let nu4 = Math.floor(Math.random() * (9 + 1));
+    let nu5 = Math.floor(Math.random() * (9 + 1));
+    let nu6 = Math.floor(Math.random() * (9 + 1));
+    let nu7 = Math.floor(Math.random() * (9 + 1));
+    let nu8 = Math.floor(Math.random() * (9 + 1));
+    let nu9 = Math.floor(Math.random() * (9 + 1));
+    let nu10 = Math.floor(Math.random() * (9 + 1));
+    let nu11 = Math.floor(Math.random() * (9 + 1));
+    let nu12 = Math.floor(Math.random() * (9 + 1));
+    let nu13 = Math.floor(Math.random() * (9 + 1));
+    let nu14 = Math.floor(Math.random() * (9 + 1));
+    let nu15 = Math.floor(Math.random() * (9 + 1));
     switch (nu1) {
       case 0:
         setCol11("\ud83c\udf47");
@@ -651,7 +651,7 @@ function Slot() {
       localStorage.setItem("score", score + 1000000000);
       alertify.success("JACKPOT! +1000000000", 1);
     }
-  }, [row1, row2, row3, score]);
+  }, [row1, row2, row3]);
   return (
     <div>
       <div id="score">
