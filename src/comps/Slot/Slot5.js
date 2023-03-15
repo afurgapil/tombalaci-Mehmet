@@ -4,6 +4,7 @@ import "./slot.scss";
 import stick from "../../assets/stick.png";
 import point from "../../assets/score.png";
 import alertify from "alertifyjs";
+import ScroolToBottom from "../../comps/Tools/ScroolToBottom";
 
 function Slot() {
   const [score, setScore] = useState(localStorage.getItem("score"));
@@ -707,6 +708,7 @@ function Slot() {
           </div>
         </div>
       </div>
+      <ScroolToBottom></ScroolToBottom>
     </div>
   );
 }

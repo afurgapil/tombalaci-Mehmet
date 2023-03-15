@@ -4,6 +4,7 @@ import "./slot.scss";
 import stick from "../../assets/stick.png";
 import point from "../../assets/score.png";
 import alertify from "alertifyjs";
+import ScroolToBottom from "../../comps/Tools/ScroolToBottom";
 
 function Slot() {
   const [score, setScore] = useState(localStorage.getItem("score"));
@@ -437,7 +438,6 @@ function Slot() {
             <p className="number">{col32}</p>
             <p className="number">{col33}</p>
           </div>
-
           <div className="slot-buttons">
             <button
               className="spin-button"
@@ -457,6 +457,7 @@ function Slot() {
           </div>
         </div>
       </div>
+      <ScroolToBottom></ScroolToBottom>
     </div>
   );
 }
