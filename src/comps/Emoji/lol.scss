@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&display=swap");
+
+#lol-game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  #l-tittle {
+    font-family: "Raleway", sans-serif;
+    font-size: 4rem;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px black solid;
+  }
+  #lol-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 163, 8);
+    padding: 2rem;
+    border-radius: 50px;
+    #lol-emoji-container {
+      .emoji {
+        background-color: rgb(241, 241, 241);
+        border: 1px black solid;
+        padding: 1rem;
+        font-size: 2rem;
+        margin-right: 0.5rem;
+      }
+      margin-bottom: 2rem;
+    }
+    #lol-input {
+      padding: 3px;
+      font-size: 16px;
+      border-width: 10px;
+      border-style: inset;
+      border-color: #009e22;
+      box-shadow: 0px 0px 5px 0px rgba(42, 42, 42, 0.75);
+      font-weight: bold;
+      font-family: sans-serif;
+      margin-bottom: 1rem;
+    }
+    #lol-button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .l-play-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem;
+        padding: 1rem;
+        width: 100px;
+        height: 50px;
+      }
+    }
+  }
+  .hint {
+    background-color: antiquewhite;
+    padding: 1rem;
+    border: 2px black solid;
+  }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  #lol-game-container #v-tittle {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem;
+  }
+}
