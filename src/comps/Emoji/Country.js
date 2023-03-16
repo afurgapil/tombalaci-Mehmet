@@ -28,6 +28,9 @@ const Country = () => {
       setWrongGuesses(0);
       setResult("");
       alertify.success("Correct!", 3);
+      setTimeout(() => {
+        handlePlayAgain();
+      }, 1000);
     } else {
       const hint = selectedCountry.substring(0, wrongGuesses + 1);
       setWrongGuesses(wrongGuesses + 1);
@@ -97,10 +100,6 @@ const Country = () => {
           </Button>
         )} */}
       </div>
-      <div>ab</div>
-      <div></div>
-      <div>setWrongGuesses</div>
-      <div></div>
     </div>
   );
 };

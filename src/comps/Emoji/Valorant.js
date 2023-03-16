@@ -26,6 +26,9 @@ const Valorant = () => {
       setWrongGuesses(0);
       alertify.success("Correct!", 3);
       setResult("");
+      setTimeout(() => {
+        handlePlayAgain();
+      }, 1000);
     } else {
       const hint = selectedAgent.substring(0, wrongGuesses + 1);
       setWrongGuesses(wrongGuesses + 1);
