@@ -33,6 +33,9 @@ export default class Header extends Component {
               </li>
               <li className="header-right-item">
                 <Link to="/slot">Slot</Link>
+              </li>{" "}
+              <li className="header-right-item">
+                <Link to="/emojify">Emojify</Link>
               </li>
               <li className="header-right-item">
                 <Link to="/contact">Contact</Link>

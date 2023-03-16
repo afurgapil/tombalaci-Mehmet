@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
+
+#emoji-games-container {
+  .gamechange {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    #Country {
+      background-image: url("../../assets/country.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      border: 2px solid black;
+      &:hover {
+        background-image: url("../../assets/country_hover.png");
+        transition: 3s ease-in-out;
+        span {
+          display: block;
+        }
+      }
+    }
+
+    #Valorant {
+      background-image: url("../../assets/valorant.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      border: 2px solid black;
+      &:hover {
+        background-image: url("../../assets/valorant_hover.png");
+        span {
+          display: block;
+        }
+      }
+    }
+    button {
+      width: 350px;
+      font-family: "Gloock", serif;
+      height: 100px;
+      font-size: 2rem;
+      span {
+        display: none;
+        color: bisque;
+      }
+    }
+  }
+}
+@media (min-width: 320px) and (max-width: 600px) {
+  #emoji-games-container .gamechange {
+    flex-direction: column;
+    #Valorant {
+      margin: 0.5rem;
+    }
+  }
+}

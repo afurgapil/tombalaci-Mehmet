@@ -9,7 +9,7 @@ import ToDice from "./comps/ToDice/ToDice";
 import Roulette from "./comps/Roulette/Roulette";
 import Slot from "./comps/Slot/SlotGame";
 import Rps from "./comps/Rps/Rps";
-
+import EmojiGame from "./comps/Emoji/Emoji";
 // import Layout from "./comps/Layout/Layout";
 import NotFound from "./comps/NotFound/NotFound";
 
@@ -27,6 +27,7 @@ function App() {
           <Route path="/roulette" element={<Roulette />} />
           <Route path="/rps" element={<Rps />} />
           <Route path="/slot" element={<Slot />} />
+          <Route path="/emojify" element={<EmojiGame />} />
           {/* <Route path="/slott" element={<Slot4 />} />
           <Route path="/slot" element={<Slot4 />} /> */}
           <Route path="*" element={<NotFound />} />
