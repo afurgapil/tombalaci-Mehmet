@@ -42,7 +42,13 @@ const Valorant = () => {
     setResult("");
     setWrongGuesses(0);
   };
-
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      handleGuess();
+    } else if (isNaN(parseInt(event.key, 10))) {
+      // event.preventDefault();
+    }
+  }
   return (
     <div id="valorant-game-container">
       <p id="v-tittle">Valorant Agent Guess Game</p>
@@ -63,6 +69,7 @@ const Valorant = () => {
           type="text"
           value={userGuess}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
         />
         <div id="valorant-button-container">
           <Button

@@ -43,7 +43,13 @@ const Country = () => {
     setUserGuess("");
     setResult("");
   };
-
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      handleGuess();
+    } else if (isNaN(parseInt(event.key, 10))) {
+      // event.preventDefault();
+    }
+  }
   return (
     <div id="country-game-container">
       <p id="c-tittle">Country Guess Game</p>
@@ -60,6 +66,7 @@ const Country = () => {
           type="text"
           value={userGuess}
           onChange={handleInputChange}
+          onKeyPress={handleKeyPress}
         />
         <div id="country-button-container">
           <Button
