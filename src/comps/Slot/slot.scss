@@ -57,12 +57,17 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   flex-direction: column;
   .spin-button {
     background-color: #ffffff00;
-    // border: 1px black solid;
     border: none;
-    #slot-bar {
-      // width: 80px;
-      // height: 200px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 100px;
+      height: auto;
     }
+
     .slot-bar {
       animation: spin2 1s forwards;
     }
@@ -120,7 +125,7 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
 @media (min-width: 320px) and (max-width: 600px) {
   .slot-table {
     margin-top: 5rem;
-    margin-bottom: 20rem;
+    margin-bottom: 5rem;
     .col {
       border-width: 5px;
       .number {

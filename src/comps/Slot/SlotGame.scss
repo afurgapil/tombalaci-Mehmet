@@ -44,3 +44,8 @@
     }
   }
 }
+@media (min-width: 320px) and (max-width: 600px) {
+  #slot-games-container .gamechange {
+    flex-direction: column;
+  }
+}
