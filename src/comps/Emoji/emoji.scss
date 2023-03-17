@@ -57,6 +57,22 @@
         }
       }
     }
+    #Turkey {
+      background-image: url("../../assets/turkey.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      border: 2px solid black;
+      &:hover {
+        background-image: url("../../assets/turkey_hover.png");
+        span {
+          display: block;
+        }
+      }
+    }
     button {
       width: 350px;
       font-family: "Gloock", serif;

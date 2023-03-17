@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Valorant from "./Valorant";
 import Country from "./Country";
 import Lol from "./Lol";
+import Turkey from "./Turkey";
 import "./emoji.scss";
 
 const SlotGame = () => {
@@ -16,6 +17,7 @@ const SlotGame = () => {
       {selectedGame === "Valorant" && <Valorant />}
       {selectedGame === "Country" && <Country />}
       {selectedGame === "Lol" && <Lol />}
+      {selectedGame === "Turkey" && <Turkey />}
 
       <div className="gamechange">
         <button id="Country" onClick={() => handleButtonClick("Country")}>
@@ -26,6 +28,9 @@ const SlotGame = () => {
         </button>
         <button id="Lol" onClick={() => handleButtonClick("Lol")}>
           <span>League Of Legends</span>
+        </button>
+        <button id="Turkey" onClick={() => handleButtonClick("Turkey")}>
+          <span>🇹🇷 Turkey 🇹🇷</span>
         </button>
       </div>
     </div>
