@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import turkeyCities from "./turkeyCities";
+import turkeyCities from "../../data/turkeyCities";
 import "./turkeycities.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";

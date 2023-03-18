@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import heros from "./heros";
+import heros from "../../data/heros";
 import "./lol.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";

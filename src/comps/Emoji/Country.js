@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import countries from "./countries";
+import countries from "../../data/countries";
 import "./country.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";

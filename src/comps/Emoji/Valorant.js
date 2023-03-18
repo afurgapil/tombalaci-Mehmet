@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import agents from "./agents";
+import agents from "../../data/agents";
 import "./valorant.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
