@@ -23,14 +23,14 @@ const SlotGame = () => {
         <button id="Country" onClick={() => handleButtonClick("Country")}>
           <span>Country</span>
         </button>
+        <button id="Turkey" onClick={() => handleButtonClick("Turkey")}>
+          <span>🇹🇷 Turkey 🇹🇷</span>
+        </button>
         <button id="Valorant" onClick={() => handleButtonClick("Valorant")}>
           <span>Valorant Agents</span>
         </button>
         <button id="Lol" onClick={() => handleButtonClick("Lol")}>
           <span>League Of Legends</span>
-        </button>
-        <button id="Turkey" onClick={() => handleButtonClick("Turkey")}>
-          <span>🇹🇷 Turkey 🇹🇷</span>
         </button>
       </div>
     </div>
