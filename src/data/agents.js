@@ -168,5 +168,8 @@ const agents = [
     region: "asia",
   },
 ];
+agents.forEach((agent) => {
+  agent.name = agent.name.toLowerCase();
+});
 
 export default agents;

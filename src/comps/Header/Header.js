@@ -21,31 +21,50 @@ function Header() {
       </div>
       <div className="menu-container">
         <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
-          <li>
-            <NavLink to="/" exact>
+          <li className="navigation-item">
+            <NavLink to="/" exact className="navigation-item-link">
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/coinflip">CoinFlip</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/coinflip" className="navigation-item-link">
+              CoinFlip
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/todice">ToDice</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/todice" className="navigation-item-link">
+              ToDice
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/rps">RPS</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/rps" className="navigation-item-link">
+              RPS
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/roulette">Roulette</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/roulette" className="navigation-item-link">
+              Roulette
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/slot">Slot</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/slot" className="navigation-item-link">
+              Slot
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/emojify">Emojify</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/emojify" className="navigation-item-link">
+              Emojify
+            </NavLink>
+          </li>{" "}
+          <li className="navigation-item">
+            <NavLink to="/quizzboxes" className="navigation-item-link">
+              QuizzBox
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/contact">Contact</NavLink>
+          <li className="navigation-item">
+            <NavLink to="/contact" className="navigation-item-link">
+              Contact
+            </NavLink>
           </li>
         </ul>
       </div>

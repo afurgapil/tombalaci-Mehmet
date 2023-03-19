@@ -1,0 +1,17 @@
+.attribute {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.attribute.selected {
+  background-color: green;
+  color: white;
+}
+
+.attribute.common {
+  background-color: blue;
+  color: white;
+}
