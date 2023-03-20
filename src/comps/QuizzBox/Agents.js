@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 
 function Agents() {
   const [selectedAgents, setSelectedAgents] = useState([]);
-  const [selectedAgentData, setSelectedAgentData] = useState();
+  const [selectedAgentData, setSelectedAgentData] = useState("");
   const [computerAgent, setComputerAgent] = useState("");
   const [computerAgentData, setComputerAgentData] = useState("");
   const [userInput, setUserInput] = useState("");
@@ -29,20 +29,31 @@ function Agents() {
     setComputerAgent(agents[randomIndex].name);
     setComputerAgentData(randomIndex);
   }, []);
-  const compareAgents = (lastAgent, computerAgentData) => {
-    if (
-      lastAgent.name === computerAgentData.name &&
-      lastAgent.gender === computerAgentData.gender &&
-      lastAgent.role === computerAgentData.role &&
-      lastAgent.species === computerAgentData.species &&
-      lastAgent.region === computerAgentData.region
-    ) {
+  const compareAgents = () => {
+    const matchedAgent = agents.some((agent) => {
+      return agent.name.toLowerCase() === lastAgent.name.toLowerCase();
+    });
+
+    if (matchedAgent) {
       console.log("Congratulations! You have chosen the right agent.");
     } else {
       console.log("Sorry, you have chosen the wrong agent.");
       alertify.alert("zort");
+      console.log(lastAgent.name);
+      console.log(lastAgent.gender);
+      console.log(lastAgent.role);
+      console.log(lastAgent.species);
+      console.log(lastAgent.region);
     }
   };
+
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      handleAddItem();
+    } else if (isNaN(parseInt(event.key, 10))) {
+      // event.preventDefault();
+    }
+  }
 
   return (
     <div id="valodle-game-container">
@@ -55,6 +66,7 @@ function Agents() {
           type="text"
           value={userInput}
           onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
 
         <Button variant="contained" onClick={handleAddItem}>
@@ -65,6 +77,8 @@ function Agents() {
         <p>User Input: {userInput}</p>
         <p>last Input: {lastAgent}</p>
         <p>Selected Agents: {selectedAgents}</p>
+        <p>Computer Agent: {computerAgent}</p>
+        <p>{selectedAgentData}</p>
       </div>
 
       <table>
@@ -83,17 +97,18 @@ function Agents() {
             if (!selectedAgentData) return null;
             return (
               <tr key={index}>
-                <td id="table-name">{selectedAgentData.name}</td>
-                <td>{selectedAgentData.gender}</td>
-                <td>{selectedAgentData.role}</td>
-                <td>{selectedAgentData.species}</td>
-                <td>{selectedAgentData.region}</td>
+                <td id="table-name table-item">{selectedAgentData.name}</td>
+                <td id="table-gender table-item">{selectedAgentData.gender}</td>
+                <td id="table-role table-item">{selectedAgentData.role}</td>
+                <td id="table-species table-item">
+                  {selectedAgentData.species}
+                </td>
+                <td id="table-region table-item">{selectedAgentData.region}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <p>Computer Agent: {computerAgent}</p>
     </div>
   );
 }
