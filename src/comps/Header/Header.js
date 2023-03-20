@@ -57,8 +57,8 @@ function Header() {
             </NavLink>
           </li>{" "}
           <li className="navigation-item">
-            <NavLink to="/quizzboxes" className="navigation-item-link">
-              QuizzBox
+            <NavLink to="/quizboxes" className="navigation-item-link">
+              QuizBox
             </NavLink>
           </li>
           <li className="navigation-item">

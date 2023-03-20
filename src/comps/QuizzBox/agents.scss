@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap");
 #valodle-game-container {
   display: flex;
   flex-direction: column;
@@ -8,38 +9,53 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 30%;
     #filled-basic {
       background-color: #dcdcdc;
+      width: 100%;
+    }
+    #check-button {
+      margin: 1rem;
     }
   }
   table {
     border-collapse: collapse;
     width: 100%;
-    max-width: 800px; /* example maximum width */
-    margin: 0 auto; /* center the table */
+    max-width: 800px;
+    margin: 0 auto;
     font-size: 16px;
     line-height: 1.4;
-
+    margin-bottom: 5rem;
+    #table-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: auto;
+    }
     th {
       background-color: #555;
       border: 1px solid #bbbbbb;
-      padding: 10px;
       font-weight: bold;
-      text-align: left;
       color: #fff;
     }
 
     td {
       border: 1px solid #ddd;
-      padding: 10px;
-      vertical-align: top;
-
-      &:first-child {
-        font-weight: bold;
+      text-align: center;
+      color: #fff;
+      font-family: "Teko", sans-serif;
+      font-size: 2rem;
+      #agent-icon {
+        width: auto;
+        height: 50px;
+        text-align: center;
       }
     }
-    #table-name {
-      background-color: #d2d2d2;
-    }
   }
+}
+#valodle-desc {
+  color: #7b2d00;
+  font-family: "Teko", sans-serif;
+  font-size: 5rem;
 }
