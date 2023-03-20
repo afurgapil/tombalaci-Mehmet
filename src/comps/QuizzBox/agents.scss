@@ -1,17 +1,30 @@
-.attribute {
-  display: inline-block;
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid black;
-  cursor: pointer;
-}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px; /* example maximum width */
+  margin: 0 auto; /* center the table */
+  font-size: 16px;
+  line-height: 1.4;
 
-.attribute.selected {
-  background-color: green;
-  color: white;
-}
+  th {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
 
-.attribute.common {
-  background-color: blue;
-  color: white;
+  td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: top;
+
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+
+  tbody tr:hover {
+    background-color: #f9f9f9;
+  }
 }

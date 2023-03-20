@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import agents from "../../data/agents";
 import alertify from "alertifyjs";
+import "./agents.scss";
 
 function Agents() {
   const [selectedAgents, setSelectedAgents] = useState([]);
