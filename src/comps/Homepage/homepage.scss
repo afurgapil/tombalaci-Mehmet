@@ -178,7 +178,7 @@ html {
   }
 }
 
-@media (min-width: 320px) and (max-width: 600px) {
+@media (min-width: 320px) and (max-width: 768px) {
   html body main .cards {
     flex-direction: column;
   }
@@ -188,17 +188,89 @@ html {
   html body main .cards .card a img {
     filter: grayscale(0);
   }
-}
+  html #homepage-main #section2 {
+    flex-direction: column;
+    #section2-desc {
+      flex-basis: 25%;
+      height: 50%;
+      margin-top: 1rem;
+      h2 {
+        font-size: 2rem;
+        margin: 0px;
+        color: black;
+        border-bottom: 1px solid black;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+    #cards {
+      flex-basis: 70%;
+      .card {
+        margin: 0.5rem;
+        width: 30%;
+        img {
+          width: 100%;
+          height: auto;
+          filter: grayscale(0.5);
+        }
+        img:hover {
+          animation: colorChange 1s ease-in-out infinite;
+          border: solid;
+          border-radius: 20px;
+          a {
+          }
+        }
 
-@media (min-width: 600px) and (max-width: 768px) {
-  html body main .cards {
-    flex-direction: column;
+        a:hover {
+          background-color: #ffebcd;
+          border: none;
+          padding: 0px;
+        }
+      }
+    }
   }
-  html body main .cards .card {
-    margin: 5px;
+  html #homepage-main #section3 {
+    flex-direction: column-reverse;
   }
-  html body main .cards .card a img {
-    filter: grayscale(0);
+  html #homepage-main #section3 #section3-desc {
+    flex-basis: 25%;
+    height: 50%;
+    h2 {
+      font-size: 2rem;
+      margin: 0px;
+      color: black;
+      border-bottom: 1px solid black;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  #cards {
+    flex-basis: 70%;
+    .card {
+      margin: 0.5rem;
+      width: 30%;
+      img {
+        width: 100%;
+        height: auto;
+        filter: grayscale(0.5);
+      }
+      img:hover {
+        animation: colorChange 1s ease-in-out infinite;
+        border: solid;
+        border-radius: 20px;
+        a {
+        }
+      }
+
+      a:hover {
+        background-color: #ffebcd;
+        border: none;
+        padding: 0px;
+      }
+    }
   }
 }
 
