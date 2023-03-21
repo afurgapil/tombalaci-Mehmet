@@ -27,7 +27,21 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   color: white;
   padding: 5rem;
   border-radius: 100px;
-  background-color: rgb(45, 0, 117);
+  background-image: linear-gradient(
+    to right bottom,
+    #81f018,
+    #00e795,
+    #00d3eb,
+    #00b6ff,
+    #008eff,
+    #5b75f9,
+    #8e53e7,
+    #b600c7,
+    #e4009f,
+    #ff0071,
+    #ff0042,
+    #ff0000
+  );
 
   .col {
     display: flex;

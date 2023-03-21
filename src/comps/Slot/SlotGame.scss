@@ -7,7 +7,7 @@
     justify-content: space-evenly;
     align-items: center;
     #easy {
-      background-color: green;
+      background-color: #81f018;
     }
     #easy:hover {
       span {
@@ -16,7 +16,7 @@
     }
 
     #medium {
-      background-color: rgb(129, 129, 0);
+      background-color: #1842f0;
     }
     #medium:hover {
       span {
@@ -39,7 +39,7 @@
       font-size: 2rem;
       span {
         display: none;
-        color: bisque;
+        color: white;
       }
     }
   }
