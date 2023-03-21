@@ -49,7 +49,7 @@ const agents = [
     name: "Fade",
     emojis: ["🐺", "💨", "⚫"],
     gender: "Female",
-    role: "Sentinel",
+    role: "Initiator",
     species: "Radiant",
     region: "Europa",
   },
