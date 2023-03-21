@@ -9,7 +9,26 @@ import emojify from "../../assets/emoji.png";
 import quizboxes from "../../assets/quizbox.png";
 import "./homepage.scss";
 import { Link } from "react-router-dom";
-
+import {
+  Animator,
+  ScrollContainer,
+  ScrollPage,
+  batch,
+  Fade,
+  FadeIn,
+  FadeOut,
+  Move,
+  MoveIn,
+  MoveOut,
+  Sticky,
+  StickyIn,
+  StickyOut,
+  Zoom,
+  ZoomIn,
+  ZoomOut,
+} from "react-scroll-motion";
+const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
+const FadeUp = batch(Fade(), Move(), Sticky());
 function Homepage() {
   const [, setScore] = useState(50);
   useEffect(() => {
@@ -18,55 +37,104 @@ function Homepage() {
       setScore(parseInt(cachedScore));
     }
   }, []);
+  const loginEffect = batch(Fade(), Sticky(), MoveOut(0, -200));
+  const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
+  const scrollEffect1 = batch(MoveIn(-1000, 0), Fade(0, 1), MoveOut(0, 500));
+  const scrollEffect2 = batch(MoveIn(0, -500), Fade());
+
   return (
-    <main>
-      <div className="main-container">
-        <h1>Tombalaci Mehmet</h1>
-        <h2>the only address for fun</h2>
-      </div>
-      <div className="cards">
-        {/* <div className="card">
-            <Link to="tombala">
-              <img src={tombala} alt="Bingo Game" />
-            </Link>
-          </div> */}
-        <div className="card">
-          <Link to="coinflip">
-            <img src={coin} alt="Coin Flip" />
-          </Link>
-        </div>
-        <div className="card">
-          <Link to="todice">
-            <img src={dice} alt="ToDice" />
-          </Link>
-        </div>
-        <div className="card">
-          <Link to="rps">
-            <img src={rps} alt="RPS" />
-          </Link>
-        </div>{" "}
-        <div className="card">
-          <Link to="roulette">
-            <img src={roulette} alt="Roulette" />
-          </Link>
-        </div>
-        <div className="card">
-          <Link to="slot">
-            <img src={slot} alt="Slot" />
-          </Link>
-        </div>
-        <div className="card">
-          <Link to="emojify">
-            <img src={emojify} alt="Emojify" />
-          </Link>
-        </div>{" "}
-        <div className="card">
-          <Link to="quizboxes">
-            <img src={quizboxes} alt="Emojify" />
-          </Link>
-        </div>
-      </div>
-    </main>
+    <div id="homepage-main">
+      <ScrollContainer>
+        <ScrollPage>
+          <div id="section1" className="main-container">
+            <Animator animation={loginEffect}>
+              <h1>Tombalaci Mehmet</h1>
+              <h2>the only address for fun</h2>
+            </Animator>
+          </div>
+        </ScrollPage>
+        <ScrollPage>
+          <div id="section2">
+            <div id="section2-desc">
+              <Animator animation={scrollEffect1}>
+                <h2>Classics</h2>
+                <p>
+                  And here are the Classics of Tombalacı Mehmet. Each game is
+                  prepared for you. If you are a fan of the past, these games
+                  are for you.
+                </p>
+              </Animator>
+            </div>
+            <div id="cards" className="cards">
+              <div className="card">
+                <Animator animation={scrollEffect}>
+                  <Link to="coinflip">
+                    <img src={coin} alt="Coin Flip" />
+                  </Link>
+                </Animator>
+              </div>
+              <div className="card">
+                <Animator animation={scrollEffect}>
+                  <Link to="todice">
+                    <img src={dice} alt="ToDice" />
+                  </Link>
+                </Animator>
+              </div>
+              <div className="card">
+                <Animator animation={scrollEffect}>
+                  <Link to="rps">
+                    <img src={rps} alt="RPS" />
+                  </Link>
+                </Animator>
+              </div>
+              <div className="card">
+                <Animator animation={scrollEffect}>
+                  <Link to="roulette">
+                    <img src={roulette} alt="Roulette" />
+                  </Link>
+                </Animator>
+              </div>
+              <div className="card">
+                <Animator animation={scrollEffect}>
+                  <Link to="slot">
+                    <img src={slot} alt="Slot" />
+                  </Link>
+                </Animator>
+              </div>
+            </div>
+          </div>
+        </ScrollPage>
+        <ScrollPage>
+          <div id="section3">
+            <div id="cards" className="cards">
+              <div className="card">
+                <Animator animation={scrollEffect2}>
+                  <Link to="emojify">
+                    <img src={emojify} alt="Emojify" />
+                  </Link>
+                </Animator>
+              </div>
+              <div className="card">
+                <Animator animation={scrollEffect2}>
+                  <Link to="quizboxes">
+                    <img src={quizboxes} alt="Emojify" />
+                  </Link>
+                </Animator>
+              </div>
+            </div>
+            <div id="section3-desc">
+              <Animator animation={scrollEffect2}>
+                <h2>Try it</h2>
+                <p>
+                  If you're tired of ordinary games and looking for something
+                  new, don't miss them.
+                </p>
+              </Animator>
+            </div>
+          </div>
+        </ScrollPage>
+      </ScrollContainer>
+    </div>
   );
 }
 

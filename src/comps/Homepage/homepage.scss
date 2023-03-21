@@ -1,54 +1,180 @@
 html {
   background-color: #ffebcd;
-}
-main {
-  margin: 0px;
-  padding: 0px;
-}
-main .main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-  padding: 0px;
-}
-main .main-container h1 {
-  margin-top: 0px;
-  font-size: 72px;
-  font-family: "Comfortaa", cursive;
-  text-align: center;
-  margin-bottom: 0px;
-}
-main .main-container h2 {
-  font-size: 48px;
-  font-family: "Dancing Script", cursive;
-  text-align: center;
-  margin-top: 0px;
-}
-main .cards {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-}
-main .cards img {
-  width: 300px;
-  height: 300px;
-  filter: grayscale(0.5);
-}
-main .cards img:hover {
-  animation: colorChange 1s ease-in-out infinite;
-}
-main .card {
-  border: solid;
-  border-radius: 50px;
-  margin: 0.5rem;
-
-  a:hover {
-    background-color: #ffebcd;
-    border: none;
+  #homepage-main {
+    margin: 0px;
     padding: 0px;
+    #section1 {
+      background: linear-gradient(0deg, #ffebcd 0%, #00253b 100%);
+      width: 100%;
+      height: 100vh;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      // margin-top: 1rem;
+      padding: 0px;
+      h1 {
+        margin-top: 0px;
+        font-size: 72px;
+        font-family: "Comfortaa", cursive;
+        text-align: center;
+        margin-bottom: 0px;
+      }
+      h2 {
+        font-size: 48px;
+        font-family: "Dancing Script", cursive;
+        text-align: center;
+        margin-top: 0px;
+      }
+    }
+    #section2 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(
+        to right,
+        #72ed9b,
+        #a4eb95,
+        #c7ea98,
+        #e1e8a3,
+        #f3e8b3,
+        #f6e4b1,
+        #f9e1b0,
+        #fbddb0,
+        #f8d29a,
+        #f4c885,
+        #f1bd70,
+        #edb25a
+      );
+      #section2-desc {
+        flex-basis: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin-left: 2rem;
+        h2 {
+          font-size: 8rem;
+          margin: 0px;
+          color: whitesmoke;
+          border-bottom: 1px solid black;
+        }
+        p {
+          font-size: 2rem;
+        }
+      }
+      #cards {
+        display: flex;
+        flex-basis: 50%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+        margin-right: 5rem;
+        .card {
+          margin: 0.5rem;
+          width: 30%;
+          img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(0.5);
+            a {
+              display: none;
+            }
+          }
+          img:hover {
+            animation: colorChange 1s ease-in-out infinite;
+            border: solid;
+            border-radius: 20px;
+            a {
+            }
+          }
+
+          a:hover {
+            background-color: #ffebcd;
+            border: none;
+            padding: 0px;
+          }
+        }
+      }
+    }
+    #section3 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(
+        to bottom,
+        #9842ed,
+        #e73ebe,
+        #ff639a,
+        #ff918b,
+        #ffbb99,
+        #efc699,
+        #decfa1,
+        #d0d6af,
+        #a7c7a2,
+        #7cb79e,
+        #4ea6a0,
+        #1793a3
+      );
+      #section3-desc {
+        flex-basis: 45%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        margin-left: 2rem;
+        h2 {
+          font-size: 8rem;
+          margin: 0px;
+          color: whitesmoke;
+          border-bottom: 1px solid black;
+        }
+        p {
+          font-size: 2rem;
+        }
+      }
+      #cards {
+        display: flex;
+        flex-basis: 50%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex-direction: row;
+        margin-right: 5rem;
+        .card {
+          margin: 0.5rem;
+          width: 30%;
+          img {
+            width: 100%;
+            height: auto;
+            filter: grayscale(0.5);
+            a {
+              display: none;
+            }
+          }
+          img:hover {
+            animation: colorChange 1s ease-in-out infinite;
+            border: solid;
+            border-radius: 20px;
+            a {
+            }
+          }
+
+          a:hover {
+            background-color: #ffebcd;
+            border: none;
+            padding: 0px;
+          }
+        }
+      }
+    }
   }
 }
 
