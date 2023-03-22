@@ -40,7 +40,7 @@ const CoinFlip = () => {
         <img src={point} alt="" width="120px" height="80px" />
         <h1>Your Score: {score}</h1>
       </div>
-      <div id="main">
+      <div id="coinflip-container">
         <h2 className="cf-title">Make Your Choice!</h2>
         <div id="buttons">
           <button

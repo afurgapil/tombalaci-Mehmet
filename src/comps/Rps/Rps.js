@@ -63,7 +63,7 @@ const Game = () => {
     element.classList.add("none");
   };
   function activateElement(choice) {
-    const elements = document.querySelectorAll(".active");
+    const elements = document.querySelectorAll(".active-rps");
     elements.forEach((el) => {
       el.classList.remove("active");
     });
@@ -76,7 +76,7 @@ const Game = () => {
   }, [newImage]);
 
   return (
-    <div>
+    <div id="rps-container">
       <div id="score">
         <img src={point} alt="" width="120px" height="80px" />
         <h1>Your Score: {score}</h1>

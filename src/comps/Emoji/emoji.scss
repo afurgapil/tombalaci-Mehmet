@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
 
 #emoji-games-container {
+  height: 100vh;
+
   .gamechange {
-    margin-top: 5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+
     #Country {
       background-image: url("../../assets/country.png");
       background-repeat: no-repeat;

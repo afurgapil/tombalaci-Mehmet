@@ -14,13 +14,14 @@ $whitesmoke: #fafafa;
     margin-right: 1rem;
   }
 }
-#main {
+#coinflip-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: #ffebcd;
+  height: 100vh;
   .cf-title {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -61,7 +62,7 @@ $whitesmoke: #fafafa;
   }
 }
 @media screen and (max-width: 810px) {
-  #main {
+  #coinflip-container {
     margin-top: 0px;
   }
 }

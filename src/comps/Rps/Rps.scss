@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap");
+#rps-container {
+  height: 100vh;
+}
 #game-container {
   display: flex;
   flex-direction: row;
@@ -47,7 +50,7 @@
       background-color: rgba(255, 0, 0, 0.5);
       border-radius: 100px;
     }
-    .active {
+    .active-rps {
       background-color: rgba(255, 0, 0, 0.5);
       border-radius: 100px;
       border: 3px solid #ffcc00;
