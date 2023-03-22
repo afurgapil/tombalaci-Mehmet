@@ -1,6 +1,6 @@
 import { FaArrowCircleDown } from "react-icons/fa";
 import "./ScroolToBottom.scss";
-import "animate.css/animate.min.css"; // Animate.css kütüphanesi
+import "animate.css/animate.min.css";
 
 const ScroolToBottom = () => {
   return (

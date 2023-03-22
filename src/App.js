@@ -8,6 +8,9 @@ import CoinFlip from "./comps/CoinFlip/CoinFlip";
 import ToDice from "./comps/ToDice/ToDice";
 import Roulette from "./comps/Roulette/Roulette";
 import Slot from "./comps/Slot/SlotGame";
+import Slot4 from "./comps/Slot/Slot4";
+import Slot5 from "./comps/Slot/Slot5";
+import Slot6 from "./comps/Slot/Slot6";
 import Rps from "./comps/Rps/Rps";
 import EmojiGame from "./comps/Emoji/Emoji";
 import QuizBox from "./comps/QuizzBox/Box";
@@ -28,6 +31,9 @@ function App() {
           <Route path="/roulette" element={<Roulette />} />
           <Route path="/rps" element={<Rps />} />
           <Route path="/slot" element={<Slot />} />
+          <Route path="/slot/muhterem" element={<Slot4 />} />
+          <Route path="/slot/cakir" element={<Slot5 />} />
+          <Route path="/slot/abidin" element={<Slot6 />} />
           <Route path="/emojify" element={<EmojiGame />} />
           <Route path="/quizboxes" element={<QuizBox />} />
           {/* <Route path="/slott" element={<Slot4 />} />

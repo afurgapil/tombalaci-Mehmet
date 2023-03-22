@@ -1,38 +1,53 @@
 import React, { useState } from "react";
 import "./SlotGame.scss";
-import Slot1 from "./Slot";
-import Slot2 from "./Slot2";
-import Slot3 from "./Slot3";
-import Slot4 from "./Slot4";
-import Slot5 from "./Slot5";
-import Slot6 from "./Slot6";
+import abidin from "../../assets/abidin.jpg";
+import cakir from "../../assets/cakir.jpg";
+import muhterem from "../../assets/muhterem.jpg";
+
+import { NavLink } from "react-router-dom";
 
 const SlotGame = () => {
-  const [selectedGame, setSelectedGame] = useState(null);
-
-  const handleButtonClick = (gameName) => {
-    setSelectedGame(gameName);
-  };
-
   return (
     <div id="slot-games-container">
-      {/* {selectedGame === "Game1" && <Slot1 />}
-      {selectedGame === "Game2" && <Slot2 />}
-      {selectedGame === "Game3" && <Slot3 />} */}
-      {selectedGame === "Game4" && <Slot4 />}
-      {selectedGame === "Game5" && <Slot5 />}
-      {selectedGame === "Game6" && <Slot6 />}
-
       <div className="gamechange">
-        <button id="easy" onClick={() => handleButtonClick("Game6")}>
-          Çapsız Abidin <span id="easys">3 Col 5 Fruit</span>
-        </button>
-        <button id="medium" onClick={() => handleButtonClick("Game5")}>
-          Süleyman Çakır<span id="mediums">5 Col 5 Fruit</span>
-        </button>
-        <button id="hard" onClick={() => handleButtonClick("Game4")}>
-          Koko Muharrem<span id="hards">5 Col 10 Fruit</span>
-        </button>
+        <div id="slot-container-col">
+          <div id="slot-col1" className="card">
+            <img src={abidin} alt="Abidin" />
+            <p id="slot-col1-desc">
+              Just a commanding officer. He does whatever his brother says, he
+              doesn't think too much. Ideal for those who don't want to take
+              risks.
+            </p>
+          </div>
+          <NavLink className="slot-links" id="easy" to="/slot/abidin">
+            Çapsız Abidin
+          </NavLink>
+        </div>
+        <div id="slot-container-col">
+          <div id="slot-col2" className="card">
+            <img src={cakir} alt="Suleyman Cakir" />
+            <p id="slot-col2-desc">
+              A full duty man. It is rising rapidly in the world. It can lead
+              you to big profits or it can completely sink you.
+            </p>
+          </div>
+          <NavLink className="slot-links" id="medium" to="/slot/cakir">
+            Süleyman Çakır
+          </NavLink>
+        </div>
+        <div id="slot-container-col">
+          <div id="slot-col3" className="card">
+            <img src={muhterem} alt="Muhterem" />
+            <p id="slot-col3-desc">
+              He is the private chef of Tombalacı Mehmet. There is not much
+              information about him, but there is only one known fact, if you
+              want to be rich, you have to be with him.
+            </p>
+          </div>
+          <NavLink className="slot-links" id="hard" to="/slot/muhterem">
+            Koko Muhterem
+          </NavLink>
+        </div>
       </div>
     </div>
   );
