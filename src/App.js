@@ -16,15 +16,18 @@ import EmojiGame from "./comps/Emoji/Emoji";
 import QuizBox from "./comps/QuizzBox/Box";
 // import Layout from "./comps/Layout/Layout";
 import NotFound from "./comps/NotFound/NotFound";
+import SignIn from "./comps/SignIn/SignIn";
+import SignUp from "./comps/SignUp/SignUp";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Header></Header>
-
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/tombala" element={<Tombala />} />
           <Route path="/coinflip" element={<CoinFlip />} />
           <Route path="/todice" element={<ToDice />} />
@@ -36,8 +39,7 @@ function App() {
           <Route path="/slot/abidin" element={<Slot6 />} />
           <Route path="/emojify" element={<EmojiGame />} />
           <Route path="/quizboxes" element={<QuizBox />} />
-          {/* <Route path="/slott" element={<Slot4 />} />
-          <Route path="/slot" element={<Slot4 />} /> */}
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer></Footer>
