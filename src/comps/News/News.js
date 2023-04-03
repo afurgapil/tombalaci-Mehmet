@@ -1,10 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import coin from "../../assets/2.png";
-import dice from "../../assets/3.png";
-import rps from "../../assets/4.png";
-import roulette from "../../assets/roulette.png";
-import slot from "../../assets/slot.png";
 import emojify from "../../assets/emoji.png";
 import quizboxes from "../../assets/quizbox.png";
 import "./news.scss";
@@ -19,6 +14,7 @@ import {
   Fade,
   MoveIn,
   MoveOut,
+  ZoomOut,
 } from "react-scroll-motion";
 //mui
 import { Button } from "@mui/material";
@@ -26,14 +22,15 @@ import { Button } from "@mui/material";
 function News() {
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
   const scrollEffect1 = batch(MoveIn(-1000, 0), Fade(0, 1), MoveOut(0, 500));
-  const scrollEffect2 = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
+  const scrollEffect2 = batch(Fade(0, 1), ZoomOut(1, 0));
+
   return (
     <div id="homepage-main">
       <ScrollContainer>
         <ScrollPage>
           <div id="n-section1">
             <div id="n-section1-desc">
-              <Animator>
+              <Animator animation={scrollEffect2}>
                 <h2>News</h2>
                 <p>
                   If you're tired of ordinary games and looking for something

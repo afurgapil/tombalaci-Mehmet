@@ -17,6 +17,7 @@ import {
   Fade,
   MoveIn,
   MoveOut,
+  ZoomOut,
 } from "react-scroll-motion";
 //mui
 import { Button } from "@mui/material";
@@ -24,14 +25,14 @@ import { Button } from "@mui/material";
 function Classics() {
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
   const scrollEffect1 = batch(MoveIn(-1000, 0), Fade(0, 1), MoveOut(0, 500));
-  const scrollEffect2 = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
+  const scrollEffect2 = batch(Fade(0, 1), ZoomOut(1, 0));
   return (
     <div id="homepage-main">
       <ScrollContainer>
         <ScrollPage>
           <div id="cs-section1">
             <div id="cs-section1-desc">
-              <Animator>
+              <Animator animation={scrollEffect2}>
                 <h2>Classics</h2>
                 <p>
                   And here are the Classics of Tombalacı Mehmet. Each game is
