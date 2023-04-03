@@ -135,3 +135,46 @@
     border-color: #ff00ff;
   }
 }
+@media only screen and (max-width: 768px) {
+  #cs-section1 .cs-cards {
+  }
+  #cs-section1 .cs-cards .cs-card a {
+    flex-wrap: wrap;
+  }
+  #cs-section1 .cs-cards .cs-card img {
+    width: 100px;
+  }
+  .cs-section-item {
+    flex-direction: column;
+    .cs-section-item-text {
+      margin: 4px;
+      flex: 1;
+      .cs-section-item-text-h3 {
+        font-size: 3rem;
+        padding: 0px;
+        margin: 0px;
+        font-family: "Bebas Neue", cursive;
+      }
+      .cs-section-item-text-p {
+        padding: 1rem;
+        color: black;
+        font-size: 1rem;
+        font-family: "Rajdhani", sans-serif;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 5px solid;
+        border-radius: 2rem;
+        animation: colorchange 10s infinite;
+      }
+    }
+    .cs-section-item-img {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      img {
+        width: 250px;
+      }
+    }
+  }
+}
