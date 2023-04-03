@@ -18,6 +18,7 @@ import QuizBox from "./comps/QuizzBox/Box";
 import NotFound from "./comps/NotFound/NotFound";
 import SignIn from "./comps/SignIn/SignIn";
 import SignUp from "./comps/SignUp/SignUp";
+import Reset from "./comps/Reset/Reset";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/reset" element={<Reset />} />
           <Route path="/tombala" element={<Tombala />} />
           <Route path="/coinflip" element={<CoinFlip />} />
           <Route path="/todice" element={<ToDice />} />
