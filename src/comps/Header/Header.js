@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./header.scss";
 import logo from "../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import ProfilePicture from "../../hooks/ProfilePicture";
+import SignOutButton from "../../hooks/SignOutButton";
+//firebase
+import { auth } from "../../Firebase";
+//mui
 import MenuIcon from "@mui/icons-material/Menu";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
 
+    return unsubscribe;
+  }, []);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -52,6 +64,22 @@ function Header() {
             </NavLink>
           </li>
         </ul>
+        <div>
+          {user ? (
+            <div id="onLogin">
+              <Link to="/profile">
+                <ProfilePicture />
+              </Link>
+              <SignOutButton />
+            </div>
+          ) : null}
+          {!user ? (
+            <div id="onNotLogin">
+              <Link to="/signin">Sign In</Link>
+              <Link to="/signup">Sign Up</Link>
+            </div>
+          ) : null}
+        </div>
       </div>
     </div>
   );
