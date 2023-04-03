@@ -53,33 +53,32 @@ function Header() {
               Contact
             </NavLink>
           </li>
-          <li className="navigation-item">
-            <NavLink to="/signin" className="navigation-item-link">
-              SignIn
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/signup" className="navigation-item-link">
-              SignUp
-            </NavLink>
-          </li>
+
+          <div>
+            {user ? (
+              <div id="onLogin">
+                <Link to="/profile">
+                  <ProfilePicture />
+                </Link>
+                <SignOutButton />
+              </div>
+            ) : null}
+            {!user ? (
+              <div id="onNotLogin">
+                <li className="navigation-item">
+                  <Link to="/signin" className="navigation-item-link">
+                    SignIn
+                  </Link>
+                </li>
+                <li className="navigation-item">
+                  <Link to="/signup" className="navigation-item-link">
+                    SignUp
+                  </Link>
+                </li>
+              </div>
+            ) : null}
+          </div>
         </ul>
-        <div>
-          {user ? (
-            <div id="onLogin">
-              <Link to="/profile">
-                <ProfilePicture />
-              </Link>
-              <SignOutButton />
-            </div>
-          ) : null}
-          {!user ? (
-            <div id="onNotLogin">
-              <Link to="/signin">Sign In</Link>
-              <Link to="/signup">Sign Up</Link>
-            </div>
-          ) : null}
-        </div>
       </div>
     </div>
   );

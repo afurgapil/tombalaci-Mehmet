@@ -1,19 +1,18 @@
-#profile-picture {
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Dancing+Script&family=Gajraj+One&display=swap");
+
+#profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0px;
   padding: 0px;
-  img {
-    height: 60px;
-    border-radius: 50%;
-    margin: 0px;
-    padding: 0px;
-  }
   h3 {
-    font-size: 1rem;
-    margin: 0px;
-    padding-top: 5px;
+    font-size: 2rem;
+    color: white;
+    font-family: "Teko", sans-serif;
+    text-decoration: underline;
+    margin: 0.2rem;
+    margin-right: 0.5rem;
   }
 }

@@ -5,7 +5,8 @@ import { auth } from "../Firebase";
 //mui
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
-
+import { IconButton } from "@mui/material";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 function SignOutButton() {
   const navigate = useNavigate();
 
@@ -16,13 +17,16 @@ function SignOutButton() {
   };
 
   return (
-    <Button
-      onClick={handleSignOut}
-      variant="contained"
-      sx={{ bgcolor: red[500], color: "white" }}
-    >
-      Sign Out
-    </Button>
+    <div>
+      <IconButton
+        onClick={handleSignOut}
+        variant="contained"
+        size="large"
+        sx={{ bgcolor: red[500], color: "white" }}
+      >
+        <ExitToAppIcon></ExitToAppIcon>
+      </IconButton>
+    </div>
   );
 }
 
