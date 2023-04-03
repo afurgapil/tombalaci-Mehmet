@@ -20,6 +20,7 @@ import SignUp from "./comps/SignUp/SignUp";
 import Reset from "./comps/Reset/Reset";
 import News from "./comps/News/News";
 import Classics from "./comps/Classics/Classics";
+import Contact from "./comps/Contact/Contact";
 function PreApp() {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ function PreApp() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/classics" element={<Classics />} />
         <Route path="/news" element={<News />} />
         <Route path="/tombala" element={<Tombala />} />
