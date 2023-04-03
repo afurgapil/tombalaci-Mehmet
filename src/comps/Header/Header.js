@@ -27,43 +27,28 @@ function Header() {
             </NavLink>
           </li>
           <li className="navigation-item">
-            <NavLink to="/coinflip" className="navigation-item-link">
-              CoinFlip
+            <NavLink to="/classics" className="navigation-item-link">
+              Classics
             </NavLink>
           </li>
           <li className="navigation-item">
-            <NavLink to="/todice" className="navigation-item-link">
-              ToDice
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/rps" className="navigation-item-link">
-              RPS
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/roulette" className="navigation-item-link">
-              Roulette
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/slot" className="navigation-item-link">
-              Slot
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/emojify" className="navigation-item-link">
-              Emojify
-            </NavLink>
-          </li>{" "}
-          <li className="navigation-item">
-            <NavLink to="/quizboxes" className="navigation-item-link">
-              QuizBox
+            <NavLink to="/news" className="navigation-item-link">
+              News
             </NavLink>
           </li>
           <li className="navigation-item">
             <NavLink to="/contact" className="navigation-item-link">
               Contact
+            </NavLink>
+          </li>
+          <li className="navigation-item">
+            <NavLink to="/signin" className="navigation-item-link">
+              SignIn
+            </NavLink>
+          </li>
+          <li className="navigation-item">
+            <NavLink to="/signup" className="navigation-item-link">
+              SignUp
             </NavLink>
           </li>
         </ul>
