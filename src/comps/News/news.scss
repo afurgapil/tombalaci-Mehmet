@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@300&display=swap");
+#n-section1 {
+  background: linear-gradient(135deg, #b1bfe1 0%, #98fe90 100%);
+  width: 100%;
+  height: 100vh;
+  #n-section1-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      color: white;
+      font-size: 6rem;
+      text-align: center;
+      margin: 0px;
+      padding: 16px;
+    }
+    p {
+      margin: 0px;
+      padding: 16px;
+      color: white;
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+  .n-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    .n-card {
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      span {
+        display: none;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      img {
+        margin: 1rem;
+        width: 200px;
+        height: auto;
+      }
+      &:hover {
+        border: 3px solid black;
+        border-radius: 1rem;
+        span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+#n-section2 {
+  background: linear-gradient(225deg, #98fe90 0%, #e4ca40 100%);
+  width: 100%;
+  height: 100vh;
+}
+#n-section3 {
+  background: linear-gradient(135deg, #e4ca40 0%, #78118d 100%);
+  width: 100%;
+  height: 100vh;
+}
+.n-section-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  .n-section-item-text {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: white;
+    .n-section-item-text-h3 {
+      font-size: 4rem;
+      padding: 0px;
+      margin: 0px;
+      font-family: "Bebas Neue", cursive;
+    }
+    .n-section-item-text-p {
+      padding: 2rem;
+      color: black;
+      font-size: 2rem;
+      font-family: "Rajdhani", sans-serif;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 5px solid;
+      border-radius: 2rem;
+      animation: colorchange 10s infinite;
+    }
+  }
+  .n-section-item-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+}
+@keyframes colorchange {
+  0% {
+    border-color: #ff0000;
+  }
+  25% {
+    border-color: #00ff00;
+  }
+  50% {
+    border-color: #0000ff;
+  }
+  75% {
+    border-color: #ffff00;
+  }
+  100% {
+    border-color: #ff00ff;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #n-section1 .n-cards {
+    flex-direction: column;
+  }
+  #n-section1 .n-cards .n-card img {
+    width: 100px;
+  }
+  .n-section-item {
+    flex-direction: column;
+    .n-section-item-text {
+      margin: 4px;
+      flex: 1;
+      .n-section-item-text-h3 {
+        font-size: 3rem;
+        padding: 0px;
+        margin: 0px;
+        font-family: "Bebas Neue", cursive;
+      }
+      .n-section-item-text-p {
+        padding: 1rem;
+        color: black;
+        font-size: 1rem;
+        font-family: "Rajdhani", sans-serif;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 5px solid;
+        border-radius: 2rem;
+        animation: colorchange 10s infinite;
+      }
+    }
+    .n-section-item-img {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      img {
+        width: 250px;
+      }
+    }
+  }
+}
