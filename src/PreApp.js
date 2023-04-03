@@ -1,0 +1,52 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./comps/Footer/Footer";
+import Header from "./comps/Header/Header";
+import Homepage from "./comps/Homepage/Homepage";
+import Tombala from "./comps/Tombala/Tombala";
+import CoinFlip from "./comps/CoinFlip/CoinFlip";
+import ToDice from "./comps/ToDice/ToDice";
+import Roulette from "./comps/Roulette/Roulette";
+import Slot from "./comps/Slot/SlotGame";
+import Slot4 from "./comps/Slot/Slot4";
+import Slot5 from "./comps/Slot/Slot5";
+import Slot6 from "./comps/Slot/Slot6";
+import Rps from "./comps/Rps/Rps";
+import EmojiGame from "./comps/Emoji/Emoji";
+import QuizBox from "./comps/QuizzBox/Box";
+import NotFound from "./comps/NotFound/NotFound";
+import SignIn from "./comps/SignIn/SignIn";
+import SignUp from "./comps/SignUp/SignUp";
+import Reset from "./comps/Reset/Reset";
+import News from "./comps/News/News";
+import Classics from "./comps/Classics/Classics";
+function PreApp() {
+  return (
+    <BrowserRouter>
+      <Header></Header>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/reset" element={<Reset />} />
+        <Route path="/classics" element={<Classics />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/tombala" element={<Tombala />} />
+        <Route path="/coinflip" element={<CoinFlip />} />
+        <Route path="/todice" element={<ToDice />} />
+        <Route path="/roulette" element={<Roulette />} />
+        <Route path="/rps" element={<Rps />} />
+        <Route path="/slot" element={<Slot />} />
+        <Route path="/slot/muhterem" element={<Slot4 />} />
+        <Route path="/slot/cakir" element={<Slot5 />} />
+        <Route path="/slot/abidin" element={<Slot6 />} />
+        <Route path="/emojify" element={<EmojiGame />} />
+        <Route path="/quizboxes" element={<QuizBox />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer></Footer>
+    </BrowserRouter>
+  );
+}
+
+export default PreApp;
