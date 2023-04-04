@@ -22,64 +22,91 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  return (
-    <div className="header-container">
-      <div className="logo-container">
-        <img src={logo} alt="logo" />
-        <div className="menu-icon">
-          <MenuIcon onClick={toggleMenu} color="primary"></MenuIcon>
+  function OnLoginHeader() {
+    return (
+      <div className="header-container">
+        <div className="logo-container">
+          <img src={logo} alt="logo" />
+          <div className="menu-icon">
+            <MenuIcon onClick={toggleMenu} color="white"></MenuIcon>
+          </div>
+        </div>
+        <div className="menu-container">
+          <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
+            <li className="navigation-item">
+              <NavLink to="/" exact className="navigation-item-link">
+                Home
+              </NavLink>
+            </li>
+            <li className="navigation-item">
+              <NavLink to="/classics" className="navigation-item-link">
+                Classics
+              </NavLink>
+            </li>
+            <li className="navigation-item">
+              <NavLink to="/news" className="navigation-item-link">
+                News
+              </NavLink>
+            </li>
+            <li className="navigation-item">
+              <NavLink to="/contact" className="navigation-item-link">
+                Contact
+              </NavLink>
+            </li>
+            <div id="onLogin">
+              <Link to="/profile">
+                <ProfilePicture />
+              </Link>
+              <SignOutButton />
+            </div>
+          </ul>
         </div>
       </div>
-      <div className="menu-container">
-        <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
-          <li className="navigation-item">
-            <NavLink to="/" exact className="navigation-item-link">
-              Home
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/classics" className="navigation-item-link">
-              Classics
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/news" className="navigation-item-link">
-              News
-            </NavLink>
-          </li>
-          <li className="navigation-item">
-            <NavLink to="/contact" className="navigation-item-link">
-              Contact
-            </NavLink>
-          </li>
-
-          <div>
-            {user ? (
-              <div id="onLogin">
-                <Link to="/profile">
-                  <ProfilePicture />
-                </Link>
-                <SignOutButton />
-              </div>
-            ) : null}
-            {!user ? (
-              <div id="onNotLogin">
-                <li className="navigation-item">
-                  <Link to="/signin" className="navigation-item-link">
-                    SignIn
-                  </Link>
-                </li>
-                <li className="navigation-item">
-                  <Link to="/signup" className="navigation-item-link">
-                    SignUp
-                  </Link>
-                </li>
-              </div>
-            ) : null}
+    );
+  }
+  function OnNotLoginHeader() {
+    return (
+      <div className="header-container">
+        <div className="logo-container">
+          <img src={logo} alt="logo" />
+          <div className="menu-icon">
+            <MenuIcon onClick={toggleMenu} color="white"></MenuIcon>
           </div>
-        </ul>
+        </div>
+        <div className="menu-container">
+          <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
+            <li className="navigation-item">
+              <NavLink to="/" exact className="navigation-item-link">
+                Home
+              </NavLink>
+            </li>
+            <li className="navigation-item">
+              <NavLink to="/contact" className="navigation-item-link">
+                Contact
+              </NavLink>
+            </li>
+            <div id="onNotLogin">
+              <li className="navigation-item">
+                <Link to="/signin" className="navigation-item-link">
+                  SignIn
+                </Link>
+              </li>
+              <li className="navigation-item">
+                <Link to="/signup" className="navigation-item-link">
+                  SignUp
+                </Link>
+              </li>
+            </div>
+          </ul>
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div>
+      {user ? <OnLoginHeader></OnLoginHeader> : null}
+      {!user ? <OnNotLoginHeader></OnNotLoginHeader> : null}
     </div>
   );
 }

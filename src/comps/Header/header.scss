@@ -90,9 +90,14 @@ $primary-color: #4db6ac;
 @media only screen and (max-width: 768px) {
   .header-container {
     height: auto;
+    padding: 0px;
   }
-  .menu-container {
+  .header-container .menu-container {
     width: 100%;
+  }
+  .header-container .logo-container .menu-icon {
+    margin: 1rem;
+    color: white;
   }
   .navigation {
     display: none;
@@ -124,9 +129,13 @@ $primary-color: #4db6ac;
 
   .open {
     display: block;
+    z-index: 2;
   }
   .header-container {
     display: flex;
+    flex-direction: column;
+  }
+  #onNotLogin {
     flex-direction: column;
   }
 }
