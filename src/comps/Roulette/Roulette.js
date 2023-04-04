@@ -5,11 +5,15 @@ import point from "../../assets/score.png";
 
 function Roulette() {
   //breakpoint1
-  const [rouletteNumber, setRouletteNumber] = useState(21);
+  const [rouletteNumber, setRouletteNumber] = useState(
+    Math.floor(Math.random() * 37)
+  );
+
   const [drawnNumbers, setDrawnNumbers] = useState([]);
   const [intervalNumber, setIntervalNumber] = useState();
   const [score, setScore] = useState(localStorage.getItem("score"));
   const [userchoice, setUserChoice] = useState(null);
+  const [startNumber, setStartNumber] = useState(0);
   useEffect(() => {
     const cachedScore = localStorage.getItem("score");
     if (cachedScore !== null) {
