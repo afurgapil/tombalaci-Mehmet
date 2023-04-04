@@ -1,19 +1,6 @@
 $red: #d11919;
 $whitesmoke: #fafafa;
-#score {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #fbff0067;
-  width: fit-content;
-  border-radius: 20px;
 
-  img {
-    width: 50px;
-    height: 50px;
-    margin-right: 1rem;
-  }
-}
 #coinflip-container {
   display: flex;
   flex-direction: column;
@@ -22,42 +9,53 @@ $whitesmoke: #fafafa;
   text-align: center;
   background-color: #ffebcd;
   height: 100vh;
-  .cf-title {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    font-size: 4rem;
-    color: #05050599;
+  #coinflip-gif-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    img {
+      margin-top: -10rem;
+    }
+  }
+
+  .silvercoin {
+    font-size: 10rem;
+    color: #b6b6b6;
+  }
+  .coin-border-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #b6b6b6;
+    border-radius: 50%;
+    color: #b6b6b6;
+  }
+  .coin-border-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d8d8d8;
+    border-radius: 50%;
+    font-size: 5rem;
+    padding: 5rem;
   }
   #buttons {
-    margin-bottom: 11rem;
-    .heads {
-      background-color: #f5f242;
-      color: #000000;
-      width: 150px;
-      height: 75px;
+    .buton {
+      width: 200px;
+      height: 100px;
       font-size: 3rem;
-      margin-right: 5px;
+      padding: 0px;
+      margin: 2rem;
+      text-align: center;
     }
-    .heads:hover {
-      color: #f5f242;
-      background-color: #000000;
+    .heads {
+      background-color: #b39d7d;
     }
     .tails {
-      color: #000000;
-      background-color: #d9380c;
-
-      width: 150px;
-      height: 75px;
-      font-size: 3rem;
-      margin-left: 5px;
-    }
-    .tails:hover {
-      background-color: #000000;
-      color: #d9380c;
-    }
-    .buton:active {
-      background-color: $red;
-      color: $whitesmoke;
+      background-color: #9c86b3;
     }
   }
 }

@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./coinflip.scss";
-import point from "../../assets/score.png";
-import alertify from "alertifyjs";
+import welcomecoin from "../../assets/welcomecoin.gif";
+//firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase";
+//mui
+import { Button } from "@mui/material";
+import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
+import Person4Icon from "@mui/icons-material/Person4";
+//alertify
+import alertify from "alertifyjs";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
 
 const CoinFlip = () => {
   const [choice, setChoice] = useState(null);
-  const [result, setResult] = useState(null);
-  const [correctGuesses, setCorrectGuesses] = useState(0);
-  const [totalGuesses, setTotalGuesses] = useState(0);
+  const [correctCoinflip, setCorrectCoinflip] = useState(null);
   const [score, setScore] = useState(null);
-
+  const [isGameStart, setIsGameStart] = useState(false);
+  const [isResultHead, setIsResultHead] = useState(null);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -23,9 +28,11 @@ const CoinFlip = () => {
         getDoc(userDocRef).then((doc) => {
           if (doc.exists()) {
             setScore(doc.data().score);
+            setCorrectCoinflip(doc.data().correctCoinflip);
           } else {
             updateDoc(userDocRef, { score: 0 });
             setScore(0);
+            setCorrectCoinflip(0);
           }
         });
       }
@@ -40,14 +47,22 @@ const CoinFlip = () => {
   const playGame = () => {
     const randomNum = getRandomFloat();
     const newResult = randomNum < 0.5 ? "Heads" : "Tails";
-    setResult(newResult);
-    setTotalGuesses(totalGuesses + 1);
+    if (randomNum < 0.5) {
+      setIsResultHead(true);
+    } else {
+      setIsResultHead(false);
+    }
+    setIsGameStart(true);
     if (choice === newResult) {
-      setCorrectGuesses(correctGuesses + 1);
       const newScore = score + 10;
       setScore(newScore);
+      const newCorrectCoinflip = correctCoinflip + 1;
+      setCorrectCoinflip(newCorrectCoinflip);
       const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctCoinflip: newCorrectCoinflip,
+      });
       alertify.success("Congrats! +10", 1);
     } else {
       const newScore = score - 10;
@@ -57,17 +72,30 @@ const CoinFlip = () => {
       alertify.error("Ups! Unlucky. -10", 1);
     }
   };
-
+  function OnHead() {
+    return <CurrencyBitcoinIcon className="silvercoin"></CurrencyBitcoinIcon>;
+  }
+  function OnTail() {
+    return <Person4Icon className="silvercoin"></Person4Icon>;
+  }
   return (
     <div>
-      <div id="score">
-        <img src={point} alt="" width="120px" height="80px" />
-        <h1>Your Score: {score}</h1>
-      </div>
       <div id="coinflip-container">
-        <h2 className="cf-title">Make Your Choice!</h2>
+        {!isGameStart ? (
+          <div id="coinflip-gif-container">
+            <img src={welcomecoin} alt="Coin"></img>
+          </div>
+        ) : (
+          <div className="coin-border-out">
+            <div className="coin-border-in">
+              {isResultHead ? <OnHead></OnHead> : <OnTail></OnTail>}
+            </div>
+          </div>
+        )}
         <div id="buttons">
-          <button
+          <Button
+            variant="contained"
+            color="primary"
             className="heads buton"
             onClick={() => {
               setChoice("Heads");
@@ -75,8 +103,10 @@ const CoinFlip = () => {
             }}
           >
             Heads
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             className="tails buton"
             onClick={() => {
               setChoice("Tails");
@@ -84,7 +114,7 @@ const CoinFlip = () => {
             }}
           >
             Tails
-          </button>
+          </Button>
         </div>
       </div>
     </div>

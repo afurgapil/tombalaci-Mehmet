@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import "./hooks.scss";
 
@@ -15,8 +15,11 @@ function Score() {
         const userId = user.uid;
         const firestore = getFirestore();
         const userRef = doc(firestore, "users", userId);
-        getDoc(userRef)
-          .then((doc) => {
+
+        // onSnapshot() fonksiyonu ile belgeyi izleyin
+        const unsubscribe = onSnapshot(
+          userRef,
+          (doc) => {
             if (doc.exists()) {
               const userData = doc.data();
               const score = userData.score;
@@ -24,11 +27,15 @@ function Score() {
             } else {
               setError("Not Found!");
             }
-          })
-          .catch((error) => {
+          },
+          (error) => {
             setError(error);
             console.log(error);
-          });
+          }
+        );
+
+        // useEffect() işlevinin sonunda unsubscribe yapın
+        return () => unsubscribe();
       } catch (error) {
         setError(error);
         console.log(error);
