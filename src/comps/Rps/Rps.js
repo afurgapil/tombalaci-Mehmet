@@ -4,8 +4,11 @@ import Rock from "../../assets/6.png";
 import Paper from "../../assets/7.png";
 import Scissors from "../../assets/8.png";
 import Robot from "../../assets/robot.png";
-import point from "../../assets/score.png";
-
+//firebase
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../Firebase";
+//alertify
 import alertify from "alertifyjs";
 
 const Game = () => {
@@ -13,18 +16,36 @@ const Game = () => {
   const [computerChoice, setComputerChoice] = useState("");
   const [result, setResult] = useState("");
   const [newImage, setNewImage] = useState("");
-  const [score, setScore] = useState(localStorage.getItem("score"));
-  useEffect(() => {
-    const cachedScore = localStorage.getItem("score");
-    if (cachedScore !== null) {
-      setScore(parseInt(cachedScore));
-    }
-  }, []);
+  const [score, setScore] = useState(null);
+  const [correctRPS, setCorrectRPS] = useState(null);
   const choices = ["rock", "paper", "scissors"];
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const db = getFirestore();
+        const userDocRef = doc(db, "users", user.uid);
+        getDoc(userDocRef).then((doc) => {
+          if (doc.exists()) {
+            setScore(doc.data().score);
+            setCorrectRPS(doc.data().correctRps);
+          } else {
+            updateDoc(userDocRef, { score: 0 });
+            setScore(0);
+            setCorrectRPS(0);
+          }
+        });
+      }
+    });
+  }, []);
 
+  function getRandomInt() {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0];
+  }
   const handleClick = (choice) => {
     setPlayerChoice(choice);
-    const computerIndex = Math.floor(Math.random() * 3);
+    const computerIndex = (getRandomInt() % 3) + 1;
     setComputerChoice(choices[computerIndex]);
     checkResult(choice, choices[computerIndex], computerIndex);
     removePulse();
@@ -49,13 +70,22 @@ const Game = () => {
     ) {
       setResult("You win!");
       alertify.success("You win!     +20");
-      setScore(score + 20);
-      localStorage.setItem("score", score + 20);
+      const newScore = score + 10;
+      setScore(newScore);
+      const newCorrectRPS = correctRPS + 1;
+      setCorrectRPS(newCorrectRPS);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctRps: newCorrectRPS,
+      });
     } else {
       setResult("You lose!");
       alertify.error("Ups -10");
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
     }
   };
   const removePulse = () => {
@@ -77,10 +107,6 @@ const Game = () => {
 
   return (
     <div id="rps-container">
-      <div id="score">
-        <img src={point} alt="" width="120px" height="80px" />
-        <h1>Your Score: {score}</h1>
-      </div>
       <div id="game-container">
         <div id="robo">
           <img id="robot" className="pulse" src={Robot} alt=" "></img>
