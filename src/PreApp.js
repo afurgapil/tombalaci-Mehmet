@@ -21,6 +21,7 @@ import Reset from "./comps/Reset/Reset";
 import News from "./comps/News/News";
 import Classics from "./comps/Classics/Classics";
 import Contact from "./comps/Contact/Contact";
+import Welcome from "./comps/Welcome/Welcome";
 function PreApp() {
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ function PreApp() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/contact" element={<Contact />} />
