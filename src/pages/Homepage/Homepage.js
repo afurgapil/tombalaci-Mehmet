@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Welcome from "../Welcome/Welcome";
-import Home from "../Home/Home";
+import Welcome from "../../comps/Welcome/Welcome";
+import Home from "../../comps/Home/Home";
 // Firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 

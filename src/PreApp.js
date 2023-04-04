@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./comps/Footer/Footer";
 import Header from "./comps/Header/Header";
-import Homepage from "./comps/Homepage/Homepage";
+import Homepage from "./pages/Homepage/Homepage";
 import Tombala from "./comps/Tombala/Tombala";
 import CoinFlip from "./comps/CoinFlip/CoinFlip";
 import ToDice from "./comps/ToDice/ToDice";
