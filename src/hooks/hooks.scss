@@ -16,3 +16,26 @@
     margin-right: 0.5rem;
   }
 }
+#score-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  #border-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc927;
+    border: 2px #ffa000 solid;
+    padding: 3px;
+    #border-in {
+      text-align: center;
+      background-color: #ffa000;
+      .border-in-item {
+        margin: 0px;
+        padding: 0px;
+      }
+    }
+  }
+}

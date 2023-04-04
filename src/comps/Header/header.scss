@@ -61,6 +61,16 @@ $primary-color: #4db6ac;
       background-color: $primary-color;
       transition: all 0.2s;
     }
+    &:nth-child(5)::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: #ffa000;
+      transition: all 0.2s;
+    }
 
     &:hover {
       cursor: pointer;

@@ -8,6 +8,7 @@ import SignOutButton from "../../hooks/SignOutButton";
 import { auth } from "../../Firebase";
 //mui
 import MenuIcon from "@mui/icons-material/Menu";
+import Score from "../../hooks/Score";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,6 +53,9 @@ function Header() {
               <NavLink to="/contact" className="navigation-item-link">
                 Contact
               </NavLink>
+            </li>
+            <li className="navigation-item">
+              <Score></Score>
             </li>
             <div id="onLogin">
               <Link to="/profile">
