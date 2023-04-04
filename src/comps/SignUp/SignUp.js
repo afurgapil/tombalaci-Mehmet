@@ -43,6 +43,11 @@ export default function SignUp() {
         displayName: name,
         displayLastname: lastname,
         score: 0,
+        correctCoinflip: 0,
+        correctDice: 0,
+        correctRps: 0,
+        correctRoulette: 0,
+        correctJackpot: 0,
       });
 
       navigate("/");
