@@ -2,7 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./comps/Footer/Footer";
 import Header from "./comps/Header/Header";
-import Homepage from "./pages/Homepage/Homepage";
+import Homepage from "./pages/Homepage";
+import ClassicPage from "./pages/ClassicsPage";
+import NewsPage from "./pages/NewsPage";
 import Tombala from "./comps/Tombala/Tombala";
 import CoinFlip from "./comps/CoinFlip/CoinFlip";
 import ToDice from "./comps/ToDice/ToDice";
@@ -18,8 +20,6 @@ import NotFound from "./comps/NotFound/NotFound";
 import SignIn from "./comps/SignIn/SignIn";
 import SignUp from "./comps/SignUp/SignUp";
 import Reset from "./comps/Reset/Reset";
-import News from "./comps/News/News";
-import Classics from "./comps/Classics/Classics";
 import Contact from "./comps/Contact/Contact";
 import Welcome from "./comps/Welcome/Welcome";
 function PreApp() {
@@ -33,8 +33,8 @@ function PreApp() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/classics" element={<Classics />} />
-        <Route path="/news" element={<News />} />
+        <Route path="/classics" element={<ClassicPage />} />
+        <Route path="/news" element={<NewsPage />} />
         <Route path="/tombala" element={<Tombala />} />
         <Route path="/coinflip" element={<CoinFlip />} />
         <Route path="/todice" element={<ToDice />} />
