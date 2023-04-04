@@ -1,23 +1,45 @@
 import React, { useEffect, useState } from "react";
 import "./todice.scss";
-import point from "../../assets/score.png";
-
+//firebase
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../Firebase";
+//alertify
 import alertify from "alertifyjs";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
 
 export default function ToDice() {
   const [diceNumber, setDiceNumber] = useState(1);
-  const [score, setScore] = useState(localStorage.getItem("score"));
-  useEffect(() => {
-    const cachedScore = localStorage.getItem("score");
-    if (cachedScore !== null) {
-      setScore(parseInt(cachedScore));
-    }
-  }, []);
+  const [score, setScore] = useState(null);
+  const [correctDice, setCorrectDice] = useState(null);
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const db = getFirestore();
+        const userDocRef = doc(db, "users", user.uid);
+        getDoc(userDocRef).then((doc) => {
+          if (doc.exists()) {
+            setScore(doc.data().score);
+            setCorrectDice(doc.data().correctDice);
+          } else {
+            updateDoc(userDocRef, { score: 0 });
+            setScore(0);
+            setCorrectDice(0);
+          }
+        });
+      }
+    });
+  }, []);
+  function getRandomInt() {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0];
+  }
   function rollDice() {
-    let randomNumber = Math.floor(Math.random() * 6) + 1;
+    let randomNumber = (getRandomInt() % 6) + 1;
+    console.log(randomNumber);
     setDiceNumber(randomNumber);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
@@ -59,7 +81,7 @@ export default function ToDice() {
   function guessNumber() {
     let userGuess = parseInt(document.getElementById("guessInput").value);
 
-    let randomNumberr = Math.floor(Math.random() * 6) + 1;
+    let randomNumberr = (getRandomInt() % 6) + 1;
     setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
@@ -94,16 +116,25 @@ export default function ToDice() {
 
     if (randomNumberr === userGuess) {
       alertify.success("Congrats! +50");
-      setScore(score + 50);
-      localStorage.setItem("score", score + 50);
+      const newScore = score + 10;
+      setScore(newScore);
+      const newCorrectDice = correctDice + 1;
+      setCorrectDice(newCorrectDice);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctDice: newCorrectDice,
+      });
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
     }
   }
   function isEven() {
-    let randomNumberr = Math.floor(Math.random() * 6) + 1;
+    let randomNumberr = (getRandomInt() % 6) + 1;
     setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
@@ -137,17 +168,26 @@ export default function ToDice() {
     } //
 
     if (randomNumberr === 2 || randomNumberr === 4 || randomNumberr === 6) {
+      const newScore = score + 10;
+      setScore(newScore);
+      const newCorrectDice = correctDice + 1;
+      setCorrectDice(newCorrectDice);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctDice: newCorrectDice,
+      });
       alertify.success("Congrats! +10");
-      setScore(score + 10);
-      localStorage.setItem("score", score + 10);
     } else {
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
     }
   }
   function isOdd() {
-    let randomNumberr = Math.floor(Math.random() * 6) + 1;
+    let randomNumberr = (getRandomInt() % 6) + 1;
     setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
@@ -182,16 +222,25 @@ export default function ToDice() {
 
     if (randomNumberr === 1 || randomNumberr === 3 || randomNumberr === 5) {
       alertify.success("Congrats! +10");
-      setScore(score + 10);
-      localStorage.setItem("score", score + 10);
+      const newScore = score + 10;
+      setScore(newScore);
+      const newCorrectDice = correctDice + 1;
+      setCorrectDice(newCorrectDice);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctDice: newCorrectDice,
+      });
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
     }
   }
   function isLow() {
-    let randomNumberr = Math.floor(Math.random() * 6) + 1;
+    let randomNumberr = (getRandomInt() % 6) + 1;
     setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
@@ -226,16 +275,25 @@ export default function ToDice() {
 
     if (randomNumberr === 1 || randomNumberr === 2 || randomNumberr === 3) {
       alertify.success("Congrats! +10");
-      setScore(score + 10);
-      localStorage.setItem("score", score + 10);
+      const newScore = score + 10;
+      setScore(newScore);
+      const newCorrectDice = correctDice + 1;
+      setCorrectDice(newCorrectDice);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctDice: newCorrectDice,
+      });
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
     }
   }
   function isHigh() {
-    let randomNumberr = Math.floor(Math.random() * 6) + 1;
+    let randomNumberr = (getRandomInt() % 6) + 1;
     setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
@@ -270,12 +328,21 @@ export default function ToDice() {
 
     if (randomNumberr === 4 || randomNumberr === 5 || randomNumberr === 6) {
       alertify.success("Congrats! +10");
-      setScore(score + 10);
-      localStorage.setItem("score", score + 10);
+      const newScore = score + 10;
+      setScore(newScore);
+      const newCorrectDice = correctDice + 1;
+      setCorrectDice(newCorrectDice);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctDice: newCorrectDice,
+      });
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
     }
   }
 
@@ -295,11 +362,6 @@ export default function ToDice() {
 
   return (
     <div className="ToDice">
-      <div id="score">
-        <img src={point} alt="" width="120px" height="80px" />
-
-        <h1>Your Score: {score}</h1>
-      </div>
       <div className="dice-container">
         <button className="enjoy" onClick={rollDice}>
           Roll Dice
