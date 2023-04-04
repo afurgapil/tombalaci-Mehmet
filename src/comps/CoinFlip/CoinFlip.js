@@ -2,35 +2,59 @@ import React, { useEffect, useState } from "react";
 import "./coinflip.scss";
 import point from "../../assets/score.png";
 import alertify from "alertifyjs";
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../Firebase";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
+
 const CoinFlip = () => {
   const [choice, setChoice] = useState(null);
   const [result, setResult] = useState(null);
   const [correctGuesses, setCorrectGuesses] = useState(0);
   const [totalGuesses, setTotalGuesses] = useState(0);
-  const [score, setScore] = useState(localStorage.getItem("score"));
+  const [score, setScore] = useState(null);
+
   useEffect(() => {
-    const cachedScore = localStorage.getItem("score");
-    if (cachedScore !== null) {
-      setScore(parseInt(cachedScore));
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const db = getFirestore();
+        const userDocRef = doc(db, "users", user.uid);
+        getDoc(userDocRef).then((doc) => {
+          if (doc.exists()) {
+            setScore(doc.data().score);
+          } else {
+            updateDoc(userDocRef, { score: 0 });
+            setScore(0);
+          }
+        });
+      }
+    });
   }, []);
+  function getRandomFloat() {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0] / 4294967295;
+  }
 
   const playGame = () => {
-    const randomNum = Math.random();
+    const randomNum = getRandomFloat();
     const newResult = randomNum < 0.5 ? "Heads" : "Tails";
     setResult(newResult);
     setTotalGuesses(totalGuesses + 1);
-    if (choice === result) {
+    if (choice === newResult) {
       setCorrectGuesses(correctGuesses + 1);
-      setScore(score + 10);
-      localStorage.setItem("score", score + 10);
+      const newScore = score + 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
       alertify.success("Congrats! +10", 1);
     } else {
-      setScore(score - 10);
-      localStorage.setItem("score", score - 10);
-      alertify.error(`Ups! Unlucky. -10`, 1);
+      const newScore = score - 10;
+      setScore(newScore);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, { score: newScore });
+      alertify.error("Ups! Unlucky. -10", 1);
     }
   };
 
