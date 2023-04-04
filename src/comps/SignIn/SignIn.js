@@ -48,7 +48,7 @@ export default function SignIn() {
     try {
       const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/todo");
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }

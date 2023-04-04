@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 //firebase
 import { auth } from "../Firebase";
 //mui
-import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import { IconButton } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import tree from "../../assets/5.png";
 import "./notfound.scss";
 function NotFound() {

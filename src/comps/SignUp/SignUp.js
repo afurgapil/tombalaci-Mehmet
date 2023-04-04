@@ -45,7 +45,6 @@ export default function SignUp() {
         score: 0,
       });
 
-      // TODO GIRIS SAYFASINA YONLENDIR
       navigate("/");
     } catch (error) {
       setError(error.message);

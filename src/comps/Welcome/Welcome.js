@@ -16,24 +16,24 @@ function Welcome() {
           <h2 className="title">Tombalaci Mehmet</h2>
           <p className="text">the only adress for fun</p>
           <div className="buttonsContainer">
-            <Link to="/signup">
-              <Button
-                className="button"
-                variant="contained"
-                color="primary"
-                startIcon={<HowToRegIcon />}
-              >
-                Sign Up
-              </Button>
-            </Link>
             <Link to="/signin">
               <Button
                 className="button"
                 variant="contained"
-                color="secondary"
+                color="primary"
                 startIcon={<LoginIcon />}
               >
                 Sign In
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button
+                className="button"
+                variant="contained"
+                color="secondary"
+                startIcon={<HowToRegIcon />}
+              >
+                Sign Up
               </Button>
             </Link>
           </div>

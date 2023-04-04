@@ -9,9 +9,7 @@ import slot from "../../assets/slot.png";
 import emojify from "../../assets/emoji.png";
 import quizboxes from "../../assets/quizbox.png";
 import "./home.scss";
-import Welcome from "../Welcome/Welcome";
-//firebase
-import { getAuth } from "firebase/auth";
+//scroller
 import {
   Animator,
   ScrollContainer,
