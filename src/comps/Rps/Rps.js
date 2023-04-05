@@ -45,7 +45,7 @@ const Game = () => {
   }
   const handleClick = (choice) => {
     setPlayerChoice(choice);
-    const computerIndex = (getRandomInt() % 3) + 1;
+    const computerIndex = getRandomInt() % 3;
     setComputerChoice(choices[computerIndex]);
     checkResult(choice, choices[computerIndex], computerIndex);
     removePulse();
