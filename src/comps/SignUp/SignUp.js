@@ -47,6 +47,7 @@ export default function SignUp() {
         correctDice: 0,
         correctRps: 0,
         correctRoulette: 0,
+        correctSlot: 0,
         correctJackpot: 0,
       });
 
