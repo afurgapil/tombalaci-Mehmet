@@ -3,7 +3,23 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right bottom,
+    #81f018,
+    #00e795,
+    #00d3eb,
+    #00b6ff,
+    #008eff,
+    #5b75f9,
+    #8e53e7,
+    #b600c7,
+    #e4009f,
+    #ff0071,
+    #ff0042,
+    #ff0000
+  );
   .slot-title {
     display: flex;
     justify-content: center;
@@ -27,21 +43,6 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   color: white;
   padding: 5rem;
   border-radius: 100px;
-  background-image: linear-gradient(
-    to right bottom,
-    #81f018,
-    #00e795,
-    #00d3eb,
-    #00b6ff,
-    #008eff,
-    #5b75f9,
-    #8e53e7,
-    #b600c7,
-    #e4009f,
-    #ff0071,
-    #ff0042,
-    #ff0000
-  );
 
   .col {
     display: flex;
@@ -69,26 +70,7 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .spin-button {
-    background-color: #ffffff00;
-    border: none;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 100px;
-      height: auto;
-    }
-
-    .slot-bar {
-      animation: spin2 1s forwards;
-    }
-    .spinned {
-      animation: spin 1s forwards;
-    }
-  }
+  margin: 1rem;
 }
 
 @keyframes spin {
@@ -137,9 +119,10 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
   }
 }
 @media (min-width: 320px) and (max-width: 600px) {
+  .slot-table-container {
+    flex-direction: column;
+  }
   .slot-table {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
     .col {
       border-width: 5px;
       .number {

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import "./slot.scss";
-import stick from "../../assets/stick.png";
-import point from "../../assets/score.png";
 import alertify from "alertifyjs";
 import GoBack from "../../comps/Tools/GoBack";
+import Spinner from "../Tools/Spinner";
+import { Button } from "@mui/material";
 function Slot() {
   const [score, setScore] = useState(localStorage.getItem("score"));
   const [col11, setCol11] = useState("\uD83D\uDCB0");
@@ -22,8 +22,7 @@ function Slot() {
   const [col51, setCol51] = useState("\uD83D\uDCB0");
   const [col52, setCol52] = useState("\uD83C\uDF31");
   const [col53, setCol53] = useState("\uD83D\uDCB0");
-  const [spinstick1, setSpinstick1] = useState(false);
-  const [spinstick2, setSpinstick2] = useState(true);
+
   const [row1, setRow1] = useState(false);
   const [row2, setRow2] = useState(false);
   const [row3, setRow3] = useState(false);
@@ -38,10 +37,7 @@ function Slot() {
     setScore(score - 10);
     localStorage.setItem("score", score - 10);
   }
-  const handleDondur = () => {
-    setSpinstick1(!spinstick1);
-    setSpinstick2(!spinstick2);
-  };
+
   function spin() {
     setRow1(false);
     setRow2(false);
@@ -654,14 +650,7 @@ function Slot() {
   }, [row1, row2, row3]);
   return (
     <div>
-      <div id="score">
-        <img src={point} alt="" width="120px" height="80px" />
-        <h1>Your Score: {score}</h1>
-      </div>
       <div className="slot-table-container">
-        {/* <div className="slot-title">
-          <h1>SLOT MACHINE</h1>
-        </div> */}
         <div className="slot-table">
           <div className="col">
             <p className="number">{col11}</p>
@@ -688,23 +677,16 @@ function Slot() {
             <p className="number">{col52}</p>
             <p className="number">{col53}</p>
           </div>
-          <div className="slot-buttons">
-            <button
-              className="spin-button"
-              onClick={() => {
-                spin();
-                gameStart();
-              }}
-            >
-              <img
-                onClick={handleDondur}
-                src={stick}
-                alt="SLOT SPIN"
-                className={spinstick1 ? "spinned" : "slot-bar"}
-                id="slot-bar"
-              ></img>
-            </button>
-          </div>
+        </div>
+        <div className="slot-buttons">
+          <Button
+            onClick={() => {
+              spin();
+              gameStart();
+            }}
+          >
+            <Spinner></Spinner>
+          </Button>
         </div>
       </div>
       <GoBack></GoBack>
