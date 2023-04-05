@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import "./slot.scss";
-import alertify from "alertifyjs";
 import GoBack from "../../comps/Tools/GoBack";
+//firebase
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../Firebase";
+//mui
 import Spinner from "../Tools/Spinner";
 import { Button } from "@mui/material";
+import alertify from "alertifyjs";
+
 function Slot() {
-  const [score, setScore] = useState(localStorage.getItem("score"));
   const [col11, setCol11] = useState("\uD83D\uDCB0");
   const [col12, setCol12] = useState("\ud83c\udf47");
   const [col13, setCol13] = useState("\uD83D\uDCB0");
@@ -25,37 +30,60 @@ function Slot() {
   const [row1, setRow1] = useState(false);
   const [row2, setRow2] = useState(false);
   const [row3, setRow3] = useState(false);
+  const [score, setScore] = useState(null);
+  const [correctSlot, setCorrectSlot] = useState(null);
+  const [correctJackpot, setCorrectJackpot] = useState(null);
   useEffect(() => {
-    const cachedScore = localStorage.getItem("score");
-    if (cachedScore !== null) {
-      setScore(parseInt(cachedScore));
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const db = getFirestore();
+        const userDocRef = doc(db, "users", user.uid);
+        getDoc(userDocRef).then((doc) => {
+          if (doc.exists()) {
+            setScore(doc.data().score);
+            setCorrectSlot(doc.data().correctSlot);
+            setCorrectJackpot(doc.data().correctJackpot);
+          } else {
+            updateDoc(userDocRef, { score: 0 });
+            setScore(0);
+            setCorrectSlot(0);
+            setCorrectJackpot(0);
+          }
+        });
+      }
+    });
   }, []);
-
+  function getRandomInt() {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    return array[0];
+  }
   function gameStart() {
-    setScore(score - 10);
-    localStorage.setItem("score", score - 10);
+    const newScore = score - 10;
+    setScore(newScore);
+    const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+    updateDoc(userDocRef, { score: newScore });
   }
 
   function spin() {
     setRow1(false);
     setRow2(false);
     setRow3(false);
-    let nu1 = Math.floor(Math.random() * (4 + 1));
-    let nu2 = Math.floor(Math.random() * (4 + 1));
-    let nu3 = Math.floor(Math.random() * (4 + 1));
-    let nu4 = Math.floor(Math.random() * (4 + 1));
-    let nu5 = Math.floor(Math.random() * (4 + 1));
-    let nu6 = Math.floor(Math.random() * (4 + 1));
-    let nu7 = Math.floor(Math.random() * (4 + 1));
-    let nu8 = Math.floor(Math.random() * (4 + 1));
-    let nu9 = Math.floor(Math.random() * (4 + 1));
-    let nu10 = Math.floor(Math.random() * (4 + 1));
-    let nu11 = Math.floor(Math.random() * (4 + 1));
-    let nu12 = Math.floor(Math.random() * (4 + 1));
-    let nu13 = Math.floor(Math.random() * (4 + 1));
-    let nu14 = Math.floor(Math.random() * (4 + 1));
-    let nu15 = Math.floor(Math.random() * (4 + 1));
+    let nu1 = getRandomInt() % 5;
+    let nu2 = getRandomInt() % 5;
+    let nu3 = getRandomInt() % 5;
+    let nu4 = getRandomInt() % 5;
+    let nu5 = getRandomInt() % 5;
+    let nu6 = getRandomInt() % 5;
+    let nu7 = getRandomInt() % 5;
+    let nu8 = getRandomInt() % 5;
+    let nu9 = getRandomInt() % 5;
+    let nu10 = getRandomInt() % 5;
+    let nu11 = getRandomInt() % 5;
+    let nu12 = getRandomInt() % 5;
+    let nu13 = getRandomInt() % 5;
+    let nu14 = getRandomInt() % 5;
+    let nu15 = getRandomInt() % 5;
     switch (nu1) {
       case 0:
         setCol11("\ud83c\udf47");
@@ -629,22 +657,56 @@ function Slot() {
     }
   }, [col13, col23, col33, col43, col53]);
   useEffect(() => {
-    if (row1 === true) {
-      alertify.success("ROW1! +30000", 1);
-      setScore(score + 30000);
-      localStorage.setItem("score", score + 30000);
+    if (row1 === true && row2 === true && row3 === true) {
+      alertify.success("JACKPOT! +10000", 1);
+      setScore(score + 10000);
+      const newScore = score + 10000;
+      setScore(newScore);
+      const newCorrectSlot = correctSlot + 1;
+      setCorrectSlot(newCorrectSlot);
+      const newCorrectJackpot = correctJackpot + 1;
+      setCorrectJackpot(newCorrectJackpot);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctSlot: newCorrectSlot,
+        correctJackpot: newCorrectJackpot,
+      });
+    } else if (row1 === true) {
+      alertify.success("ROW1! +125", 1);
+      const newScore = score + 125;
+      setScore(newScore);
+      const newCorrectSlot = correctSlot + 1;
+      setCorrectSlot(newCorrectSlot);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctSlot: newCorrectSlot,
+      });
     } else if (row2 === true) {
-      setScore(score + 30000);
-      localStorage.setItem("score", score + 30000);
-      alertify.success("ROW2! +30000", 1);
+      alertify.success("ROW2! +125", 1);
+      setScore(score + 125);
+      const newScore = score + 125;
+      setScore(newScore);
+      const newCorrectSlot = correctSlot + 1;
+      setCorrectSlot(newCorrectSlot);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctSlot: newCorrectSlot,
+      });
     } else if (row3 === true) {
-      setScore(score + 30000);
-      localStorage.setItem("score", score + 30000);
-      alertify.success("ROW3! +30000", 1);
-    } else if (row1 === true && row2 === true && row3 === true) {
-      setScore(score + 100000);
-      localStorage.setItem("score", score + 100000);
-      alertify.success("JACKPOT! +100000", 1);
+      alertify.success("ROW3! +125", 1);
+      setScore(score + 125);
+      const newScore = score + 125;
+      setScore(newScore);
+      const newCorrectSlot = correctSlot + 1;
+      setCorrectSlot(newCorrectSlot);
+      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+      updateDoc(userDocRef, {
+        score: newScore,
+        correctSlot: newCorrectSlot,
+      });
     }
   }, [row1, row2, row3]);
   return (
