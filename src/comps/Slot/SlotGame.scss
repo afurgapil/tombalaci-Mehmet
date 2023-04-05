@@ -1,108 +1,97 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@200&display=swap");
-#slot-games-container {
+.slot-container {
+  background: linear-gradient(270deg, #a84d23 0%, #6755ae 200%);
+}
+
+.s-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   width: 100%;
-  background-image: radial-gradient(
-    circle,
-    #81f018,
-    #acb100,
-    #a97600,
-    #88461d,
-    #542521,
-    #4e1e1f,
-    #48161e,
-    #420f1d,
-    #710826,
-    #a20027,
-    #d2001f,
-    #ff0000
-  );
-  .gamechange {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
 
-    #slot-container-col {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      .card {
-        margin-top: 8rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        padding: 1rem;
-        background-image: linear-gradient(
-          to top,
-          #ffffff,
-          #cacaca,
-          #979797,
-          #676767,
-          #3b3b3b,
-          #392f3b,
-          #3e2131,
-          #420f1d,
-          #710826,
-          #a20027,
-          #d2001f,
-          #ff0000
-        );
-        p {
-          display: none;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          font-size: 2rem;
-          padding: 0.2rem;
-          font-family: "Noto Sans Lao", sans-serif;
-        }
-        &:hover {
-          p {
-            display: inline;
-          }
-        }
-        img {
-          height: 250px;
-          width: 250px;
-        }
-      }
+  .s-img-container {
+    position: relative;
+    height: 100%;
+    flex: 1;
+    background: linear-gradient(270deg, #a84d23 0%, #6755ae 100%);
+
+    img {
+      height: 50%;
     }
-    .slot-links {
-      margin-top: 2rem;
-      width: 350px;
+    .top {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .bot {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  .s-desc {
+    height: 100%;
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #a84d23 0%, #607a58 100%);
+    .s-desc-title {
+      font-family: "Noto Sans Lao", sans-serif;
+      font-size: 4rem;
+      margin: 0px;
+      text-decoration: underline;
+    }
+    .s-desc-p {
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.47);
+      font-size: 2rem;
+      padding: 0.2rem;
+      font-family: "Noto Sans Lao", sans-serif;
+    }
+    #easy-button {
+      width: 200px;
       height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: aliceblue;
+      font-size: 2rem;
+      background-color: green;
     }
-    #easy {
-      background-color: #81f018;
+    #medium-button {
+      width: 200px;
+      height: 100px;
+      font-size: 2rem;
+      background-color: rgb(154, 154, 1);
     }
-    #medium {
-      background-color: #1842f0;
-    }
-    #hard {
-      background-color: red;
+    #hard-button {
+      width: 200px;
+      height: 100px;
+      font-size: 2rem;
+      background-color: rgb(202, 0, 0);
     }
   }
 }
+
 @media (min-width: 320px) and (max-width: 600px) {
-  #slot-games-container .gamechange {
+  .s-container {
     flex-direction: column;
-  }
-  #slot-games-container {
-    height: fit-content;
-  }
-  #slot-games-container .gamechange #slot-container-col .card p {
-    display: inline;
+    .s-img-container {
+      z-index: 1;
+      width: 100%;
+      background: linear-gradient(0deg, #a84d23 0%, #6755ae 100%);
+
+      img {
+        width: 50%;
+        height: auto;
+      }
+    }
+    .s-desc {
+      z-index: 2;
+      text-align: center;
+      background: linear-gradient(180deg, #a84d23 0%, #607a58 100%);
+    }
   }
 }
