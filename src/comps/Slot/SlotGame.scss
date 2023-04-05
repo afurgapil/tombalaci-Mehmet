@@ -78,10 +78,12 @@
 @media (min-width: 320px) and (max-width: 600px) {
   .s-container {
     flex-direction: column;
+    display: flex;
     .s-img-container {
       z-index: 1;
       width: 100%;
       background: linear-gradient(0deg, #a84d23 0%, #6755ae 100%);
+      flex: 1;
 
       img {
         width: 50%;
@@ -92,6 +94,18 @@
       z-index: 2;
       text-align: center;
       background: linear-gradient(180deg, #a84d23 0%, #607a58 100%);
+      flex: 3;
+      .s-desc-title {
+        font-size: 3rem;
+        margin: 0px;
+      }
+      .s-desc-p {
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.47);
+        font-size: 1.5rem;
+        padding: 0.2rem;
+        font-family: "Noto Sans Lao", sans-serif;
+      }
     }
   }
 }

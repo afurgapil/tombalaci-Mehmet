@@ -650,42 +650,44 @@ function Slot() {
   return (
     <div>
       <div className="slot-table-container">
-        <div className="slot-table">
-          <div className="col">
-            <p className="number">{col11}</p>
-            <p className="number">{col12}</p>
-            <p className="number">{col13}</p>
+        <div className="table-shadow">
+          <div className="slot-table">
+            <div className="col">
+              <p className="number">{col11}</p>
+              <p className="number">{col12}</p>
+              <p className="number">{col13}</p>
+            </div>
+            <div className="col">
+              <p className="number">{col21}</p>
+              <p className="number">{col22}</p>
+              <p className="number">{col23}</p>
+            </div>
+            <div className="col">
+              <p className="number">{col31}</p>
+              <p className="number">{col32}</p>
+              <p className="number">{col33}</p>
+            </div>
+            <div className="col">
+              <p className="number">{col41}</p>
+              <p className="number">{col42}</p>
+              <p className="number">{col43}</p>
+            </div>
+            <div className="col">
+              <p className="number">{col51}</p>
+              <p className="number">{col52}</p>
+              <p className="number">{col53}</p>
+            </div>
+            <div className="slot-buttons"></div>
           </div>
-          <div className="col">
-            <p className="number">{col21}</p>
-            <p className="number">{col22}</p>
-            <p className="number">{col23}</p>
-          </div>
-          <div className="col">
-            <p className="number">{col31}</p>
-            <p className="number">{col32}</p>
-            <p className="number">{col33}</p>
-          </div>
-          <div className="col">
-            <p className="number">{col41}</p>
-            <p className="number">{col42}</p>
-            <p className="number">{col43}</p>
-          </div>
-          <div className="col">
-            <p className="number">{col51}</p>
-            <p className="number">{col52}</p>
-            <p className="number">{col53}</p>
-          </div>
-          <div className="slot-buttons"></div>
+          <Button
+            onClick={() => {
+              spin();
+              gameStart();
+            }}
+          >
+            <Spinner></Spinner>
+          </Button>
         </div>
-        <Button
-          onClick={() => {
-            spin();
-            gameStart();
-          }}
-        >
-          <Spinner></Spinner>
-        </Button>
       </div>
       <GoBack></GoBack>
     </div>

@@ -20,17 +20,13 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
     #ff0042,
     #ff0000
   );
-  .slot-title {
+  .table-shadow {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    animation: cycle 30s linear infinite alternate;
-    // background-color: rgb(0, 41, 117);
-    border-radius: 50px;
-    border: 10px goldenrod groove;
-    border-bottom: none;
     padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.47);
   }
 }
 
@@ -63,14 +59,6 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
       text-align: center;
     }
   }
-}
-
-.slot-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 1rem;
 }
 
 @keyframes spin {
@@ -121,6 +109,14 @@ $h1-colors: #f00, #0f0, #00f, #ff0, #f0f, #0ff;
 @media (min-width: 320px) and (max-width: 600px) {
   .slot-table-container {
     flex-direction: column;
+    .table-shadow {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.47);
+    }
   }
   .slot-table {
     .col {
