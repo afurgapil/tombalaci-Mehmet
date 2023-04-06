@@ -43,9 +43,9 @@ function PreApp() {
         <Route path="/todice" element={<Dice />} />
         <Route path="/rps" element={<Rps />} />
         <Route path="/slot" element={<Slot />} />
-        <Route path="/slot/muhterem" element={<Easy />} />
+        <Route path="/slot/muhterem" element={<Hard />} />
         <Route path="/slot/cakir" element={<Medium />} />
-        <Route path="/slot/abidin" element={<Hard />} />
+        <Route path="/slot/abidin" element={<Easy />} />
         <Route path="/roulette" element={<Roulette />} />
         <Route path="/emojify" element={<EmojiGame />} />
         <Route path="/quizboxes" element={<QuizBox />} />

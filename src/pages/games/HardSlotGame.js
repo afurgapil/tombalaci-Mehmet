@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Welcome from "../../comps/Welcome/Welcome";
 
-import Slot from "../../comps/Slot/Slot4";
+import Slot from "../../comps/Slot/Slot5";
 // Firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
