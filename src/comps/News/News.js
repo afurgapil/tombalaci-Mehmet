@@ -42,15 +42,15 @@ function News() {
               <div className="n-card">
                 <Animator animation={scrollEffect2}>
                   <Link to="/emojify">
-                    <img src={emojify} alt="Roulette" />
-                    <span>ROULETTE</span>
+                    <img src={emojify} alt="Emojify" />
+                    <span>Emojify</span>
                   </Link>
                 </Animator>
               </div>
               <div className="n-card">
                 <Animator animation={scrollEffect2}>
                   <Link to="/quizboxes  ">
-                    <img src={quizboxes} alt="Slot" />
+                    <img src={quizboxes} alt="QuizBoxes" />
                     <span>QuizBoxes</span>
                   </Link>
                 </Animator>
