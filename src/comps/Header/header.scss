@@ -61,7 +61,7 @@ $primary-color: #4db6ac;
       background-color: $primary-color;
       transition: all 0.2s;
     }
-    &:nth-child(5)::after {
+    &:nth-child(6)::after {
       content: "";
       position: absolute;
       bottom: -3px;
