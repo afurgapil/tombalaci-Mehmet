@@ -21,6 +21,7 @@ import {
 } from "react-scroll-motion";
 //mui
 import { Button } from "@mui/material";
+import "animate.css";
 
 function Classics() {
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
@@ -32,7 +33,10 @@ function Classics() {
         <ScrollPage>
           <div id="cs-section1">
             <div id="cs-section1-desc">
-              <Animator animation={scrollEffect2}>
+              <Animator
+                animation={scrollEffect2}
+                className="animate__animated animate__bounceInDown"
+              >
                 <h2>Classics</h2>
                 <p>
                   And here are the Classics of Tombalacı Mehmet. Each game is
@@ -44,7 +48,10 @@ function Classics() {
             <div id="cs-cards" className="cs-cards">
               <div className="cs-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/coinflip">
+                  <Link
+                    to="/coinflip"
+                    className="animate__animated animate__bounceInLeft"
+                  >
                     <img src={coin} alt="Coin Flip" />
                     <span>COIN FLIP</span>
                   </Link>
@@ -52,7 +59,10 @@ function Classics() {
               </div>
               <div className="cs-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/todice">
+                  <Link
+                    to="/todice"
+                    className="animate__animated animate__bounceInLeft"
+                  >
                     <img src={dice} alt="ToDice" />
                     <span>TO DICE</span>
                   </Link>
@@ -60,7 +70,10 @@ function Classics() {
               </div>
               <div className="cs-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/rps">
+                  <Link
+                    to="/rps"
+                    className="animate__animated animate__bounceInUp"
+                  >
                     <img src={rps} alt="RPS" />
                     <span>RPS</span>
                   </Link>
@@ -68,7 +81,10 @@ function Classics() {
               </div>
               <div className="cs-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/roulette">
+                  <Link
+                    to="/roulette"
+                    className="animate__animated animate__bounceInRight"
+                  >
                     <img src={roulette} alt="Roulette" />
                     <span>ROULETTE</span>
                   </Link>
@@ -76,7 +92,10 @@ function Classics() {
               </div>
               <div className="cs-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/slot">
+                  <Link
+                    to="/slot"
+                    className="animate__animated animate__bounceInRight"
+                  >
                     <img src={slot} alt="Slot" />
                     <span>SLOT</span>
                   </Link>

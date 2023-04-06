@@ -18,6 +18,7 @@ import {
 } from "react-scroll-motion";
 //mui
 import { Button } from "@mui/material";
+import "animate.css";
 
 function News() {
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
@@ -30,7 +31,10 @@ function News() {
         <ScrollPage>
           <div id="n-section1">
             <div id="n-section1-desc">
-              <Animator animation={scrollEffect2}>
+              <Animator
+                animation={scrollEffect2}
+                className="animate__animated animate__bounceInDown"
+              >
                 <h2>News</h2>
                 <p>
                   If you're tired of ordinary games and looking for something
@@ -41,7 +45,10 @@ function News() {
             <div id="n-cards" className="n-cards">
               <div className="n-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/emojify">
+                  <Link
+                    to="/emojify"
+                    className="animate__animated animate__bounceInLeft"
+                  >
                     <img src={emojify} alt="Emojify" />
                     <span>Emojify</span>
                   </Link>
@@ -49,7 +56,10 @@ function News() {
               </div>
               <div className="n-card">
                 <Animator animation={scrollEffect2}>
-                  <Link to="/quizboxes  ">
+                  <Link
+                    to="/quizboxes  "
+                    className="animate__animated animate__bounceInRight"
+                  >
                     <img src={quizboxes} alt="QuizBoxes" />
                     <span>QuizBoxes</span>
                   </Link>
