@@ -21,7 +21,12 @@ import Roulette from "./pages/games/RouletteGame";
 //comps
 import Scoreboard from "./comps/Scoreboard/Scoreboard";
 import Slot from "./comps/Slot/SlotGame";
+//emoji
 import EmojiGame from "./comps/Emoji/Emoji";
+import LolEmoji from "./comps/Emoji/Lol";
+import ValoEmoji from "./comps/Emoji/Valorant";
+import TurkeyEmoji from "./comps/Emoji/Turkey";
+import CountryEmoji from "./comps/Emoji/Country";
 import QuizBox from "./comps/QuizzBox/Box";
 import Contact from "./comps/Contact/Contact";
 import Welcome from "./comps/Welcome/Welcome";
@@ -48,6 +53,10 @@ function PreApp() {
         <Route path="/slot/abidin" element={<Easy />} />
         <Route path="/roulette" element={<Roulette />} />
         <Route path="/emojify" element={<EmojiGame />} />
+        <Route path="/lol" element={<LolEmoji />} />
+        <Route path="/valorant" element={<ValoEmoji />} />
+        <Route path="/turkish-cities" element={<TurkeyEmoji />} />
+        <Route path="/countries" element={<CountryEmoji />} />
         <Route path="/quizboxes" element={<QuizBox />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

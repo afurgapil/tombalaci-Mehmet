@@ -1,97 +1,112 @@
 @import url("https://fonts.googleapis.com/css2?family=Gloock&display=swap");
 
-#emoji-games-container {
-  height: 100vh;
-
-  .gamechange {
+#emojify-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
+    height: 50%;
+    width: 100%;
 
-    #Country {
-      background-image: url("../../assets/country.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding: 10px;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      border: 2px solid black;
-      &:hover {
-        background-image: url("../../assets/country_hover.png");
-        transition: 3s ease-in-out;
-        span {
-          display: block;
+    .emojify-c {
+      width: 50%;
+      height: 100%;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      h2 {
+        font-size: 3rem;
+        padding: 1rem;
+        margin: 0px;
+        box-shadow: 0px 4px 6px rgba(24, 145, 44, 0.1),
+          0px 1px 3px rgba(129, 30, 30, 0.08);
+      }
+      p {
+        font-size: 1.5rem;
+      }
+      button {
+        width: 300px;
+        height: 100px;
+        cursor: pointer;
+        border-radius: 2rem;
+        &:hover {
+          .button-text {
+            display: block;
+          }
         }
+        .button-text {
+          display: none;
+        }
+      }
+    }
+    #country-button {
+      background-image: url(../../assets/country.png);
+      &:hover {
+        color: white;
+        font-size: 3rem;
+        background-image: url(../../assets/country_hover.png);
+      }
+    }
+    #valorant-button {
+      background-image: url(../../assets/valorant.png);
+      &:hover {
+        color: white;
+        font-size: 3rem;
+        background-image: url(../../assets/valorant_hover.png);
       }
     }
 
-    #Valorant {
-      background-image: url("../../assets/valorant.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding: 10px;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      border: 2px solid black;
+    #lol-button {
+      background-image: url(../../assets/lol.png);
       &:hover {
-        background-image: url("../../assets/valorant_hover.png");
-        span {
-          display: block;
-        }
+        color: white;
+        font-size: 3rem;
+        background-image: url(../../assets/lol_hover.png);
       }
     }
-    #Lol {
-      background-image: url("../../assets/lol.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding: 10px;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      border: 2px solid black;
+
+    #turkey-button {
+      background-image: url(../../assets/turkey.png);
       &:hover {
-        background-image: url("../../assets/lol_hover.png");
-        span {
-          display: block;
-        }
-      }
-    }
-    #Turkey {
-      background-image: url("../../assets/turkey.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding: 10px;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      border: 2px solid black;
-      &:hover {
-        background-image: url("../../assets/turkey_hover.png");
-        span {
-          display: block;
-        }
-      }
-    }
-    button {
-      width: 350px;
-      font-family: "Gloock", serif;
-      height: 100px;
-      font-size: 2rem;
-      span {
-        display: none;
-        color: bisque;
+        color: white;
+        font-size: 3rem;
+        background-image: url(../../assets/turkey_hover.png);
       }
     }
   }
 }
-@media (min-width: 320px) and (max-width: 600px) {
-  #emoji-games-container .gamechange {
+
+@media only screen and (max-width: 768px) {
+  #emojify-container {
     flex-direction: column;
-    #Valorant {
-      margin: 0.5rem;
+    min-height: 100vh;
+    .row {
+      flex-direction: column;
+      height: auto;
+      width: 100%;
+      .emojify-c {
+        margin: 0.5rem;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+        button {
+          margin: 0.5rem;
+        }
+        &:last-child {
+          border: none;
+        }
+      }
     }
   }
 }
