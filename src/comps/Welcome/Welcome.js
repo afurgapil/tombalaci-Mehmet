@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./welcome.scss";
-import wheel from "../../assets/wheel.gif";
+import wheel from "../../assets/wheel.jpg";
 //mui
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LoginIcon from "@mui/icons-material/Login";
