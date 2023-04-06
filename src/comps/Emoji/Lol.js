@@ -4,6 +4,7 @@ import "./lol.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
+import GoBack from "../Tools/GoBack";
 const Lol = () => {
   const [selectedHero, setSelectedHero] = useState("");
   const [heroEmojis, setHeroEmojis] = useState([]);
@@ -54,6 +55,7 @@ const Lol = () => {
   }
   return (
     <div id="lol-game-container">
+      <GoBack></GoBack>
       <p id="l-tittle">Lol Champion Guess Game</p>
       <div id="lol-game">
         <div id="lol-emoji-container">

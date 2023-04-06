@@ -4,7 +4,7 @@ import "./country.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
-
+import GoBack from "../Tools/GoBack";
 const Country = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [countryEmojis, setCountryEmojis] = useState([]);
@@ -12,7 +12,6 @@ const Country = () => {
   const [result, setResult] = useState("");
   const [wrongGuesses, setWrongGuesses] = useState(0);
 
-  // Oyun başladığında bir ülke seçmek için useEffect kullanıyoruz
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * countries.length);
     setSelectedCountry(countries[randomIndex].name);
@@ -55,6 +54,7 @@ const Country = () => {
   }
   return (
     <div id="country-game-container">
+      <GoBack></GoBack>
       <p id="c-tittle">Country Guess Game</p>
       <div id="country-game">
         <div id="emoji-container">
@@ -90,15 +90,6 @@ const Country = () => {
         </div>
 
         {result && <p className="hint">{result}</p>}
-        {/* {result && (
-          <Button
-            onClick={handlePlayAgain}
-            variant="contained"
-            color="secondary"
-          >
-            Play Again
-          </Button>
-        )} */}
       </div>
     </div>
   );

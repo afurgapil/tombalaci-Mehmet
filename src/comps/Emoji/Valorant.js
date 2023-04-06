@@ -3,6 +3,7 @@ import agents from "../../data/agents";
 import "./valorant.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import GoBack from "../Tools/GoBack";
 import alertify from "alertifyjs";
 const Valorant = () => {
   const [selectedAgent, setSelectedAgent] = useState("");
@@ -54,6 +55,7 @@ const Valorant = () => {
   }
   return (
     <div id="valorant-game-container">
+      <GoBack></GoBack>
       <p id="v-tittle">Valorant Agent Guess Game</p>
       <div id="valorant-game">
         <div id="valorant-emoji-container">

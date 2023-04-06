@@ -4,6 +4,8 @@ import "./turkeycities.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
+import GoBack from "../Tools/GoBack";
+
 const Turkey = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [cityEmojis, setCityEmojis] = useState([]);
@@ -54,6 +56,7 @@ const Turkey = () => {
   }
   return (
     <div id="trcity-game-container">
+      <GoBack></GoBack>
       <p id="trc-tittle">Turkey City Guess Game</p>
       <div id="trcity-game">
         <div id="trcity-emoji-container">
