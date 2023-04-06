@@ -116,7 +116,7 @@ export default function ToDice() {
 
     if (randomNumberr === userGuess) {
       alertify.success("Congrats! +50");
-      const newScore = score + 10;
+      const newScore = score + 50;
       setScore(newScore);
       const newCorrectDice = correctDice + 1;
       setCorrectDice(newCorrectDice);
@@ -218,7 +218,7 @@ export default function ToDice() {
       showDot(4);
       showDot(6);
       showDot(7);
-    } //
+    }
 
     if (randomNumberr === 1 || randomNumberr === 3 || randomNumberr === 5) {
       alertify.success("Congrats! +10");

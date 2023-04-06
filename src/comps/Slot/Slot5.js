@@ -673,8 +673,8 @@ function Slot() {
         correctJackpot: newCorrectJackpot,
       });
     } else if (row1 === true) {
-      alertify.success("ROW1! +125", 1);
-      const newScore = score + 125;
+      alertify.success("ROW1! +625", 1);
+      const newScore = score + 625;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);
@@ -684,9 +684,9 @@ function Slot() {
         correctSlot: newCorrectSlot,
       });
     } else if (row2 === true) {
-      alertify.success("ROW2! +125", 1);
-      setScore(score + 125);
-      const newScore = score + 125;
+      alertify.success("ROW2! +625", 1);
+      setScore(score + 625);
+      const newScore = score + 625;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);
@@ -696,9 +696,9 @@ function Slot() {
         correctSlot: newCorrectSlot,
       });
     } else if (row3 === true) {
-      alertify.success("ROW3! +125", 1);
-      setScore(score + 125);
-      const newScore = score + 125;
+      alertify.success("ROW3! +625", 1);
+      setScore(score + 625);
+      const newScore = score + 625;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);

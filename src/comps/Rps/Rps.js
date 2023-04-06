@@ -70,7 +70,7 @@ const Game = () => {
     ) {
       setResult("You win!");
       alertify.success("You win!     +20");
-      const newScore = score + 10;
+      const newScore = score + 20;
       setScore(newScore);
       const newCorrectRPS = correctRPS + 1;
       setCorrectRPS(newCorrectRPS);

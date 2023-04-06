@@ -226,7 +226,7 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (number === rouletteNumber) {
-        const newScore = score + 10;
+        const newScore = score + 350;
         setScore(newScore);
         const newCorrectRoulette = correctRoulette + 1;
         setCorrectRoulette(newCorrectRoulette);
@@ -249,8 +249,12 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber >= a && rouletteNumber <= b) {
-        setScore(score + rate);
-        localStorage.setItem("score", score + rate);
+        const newScore = score + rate;
+        setScore(newScore);
+        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+        updateDoc(userDocRef, {
+          score: newScore,
+        });
         alertify.success(`Congrats! ${rate}`, 1);
       } else {
         const newScore = score - 10;
@@ -265,8 +269,12 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber % 2 === 1) {
-        setScore(score + 10);
-        localStorage.setItem("score", score + 10);
+        const newScore = score + 10;
+        setScore(newScore);
+        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+        updateDoc(userDocRef, {
+          score: newScore,
+        });
         alertify.success("Congrats! +10", 1);
       } else {
         const newScore = score - 10;
@@ -281,8 +289,12 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber % 2 === 0) {
-        setScore(score + 10);
-        localStorage.setItem("score", score + 10);
+        const newScore = score + 10;
+        setScore(newScore);
+        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+        updateDoc(userDocRef, {
+          score: newScore,
+        });
         alertify.success("Congrats! +10", 1);
       } else {
         const newScore = score - 10;
@@ -300,8 +312,12 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (red.includes(rouletteNumber)) {
-        setScore(score + 10);
-        localStorage.setItem("score", score + 10);
+        const newScore = score + 10;
+        setScore(newScore);
+        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
+        updateDoc(userDocRef, {
+          score: newScore,
+        });
         alertify.success("Congrats! +10", 1);
       } else {
         const newScore = score - 10;
@@ -319,25 +335,13 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (black.includes(rouletteNumber)) {
-        setScore(score + 10);
-        localStorage.setItem("score", score + 10);
-        alertify.success("Congrats! +10", 1);
-      } else {
-        const newScore = score - 10;
+        const newScore = score + 10;
         setScore(newScore);
         const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
-        alertify.error(`Ups! Unlucky. -10`, 1);
-      }
-    }, 1100);
-  }
-  function isGreen() {
-    returnNumber();
-    setTimeout(() => {
-      if (rouletteNumber === 0) {
-        setScore(score + 350);
-        localStorage.setItem("score", score + 350);
-        alertify.success("Are you Polat ALEMDAR??? +350", 1);
+        updateDoc(userDocRef, {
+          score: newScore,
+        });
+        alertify.success("Congrats! +10", 1);
       } else {
         const newScore = score - 10;
         setScore(newScore);

@@ -659,9 +659,9 @@ function Slot() {
   }, [col13, col23, col33, col43, col53]);
   useEffect(() => {
     if (row1 === true && row2 === true && row3 === true) {
-      alertify.success("JACKPOT! +10000", 1);
-      setScore(score + 10000);
-      const newScore = score + 10000;
+      alertify.success("JACKPOT! +100000", 1);
+      setScore(score + 100000);
+      const newScore = score + 100000;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);
@@ -674,8 +674,8 @@ function Slot() {
         correctJackpot: newCorrectJackpot,
       });
     } else if (row1 === true) {
-      alertify.success("ROW1! +125", 1);
-      const newScore = score + 125;
+      alertify.success("ROW1! +1000", 1);
+      const newScore = score + 1000;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);
@@ -685,10 +685,10 @@ function Slot() {
         correctSlot: newCorrectSlot,
       });
     } else if (row2 === true) {
-      alertify.success("ROW2! +125", 1);
+      alertify.success("ROW2! +1000", 1);
 
-      setScore(score + 125);
-      const newScore = score + 125;
+      setScore(score + 1000);
+      const newScore = score + 1000;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);
@@ -698,10 +698,10 @@ function Slot() {
         correctSlot: newCorrectSlot,
       });
     } else if (row3 === true) {
-      alertify.success("ROW3! +125", 1);
+      alertify.success("ROW3! +1000", 1);
 
-      setScore(score + 125);
-      const newScore = score + 125;
+      setScore(score + 1000);
+      const newScore = score + 1000;
       setScore(newScore);
       const newCorrectSlot = correctSlot + 1;
       setCorrectSlot(newCorrectSlot);
