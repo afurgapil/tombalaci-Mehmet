@@ -5,6 +5,7 @@ import Header from "./comps/Header/Header";
 import Homepage from "./pages/Homepage";
 import ClassicPage from "./pages/ClassicsPage";
 import NewsPage from "./pages/NewsPage";
+import Scoreboard from "./comps/Scoreboard/Scoreboard";
 import Tombala from "./comps/Tombala/Tombala";
 import CoinFlip from "./comps/CoinFlip/CoinFlip";
 import ToDice from "./comps/ToDice/ToDice";
@@ -33,6 +34,7 @@ function PreApp() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/leaderboard" element={<Scoreboard />} />
         <Route path="/classics" element={<ClassicPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/tombala" element={<Tombala />} />

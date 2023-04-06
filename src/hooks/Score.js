@@ -3,6 +3,8 @@ import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import "./hooks.scss";
 
+const db = getFirestore();
+
 function Score() {
   const [score, setScore] = useState(null);
   const [error, setError] = useState("");
@@ -13,10 +15,8 @@ function Score() {
     if (user) {
       try {
         const userId = user.uid;
-        const firestore = getFirestore();
-        const userRef = doc(firestore, "users", userId);
+        const userRef = doc(db, "users", userId);
 
-        // onSnapshot() fonksiyonu ile belgeyi izleyin
         const unsubscribe = onSnapshot(
           userRef,
           (doc) => {
@@ -34,7 +34,6 @@ function Score() {
           }
         );
 
-        // useEffect() işlevinin sonunda unsubscribe yapın
         return () => unsubscribe();
       } catch (error) {
         setError(error);
