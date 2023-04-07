@@ -12,7 +12,7 @@ const SlotGame = () => {
             Travel the world with emojis! Guess the country names based on the
             emojis and become a globetrotting emoji master!
           </p>
-          <Link to="/countries">
+          <Link to="/emojify/countries">
             <button id="country-button">
               <span className="button-text">PLAY</span>
             </button>
@@ -24,7 +24,7 @@ const SlotGame = () => {
             Ready to test your Turkish geography skills? Guess the names of
             popular Turkish cities using emojis and become a "City Slicker"!
           </p>
-          <Link to="/turkish-cities">
+          <Link to="/emojify/turkish-cities">
             <button id="turkey-button">
               <span className="button-text">PLAY</span>
             </button>
@@ -39,7 +39,7 @@ const SlotGame = () => {
             decipher the emojis to guess the champion names and become a
             "Champion Emoji-tionist"?
           </p>
-          <Link to="/lol">
+          <Link to="/emojify/lol">
             <button id="lol-button">
               <span className="button-text">PLAY</span>
             </button>
@@ -52,7 +52,7 @@ const SlotGame = () => {
             the characters and places from this mystical land and become a
             "Valoran Emoji Explorer"!
           </p>
-          <Link to="/valorant">
+          <Link to="/emojify/valorant">
             <button id="valorant-button">
               <span className="button-text">PLAY</span>
             </button>

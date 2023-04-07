@@ -53,10 +53,10 @@ function PreApp() {
         <Route path="/slot/abidin" element={<Easy />} />
         <Route path="/roulette" element={<Roulette />} />
         <Route path="/emojify" element={<EmojiGame />} />
-        <Route path="/lol" element={<LolEmoji />} />
-        <Route path="/valorant" element={<ValoEmoji />} />
-        <Route path="/turkish-cities" element={<TurkeyEmoji />} />
-        <Route path="/countries" element={<CountryEmoji />} />
+        <Route path="/emojify/lol" element={<LolEmoji />} />
+        <Route path="/emojify/valorant" element={<ValoEmoji />} />
+        <Route path="/emojify/turkish-cities" element={<TurkeyEmoji />} />
+        <Route path="/emojify/countries" element={<CountryEmoji />} />
         <Route path="/quizboxes" element={<QuizBox />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
