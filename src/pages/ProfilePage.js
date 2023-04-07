@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Welcome from "../comps/Welcome/Welcome";
-import Classics from "../comps/Classics/Classics";
 // Firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Profile from "../comps/Profile/Profile";
 
-function ClassicPage() {
+function ProfilePage() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const auth = getAuth();
@@ -28,10 +28,10 @@ function ClassicPage() {
 
   return (
     <div>
-      {user ? <Classics></Classics> : null}
+      {user ? <Profile></Profile> : null}
       {!user ? <Welcome></Welcome> : null}
     </div>
   );
 }
 
-export default ClassicPage;
+export default ProfilePage;

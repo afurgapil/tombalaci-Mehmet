@@ -7,6 +7,7 @@ import Header from "./comps/Header/Header";
 import Homepage from "./pages/Homepage";
 import ClassicPage from "./pages/ClassicsPage";
 import NewsPage from "./pages/NewsPage";
+import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./comps/NotFound/NotFound";
 import SignIn from "./comps/SignIn/SignIn";
 import SignUp from "./comps/SignUp/SignUp";
@@ -41,6 +42,7 @@ function PreApp() {
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/leaderboard" element={<Scoreboard />} />
         <Route path="/classics" element={<ClassicPage />} />

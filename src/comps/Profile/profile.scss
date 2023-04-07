@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,600&display=swap");
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+  width: 100%;
+  .profile-list {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-color: #d2cec7;
+    padding: 1rem;
+    border-radius: 5rem;
+
+    .profile-list-item {
+      text-align: left;
+      padding: 1rem;
+      margin-left: 1rem;
+
+      p {
+        font-size: 1.5rem;
+        margin: 0px;
+        padding: 0px;
+        font-family: "Exo 2", sans-serif;
+      }
+      &:first-child {
+        list-style: none;
+        font-size: 3rem;
+        font-weight: 700;
+        width: 90%;
+        margin: 0px;
+        border-bottom: 1px solid black;
+        h2 {
+          margin: 0px;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}

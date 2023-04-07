@@ -4,7 +4,7 @@ import News from "../comps/News/News";
 // Firebase
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-function Homepage() {
+function NewsPage() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const auth = getAuth();
@@ -34,4 +34,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default NewsPage;
