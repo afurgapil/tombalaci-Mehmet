@@ -12,7 +12,6 @@ function Homepage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
         setUser(user);
         setIsLoading(false);
       } else {
