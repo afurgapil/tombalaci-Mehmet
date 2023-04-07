@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import Agents from "./Agents";
+import React from "react";
 import "./box.scss";
-
+import { Link } from "react-router-dom";
+import GoBack from "../Tools/GoBack";
 const Box = () => {
-  const [selectedGame, setSelectedGame] = useState(null);
-
-  const handleButtonClick = (gameName) => {
-    setSelectedGame(gameName);
-  };
-
   return (
-    <div id="emoji-games-container">
-      {selectedGame === "Valorant" && <Agents />}
-
-      <div className="gamechange">
-        <button id="Valorant" onClick={() => handleButtonClick("Valorant")}>
-          <span>Valorant Agents</span>
-        </button>
+    <div id="quizboxes-container">
+      <GoBack></GoBack>
+      <div className="row">
+        <div className="quizboxes-c" id="valorant">
+          <h2>Valorant Agents</h2>
+          <p>
+            Travel the world with emojis! Guess the country names based on the
+            emojis and become a globetrotting emoji master!
+          </p>
+          <Link to="/quizboxes/valorant">
+            <button id="valorant-button">
+              <span className="button-text">PLAY</span>
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

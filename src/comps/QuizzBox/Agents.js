@@ -5,7 +5,7 @@ import "./agents.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-
+import GoBack from "../Tools/GoBack";
 function Agents() {
   const [selectedAgents, setSelectedAgents] = useState([]);
   const [selectedAgentData, setSelectedAgentData] = useState(null);
@@ -94,6 +94,8 @@ function Agents() {
 
   return (
     <div id="valodle-game-container">
+      <GoBack></GoBack>
+
       <h1 id="vaoldle-title">Valorant Agent Guessing Game</h1>
       <div id="agent-input">
         <TextField

@@ -28,6 +28,7 @@ import ValoEmoji from "./comps/Emoji/Valorant";
 import TurkeyEmoji from "./comps/Emoji/Turkey";
 import CountryEmoji from "./comps/Emoji/Country";
 import QuizBox from "./comps/QuizzBox/Box";
+import ValorantQuizBox from "./comps/QuizzBox/Agents";
 import Contact from "./comps/Contact/Contact";
 import Welcome from "./comps/Welcome/Welcome";
 function PreApp() {
@@ -58,6 +59,7 @@ function PreApp() {
         <Route path="/emojify/turkish-cities" element={<TurkeyEmoji />} />
         <Route path="/emojify/countries" element={<CountryEmoji />} />
         <Route path="/quizboxes" element={<QuizBox />} />
+        <Route path="/quizboxes/valorant" element={<ValorantQuizBox />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer></Footer>
