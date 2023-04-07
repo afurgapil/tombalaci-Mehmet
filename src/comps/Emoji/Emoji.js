@@ -1,12 +1,15 @@
 import React from "react";
 import "./emoji.scss";
 import { Link } from "react-router-dom";
-
+import "animate.css";
 const SlotGame = () => {
   return (
     <div id="emojify-container">
-      <div className="row">
-        <div className="emojify-c" id="country">
+      <div className="row animate__animated animate__backInDown">
+        <div
+          className="emojify-c  animate__animated  animate__backInLeft"
+          id="country"
+        >
           <h2>Countries</h2>
           <p>
             Travel the world with emojis! Guess the country names based on the
@@ -18,7 +21,10 @@ const SlotGame = () => {
             </button>
           </Link>
         </div>
-        <div className="emojify-c" id="turkey">
+        <div
+          className="emojify-c animate__animated animate__backInRight"
+          id="turkey"
+        >
           <h2>Turkish Cities</h2>
           <p>
             Ready to test your Turkish geography skills? Guess the names of
@@ -31,8 +37,11 @@ const SlotGame = () => {
           </Link>
         </div>
       </div>
-      <div className="row">
-        <div className="emojify-c" id="lol">
+      <div className="row animate__animated animate__backInUp">
+        <div
+          className="emojify-c animate__animated animate__backInLeft"
+          id="lol"
+        >
           <h2>League of Legends</h2>
           <p>
             Join the battle of emojis in the world of League of Legends! Can you
@@ -45,7 +54,10 @@ const SlotGame = () => {
             </button>
           </Link>
         </div>
-        <div className="emojify-c" id="valo">
+        <div
+          className="emojify-c animate__animated animate__backInRight"
+          id="valo"
+        >
           <h2>Valorant</h2>
           <p>
             Welcome to the world of Valoran! Use your emoji skills to identify

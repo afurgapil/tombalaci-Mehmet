@@ -2,11 +2,12 @@ import React from "react";
 import "./box.scss";
 import { Link } from "react-router-dom";
 import GoBack from "../Tools/GoBack";
+import "animate.css";
 const Box = () => {
   return (
     <div id="quizboxes-container">
       <GoBack></GoBack>
-      <div className="row">
+      <div className="row animate__animated animate__backInDown">
         <div className="quizboxes-c" id="valorant">
           <h2>Valorant Agents</h2>
           <p>
