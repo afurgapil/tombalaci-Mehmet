@@ -32,39 +32,56 @@ import QuizBox from "./comps/QuizzBox/Box";
 import ValorantQuizBox from "./comps/QuizzBox/Agents";
 import Contact from "./comps/Contact/Contact";
 import Welcome from "./comps/Welcome/Welcome";
+import Docs from "./comps/Docs/Docs";
 function PreApp() {
   return (
     <BrowserRouter>
-      <Header></Header>
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/reset" element={<Reset />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/leaderboard" element={<Scoreboard />} />
-        <Route path="/classics" element={<ClassicPage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/coinflip" element={<Coin />} />
-        <Route path="/todice" element={<Dice />} />
-        <Route path="/rps" element={<Rps />} />
-        <Route path="/slot" element={<Slot />} />
-        <Route path="/slot/muhterem" element={<Hard />} />
-        <Route path="/slot/cakir" element={<Medium />} />
-        <Route path="/slot/abidin" element={<Easy />} />
-        <Route path="/roulette" element={<Roulette />} />
-        <Route path="/emojify" element={<EmojiGame />} />
-        <Route path="/emojify/lol" element={<LolEmoji />} />
-        <Route path="/emojify/valorant" element={<ValoEmoji />} />
-        <Route path="/emojify/turkish-cities" element={<TurkeyEmoji />} />
-        <Route path="/emojify/countries" element={<CountryEmoji />} />
-        <Route path="/quizboxes" element={<QuizBox />} />
-        <Route path="/quizboxes/valorant" element={<ValorantQuizBox />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/docs" element={<Docs />} />
+        <Route
+          path="/*"
+          element={
+            <>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/welcome" element={<Welcome />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/reset" element={<Reset />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/leaderboard" element={<Scoreboard />} />
+                <Route path="/classics" element={<ClassicPage />} />
+                <Route path="/news" element={<NewsPage />} />
+                <Route path="/coinflip" element={<Coin />} />
+                <Route path="/todice" element={<Dice />} />
+                <Route path="/rps" element={<Rps />} />
+                <Route path="/slot" element={<Slot />} />
+                <Route path="/slot/muhterem" element={<Hard />} />
+                <Route path="/slot/cakir" element={<Medium />} />
+                <Route path="/slot/abidin" element={<Easy />} />
+                <Route path="/roulette" element={<Roulette />} />
+                <Route path="/emojify" element={<EmojiGame />} />
+                <Route path="/emojify/lol" element={<LolEmoji />} />
+                <Route path="/emojify/valorant" element={<ValoEmoji />} />
+                <Route
+                  path="/emojify/turkish-cities"
+                  element={<TurkeyEmoji />}
+                />
+                <Route path="/emojify/countries" element={<CountryEmoji />} />
+                <Route path="/quizboxes" element={<QuizBox />} />
+                <Route
+                  path="/quizboxes/valorant"
+                  element={<ValorantQuizBox />}
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+              {window.location.pathname !== "/docs" && <Footer />}
+            </>
+          }
+        />
       </Routes>
-      <Footer></Footer>
     </BrowserRouter>
   );
 }
