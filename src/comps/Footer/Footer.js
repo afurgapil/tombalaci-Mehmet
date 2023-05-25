@@ -16,10 +16,10 @@ const Footer = () => {
         </span>
       </div>
       <div className="todocs">
-        <Link to="/docs" className="todocs">
+        <a href="/docs" className="todocs">
           Docs
           <BsArrowUpRight></BsArrowUpRight>
-        </Link>
+        </a>
       </div>
     </footer>
   );
