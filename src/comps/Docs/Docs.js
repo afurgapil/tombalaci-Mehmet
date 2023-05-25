@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Docs.scss";
 import { BsGithub } from "react-icons/bs";
+import { FaMoon, FaSun } from "react-icons/fa";
 function Docs() {
+  const [isDark, setIsDark] = useState(false);
+  const [lightMode, setLightMode] = useState("white");
+  const changeLights = () => {
+    setIsDark(!isDark);
+  };
   return (
-    <div id="docs">
+    <div id="docs" className={lightMode}>
       <div id="docs-header">
         <div className="header-r">
           <h2 className="title">TOMBALACI MEHMET</h2>
@@ -16,7 +22,23 @@ function Docs() {
           >
             <BsGithub></BsGithub>
           </a>
-          //todo dark mode
+          <button className="lights" onClick={changeLights}>
+            {isDark ? (
+              <FaMoon
+                onClick={() => {
+                  setLightMode("white");
+                  changeLights();
+                }}
+              />
+            ) : (
+              <FaSun
+                onClick={() => {
+                  setLightMode("dark");
+                  changeLights();
+                }}
+              />
+            )}
+          </button>
         </div>
       </div>
       <div id="docs-main">

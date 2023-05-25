@@ -1,3 +1,31 @@
+$dark-aside: #4d4d4d;
+$dark-nav: #000000;
+$dark-bg: #8c8c8c;
+$dark-code: #333333;
+.dark {
+  background-color: $dark-bg;
+  #docs-header {
+    .lights {
+      color: white !important;
+    }
+    background-color: $dark-nav !important;
+    color: white !important;
+  }
+
+  #docs-main {
+    color: rgba(233, 231, 231, 0.72);
+    .aside {
+      background-color: $dark-aside !important;
+    }
+    .section {
+      background-color: $dark-bg !important;
+      .code {
+        background-color: $dark-code !important;
+        color: whitesmoke;
+      }
+    }
+  }
+}
 #docs {
   #docs-header {
     display: flex;
@@ -21,6 +49,19 @@
         justify-content: center;
         align-items: center;
         font-size: 2.5rem;
+      }
+
+      .lights {
+        font-size: 2.5rem;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+          font-size: 2.7rem;
+        }
       }
     }
   }
