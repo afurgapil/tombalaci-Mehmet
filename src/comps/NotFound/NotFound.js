@@ -5,8 +5,11 @@ function NotFound() {
   return (
     <div>
       <div id="notfound">
-        <h1>SOON</h1>
         <img src={tree} alt="tree"></img>
+        <div className="context">
+          <h1>404</h1>
+          <p>Sayfa Bulunamadı.</p>
+        </div>
       </div>
     </div>
   );

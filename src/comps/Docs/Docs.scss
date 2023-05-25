@@ -1,0 +1,123 @@
+$dark-aside: #4d4d4d;
+$dark-nav: #000000;
+$dark-bg: #8c8c8c;
+$dark-code: #333333;
+.dark {
+  background-color: $dark-bg;
+  #docs-header {
+    .lights {
+      color: white !important;
+    }
+    background-color: $dark-nav !important;
+    color: white !important;
+  }
+
+  #docs-main {
+    color: rgba(233, 231, 231, 0.72);
+    .aside {
+      background-color: $dark-aside !important;
+    }
+    .section {
+      background-color: $dark-bg !important;
+      .code {
+        background-color: $dark-code !important;
+        color: whitesmoke;
+      }
+    }
+  }
+}
+#docs {
+  #docs-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d6955d;
+    height: 4rem;
+    .title {
+      text-align: center;
+      width: 100%;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+    .header-l {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+      }
+
+      .lights {
+        font-size: 2.5rem;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+          font-size: 2.7rem;
+        }
+      }
+    }
+  }
+  #docs-main {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+
+    .aside {
+      flex: 2;
+      background-color: #e8c9ae;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+
+      .aside-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        margin-left: 0rem;
+        padding-left: 1.2rem;
+
+        li {
+          margin: 0.5rem 0rem;
+        }
+      }
+    }
+    .section {
+      flex: 10;
+      margin-left: 1rem;
+      padding-bottom: 5rem;
+      padding-top: 3rem;
+      p {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 2rem;
+        margin: 0.2rem;
+      }
+      .welcome {
+        .title {
+          font-size: 3rem;
+        }
+      }
+      .code {
+        background-color: #d6955d;
+        width: fit-content;
+        padding: 0.5rem;
+        font-style: italic;
+        margin-left: 2rem;
+      }
+    }
+  }
+}

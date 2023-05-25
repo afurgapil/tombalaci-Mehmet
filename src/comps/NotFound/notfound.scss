@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap");
 #notfound {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -10,5 +10,22 @@
   color: rgb(0, 0, 0);
   img {
     width: 30%;
+  }
+  .context {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-left: 1rem;
+    p {
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+    }
+
+    h1 {
+      font-weight: 100;
+    }
   }
 }
