@@ -77,7 +77,7 @@ function PreApp() {
                 />
                 <Route path="*" element={<NotFound />} />
               </Routes>
-              {window.location.pathname !== "/docs" && <Footer />}
+              <Footer></Footer>
             </>
           }
         />

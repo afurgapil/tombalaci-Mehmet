@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Docs.scss";
 import { BsGithub } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Link } from "react-router-dom";
 function Docs() {
   const [isDark, setIsDark] = useState(false);
   const [lightMode, setLightMode] = useState("white");
@@ -12,7 +13,9 @@ function Docs() {
     <div id="docs" className={lightMode}>
       <div id="docs-header">
         <div className="header-r">
-          <h2 className="title">TOMBALACI MEHMET</h2>
+          <Link className="title" to="/">
+            TOMBALACI MEHMET
+          </Link>
         </div>
         <div className="header-l">
           <a
