@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./roulette.scss";
+import GoBack from "../Tools/GoBack";
+
 //firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -354,6 +356,7 @@ function Roulette() {
 
   return (
     <div id="roulette-main">
+      <GoBack></GoBack>
       <div className="mainpage">
         {userchoice !== null && (
           <div className="roulette-guesses">

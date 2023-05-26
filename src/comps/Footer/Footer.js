@@ -1,6 +1,5 @@
 import React from "react";
 import "./footer.scss";
-import { Link } from "react-router-dom";
 import { BsArrowUpRight } from "react-icons/bs";
 const Footer = () => {
   const githubUrl = "https://github.com/afurgapil";

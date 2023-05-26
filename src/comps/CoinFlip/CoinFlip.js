@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./coinflip.scss";
 import welcomecoin from "../../assets/welcomecoin.gif";
+import GoBack from "../Tools/GoBack";
 //firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -81,6 +82,7 @@ const CoinFlip = () => {
   return (
     <div>
       <div id="coinflip-container">
+        <GoBack></GoBack>
         {!isGameStart ? (
           <div id="coinflip-gif-container">
             <img src={welcomecoin} alt="Coin"></img>

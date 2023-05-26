@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SlotGame.scss";
 import abidin from "../../assets/abidin.jpg";
 import abidin1 from "../../assets/abidin1.jpg";
@@ -9,20 +9,14 @@ import muhterem1 from "../../assets/muhterem1.png";
 import { NavLink } from "react-router-dom";
 //scroller
 import {
-  Sticky,
   Animator,
   ScrollContainer,
   ScrollPage,
   batch,
-  Fade,
-  MoveIn,
-  MoveOut,
-  ZoomOut,
   FadeOut,
   FadeIn,
-  ZoomIn,
 } from "react-scroll-motion";
-import { Button, Zoom } from "@mui/material";
+import { Button } from "@mui/material";
 const SlotGame = () => {
   const loginEffect = batch(FadeOut(1, -0.5), FadeIn(0, 1));
 

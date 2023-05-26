@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./todice.scss";
+import GoBack from "../Tools/GoBack";
 //firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -362,6 +363,7 @@ export default function ToDice() {
 
   return (
     <div className="ToDice">
+      <GoBack></GoBack>
       <div className="dice-container">
         <button className="enjoy" onClick={rollDice}>
           Roll Dice

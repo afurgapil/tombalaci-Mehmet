@@ -4,6 +4,8 @@ import Rock from "../../assets/6.png";
 import Paper from "../../assets/7.png";
 import Scissors from "../../assets/8.png";
 import Robot from "../../assets/robot.png";
+import GoBack from "../Tools/GoBack";
+
 //firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
@@ -107,6 +109,7 @@ const Game = () => {
 
   return (
     <div id="rps-container">
+      <GoBack></GoBack>
       <div id="game-container">
         <div id="robo">
           <img id="robot" className="pulse" src={Robot} alt=" "></img>
