@@ -1,12 +1,9 @@
-import "./App.scss";
-import PreApp from "./PreApp";
-
+import { useRoutes } from "react-router-dom";
+import routes from "./routes/routes";
+import Footer from "./comps/Footer/Footer";
+import Header from "./comps/Header/Header";
 function App() {
-  return (
-    <div>
-      <PreApp></PreApp>
-    </div>
-  );
+  return useRoutes(routes);
 }
 
 export default App;
