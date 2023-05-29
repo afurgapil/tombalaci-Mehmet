@@ -56,6 +56,7 @@ function PreApp() {
               <Route path="/" element={<Home />} />
               <Route path="/welcome" element={<Welcome />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/signin" element={<SignIn />} />
               <Route path="/reset" element={<Reset />} />
               <Route path="/contact" element={<Contact />} />
               <Route
