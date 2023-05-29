@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import heros from "../../data/heros";
-import "./lol.scss";
+import "../../style/lol.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
-import GoBack from "../Tools/GoBack";
+import GoBack from "../../Tools/GoBack";
 const Lol = () => {
   const [selectedHero, setSelectedHero] = useState("");
   const [heroEmojis, setHeroEmojis] = useState([]);

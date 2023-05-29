@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import agents from "../../data/agents";
 import alertify from "alertifyjs";
-import "./agents.scss";
+import "../../style/agents.scss";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import GoBack from "../Tools/GoBack";
+import GoBack from "../../Tools/GoBack";
 function Agents() {
   const [selectedAgents, setSelectedAgents] = useState([]);
   const [selectedAgentData, setSelectedAgentData] = useState(null);

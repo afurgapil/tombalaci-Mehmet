@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import countries from "../../data/countries";
-import "./country.scss";
+import "../../style/country.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
-import GoBack from "../Tools/GoBack";
+import GoBack from "../../Tools/GoBack";
 const Country = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [countryEmojis, setCountryEmojis] = useState([]);

@@ -1,9 +1,8 @@
-import { useRoutes } from "react-router-dom";
-import routes from "./routes/routes";
-import Footer from "./comps/Footer/Footer";
-import Header from "./comps/Header/Header";
+import React from "react";
+import PreApp from "./routes/PreApp";
+
 function App() {
-  return useRoutes(routes);
+  return <PreApp></PreApp>;
 }
 
 export default App;

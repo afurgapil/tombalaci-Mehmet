@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import "./slot.scss";
-import GoBack from "../../comps/Tools/GoBack";
+import "../../style/slot.scss";
+import GoBack from "../../Tools/GoBack";
 //firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../Firebase";
 //mui
-import Spinner from "../Tools/Spinner";
+import Spinner from "../../Tools/Spinner";
 import { Button } from "@mui/material";
 import alertify from "alertifyjs";
 

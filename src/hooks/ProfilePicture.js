@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import "./hooks.scss";
+import "../style/hooks.scss";
 
 function ProfilePicture() {
   const [displayName, setDisplayName] = useState(null);

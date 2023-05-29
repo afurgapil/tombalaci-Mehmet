@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import turkeyCities from "../../data/turkeyCities";
-import "./turkeycities.scss";
+import "../../style/turkeycities.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
-import GoBack from "../Tools/GoBack";
+import GoBack from "../../Tools/GoBack";
 
 const Turkey = () => {
   const [selectedCity, setSelectedCity] = useState("");

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import "./hooks.scss";
+import "../style/hooks.scss";
 
 const db = getFirestore();
 

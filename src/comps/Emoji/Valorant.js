@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import agents from "../../data/agents";
-import "./valorant.scss";
+import "../../style/valorant.scss";
 import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import GoBack from "../Tools/GoBack";
+import GoBack from "../../Tools/GoBack";
 import alertify from "alertifyjs";
 const Valorant = () => {
   const [selectedAgent, setSelectedAgent] = useState("");
