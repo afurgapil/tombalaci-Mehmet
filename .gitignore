@@ -24,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 ads.txt
+src/constants/abi.js
+src/constants/addresses.js
