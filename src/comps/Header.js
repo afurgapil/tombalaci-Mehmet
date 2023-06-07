@@ -9,10 +9,11 @@ import { auth } from "../Firebase";
 //mui
 import MenuIcon from "@mui/icons-material/Menu";
 import Score from "../hooks/Score";
-
+import { useFetchUserData } from "../hooks/useFetchUserData";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const aaaa = useFetchUserData();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -20,6 +21,7 @@ function Header() {
 
     return unsubscribe;
   }, []);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
