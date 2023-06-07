@@ -10,6 +10,7 @@ import {
   setCorrectRps,
   setCorrectSlot,
   setScore,
+  setDisplayName,
 } from "../store/slicers/user";
 
 export const useFetchUserData = () => {
@@ -36,8 +37,8 @@ export const useFetchUserData = () => {
               dispatch(setCorrectRps(userData.correctRps));
               dispatch(setCorrectSlot(userData.correctSlot));
               dispatch(setScore(userData.score));
+              dispatch(setDisplayName(userData.displayName));
             } else {
-              // Kullanıcı verisi bulunamadı durumunda yapılacak işlemler
             }
           })
           .catch((error) => {
@@ -47,7 +48,7 @@ export const useFetchUserData = () => {
         console.log(error);
       }
     }
-  }, [user]);
+  }, [user, dispatch]);
 
   return userStats;
 };

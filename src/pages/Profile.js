@@ -3,8 +3,6 @@ import Modal from "react-modal";
 //modal
 import ModalComponent from "../comps/Modal";
 import customStyles from "../style/customStyles";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 import "../style/profile.scss";
 //web3
 import { ethers } from "ethers";
@@ -14,7 +12,13 @@ import { TRADE_ABI } from "../constants/abi";
 import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
 import { useAddress } from "../hooks/useAddress";
-import { useContract } from "../hooks/useContract";
+import { useCorrectCoinflip } from "../hooks/user/useCorrectCoinFlip";
+import { useCorrectRoulette } from "../hooks/user/useCorrectRoulette";
+import { useCorrectDice } from "../hooks/user/useCorrectDice";
+import { useCorrectJackpot } from "../hooks/user/useCorrectJackpot";
+import { useCorrectRps } from "../hooks/user/useCorrectRps.js";
+import { useCorrectSlot } from "../hooks/user/useCorrectSlot";
+import { useDisplayName } from "../hooks/user/useDisplayName";
 //redux
 import { setDonateContract } from "../store/slicers/contract";
 import { batch, useDispatch } from "react-redux";
@@ -24,6 +28,7 @@ import {
   setProvider,
   setSigner,
 } from "../store/slicers/data";
+
 import Trade from "../comps/Trade";
 import { showErrorNotification } from "../utils/alertifyUtils";
 const Profile = ({ userId }) => {
@@ -31,36 +36,16 @@ const Profile = ({ userId }) => {
   const provider = useProvider();
   const signer = useSigner();
   const address = useAddress();
+  const name = useDisplayName();
+  const correctCoinflip = useCorrectCoinflip();
+  const correctDice = useCorrectDice();
+  const correctJackpot = useCorrectJackpot();
+  const correctRoulette = useCorrectRoulette();
+  const correctRps = useCorrectRps();
+  const correctSlot = useCorrectSlot();
   const [wallet, setWallet] = useState();
-  const [userStats, setUserStats] = useState({});
-  const [name, setName] = useState(null);
   const [modalIsOpen, setIsOpen] = useState(false);
-  const auth = getAuth();
-  const user = auth.currentUser;
-  useEffect(() => {
-    if (user) {
-      try {
-        const userId = user.uid;
-        const firestore = getFirestore();
-        const userRef = doc(firestore, "users", userId);
-        getDoc(userRef)
-          .then((doc) => {
-            if (doc.exists()) {
-              const userData = doc.data();
-              setUserStats(userData);
-              const displayName = userData.displayName;
-              setName(displayName);
-            } else {
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, [user]);
+
   useEffect(() => {
     if (!window.ethereum) {
       alert("Metamask is not installed");
@@ -125,22 +110,22 @@ const Profile = ({ userId }) => {
           <h2>{name}</h2>
         </li>
         <li className="profile-list-item">
-          <p>CoinFlip Wins: {userStats.correctCoinflip || 0}</p>
+          <p>CoinFlip Wins: {correctCoinflip || 0}</p>
         </li>
         <li className="profile-list-item">
-          <p>ToDice Wins: {userStats.correctDice || 0}</p>
+          <p>ToDice Wins: {correctDice || 0}</p>
         </li>
         <li className="profile-list-item">
-          <p>Rock Paper Scissors Wins: {userStats.correctRps || 0}</p>
+          <p>Rock Paper Scissors Wins: {correctRps || 0}</p>
         </li>
         <li className="profile-list-item">
-          <p>Roulette Wins: {userStats.correctRoulette || 0}</p>
+          <p>Roulette Wins: {correctRoulette || 0}</p>
         </li>
         <li className="profile-list-item">
-          <p>Slot Wins: {userStats.correctSlot || 0}</p>
+          <p>Slot Wins: {correctSlot || 0}</p>
         </li>
         <li className="profile-list-item">
-          <p>Jackpots: {userStats.correctJackpot || 0}</p>
+          <p>Jackpots: {correctJackpot || 0}</p>
         </li>
         <button
           className={`button ${address ? "connected" : "inconnect"}`}

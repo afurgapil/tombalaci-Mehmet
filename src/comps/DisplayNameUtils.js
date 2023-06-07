@@ -3,7 +3,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import "../style/hooks.scss";
 
-function ProfilePicture() {
+function DisplayNameUtils() {
   const [displayName, setDisplayName] = useState(null);
   const [error, setError] = useState("");
   const auth = getAuth();
@@ -50,4 +50,4 @@ function ProfilePicture() {
   );
 }
 
-export default ProfilePicture;
+export default DisplayNameUtils;

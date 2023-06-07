@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import "../style/header.scss";
 import logo from "../assets/logo.png";
 import { NavLink, Link } from "react-router-dom";
-import ProfilePicture from "../hooks/ProfilePicture";
-import SignOutButton from "../hooks/SignOutButton";
+import DisplayNameUtils from "../comps/DisplayNameUtils";
+import SignOutButton from "../comps/SignOutButton";
 //firebase
 import { auth } from "../Firebase";
 //mui
 import MenuIcon from "@mui/icons-material/Menu";
-import Score from "../hooks/Score";
+import Score from "../comps/Score";
 import { useFetchUserData } from "../hooks/useFetchUserData";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  const aaaa = useFetchUserData();
+  const fetchUserData = useFetchUserData();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -66,7 +66,7 @@ function Header() {
             </li>
             <div id="onLogin">
               <Link to="/profile">
-                <ProfilePicture />
+                <DisplayNameUtils />
               </Link>
               <SignOutButton />
             </div>

@@ -8,6 +8,7 @@ const initialState = {
   correctRps: null,
   correctSlot: null,
   score: null,
+  displayName: null,
 };
 
 export const userSlice = createSlice({
@@ -35,6 +36,9 @@ export const userSlice = createSlice({
     setScore: (state, action) => {
       state.score = action.payload;
     },
+    setDisplayName: (state, action) => {
+      state.displayName = action.payload;
+    },
   },
 });
 
@@ -46,6 +50,7 @@ export const {
   setCorrectRps,
   setCorrectSlot,
   setScore,
+  setDisplayName,
 } = userSlice.actions;
 
 export default userSlice.reducer;
