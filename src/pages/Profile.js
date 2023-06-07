@@ -24,8 +24,8 @@ import {
   setProvider,
   setSigner,
 } from "../store/slicers/data";
-import alertify from "alertifyjs";
 import Trade from "../comps/Trade";
+import { showErrorNotification } from "../utils/alertifyUtils";
 const Profile = ({ userId }) => {
   const dispatch = useDispatch();
   const provider = useProvider();
@@ -110,9 +110,7 @@ const Profile = ({ userId }) => {
       showErrorNotification("cekilise katilirken bir hata olustu");
     }
   };
-  const showErrorNotification = (errorMessage) => {
-    alertify.error(errorMessage);
-  };
+
   return (
     <div className="profile">
       <Modal
