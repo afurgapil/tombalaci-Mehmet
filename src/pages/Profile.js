@@ -28,7 +28,7 @@ import {
   setProvider,
   setSigner,
 } from "../store/slicers/data";
-
+import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import Trade from "../comps/Trade";
 import { showErrorNotification } from "../utils/alertifyUtils";
 const Profile = ({ userId }) => {
@@ -45,7 +45,8 @@ const Profile = ({ userId }) => {
   const correctSlot = useCorrectSlot();
   const [wallet, setWallet] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  const [isStatsOpen, setIsStatsOpen] = useState(false);
+  const [isTradeOpen, setIsTradeOpen] = useState(true);
   useEffect(() => {
     if (!window.ethereum) {
       alert("Metamask is not installed");
@@ -97,51 +98,72 @@ const Profile = ({ userId }) => {
   };
 
   return (
-    <div className="profile">
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={handleClose}
-        style={customStyles}
-      >
-        <ModalComponent handleClose={handleClose} />
-      </Modal>
-      <ul className="profile-list">
-        <li className="profile-list-item">
-          <h2>{name}</h2>
-        </li>
-        <li className="profile-list-item">
-          <p>CoinFlip Wins: {correctCoinflip || 0}</p>
-        </li>
-        <li className="profile-list-item">
-          <p>ToDice Wins: {correctDice || 0}</p>
-        </li>
-        <li className="profile-list-item">
-          <p>Rock Paper Scissors Wins: {correctRps || 0}</p>
-        </li>
-        <li className="profile-list-item">
-          <p>Roulette Wins: {correctRoulette || 0}</p>
-        </li>
-        <li className="profile-list-item">
-          <p>Slot Wins: {correctSlot || 0}</p>
-        </li>
-        <li className="profile-list-item">
-          <p>Jackpots: {correctJackpot || 0}</p>
-        </li>
-        <button
-          className={`button ${address ? "connected" : "inconnect"}`}
-          onClick={connect}
+    <div className="profile-container">
+      <div className="profile section">
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={handleClose}
+          style={customStyles}
         >
-          {address ? (
-            <div className="wallet">
-              <p>Connected</p>
-              <p>{wallet}</p>
+          <ModalComponent handleClose={handleClose} />
+        </Modal>
+        <button className="toggle" onClick={() => setIsStatsOpen(!isStatsOpen)}>
+          {isStatsOpen ? (
+            <div className="toggle__item">
+              <SlArrowUp />
+              <p>Hide Stats</p>
             </div>
           ) : (
-            "Connect"
+            <div className="toggle__item">
+              <SlArrowDown />
+              <p>Show Stats</p>
+            </div>
           )}
         </button>
-        {address && <Trade></Trade>}
-      </ul>
+        {isStatsOpen && (
+          <ul className="profile-list">
+            <li className="profile-list-item">
+              <h2>{name}</h2>
+            </li>
+            <li className="profile-list-item">
+              <p>CoinFlip Wins: {correctCoinflip || 0}</p>
+            </li>
+            <li className="profile-list-item">
+              <p>ToDice Wins: {correctDice || 0}</p>
+            </li>
+            <li className="profile-list-item">
+              <p>Rock Paper Scissors Wins: {correctRps || 0}</p>
+            </li>
+            <li className="profile-list-item">
+              <p>Roulette Wins: {correctRoulette || 0}</p>
+            </li>
+            <li className="profile-list-item">
+              <p>Slot Wins: {correctSlot || 0}</p>
+            </li>
+            <li className="profile-list-item">
+              <p>Jackpots: {correctJackpot || 0}</p>
+            </li>
+          </ul>
+        )}
+      </div>
+
+      {isTradeOpen && (
+        <>
+          <button
+            className={`button ${address ? "connected" : "inconnect"}`}
+            onClick={connect}
+          >
+            {address ? (
+              <div className="wallet">
+                <p>{wallet}</p>
+              </div>
+            ) : (
+              <p>Connect Wallet</p>
+            )}
+          </button>
+          {address && <Trade></Trade>}
+        </>
+      )}
     </div>
   );
 };

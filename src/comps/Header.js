@@ -37,7 +37,7 @@ function Header() {
         <div className="menu-container">
           <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
             <li className="navigation-item">
-              <NavLink to="/" exact className="navigation-item-link">
+              <NavLink to="/" exact="true" className="navigation-item-link">
                 Home
               </NavLink>
             </li>
@@ -87,7 +87,7 @@ function Header() {
         <div className="menu-container">
           <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
             <li className="navigation-item">
-              <NavLink to="/" exact className="navigation-item-link">
+              <NavLink to="/" exact="true" className="navigation-item-link">
                 Home
               </NavLink>
             </li>

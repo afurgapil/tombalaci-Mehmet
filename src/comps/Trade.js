@@ -10,13 +10,21 @@ import { parseEther } from "ethers/lib/utils";
 import ModalComponent from "../comps/Modal";
 import customStyles from "../style/customStyles";
 import { showErrorNotification } from "../utils/alertifyUtils";
-
+import { ethers } from "ethers";
+import { useProvider } from "../hooks/useProvider";
+import { useSigner } from "../hooks/useSigner";
+import "../style/trade.scss";
 function Trade() {
   const tradeContract = useContract();
   const [depositAmount, setDepositAmount] = useState("");
   const [withdrawAmount, setWithdrawAmount] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
   const [score, setScore] = useState(null);
+  const [contractBalance, setContractBalance] = useState();
+  const [balance, setBalance] = useState(false);
+
+  const provider = useProvider();
+  const signer = useSigner();
   const handleClose = () => setIsOpen(false);
   const auth = getAuth();
   const user = auth.currentUser;
@@ -42,11 +50,42 @@ function Trade() {
       }
     }
   }, [user]);
+
+  useEffect(() => {
+    const checkUserBalance = async () => {
+      if (!provider) return;
+      try {
+        const address = await signer.getAddress();
+        const balance = await provider.getBalance(address);
+        const formattedBalance = ethers.utils.formatEther(balance);
+        const subBalance = formattedBalance.substring(0, 7);
+        setBalance(subBalance);
+      } catch (error) {
+        console.error("Error connecting:", error);
+        showErrorNotification("cekilise katilirken bir hata olustu");
+      }
+    };
+    const checkContractBalance = async () => {
+      if (!tradeContract) {
+        return;
+      }
+      try {
+        const txn = await tradeContract.getBalance();
+        const balance = ethers.utils.formatUnits(txn, "ether");
+        setContractBalance(balance);
+      } catch (error) {
+        console.error("Error while checking contract balance:", error);
+      }
+    };
+    checkContractBalance();
+    checkUserBalance();
+  }, [tradeContract]);
+
   const deposit = async () => {
     try {
       setIsOpen(true);
       const parsedAmount = parseEther(depositAmount);
-      const newScore = score + depositAmount * 1000;
+      const newScore = score + depositAmount * 10000;
       const txn = await tradeContract.deposit({ value: parsedAmount });
       await txn.wait();
       setIsOpen(false);
@@ -63,7 +102,7 @@ function Trade() {
     try {
       setIsOpen(true);
       const parsedAmount = parseEther(withdrawAmount);
-      const newScore = score - withdrawAmount * 1000;
+      const newScore = score - withdrawAmount * 10000;
       const txn = await tradeContract.withdraw(parsedAmount);
       await txn.wait();
       setIsOpen(false);
@@ -86,7 +125,7 @@ function Trade() {
         <ModalComponent handleClose={handleClose} />
       </Modal>
       <div>
-        <p>1 MATIC= 1000 Point</p>
+        <p>1 MATIC= 10000 Point</p>
       </div>
       <div>
         <input
@@ -109,6 +148,8 @@ function Trade() {
         <button className="change-address-btn" onClick={withdraw}>
           Withdraw
         </button>
+        <p>Pool:{contractBalance} MATIC</p>
+        <p>UserBalance:{balance} MATIC</p>
       </div>
     </div>
   );
