@@ -62,6 +62,9 @@ function Docs() {
             <li>
               <a href="#emoji">Emojiler</a>
             </li>
+            <li>
+              <a href="#swap">Takas</a>
+            </li>
           </ul>
         </aside>
         <section className="section">
@@ -180,9 +183,32 @@ function Docs() {
           <div className="emoji">
             <h2 id="emoji">Emojiler</h2>
             <p>
-              Oyunlarda kullanilan emojiler yapay zeka kullanarak
-              olusturulmustur. Yapay zekanin kullandigi verilerden kaynakli
-              eksiklikler ya da hatalar bulunabilir.
+              Oyunlarımızda, farklı durumları ve tahminleri ifade etmek için
+              çeşitli emojiler kullanıyoruz. Bu emojiler, oyuncularımıza
+              oyunlarında heyecan ve eğlence katmak için özenle seçilmiştir.
+              Emojiler, yapay zeka algoritmaları tarafından tahminlere dayalı
+              olarak oluşturulmuştur.
+            </p>
+            <p>
+              Her bir emoji, oyuncularımızın oyunlarında doğru tahminleri
+              yapmalarını teşvik etmek ve kazançlarını artırmak için bir ipucu
+              veya işaret niteliğindedir. Emojileri doğru bir şekilde yorumlamak
+              ve tahminlerinizde kullanmak, oyunlarınızda başarı elde etmenize
+              yardımcı olabilir.
+            </p>
+          </div>
+
+          <div className="swap">
+            <h2 className="title">Takas Mekanizması</h2>
+            <p>
+              Klasik oyunları oynayarak kazandığınız puanları kripto varlıklarla
+              takas edebilirsiniz! Profil sekmesinden takas alanına giderek,
+              token karşılığında puan satabilir veya puan toplamak için
+              tokenlerinizi kullanabilirsiniz. Şu an için test sürecinde
+              olduğumuzdan dolayı sadece Polygon Testnet (Mumbai) ağı ve MATIC
+              tokeni desteklenmektedir. (Belki oyunlardan puan yerine
+              <bold> $TMB </bold>
+              kazanmaya başlarız.)
             </p>
           </div>
         </section>
