@@ -116,7 +116,7 @@ const Profile = ({ userId }) => {
           ) : (
             <div className="toggle__item">
               <SlArrowDown />
-              <p>Show Stats</p>
+              <p>Show Game Stats</p>
             </div>
           )}
         </button>
@@ -149,18 +149,14 @@ const Profile = ({ userId }) => {
 
       {isTradeOpen && (
         <>
-          <button
-            className={`button ${address ? "connected" : "inconnect"}`}
-            onClick={connect}
-          >
-            {address ? (
-              <div className="wallet">
-                <p>{wallet}</p>
-              </div>
-            ) : (
-              <p>Connect Wallet</p>
-            )}
-          </button>
+          {!address && (
+            <button
+              className={`button ${address ? "connected" : "inconnect"}`}
+              onClick={connect}
+            >
+              {!address && <p>Connect Wallet</p>}
+            </button>
+          )}
           {address && <Trade></Trade>}
         </>
       )}
