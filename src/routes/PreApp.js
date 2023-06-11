@@ -79,31 +79,93 @@ function PreApp() {
                 />
               ))}
               <Route
-                path="/slot"
+                path="slot"
                 element={
                   <PrivateRoute>
-                    <Route index={true} element={<Slot />} />
-                    <Route path="muhterem" element={<Hard />} />
-                    <Route path="cakir" element={<Medium />} />
-                    <Route path="abidin" element={<Easy />} />
+                    <Slot />
                   </PrivateRoute>
                 }
               />
               <Route
-                path="/emojify"
+                path="slot/muhterem"
                 element={
                   <PrivateRoute>
-                    <Route index={true} element={<EmojiGame />} />
-                    <Route path="lol" element={<LolEmoji />} />
-                    <Route path="valorant" element={<ValoEmoji />} />
-                    <Route path="turkish-cities" element={<TurkeyEmoji />} />
-                    <Route path="countries" element={<CountryEmoji />} />
+                    <Hard />
                   </PrivateRoute>
                 }
               />
-              <Route path="/quizboxes">
-                <Route index={true} element={<QuizBox />} />
-                <Route path="valorant" element={<ValorantQuizBox />} />
+              <Route
+                path="slot/abidin"
+                element={
+                  <PrivateRoute>
+                    <Easy />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="slot/cakir"
+                element={
+                  <PrivateRoute>
+                    <Medium />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="emojify"
+                element={
+                  <PrivateRoute>
+                    <EmojiGame />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/emojify/lol"
+                element={
+                  <PrivateRoute>
+                    <LolEmoji />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/emojify/valorant"
+                element={
+                  <PrivateRoute>
+                    <ValoEmoji />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/emojify/turkish-cities"
+                element={
+                  <PrivateRoute>
+                    <TurkeyEmoji />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/emojify/countries"
+                element={
+                  <PrivateRoute>
+                    <CountryEmoji />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/quizboxes"
+                element={
+                  <PrivateRoute>
+                    <QuizBox />
+                  </PrivateRoute>
+                }
+              >
+                <Route
+                  path="valorant"
+                  element={
+                    <PrivateRoute>
+                      <ValorantQuizBox />
+                    </PrivateRoute>
+                  }
+                />
               </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
