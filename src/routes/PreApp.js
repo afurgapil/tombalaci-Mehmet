@@ -7,7 +7,7 @@ import Header from "../comps/Header";
 import Home from "../pages/Home";
 import Classic from "../pages/Classics";
 import News from "../pages/News";
-import Profile from "../pages/Profile";
+import Swap from "../pages/Swap";
 import NotFound from "../pages/NotFound";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -19,6 +19,7 @@ import Easy from "../comps/Slot/Slot6";
 import Medium from "../comps/Slot/Slot5";
 import Hard from "../comps/Slot/Slot4";
 import Roulette from "../pages/Roulette";
+import Stats from "../pages/Stats";
 //comps
 import Scoreboard from "../pages/Scoreboard";
 import Slot from "../pages/SlotGame";
@@ -60,10 +61,18 @@ function PreApp() {
               <Route path="/reset" element={<Reset />} />
               <Route path="/contact" element={<Contact />} />
               <Route
-                path="/profile"
+                path="/swap"
                 element={
                   <PrivateRoute>
-                    <Profile />
+                    <Swap />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/stats"
+                element={
+                  <PrivateRoute>
+                    <Stats />
                   </PrivateRoute>
                 }
               />

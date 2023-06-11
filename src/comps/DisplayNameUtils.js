@@ -1,13 +1,23 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import "../style/hooks.scss";
-
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 function DisplayNameUtils() {
   const [displayName, setDisplayName] = useState(null);
-  const [error, setError] = useState("");
   const auth = getAuth();
   const user = auth.currentUser;
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     if (user) {
@@ -22,15 +32,13 @@ function DisplayNameUtils() {
               const upperName = userData.displayName.toUpperCase();
               setDisplayName(upperName);
             } else {
-              setError("No such document!");
+              console.log("Something went wrong :(");
             }
           })
           .catch((error) => {
-            setError(error);
             console.log(error);
           });
       } catch (error) {
-        setError(error);
         console.log(error);
       }
     }
@@ -39,9 +47,34 @@ function DisplayNameUtils() {
   return (
     <div>
       {displayName ? (
-        <div id="profile">
-          <h3>{displayName}</h3>
-          {error && <p>{error}</p>}
+        <div>
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+            onMouseOver={handleClick}
+            className="profile-name"
+          >
+            {displayName}
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link to="stats">İstatistikler</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to="swap">Takas</Link>
+            </MenuItem>
+          </Menu>
         </div>
       ) : (
         <p>Loading...</p>
@@ -49,5 +82,4 @@ function DisplayNameUtils() {
     </div>
   );
 }
-
 export default DisplayNameUtils;

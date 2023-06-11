@@ -1,0 +1,66 @@
+.stats-container {
+  min-height: 90vh;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.profile-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.profile-list-item {
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #333;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 16px;
+  margin: 0;
+  color: #777;
+}
+
+.profile-list-item p {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-list-item p:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.profile-list-item:nth-child(2) p:before {
+  background-color: #ff9800;
+}
+
+.profile-list-item:nth-child(3) p:before {
+  background-color: #3f51b5;
+}
+
+.profile-list-item:nth-child(4) p:before {
+  background-color: #009688;
+}
+
+.profile-list-item:nth-child(5) p:before {
+  background-color: #e91e63;
+}
+
+.profile-list-item:nth-child(6) p:before {
+  background-color: #673ab7;
+}
+
+.profile-list-item:nth-child(7) p:before {
+  background-color: #f44336;
+}

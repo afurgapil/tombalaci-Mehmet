@@ -3,10 +3,7 @@ import Modal from "react-modal";
 //modal
 import ModalComponent from "../comps/Modal";
 import customStyles from "../style/customStyles";
-import "../style/profile.scss";
-//firestore
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import "../style/swap.scss";
 //web3
 import { ethers } from "ethers";
 import { TRADE_ADDRESS } from "../constants/addresses";
@@ -24,45 +21,16 @@ import {
   setProvider,
   setSigner,
 } from "../store/slicers/data";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import Trade from "../comps/Trade";
 import { showErrorNotification } from "../utils/alertifyUtils";
-const Profile = ({ userId }) => {
+const Swap = () => {
   const dispatch = useDispatch();
   const provider = useProvider();
   const signer = useSigner();
   const address = useAddress();
   const [wallet, setWallet] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [isStatsOpen, setIsStatsOpen] = useState(false);
-  const [userStats, setUserStats] = useState({});
-  const [name, setName] = useState(null);
-  const auth = getAuth();
-  const user = auth.currentUser;
-  useEffect(() => {
-    if (user) {
-      try {
-        const userId = user.uid;
-        const firestore = getFirestore();
-        const userRef = doc(firestore, "users", userId);
-        getDoc(userRef)
-          .then((doc) => {
-            if (doc.exists()) {
-              const userData = doc.data();
-              setUserStats(userData);
-              const displayName = userData.displayName;
-              setName(displayName);
-            } else {
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, [user]);
+
   useEffect(() => {
     if (!window.ethereum) {
       alert("Metamask is not installed");
@@ -115,54 +83,13 @@ const Profile = ({ userId }) => {
 
   return (
     <div className="profile-container">
-      <div className="profile section">
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={handleClose}
-          style={customStyles}
-        >
-          <ModalComponent handleClose={handleClose} />
-        </Modal>
-        <button className="toggle" onClick={() => setIsStatsOpen(!isStatsOpen)}>
-          {isStatsOpen ? (
-            <div className="toggle__item">
-              <SlArrowUp />
-              <p>Hide Stats</p>
-            </div>
-          ) : (
-            <div className="toggle__item">
-              <SlArrowDown />
-              <p>Show Game Stats</p>
-            </div>
-          )}
-        </button>
-        {isStatsOpen && (
-          <ul className="profile-list">
-            <li className="profile-list-item">
-              <h2>{name}</h2>
-            </li>
-            <li className="profile-list-item">
-              <p>CoinFlip Wins: {userStats.correctCoinflip || 0}</p>
-            </li>
-            <li className="profile-list-item">
-              <p>ToDice Wins: {userStats.correctDice || 0}</p>
-            </li>
-            <li className="profile-list-item">
-              <p>Rock Paper Scissors Wins: {userStats.correctRps || 0}</p>
-            </li>
-            <li className="profile-list-item">
-              <p>Roulette Wins: {userStats.correctRoulette || 0}</p>
-            </li>
-            <li className="profile-list-item">
-              <p>Slot Wins: {userStats.correctSlot || 0}</p>
-            </li>
-            <li className="profile-list-item">
-              <p>Jackpots: {userStats.correctJackpot || 0}</p>
-            </li>
-          </ul>
-        )}
-      </div>
-
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={handleClose}
+        style={customStyles}
+      >
+        <ModalComponent handleClose={handleClose} />
+      </Modal>
       <>
         {!address && (
           <button
@@ -178,4 +105,4 @@ const Profile = ({ userId }) => {
   );
 };
 
-export default Profile;
+export default Swap;

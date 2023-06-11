@@ -9,11 +9,9 @@ import { auth } from "../Firebase";
 //mui
 import MenuIcon from "@mui/icons-material/Menu";
 import Score from "../comps/Score";
-import { useFetchUserData } from "../hooks/useFetchUserData";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
-  // const fetchUserData = useFetchUserData();
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -25,6 +23,7 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   function OnLoginHeader() {
     return (
       <div className="header-container">
@@ -50,7 +49,7 @@ function Header() {
               <NavLink to="/news" className="navigation-item-link">
                 News
               </NavLink>
-            </li>{" "}
+            </li>
             <li className="navigation-item">
               <NavLink to="/leaderboard" className="navigation-item-link">
                 LeaderBoard
@@ -65,7 +64,7 @@ function Header() {
               <Score></Score>
             </li>
             <div id="onLogin">
-              <Link to="/profile">
+              <Link>
                 <DisplayNameUtils />
               </Link>
               <SignOutButton />
