@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   donate: null,
+  wheel: null,
 };
 
 export const contractsSlice = createSlice({
@@ -11,9 +12,12 @@ export const contractsSlice = createSlice({
     setDonateContract: (state, action) => {
       state.donate = action.payload;
     },
+    setWheelContract: (state, action) => {
+      state.wheel = action.payload;
+    },
   },
 });
 
-export const { setDonateContract } = contractsSlice.actions;
+export const { setDonateContract, setWheelContract } = contractsSlice.actions;
 
 export default contractsSlice.reducer;
