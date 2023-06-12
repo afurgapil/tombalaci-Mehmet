@@ -36,10 +36,12 @@ function Stats() {
     <div className="stats-container">
       <ul className="profile-list">
         <li className="profile-list-item">
-          <h2>{name}</h2>
+          <h2 className="username">{name}</h2>
         </li>
         <li className="profile-list-item">
-          <p>CoinFlip Wins: {userStats.correctCoinflip || 0}</p>
+          <p className="item__p">
+            CoinFlip Wins: {userStats.correctCoinflip || 0}
+          </p>
         </li>
         <li className="profile-list-item">
           <p>ToDice Wins: {userStats.correctDice || 0}</p>

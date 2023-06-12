@@ -4,23 +4,13 @@ import Modal from "react-modal";
 import ModalComponent from "../comps/Modal";
 import customStyles from "../style/customStyles";
 import "../style/swap.scss";
-//web3
-import { ethers } from "ethers";
-import { TRADE_ADDRESS } from "../constants/addresses";
-import { TRADE_ABI } from "../constants/abi";
 //hooks
 import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
 import { useAddress } from "../hooks/useAddress";
 //redux
-import { setDonateContract } from "../store/slicers/contract";
-import { batch, useDispatch } from "react-redux";
-import {
-  setAccount,
-  setAddress,
-  setProvider,
-  setSigner,
-} from "../store/slicers/data";
+import { useDispatch } from "react-redux";
+import { setAccount, setAddress } from "../store/slicers/data";
 import Trade from "../comps/Trade";
 import { showErrorNotification } from "../utils/alertifyUtils";
 const Swap = () => {
@@ -31,35 +21,6 @@ const Swap = () => {
   const [wallet, setWallet] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (!window.ethereum) {
-      alert("Metamask is not installed");
-      return;
-    }
-
-    const initialize = async () => {
-      try {
-        await window.ethereum.request({ method: "eth_requestAccounts" });
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        const tradeContract = new ethers.Contract(
-          TRADE_ADDRESS,
-          TRADE_ABI,
-          signer
-        );
-
-        batch(() => {
-          dispatch(setProvider(provider));
-          dispatch(setDonateContract(tradeContract));
-          dispatch(setSigner(signer));
-        });
-      } catch (error) {
-        console.error("Error initializing:", error);
-      }
-    };
-
-    initialize();
-  }, [dispatch]);
   const handleClose = () => setIsOpen(false);
 
   const connect = async () => {

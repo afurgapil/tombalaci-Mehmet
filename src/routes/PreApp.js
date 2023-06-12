@@ -35,6 +35,7 @@ import Contact from "../pages/Contact";
 import Welcome from "../pages/Welcome";
 import Docs from "../pages/Docs";
 import PrivateRoute from "./PrivateRoute";
+import Wheel from "../pages/Wheel";
 function PreApp() {
   const privateRoutes = [
     { path: "/leaderboard", component: Scoreboard },
@@ -44,6 +45,27 @@ function PreApp() {
     { path: "/todice", component: Dice },
     { path: "/rps", component: Rps },
     { path: "/roulette", component: Roulette },
+    { path: "/swap", component: Swap },
+    { path: "/stats", component: Stats },
+    { path: "/slot", component: Slot },
+    { path: "/slot/abidin", component: Easy },
+    { path: "/slot/cakir", component: Medium },
+    { path: "/slot/muhterem", component: Hard },
+    { path: "/emojify", component: EmojiGame },
+    { path: "/emojify/lol", component: LolEmoji },
+    { path: "/emojify/valorant", component: ValoEmoji },
+    { path: "/emojify/turkis-cities", component: TurkeyEmoji },
+    { path: "/emojify/countries", component: CountryEmoji },
+    { path: "/quizboxes", component: QuizBox },
+    { path: "/quizboxes/valorant", component: ValorantQuizBox },
+    { path: "/wheel", component: Wheel },
+  ];
+  const publicRoutes = [
+    { path: "/welcome", element: Welcome },
+    { path: "/signup", SignUp: SignUp },
+    { path: "/signin", element: SignIn },
+    { path: "/reset", element: Reset },
+    { path: "/contact", element: Contact },
   ];
   return (
     <Routes>
@@ -55,27 +77,13 @@ function PreApp() {
             <Header />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/welcome" element={<Welcome />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/reset" element={<Reset />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route
-                path="/swap"
-                element={
-                  <PrivateRoute>
-                    <Swap />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/stats"
-                element={
-                  <PrivateRoute>
-                    <Stats />
-                  </PrivateRoute>
-                }
-              />
+              {publicRoutes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<route.component />}
+                />
+              ))}
               {privateRoutes.map((route) => (
                 <Route
                   key={route.path}
@@ -87,95 +95,6 @@ function PreApp() {
                   }
                 />
               ))}
-              <Route
-                path="slot"
-                element={
-                  <PrivateRoute>
-                    <Slot />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="slot/muhterem"
-                element={
-                  <PrivateRoute>
-                    <Hard />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="slot/abidin"
-                element={
-                  <PrivateRoute>
-                    <Easy />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="slot/cakir"
-                element={
-                  <PrivateRoute>
-                    <Medium />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="emojify"
-                element={
-                  <PrivateRoute>
-                    <EmojiGame />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/emojify/lol"
-                element={
-                  <PrivateRoute>
-                    <LolEmoji />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/emojify/valorant"
-                element={
-                  <PrivateRoute>
-                    <ValoEmoji />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/emojify/turkish-cities"
-                element={
-                  <PrivateRoute>
-                    <TurkeyEmoji />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/emojify/countries"
-                element={
-                  <PrivateRoute>
-                    <CountryEmoji />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/quizboxes"
-                element={
-                  <PrivateRoute>
-                    <QuizBox />
-                  </PrivateRoute>
-                }
-              >
-                <Route
-                  path="valorant"
-                  element={
-                    <PrivateRoute>
-                      <ValorantQuizBox />
-                    </PrivateRoute>
-                  }
-                />
-              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer></Footer>
