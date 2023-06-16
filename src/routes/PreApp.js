@@ -62,7 +62,7 @@ function PreApp() {
   ];
   const publicRoutes = [
     { path: "/welcome", element: Welcome },
-    { path: "/signup", SignUp: SignUp },
+    { path: "/signup", element: SignUp },
     { path: "/signin", element: SignIn },
     { path: "/reset", element: Reset },
     { path: "/contact", element: Contact },
@@ -81,7 +81,7 @@ function PreApp() {
                 <Route
                   key={route.path}
                   path={route.path}
-                  element={<route.component />}
+                  element={<route.element />}
                 />
               ))}
               {privateRoutes.map((route) => (
