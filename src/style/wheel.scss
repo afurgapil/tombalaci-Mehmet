@@ -1,0 +1,57 @@
+.check {
+  animation: fadeInOut 2s infinite;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.chart-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  .chart {
+    width: 80%;
+    padding: 0px;
+    margin: 0px;
+    text {
+      font-size: 0.4rem;
+    }
+  }
+  .participant-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 2rem;
+    .data {
+      display: flex;
+      align-items: center;
+      margin: 1rem;
+      .color-box {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+      .amount {
+        margin: 0rem 0.5rem;
+      }
+      .value {
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -12,38 +12,96 @@ import { useAddress } from "../hooks/useAddress";
 import { useWheelContract } from "../hooks/useWheelContract";
 import { setAccount, setAddress } from "../store/slicers/data";
 import { showErrorNotification } from "../utils/alertifyUtils";
-import { parseEther } from "ethers/lib/utils";
+import Network from "../comps/Network";
+import { PieChart } from "react-minimal-pie-chart";
+import "../style/wheel.scss";
 function Wheel() {
   const dispatch = useDispatch();
   const provider = useProvider();
   const signer = useSigner();
   const address = useAddress();
   const wheelContract = useWheelContract();
-  const [depositAmount, setDepositAmount] = useState();
-  const [balance, setBalance] = useState(0);
+  const [depositAmount, setDepositAmount] = useState("");
+  const [balance, setBalance] = useState(null);
   const [wallet, setWallet] = useState();
   const [lastWinner, setLastWinner] = useState();
   const [participants, setParticipants] = useState([]);
+  const [isParticipants, setIsParticipants] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [participantColors, setParticipantColors] = useState({});
+
   const handleClose = () => setIsOpen(false);
-  const connect = async () => {
-    if (!window.ethereum) {
-      alert("Metamask is not installed");
-      return;
-    }
-    if (!provider) return;
+
+  useEffect(() => {
+    const connect = async () => {
+      if (!window.ethereum) {
+        alert("Metamask is not installed");
+        return;
+      }
+      if (!provider) return;
+      try {
+        const accounts = await provider.send("eth_requestAccounts", []);
+        dispatch(setAccount(accounts[0]));
+        const address = await signer.getAddress();
+        const address2 = address.substring(0, 7);
+        dispatch(setAddress(address));
+        setWallet(address2);
+      } catch (error) {
+        console.error("Error connecting:", error);
+        showErrorNotification("cekilise katilirken bir hata olustu");
+      }
+    };
+    connect();
+  }, []);
+  useEffect(() => {
+    getContractData();
+  }, []);
+  useEffect(() => {
+    const generateParticipantColors = () => {
+      const colors = {};
+      participants.forEach((participant) => {
+        if (!participantColors[participant.address]) {
+          colors[participant.address] =
+            "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+        } else {
+          colors[participant.address] = participantColors[participant.address];
+        }
+      });
+      setParticipantColors(colors);
+    };
+
+    generateParticipantColors();
+  }, [participants]);
+  const getContractData = async () => {
     try {
-      const accounts = await provider.send("eth_requestAccounts", []);
-      dispatch(setAccount(accounts[0]));
-      const address = await signer.getAddress();
-      const address2 = address.substring(0, 7);
-      dispatch(setAddress(address));
-      setWallet(address2);
+      const participantCount = await wheelContract.getParticipantCount();
+      const participants = [];
+      for (let i = 0; i < participantCount; i++) {
+        const participantAddress = await wheelContract.participantAddresses(i);
+        const participant = await wheelContract.participants(
+          participantAddress
+        );
+        const amount = participant.deposit._hex;
+        const dec_amount = parseInt(amount, 16) / 10 ** 18;
+        const number = participant.winningChance._hex;
+        const dec_number = parseInt(number, 16);
+
+        const participantData = {
+          address: participantAddress,
+          amount: dec_amount,
+          number: dec_number,
+        };
+
+        participants.push(participantData);
+      }
+
+      setParticipants(participants);
+      setIsParticipants(true);
     } catch (error) {
-      console.error("Error connecting:", error);
-      showErrorNotification("cekilise katilirken bir hata olustu");
+      console.log(error);
     }
   };
+
   const getBalance = async () => {
     try {
       const txn = await wheelContract.totalDeposit();
@@ -51,22 +109,6 @@ function Wheel() {
       setBalance(balance);
     } catch (error) {
       console.error("Error while checking contract balance:", error);
-    }
-  };
-
-  const getContractData = async () => {
-    try {
-      const participantCount = await wheelContract.participantsLength();
-      console.log(participantCount);
-      const participants = [];
-
-      for (let i = 0; i < participantCount; i++) {
-        const participant = await wheelContract.participants(i);
-        participants.push(participant);
-      }
-      setParticipants(participants);
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -82,22 +124,10 @@ function Wheel() {
       setIsOpen(true);
       const parsedAmount = ethers.utils.parseEther(depositAmount);
 
-      const depositTxn = await wheelContract.deposit({ value: parsedAmount });
+      const depositTxn = await wheelContract.depositAndCalculateWinningChance({
+        value: parsedAmount,
+      });
       await depositTxn.wait();
-
-      const operator = new ethers.Wallet(
-        process.env.REACT_APP_PRIVATE_KEY,
-        provider
-      );
-      try {
-        const calculateTxn = await wheelContract
-          .connect(operator)
-          .calculateWinningChance();
-        console.log("Calculate Transaction:", calculateTxn);
-        await calculateTxn.wait();
-      } catch (error) {
-        console.log("erroe with autosign" + error);
-      }
 
       setIsOpen(false);
       setDepositAmount("");
@@ -113,6 +143,11 @@ function Wheel() {
 
   const playGame = async () => {
     if (!provider) return;
+
+    const operator = new ethers.Wallet(
+      process.env.REACT_APP_PRIVATE_KEY,
+      provider
+    );
     try {
       const txn1 = await wheelContract.drawWinner();
       await txn1.wait();
@@ -120,13 +155,30 @@ function Wheel() {
     } catch (error) {
       console.log(error);
     }
+    getContractData();
   };
+  const withdraw = async () => {
+    if (!provider) return;
+    try {
+      const txn1 = await wheelContract.withdrawLockedAmount();
+      await txn1.wait();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleDepositSliderChange = (event) => {
     setDepositAmount(event.target.value);
   };
-  console.log(participants);
+  const data = participants.map((participant) => ({
+    title: participant.address.substring(0, 8),
+    value: participant.number,
+    amount: participant.amount,
+    color: participantColors[participant.address],
+  }));
   return (
     <div className="profile-container">
+      <Network />
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleClose}
@@ -134,32 +186,51 @@ function Wheel() {
       >
         <ModalComponent handleClose={handleClose} />
       </Modal>
-      <>
-        {!address && (
-          <button
-            className={`button ${address ? "connected" : "inconnect"}`}
-            onClick={connect}
-          ></button>
-        )}
-        <div className="deposit-container swap__item">
-          <input
-            type="text"
-            value={depositAmount}
-            placeholder="Deposit"
-            onChange={handleDepositSliderChange}
-          />
-
-          <button
-            className="swap-btn deposit-btn"
-            onClick={depositAndCalculate}
-          >
-            Deposit
-          </button>
-          <button className="swap-btn deposit-btn" onClick={playGame}>
-            playGame
-          </button>
+      {isParticipants && participants.length > 0 ? (
+        <div className="chart-wrapper">
+          <div className="chart">
+            <PieChart
+              data={data}
+              radius={50}
+              animate
+              label={({ dataEntry }) => `${dataEntry.title}`}
+            />
+          </div>
+          <div className="participant-list">
+            {data.map((data) => (
+              <div key={data.title} className="data">
+                <div
+                  className="color-box"
+                  style={{ backgroundColor: data.color }}
+                />
+                <div className="title">{data.title}...</div>
+                <div className="amount">{data.amount} MATIC</div>
+                <div className="value">%{data.value}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </>
+      ) : (
+        <div className="check">Katılımcı bulunamadı</div>
+      )}
+
+      <div className="deposit-container swap__item">
+        <input
+          type="text"
+          value={depositAmount}
+          placeholder="Deposit"
+          onChange={handleDepositSliderChange}
+        />
+        <button className="swap-btn deposit-btn" onClick={depositAndCalculate}>
+          Deposit
+        </button>
+        <button className="swap-btn deposit-btn" onClick={playGame}>
+          playGame
+        </button>
+        <button className="swap-btn deposit-btn" onClick={withdraw}>
+          withdraw
+        </button>
+      </div>
     </div>
   );
 }

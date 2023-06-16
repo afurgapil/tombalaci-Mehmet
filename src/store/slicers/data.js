@@ -5,6 +5,7 @@ const initialState = {
   signer: null,
   address: null,
   account: null,
+  network: "polygon",
 };
 
 export const dataSlice = createSlice({
@@ -23,10 +24,13 @@ export const dataSlice = createSlice({
     setAccount: (state, action) => {
       state.account = action.payload;
     },
+    setNetwork: (state, action) => {
+      state.network = action.payload;
+    },
   },
 });
 
-export const { setProvider, setSigner, setAddress, setAccount } =
+export const { setProvider, setSigner, setAddress, setAccount, setNetwork } =
   dataSlice.actions;
 
 export default dataSlice.reducer;
