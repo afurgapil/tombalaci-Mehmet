@@ -19,6 +19,9 @@ const Footer = () => {
           Docs
           <BsArrowUpRight></BsArrowUpRight>
         </a>
+        <a href="/admin-panel" className="todocs">
+          Dash
+        </a>
       </div>
     </footer>
   );
