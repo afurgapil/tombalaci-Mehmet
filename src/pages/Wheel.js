@@ -9,6 +9,7 @@ import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
 import { useDispatch } from "react-redux";
 import { useAddress } from "../hooks/useAddress";
+import { useLastWinner } from "../hooks/user/useLastWinner";
 import { useWheelContract } from "../hooks/useWheelContract";
 import { setAccount, setAddress } from "../store/slicers/data";
 import { showErrorNotification } from "../utils/alertifyUtils";
@@ -24,7 +25,7 @@ function Wheel() {
   const [depositAmount, setDepositAmount] = useState("");
   const [balance, setBalance] = useState(null);
   const [wallet, setWallet] = useState();
-  const [lastWinner, setLastWinner] = useState();
+  const lastWinner = useLastWinner();
   const [participants, setParticipants] = useState([]);
   const [isParticipants, setIsParticipants] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -112,13 +113,6 @@ function Wheel() {
     }
   };
 
-  const setWinner = async () => {
-    try {
-      const txn = await wheelContract.getLastWinner();
-      setLastWinner(txn);
-    } catch (error) {}
-  };
-
   const depositAndCalculate = async () => {
     try {
       setIsOpen(true);
@@ -138,32 +132,6 @@ function Wheel() {
         "An error occurred while depositing and calculating."
       );
       setIsOpen(false);
-    }
-  };
-
-  const playGame = async () => {
-    if (!provider) return;
-
-    const operator = new ethers.Wallet(
-      process.env.REACT_APP_PRIVATE_KEY,
-      provider
-    );
-    try {
-      const txn1 = await wheelContract.drawWinner();
-      await txn1.wait();
-      setWinner();
-    } catch (error) {
-      console.log(error);
-    }
-    getContractData();
-  };
-  const withdraw = async () => {
-    if (!provider) return;
-    try {
-      const txn1 = await wheelContract.withdrawLockedAmount();
-      await txn1.wait();
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -223,12 +191,6 @@ function Wheel() {
         />
         <button className="swap-btn deposit-btn" onClick={depositAndCalculate}>
           Deposit
-        </button>
-        <button className="swap-btn deposit-btn" onClick={playGame}>
-          playGame
-        </button>
-        <button className="swap-btn deposit-btn" onClick={withdraw}>
-          withdraw
         </button>
       </div>
     </div>

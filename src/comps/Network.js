@@ -39,7 +39,7 @@ const NetworkSelection = () => {
           className="network-selection__dropdown"
         >
           <option value="polygon">Polygon</option>
-          <option value="bsc">BSC</option>
+          {/* <option value="bsc">BSC</option> */}
         </select>
       </div>
       <div className="acc network__item">{acc}</div>
