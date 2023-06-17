@@ -41,6 +41,11 @@ function Header() {
               </NavLink>
             </li>
             <li className="navigation-item">
+              <NavLink to="/wheel" className="navigation-item-link new">
+                Wheel!
+              </NavLink>
+            </li>
+            <li className="navigation-item">
               <NavLink to="/classics" className="navigation-item-link">
                 Classics
               </NavLink>
