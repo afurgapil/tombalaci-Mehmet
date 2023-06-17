@@ -36,29 +36,31 @@ import Welcome from "../pages/Welcome";
 import Docs from "../pages/Docs";
 import PrivateRoute from "./PrivateRoute";
 import Wheel from "../pages/Wheel";
+import Admin from "../pages/Admin";
+import ProtectedRoute from "../routes/ProtectedRoute";
 function PreApp() {
   const privateRoutes = [
-    { path: "/leaderboard", component: Scoreboard },
-    { path: "/classics", component: Classic },
-    { path: "/news", component: News },
-    { path: "/coinflip", component: Coin },
-    { path: "/todice", component: Dice },
-    { path: "/rps", component: Rps },
-    { path: "/roulette", component: Roulette },
-    { path: "/swap", component: Swap },
-    { path: "/stats", component: Stats },
-    { path: "/slot", component: Slot },
-    { path: "/slot/abidin", component: Easy },
-    { path: "/slot/cakir", component: Medium },
-    { path: "/slot/muhterem", component: Hard },
-    { path: "/emojify", component: EmojiGame },
-    { path: "/emojify/lol", component: LolEmoji },
-    { path: "/emojify/valorant", component: ValoEmoji },
-    { path: "/emojify/turkis-cities", component: TurkeyEmoji },
-    { path: "/emojify/countries", component: CountryEmoji },
-    { path: "/quizboxes", component: QuizBox },
-    { path: "/quizboxes/valorant", component: ValorantQuizBox },
-    { path: "/wheel", component: Wheel },
+    { path: "/leaderboard", element: Scoreboard },
+    { path: "/classics", element: Classic },
+    { path: "/news", element: News },
+    { path: "/coinflip", element: Coin },
+    { path: "/todice", element: Dice },
+    { path: "/rps", element: Rps },
+    { path: "/roulette", element: Roulette },
+    { path: "/swap", element: Swap },
+    { path: "/stats", element: Stats },
+    { path: "/slot", element: Slot },
+    { path: "/slot/abidin", element: Easy },
+    { path: "/slot/cakir", element: Medium },
+    { path: "/slot/muhterem", element: Hard },
+    { path: "/emojify", element: EmojiGame },
+    { path: "/emojify/lol", element: LolEmoji },
+    { path: "/emojify/valorant", element: ValoEmoji },
+    { path: "/emojify/turkis-cities", element: TurkeyEmoji },
+    { path: "/emojify/countries", element: CountryEmoji },
+    { path: "/quizboxes", element: QuizBox },
+    { path: "/quizboxes/valorant", element: ValorantQuizBox },
+    { path: "/wheel", element: Wheel },
   ];
   const publicRoutes = [
     { path: "/welcome", element: Welcome },
@@ -67,6 +69,7 @@ function PreApp() {
     { path: "/reset", element: Reset },
     { path: "/contact", element: Contact },
   ];
+  const protectedRoutes = [{ path: "/admin", element: Admin }];
   return (
     <Routes>
       <Route path="/docs" element={<Docs />} />
@@ -90,8 +93,19 @@ function PreApp() {
                   path={route.path}
                   element={
                     <PrivateRoute>
-                      <route.component />
+                      <route.element />
                     </PrivateRoute>
+                  }
+                />
+              ))}
+              {protectedRoutes.map((route) => (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={
+                    <ProtectedRoute>
+                      <route.element />
+                    </ProtectedRoute>
                   }
                 />
               ))}
