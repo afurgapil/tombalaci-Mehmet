@@ -212,6 +212,7 @@ function Wheel() {
           Deposit
         </button>
       </div>
+      <h5>Last Winner: {lastWinner}</h5>
     </div>
   );
 }
