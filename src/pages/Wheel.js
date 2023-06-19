@@ -34,7 +34,6 @@ function Wheel() {
   const [participantColors, setParticipantColors] = useState({});
 
   const handleClose = () => setIsOpen(false);
-
   useEffect(() => {
     const connect = async () => {
       if (!window.ethereum) {
@@ -58,6 +57,7 @@ function Wheel() {
   }, []);
   useEffect(() => {
     getContractData();
+    getBalance();
   }, []);
   useEffect(() => {
     const generateParticipantColors = () => {
@@ -160,6 +160,13 @@ function Wheel() {
       >
         <ModalComponent handleClose={handleClose} />
       </Modal>
+      <div className="warning">
+        <h2>Attention</h2>
+        <p>
+          This project is a test project running on the Mumbai network. Please
+          exercise caution while safeguarding your assets.
+        </p>
+      </div>
       {isParticipants && participants.length > 0 ? (
         <div className="chart-wrapper">
           <div className="chart">
@@ -171,6 +178,7 @@ function Wheel() {
             />
           </div>
           <div className="participant-list">
+            <h3>Total Deposit:{balance} Matic</h3>
             {data.map((data) => (
               <div key={data.title} className="data">
                 <div
@@ -189,13 +197,18 @@ function Wheel() {
       )}
 
       <div className="deposit-container swap__item">
-        <input
-          type="text"
-          value={depositAmount}
-          placeholder="Deposit"
-          onChange={handleDepositSliderChange}
-        />
-        <button className="swap-btn deposit-btn" onClick={depositAndCalculate}>
+        <div className="input-wrapper">
+          <input
+            type="text"
+            value={depositAmount}
+            placeholder="Deposit"
+            onChange={handleDepositSliderChange}
+          />
+        </div>
+        <button
+          className="button swap-btn deposit-btn"
+          onClick={depositAndCalculate}
+        >
           Deposit
         </button>
       </div>
