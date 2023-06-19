@@ -3,6 +3,7 @@ import "../style/Docs.scss";
 import { BsGithub } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 function Docs() {
   const [isDark, setIsDark] = useState(false);
   const [lightMode, setLightMode] = useState("white");
@@ -11,6 +12,13 @@ function Docs() {
   };
   return (
     <div id="docs" className={lightMode}>
+      <Helmet>
+        <title>Documentation| Tombalaci Mehmet</title>
+        <meta
+          name="description"
+          content="documentation for the tombalaci mehmet"
+        />
+      </Helmet>
       <div id="docs-header">
         <div className="header-r">
           <Link className="title" to="/">

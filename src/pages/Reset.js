@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import LoginIcon from "@mui/icons-material/Login";
-
+import { Helmet } from "react-helmet";
 const Reset = () => {
   const [email, setEmail] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -41,6 +41,13 @@ const Reset = () => {
 
   return (
     <div id="reset-container">
+      <Helmet>
+        <title>Reset| Tombalaci Mehmet</title>
+        <meta
+          name="description"
+          content="reset password page for the Tombalaci Mehmet"
+        />
+      </Helmet>
       <div id="reset-container-items">
         <div id="reset-text">
           <p className="bold">😡Hey!😡</p>

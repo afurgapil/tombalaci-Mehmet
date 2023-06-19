@@ -12,9 +12,10 @@ import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
 import Person4Icon from "@mui/icons-material/Person4";
 //alertify
 import alertify from "alertifyjs";
+import { Helmet } from "react-helmet";
+
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
-
 const CoinFlip = () => {
   const [choice, setChoice] = useState(null);
   const [correctCoinflip, setCorrectCoinflip] = useState(null);
@@ -81,6 +82,10 @@ const CoinFlip = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>Coin Flip | Tombalaci Mehmet</title>
+        <meta name="description" content="coin flip game " />
+      </Helmet>
       <div id="coinflip-container">
         <GoBack></GoBack>
         {!isGameStart ? (

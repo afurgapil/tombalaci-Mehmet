@@ -2,9 +2,14 @@ import React from "react";
 import "../style/emoji.scss";
 import { Link } from "react-router-dom";
 import "animate.css";
+import { Helmet } from "react-helmet";
 const SlotGame = () => {
   return (
     <div id="emojify-container">
+      <Helmet>
+        <title>Emojify| Tombalaci Mehmet</title>
+        <meta name="description" content="guess  emoji game" />
+      </Helmet>
       <div className="row animate__animated animate__backInDown">
         <div
           className="emojify-c  animate__animated  animate__backInLeft"

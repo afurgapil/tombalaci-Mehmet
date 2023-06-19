@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { setAccount, setAddress } from "../store/slicers/data";
 import Trade from "../comps/Trade";
 import { showErrorNotification } from "../utils/alertifyUtils";
+import { Helmet } from "react-helmet";
 const Swap = () => {
   const dispatch = useDispatch();
   const provider = useProvider();
@@ -44,6 +45,10 @@ const Swap = () => {
 
   return (
     <div className="profile-container">
+      <Helmet>
+        <title>Swap | Tombalaci Mehmet</title>
+        <meta name="description" content="swap point page " />
+      </Helmet>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleClose}

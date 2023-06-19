@@ -17,7 +17,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { Helmet } from "react-helmet";
 const theme = createTheme();
 
 export default function SignUp() {
@@ -59,6 +59,13 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>Sign Up | Tombalaci Mehmet</title>
+        <meta
+          name="description"
+          content="sign up page for the Tombalaci Mehmet"
+        />
+      </Helmet>
       <Container
         component="main"
         maxWidth="xs"

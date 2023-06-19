@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
 import GoBack from "../../Tools/GoBack";
+import { Helmet } from "react-helmet";
 const Lol = () => {
   const [selectedHero, setSelectedHero] = useState("");
   const [heroEmojis, setHeroEmojis] = useState([]);
@@ -55,6 +56,13 @@ const Lol = () => {
   }
   return (
     <div id="lol-game-container">
+      <Helmet>
+        <title> LOL| Emojify</title>
+        <meta
+          name="description"
+          content="guess league of legends heros emoji game"
+        />
+      </Helmet>
       <GoBack></GoBack>
       <p id="l-tittle">Lol Champion Guess Game</p>
       <div id="lol-game">

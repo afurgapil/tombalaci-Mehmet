@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/footer.scss";
 import { BsArrowUpRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Footer = () => {
   const githubUrl = "https://github.com/afurgapil";
   const myName = "Gapil";
@@ -19,9 +20,7 @@ const Footer = () => {
           Docs
           <BsArrowUpRight></BsArrowUpRight>
         </a>
-        <a href="/admin-panel" className="todocs">
-          Dash
-        </a>
+        <Link to="dashboard">Dash</Link>
       </div>
     </footer>
   );

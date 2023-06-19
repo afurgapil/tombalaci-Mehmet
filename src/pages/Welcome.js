@@ -6,10 +6,17 @@ import wheel from "../assets/wheel.jpg";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import LoginIcon from "@mui/icons-material/Login";
 import { Button } from "@mui/material";
-
+import { Helmet } from "react-helmet";
 function Welcome() {
   return (
     <div id="welcome-container">
+      <Helmet>
+        <title> Tombalaci Mehmet</title>
+        <meta
+          name="description"
+          content="welcome page for the Tombalaci Mehmet"
+        />
+      </Helmet>
       <img className="welcome-wheel" src={wheel} alt="Roulette-Wheel"></img>
       <div className="textContainer">
         <div className="text-container_items">

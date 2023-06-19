@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import GoBack from "../../Tools/GoBack";
 import alertify from "alertifyjs";
+import { Helmet } from "react-helmet";
 const Valorant = () => {
   const [selectedAgent, setSelectedAgent] = useState("");
   const [agentEmojis, setAgentEmojis] = useState([]);
@@ -55,6 +56,10 @@ const Valorant = () => {
   }
   return (
     <div id="valorant-game-container">
+      <Helmet>
+        <title> Valorant | Emojify</title>
+        <meta name="description" content="guess valorant agents emoji game" />
+      </Helmet>
       <GoBack></GoBack>
       <p id="v-tittle">Valorant Agent Guess Game</p>
       <div id="valorant-game">

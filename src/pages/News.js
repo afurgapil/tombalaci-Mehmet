@@ -19,6 +19,7 @@ import {
 //mui
 import { Button } from "@mui/material";
 import "animate.css";
+import { Helmet } from "react-helmet";
 
 function News() {
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
@@ -27,6 +28,10 @@ function News() {
 
   return (
     <div id="homepage-main">
+      <Helmet>
+        <title>News | Tombalaci Mehmet</title>
+        <meta name="description" content="the news games page " />
+      </Helmet>
       <ScrollContainer>
         <ScrollPage>
           <div id="n-section1">

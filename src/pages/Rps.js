@@ -12,7 +12,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
 //alertify
 import alertify from "alertifyjs";
-
+import { Helmet } from "react-helmet";
 const Game = () => {
   const [playerChoice, setPlayerChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
@@ -109,6 +109,10 @@ const Game = () => {
 
   return (
     <div id="rps-container">
+      <Helmet>
+        <title>RPS | Tombalaci Mehmet</title>
+        <meta name="description" content="rock paper scissorss game " />
+      </Helmet>
       <GoBack></GoBack>
       <div id="game-container">
         <div id="robo">

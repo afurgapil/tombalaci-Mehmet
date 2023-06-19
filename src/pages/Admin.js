@@ -7,7 +7,7 @@ import { useWheelContract } from "../hooks/useWheelContract";
 import { setAccount, setAddress } from "../store/slicers/data";
 import { setLastWinner } from "../store/slicers/user";
 import { showErrorNotification } from "../utils/alertifyUtils";
-
+import { Helmet } from "react-helmet";
 function Admin() {
   const dispatch = useDispatch();
   const provider = useProvider();
@@ -86,7 +86,7 @@ function Admin() {
 
   const startSchedule = () => {
     console.log("Scheduled game started");
-    const scheduleTimes = ["04:00", "12:00", "20:00", "13:15"];
+    const scheduleTimes = ["04:00", "12:00", "20:00"];
     const interval = setInterval(() => {
       const currentDate = new Date();
       const currentHour = currentDate.getHours();
@@ -112,6 +112,13 @@ function Admin() {
 
   return (
     <div>
+      <Helmet>
+        <title>Admin | Tombalaci Mehmet</title>
+        <meta
+          name="description"
+          content="admin panel to execute contract transactions "
+        />
+      </Helmet>
       <div>
         <button className="swap-btn deposit-btn" onClick={playGame}>
           Play Game

@@ -10,7 +10,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import "animate.css";
-
+import { Helmet } from "react-helmet";
 const Scoreboard = () => {
   const [users, setUsers] = useState([]);
 
@@ -31,6 +31,10 @@ const Scoreboard = () => {
   }, []);
   return (
     <div id="scoreboard-container">
+      <Helmet>
+        <title>Leaderboard | Tombalaci Mehmet</title>
+        <meta name="description" content="leaderboard,scoreboard" />
+      </Helmet>
       <div className="score-title animate__animated animate__backInDown">
         <img src={point} className="point rotate" alt="score-img"></img>
         <h2 className="score-h">LEADERBOARD</h2>

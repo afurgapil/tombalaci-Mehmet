@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
 import GoBack from "../../Tools/GoBack";
+import { Helmet } from "react-helmet";
 const Country = () => {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [countryEmojis, setCountryEmojis] = useState([]);
@@ -54,6 +55,10 @@ const Country = () => {
   }
   return (
     <div id="country-game-container">
+      <Helmet>
+        <title> Countries| Emojify</title>
+        <meta name="description" content="guess countries  emoji game" />
+      </Helmet>
       <GoBack></GoBack>
       <p id="c-tittle">Country Guess Game</p>
       <div id="country-game">

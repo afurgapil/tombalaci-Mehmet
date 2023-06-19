@@ -5,6 +5,7 @@ import GoBack from "../Tools/GoBack";
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
+import { Helmet } from "react-helmet";
 //alertify
 import alertify from "alertifyjs";
 alertify.set("notifier", "position", "top-right");
@@ -363,6 +364,10 @@ export default function ToDice() {
 
   return (
     <div className="ToDice">
+      <Helmet>
+        <title>To Dice| Tombalaci Mehmet</title>
+        <meta name="description" content="to dice game " />
+      </Helmet>
       <GoBack></GoBack>
       <div className="dice-container">
         <button className="enjoy" onClick={rollDice}>

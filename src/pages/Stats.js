@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import "../style/stats.scss";
+import { Helmet } from "react-helmet";
 function Stats() {
   const [userStats, setUserStats] = useState({});
   const [name, setName] = useState(null);
@@ -34,6 +35,10 @@ function Stats() {
   }, [user]);
   return (
     <div className="stats-container">
+      <Helmet>
+        <title>Stats | Tombalaci Mehmet</title>
+        <meta name="description" content="user stats page " />
+      </Helmet>
       <ul className="profile-list">
         <li className="profile-list-item">
           <h2 className="username">{name}</h2>

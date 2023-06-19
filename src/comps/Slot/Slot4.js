@@ -10,7 +10,7 @@ import { auth } from "../../Firebase";
 import Spinner from "../../Tools/Spinner";
 import { Button } from "@mui/material";
 import alertify from "alertifyjs";
-
+import { Helmet } from "react-helmet";
 function Slot() {
   const [col11, setCol11] = useState("\uD83D\uDCB0");
   const [col12, setCol12] = useState("\ud83c\udf47");
@@ -714,6 +714,10 @@ function Slot() {
   }, [row1, row2, row3]);
   return (
     <div>
+      <Helmet>
+        <title> Muhterem| Coin Flip</title>
+        <meta name="description" content="hard slot game" />
+      </Helmet>
       <div className="slot-table-container">
         <div className="table-shadow">
           <div className="slot-table">

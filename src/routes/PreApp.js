@@ -69,7 +69,7 @@ function PreApp() {
     { path: "/reset", element: Reset },
     { path: "/contact", element: Contact },
   ];
-  const protectedRoutes = [{ path: "/admin-panel", element: Admin }];
+  const protectedRoutes = [{ path: "/dashboard", element: Admin }];
   return (
     <Routes>
       <Route path="/docs" element={<Docs />} />

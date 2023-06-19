@@ -22,6 +22,7 @@ import {
 //mui
 import { Button } from "@mui/material";
 import "animate.css";
+import { Helmet } from "react-helmet";
 
 function Classics() {
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
@@ -29,6 +30,10 @@ function Classics() {
   const scrollEffect2 = batch(Fade(0, 1), ZoomOut(1, 0));
   return (
     <div id="homepage-main">
+      <Helmet>
+        <title>Classics | Tombalaci Mehmet</title>
+        <meta name="description" content="the classics games page " />
+      </Helmet>
       <ScrollContainer>
         <ScrollPage>
           <div id="cs-section1">

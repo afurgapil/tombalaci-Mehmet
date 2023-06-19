@@ -16,6 +16,8 @@ import { showErrorNotification } from "../utils/alertifyUtils";
 import Network from "../comps/Network";
 import { PieChart } from "react-minimal-pie-chart";
 import "../style/wheel.scss";
+import { Helmet } from "react-helmet";
+
 function Wheel() {
   const dispatch = useDispatch();
   const provider = useProvider();
@@ -146,6 +148,10 @@ function Wheel() {
   }));
   return (
     <div className="profile-container">
+      <Helmet>
+        <title>WOF | Tombalaci Mehmet</title>
+        <meta name="description" content="a game built with solidity" />
+      </Helmet>
       <Network />
       <Modal
         isOpen={modalIsOpen}

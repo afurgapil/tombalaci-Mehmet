@@ -8,7 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
 //alertify
 import alertify from "alertifyjs";
-
+import { Helmet } from "react-helmet";
 function Roulette() {
   //breakpoint1
   const [rouletteNumber, setRouletteNumber] = useState(getRandomInt() % 37);
@@ -356,6 +356,10 @@ function Roulette() {
 
   return (
     <div id="roulette-main">
+      <Helmet>
+        <title>Roulette| Tombalaci Mehmet</title>
+        <meta name="description" content="roulette game " />
+      </Helmet>
       <GoBack></GoBack>
       <div className="mainpage">
         {userchoice !== null && (

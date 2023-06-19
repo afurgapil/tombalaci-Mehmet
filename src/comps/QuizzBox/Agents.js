@@ -6,6 +6,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import GoBack from "../../Tools/GoBack";
+import { Helmet } from "react-helmet";
 function Agents() {
   const [selectedAgents, setSelectedAgents] = useState([]);
   const [selectedAgentData, setSelectedAgentData] = useState(null);
@@ -94,6 +95,13 @@ function Agents() {
 
   return (
     <div id="valodle-game-container">
+      <Helmet>
+        <title> Valorant| Quiz Boxes</title>
+        <meta
+          name="description"
+          content="guess valorant agents quiz box game"
+        />
+      </Helmet>
       <GoBack></GoBack>
 
       <h1 id="vaoldle-title">Valorant Agent Guessing Game</h1>

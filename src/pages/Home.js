@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import tombala from "../../assets/1.png";
 import coin from "../assets/2.png";
 import dice from "../assets/3.png";
 import rps from "../assets/4.png";
@@ -20,6 +19,7 @@ import {
   MoveOut,
   Sticky,
 } from "react-scroll-motion";
+import { Helmet } from "react-helmet";
 function Home() {
   const [, setScore] = useState(50);
   useEffect(() => {
@@ -35,6 +35,10 @@ function Home() {
 
   return (
     <div id="homepage-main">
+      <Helmet>
+        <title>Home | Tombalaci Mehmet </title>
+        <meta name="description" content="homepage" />
+      </Helmet>
       <ScrollContainer>
         <ScrollPage>
           <div id="section1" className="main-container">
