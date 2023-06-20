@@ -8,8 +8,6 @@ import customStyles from "../style/customStyles";
 import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
 import { useDispatch } from "react-redux";
-import { useAddress } from "../hooks/useAddress";
-import { useLastWinner } from "../hooks/user/useLastWinner";
 import { useWheelContract } from "../hooks/useWheelContract";
 import { setAccount, setAddress } from "../store/slicers/data";
 import { showErrorNotification } from "../utils/alertifyUtils";
@@ -17,22 +15,21 @@ import Network from "../comps/Network";
 import { PieChart } from "react-minimal-pie-chart";
 import "../style/wheel.scss";
 import { Helmet } from "react-helmet";
-
+import { AiFillCloseCircle } from "react-icons/ai";
 function Wheel() {
   const dispatch = useDispatch();
   const provider = useProvider();
   const signer = useSigner();
-  const address = useAddress();
   const wheelContract = useWheelContract();
   const [depositAmount, setDepositAmount] = useState("");
   const [balance, setBalance] = useState(null);
-  const [wallet, setWallet] = useState();
-  const lastWinner = useLastWinner();
   const [participants, setParticipants] = useState([]);
   const [isParticipants, setIsParticipants] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [participantColors, setParticipantColors] = useState({});
-
+  const [lastWinner, setLastWinner] = useState("");
+  const [lastPrize, setLastPrize] = useState();
+  const [showWarning, setShowWarning] = useState(true);
   const handleClose = () => setIsOpen(false);
   useEffect(() => {
     const connect = async () => {
@@ -45,12 +42,10 @@ function Wheel() {
         const accounts = await provider.send("eth_requestAccounts", []);
         dispatch(setAccount(accounts[0]));
         const address = await signer.getAddress();
-        const address2 = address.substring(0, 7);
         dispatch(setAddress(address));
-        setWallet(address2);
       } catch (error) {
         console.error("Error connecting:", error);
-        showErrorNotification("cekilise katilirken bir hata olustu");
+        showErrorNotification("Error while connecting the website");
       }
     };
     connect();
@@ -58,6 +53,7 @@ function Wheel() {
   useEffect(() => {
     getContractData();
     getBalance();
+    getWinner();
   }, []);
   useEffect(() => {
     const generateParticipantColors = () => {
@@ -104,7 +100,17 @@ function Wheel() {
       console.log(error);
     }
   };
-
+  const getWinner = async () => {
+    try {
+      const txn = await wheelContract.getWinner();
+      setLastWinner(txn[0]);
+      const hex = txn[1]._hex;
+      const parsedHex = parseInt(hex) / 10 ** 18;
+      setLastPrize(parsedHex);
+    } catch (error) {
+      console.error("Error while checking contract balance:", error);
+    }
+  };
   const getBalance = async () => {
     try {
       const txn = await wheelContract.totalDeposit();
@@ -140,6 +146,9 @@ function Wheel() {
   const handleDepositSliderChange = (event) => {
     setDepositAmount(event.target.value);
   };
+  const handleHideWarning = () => {
+    setShowWarning(false);
+  };
   const data = participants.map((participant) => ({
     title: participant.address.substring(0, 8),
     value: participant.number,
@@ -147,7 +156,7 @@ function Wheel() {
     color: participantColors[participant.address],
   }));
   return (
-    <div className="profile-container">
+    <div className="wheel-container">
       <Helmet>
         <title>WOF | Tombalaci Mehmet</title>
         <meta name="description" content="a game built with solidity" />
@@ -160,13 +169,19 @@ function Wheel() {
       >
         <ModalComponent handleClose={handleClose} />
       </Modal>
-      <div className="warning">
-        <h2>Attention</h2>
-        <p>
-          This project is a test project running on the Mumbai network. Please
-          exercise caution while safeguarding your assets.
-        </p>
-      </div>
+      {showWarning && (
+        <div className="warning">
+          <AiFillCloseCircle
+            className="close-btn"
+            onClick={handleHideWarning}
+          />
+          <h2>Attention</h2>
+          <p>
+            This project is a test project running on the Mumbai network. Please
+            exercise caution while safeguarding your assets.
+          </p>
+        </div>
+      )}
       {isParticipants && participants.length > 0 ? (
         <div className="chart-wrapper">
           <div className="chart">
@@ -193,7 +208,7 @@ function Wheel() {
           </div>
         </div>
       ) : (
-        <div className="check">Katılımcı bulunamadı</div>
+        <div className="check">Checking Participants </div>
       )}
 
       <div className="deposit-container swap__item">
@@ -212,7 +227,12 @@ function Wheel() {
           Deposit
         </button>
       </div>
-      <h5>Last Winner: {lastWinner}</h5>
+      {lastWinner && (
+        <div className="last">
+          <h5 class="last-winner">Last Winner: {lastWinner}</h5>
+          <h5 class="last-prize">Last Prize: {lastPrize} MATIC</h5>
+        </div>
+      )}
     </div>
   );
 }
