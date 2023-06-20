@@ -49,7 +49,7 @@ function Wheel() {
       }
     };
     connect();
-  }, []);
+  }, [dispatch, provider, signer]);
   useEffect(() => {
     getContractData();
     getBalance();
