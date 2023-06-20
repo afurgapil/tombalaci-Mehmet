@@ -114,6 +114,7 @@ function Admin() {
     ];
     const interval = setInterval(() => {
       const currentDate = new Date();
+      console.log(currentDate);
       const currentHour = currentDate.getHours();
       const currentMinute = currentDate.getMinutes();
       const currentTime = `${currentHour}:${
@@ -123,6 +124,7 @@ function Admin() {
       if (scheduleTimes.includes(currentTime)) {
         console.log("Scheduled game triggered");
         playGame();
+        console.log("Scheduled game played");
       }
     }, 60000);
 

@@ -27,3 +27,4 @@ todos.txt
 src/constants/abi.js
 src/constants/addresses.js
 .gitkeep
+.htaccess
