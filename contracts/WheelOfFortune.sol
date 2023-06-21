@@ -3,7 +3,8 @@ pragma solidity ^0.8.0;
 
 contract WheelOfFortune {
     address public operator;
-    address lastWinner;
+    address public lastWinner;
+    uint256 public winningAmount;
 
     struct Participant {
         uint256 deposit;
@@ -54,9 +55,9 @@ contract WheelOfFortune {
         uint256 balance = address(this).balance;
         uint256 operatorAmount = balance / 100; 
         lockedAmount += operatorAmount;
-        uint256 amountToTransfer = balance - operatorAmount;
+        winningAmount = balance - operatorAmount;
 
-        (bool success, ) = winner.call{value: amountToTransfer}("");
+        (bool success, ) = winner.call{value: winningAmount}("");
         require(success, "Failed to transfer funds to the winner");
 
         lastWinner = winner;
@@ -89,10 +90,10 @@ contract WheelOfFortune {
     }
 
     function generateRandomNumber() internal view returns (uint256) {
-    bytes32 blockHash = blockhash(block.number - 1);
-    bytes32 randomNumber = keccak256(abi.encodePacked(blockHash, block.timestamp, block.coinbase, block.number));
-    return uint256(randomNumber);
-}
+        bytes32 blockHash = blockhash(block.number - 1);
+        bytes32 randomNumber = keccak256(abi.encodePacked(blockHash, block.timestamp, block.coinbase, block.number));
+        return uint256(randomNumber);
+    }
 
     function getLastWinner() external view returns (address) {
         return lastWinner;
@@ -104,5 +105,9 @@ contract WheelOfFortune {
 
     function getParticipantCount() external view returns (uint256) {
         return participantAddresses.length;
+    }
+
+    function getWinner() external view returns (address, uint256) {
+        return (lastWinner, winningAmount);
     }
 }
