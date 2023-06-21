@@ -30,6 +30,24 @@
       margin-bottom: 0;
     }
   }
+  .alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+
+    p {
+      color: #721c24;
+      margin: 0px;
+      padding: 0px;
+      padding-right: 5px;
+    }
+  }
   .chart-wrapper {
     display: flex;
     flex-direction: row;

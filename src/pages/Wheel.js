@@ -30,6 +30,7 @@ function Wheel() {
   const [lastWinner, setLastWinner] = useState("");
   const [lastPrize, setLastPrize] = useState();
   const [showWarning, setShowWarning] = useState(true);
+  const [showAlert, setShowAlert] = useState(true);
   const handleClose = () => setIsOpen(false);
   useEffect(() => {
     const connect = async () => {
@@ -149,6 +150,9 @@ function Wheel() {
   const handleHideWarning = () => {
     setShowWarning(false);
   };
+  const handleHideAlert = () => {
+    setShowAlert(false);
+  };
   const data = participants.map((participant) => ({
     title: participant.address.substring(0, 8),
     value: participant.number,
@@ -182,6 +186,7 @@ function Wheel() {
           </p>
         </div>
       )}
+
       {isParticipants && participants.length > 0 ? (
         <div className="chart-wrapper">
           <div className="chart">
@@ -210,7 +215,6 @@ function Wheel() {
       ) : (
         <div className="check">Checking Participants </div>
       )}
-
       <div className="deposit-container swap__item">
         <div className="input-wrapper">
           <input
@@ -226,6 +230,15 @@ function Wheel() {
         >
           Deposit
         </button>
+        {showAlert && (
+          <div className="alert">
+            <p>The draw is done every hour</p>
+            <AiFillCloseCircle
+              className="close-btn"
+              onClick={handleHideAlert}
+            />
+          </div>
+        )}
       </div>
       {lastWinner && (
         <div className="last">
