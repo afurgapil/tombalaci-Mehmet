@@ -16,6 +16,7 @@ import { PieChart } from "react-minimal-pie-chart";
 import "../style/wheel.scss";
 import { Helmet } from "react-helmet";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { Await } from "react-router-dom";
 function Wheel() {
   const dispatch = useDispatch();
   const provider = useProvider();
@@ -39,6 +40,36 @@ function Wheel() {
         return;
       }
       if (!provider) return;
+      async function switchNetwork(networkId) {
+        try {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: networkId }],
+          });
+        } catch (error) {
+          console.error("Ağ değiştirme işlemi başarısız oldu:", error);
+        }
+      }
+
+      async function checkNetwork() {
+        try {
+          const chainId = await window.ethereum.request({
+            method: "eth_chainId",
+          });
+          const desiredNetworkId = "0x13881";
+          if (chainId !== desiredNetworkId) {
+            await switchNetwork(desiredNetworkId);
+          }
+        } catch (error) {
+          console.error("Ağ bilgileri alınırken bir hata oluştu:", error);
+        }
+      }
+      checkNetwork();
+      function handleChainChanged(chainId) {
+        window.location.reload();
+      }
+      window.ethereum.on("chainChanged", handleChainChanged);
+
       try {
         const accounts = await provider.send("eth_requestAccounts", []);
         dispatch(setAccount(accounts[0]));
