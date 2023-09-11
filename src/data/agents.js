@@ -45,6 +45,15 @@ const agents = [
     region: "Africa",
   },
   {
+    icon: "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayiconsmall.png",
+    name: "Deadlock",
+    emojis: ["🕸️", "🔒", "🧲"],
+    gender: "Female",
+    role: "Sentinel",
+    species: "Human",
+    region: "Europa",
+  },
+  {
     icon: "https://media.valorant-api.com/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/displayiconsmall.png",
     name: "Fade",
     emojis: ["🐺", "💨", "⚫"],

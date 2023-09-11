@@ -305,6 +305,10 @@ const heros = [
     emojis: ["🗡️", "👺", "🌕"],
   },
   {
+    name: "Milio",
+    emojis: ["🔥", "🎒", "🏕️"],
+  },
+  {
     name: "Miss Fortune",
     emojis: ["🔫", "💰", "💣"],
   },
@@ -315,6 +319,10 @@ const heros = [
   {
     name: "Morgana",
     emojis: ["🖤", "👼", "🕊️"],
+  },
+  {
+    name: "Naafiri",
+    emojis: ["🐕", "🩸", "👁️"],
   },
   {
     name: "Nami",
