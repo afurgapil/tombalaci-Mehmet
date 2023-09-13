@@ -218,7 +218,7 @@ function Wheel() {
 
       {isParticipants && participants.length > 0 ? (
         <div className="flex flex-row justify-between items-center my-12">
-          <div className="w-4/5 text-lg">
+          <div className="w-4/5 text-[8px]">
             <PieChart
               data={data}
               radius={50}
@@ -226,12 +226,15 @@ function Wheel() {
               label={({ dataEntry }) => `${dataEntry.title}`}
             />
           </div>
-          <div className="flex flex-col flex-wrap me-8">
-            <h3>Total Deposit:{balance} Matic</h3>
+          <div className="flex flex-col flex-wrap mx-4 w-auto">
+            <h3 className="font-bold">Total Deposit: {balance} Matic</h3>
             {data.map((data) => (
-              <div key={data.title} className="flex items-center m-4">
+              <div
+                key={data.title}
+                className="flex flex-row flex-nowrap items-center m-4 w-full"
+              >
                 <div
-                  className="w-5 h-5 me-3"
+                  className="w-5 h-5 m-1"
                   style={{ backgroundColor: data.color }}
                 />
                 <div className="">{data.title}...</div>
@@ -242,7 +245,9 @@ function Wheel() {
           </div>
         </div>
       ) : (
-        <div className="font-bold text-6xl m-6 ">Checking Participants </div>
+        <div className="font-bold text-6xl m-6 animate-pulse ">
+          Checking Participants{" "}
+        </div>
       )}
       <div className="flex flex-col justify-center items-center swap__item">
         <div className="relative mb-5">
@@ -261,19 +266,26 @@ function Wheel() {
           Deposit
         </button>
         {showAlert && (
-          <div className="flex flex-row justify-center items-center relative border border-solid border-black rounded px-8 py-4 my-4">
-            <p className="text-red-900 ">The draw is done every hour</p>
+          <div className="flex flex-row justify-center items-center relative border border-solid border-black rounded  my-4">
+            <p className="bg-red-900 w-full h-full px-8 py-4 text-white">
+              The draw is done every hour
+            </p>
             <AiFillCloseCircle
-              className="close-btn"
+              className="close-btn absolute right-2 top-2"
               onClick={handleHideAlert}
+              color="white"
             />
           </div>
         )}
       </div>
       {lastWinner && (
-        <div className="flex flex-col justify-start items-start">
-          <h5 class="text-4xl font-bold mb-4">Last Winner: {lastWinner}</h5>
-          <h5 class="text-4xl font-bold mb-4">Last Prize: {lastPrize} MATIC</h5>
+        <div className="flex flex-col justify-start items-start my-4">
+          <h5 class="text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl w-full">
+            Last Winner: {lastWinner}
+          </h5>
+          <h5 class="text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl w-full">
+            Last Prize: {lastPrize} MATIC
+          </h5>
         </div>
       )}
     </div>
