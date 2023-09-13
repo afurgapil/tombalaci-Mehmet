@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import turkeyCities from "../../data/turkeyCities";
-import "../../style/turkeycities.scss";
-import { Button } from "@mui/material";
-import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
 import GoBack from "../../Tools/GoBack";
 import { Helmet } from "react-helmet";
@@ -55,47 +52,47 @@ const Turkey = () => {
     }
   }
   return (
-    <div id="trcity-game-container">
+    <div className="flex flex-col justify-start items-center min-h-screen mt-10">
       <Helmet>
         <title> Turkey | Emojify</title>
         <meta name="description" content="guess turkey cities emoji game" />
       </Helmet>
       <GoBack></GoBack>
-      <p id="trc-tittle">Turkey City Guess Game</p>
-      <div id="trcity-game">
-        <div id="trcity-emoji-container">
+      <p className="font-[Raleway] my-4 text-6xl border-b border-black">
+        Turkey's City Guess Game
+      </p>
+      <div className="flex flex-col justify-center items-center bg-yellow-500 py-2 px-4 rounded-xl">
+        <div className="flex flex-row my-4">
           {cityEmojis.map((emoji, index) => (
-            <span
-              className="emoji"
+            <div
+              className="bg-slate-100 border border-black p-1 m-1 "
               key={index}
               style={{ fontSize: "2rem", marginRight: "0.5rem" }}
             >
               {emoji}
-            </span>
+            </div>
           ))}
         </div>
         <input
-          id="trcity-input"
+          className="p-2 text-xl border-2   border-yellow-900 shadow-black font-bold "
           type="text"
           value={userGuess}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <div id="trcity-button-container">
-          <Button
-            className="trc-play-button"
+        <div className="flex justify-center items-center my-4 w-full">
+          <button
+            className="bg-blue-500 text-center align-middle text-white m-1 py-2 w-1/2"
             onClick={handleGuess}
-            variant="contained"
           >
             Guess
-          </Button>
-          <Button
-            className="trc-play-button"
-            variant="contained"
-            color="primary"
-            startIcon={<RefreshIcon />}
+          </button>
+          <button
+            className="bg-blue-500 text-center align-middle text-white m-1 py-2 w-1/2"
             onClick={handlePlayAgain}
-          ></Button>
+          >
+            Refresh
+          </button>
         </div>
 
         {result && <p className="hint">{result}</p>}

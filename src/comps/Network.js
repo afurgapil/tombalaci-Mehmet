@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import "../style/network.scss";
 import { setNetwork } from "../store/slicers/data";
 import { useAddress } from "../hooks/useAddress";
 
@@ -13,7 +12,6 @@ const NetworkSelection = () => {
 
   const handleNetworkChange = (event) => {
     const selectedValue = event.target.value;
-    console.log(selectedValue);
     setSelectedNetwork(selectedValue);
     dispatch(setNetwork(selectedValue));
   };
@@ -31,18 +29,20 @@ const NetworkSelection = () => {
   }
 
   return (
-    <div className="network">
-      <div className="network-selection network__item">
+    <div className="flex flex-row justify-center items-center absolute top-32 right-0">
+      <div className=" flex justify-center items-center w-24 h-12 bg-docAside rounded-xl">
         <select
           value={selectedNetwork}
           onChange={handleNetworkChange}
-          className="network-selection__dropdown"
+          className="w-full h-full bg-transparent border border-white rounded-md"
         >
           <option value="polygon">Polygon</option>
           {/* <option value="bsc">BSC</option> */}
         </select>
       </div>
-      <div className="acc network__item">{acc}</div>
+      <div className=" flex justify-center items-center w-24 h-12 bg-docAside rounded-xl">
+        {acc}
+      </div>
     </div>
   );
 };

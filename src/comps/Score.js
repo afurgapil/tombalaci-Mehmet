@@ -1,4 +1,3 @@
-import "../style/hooks.scss";
 // import { useScore } from "../hooks/user/useScore";
 import { useState, useEffect } from "react";
 import { getFirestore, doc, onSnapshot } from "firebase/firestore";
@@ -41,19 +40,19 @@ function Score() {
     }
   }, [user]);
   return (
-    <div id="score-container">
+    <div className="flex justify-center items-center mx-2">
       {score !== null ? (
-        <div id="border-out">
-          <div id="border-in">
-            <h3 className="border-in-item">Your Score</h3>
-            <h3 className="border-in-item">{score}</h3>
+        <div className="flex justify-center items-center bg-yellow-500 border-4 border-yellow-600 border-solid">
+          <div className="text-center bg-yellow-500">
+            <h3 className="m-0 p-0">Your Score</h3>
+            <h3 className="m-0 p-0">{score}</h3>
           </div>
         </div>
       ) : (
-        <div id="border-out">
-          <div id="border-in">
-            <h3 className="border-in-item">Your Score</h3>
-            <h3 className="border-in-item">Loading...</h3>
+        <div className="flex justify-center items-center bg-yellow-500 border border-600">
+          <div className="text-center bg-yellow-500">
+            <h3 className="m-0 p-0">Your Score</h3>
+            <h3 className="m-0 p-0">Loading...</h3>
           </div>
         </div>
       )}

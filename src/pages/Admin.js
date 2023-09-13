@@ -138,7 +138,7 @@ function Admin() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-bg flex flex-col justify-start items-center">
       <Helmet>
         <title>Admin | Tombalaci Mehmet</title>
         <meta
@@ -146,27 +146,33 @@ function Admin() {
           content="admin panel to execute contract transactions "
         />
       </Helmet>
-      <div>
-        <button className="swap-btn deposit-btn" onClick={playGame}>
+      <div className="border-b-4 border-black w-full p-4 my-2 flex flex-col justify-center items-center">
+        <button
+          className="bg-blue-500 px-4 py-2 rounded text-white"
+          onClick={playGame}
+        >
           Play Game
         </button>
       </div>
-      <div>
-        <button className="swap-btn deposit-btn" onClick={withdraw}>
+      <div className="border-b-4 border-black w-full p-4 my-2 flex flex-col justify-center items-center">
+        <button
+          className="bg-yellow-500 px-4 py-2 rounded text-white"
+          onClick={withdraw}
+        >
           Withdraw
         </button>
         <>Locked Amount: {amount}</>
       </div>
-      <div>
+      <div className="border-b-4 border-black w-full p-4 my-2 flex flex-col justify-center items-center">
         <button
-          className="swap-btn deposit-btn"
+          className="bg-red-500 px-4 py-2 rounded text-white"
           onClick={startSchedule}
           disabled={scheduleInterval !== null}
         >
           Start Scheduled Game
         </button>
         <button
-          className="swap-btn deposit-btn"
+          className="bg-red-500 px-4 py-2 rounded text-white"
           onClick={stopSchedule}
           disabled={scheduleInterval === null}
         >

@@ -56,7 +56,7 @@ function PreApp() {
     { path: "/emojify", element: EmojiGame },
     { path: "/emojify/lol", element: LolEmoji },
     { path: "/emojify/valorant", element: ValoEmoji },
-    { path: "/emojify/turkis-cities", element: TurkeyEmoji },
+    { path: "/emojify/turkish-cities", element: TurkeyEmoji },
     { path: "/emojify/countries", element: CountryEmoji },
     { path: "/quizboxes", element: QuizBox },
     { path: "/quizboxes/valorant", element: ValorantQuizBox },

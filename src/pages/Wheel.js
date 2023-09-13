@@ -13,10 +13,8 @@ import { setAccount, setAddress } from "../store/slicers/data";
 import { showErrorNotification } from "../utils/alertifyUtils";
 import Network from "../comps/Network";
 import { PieChart } from "react-minimal-pie-chart";
-import "../style/wheel.scss";
 import { Helmet } from "react-helmet";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { Await } from "react-router-dom";
 function Wheel() {
   const dispatch = useDispatch();
   const provider = useProvider();
@@ -191,7 +189,7 @@ function Wheel() {
     color: participantColors[participant.address],
   }));
   return (
-    <div className="wheel-container">
+    <div className="min-h-screen bg-bg flex flex-col justify-start items-center">
       <Helmet>
         <title>WOF | Tombalaci Mehmet</title>
         <meta name="description" content="a game built with solidity" />
@@ -205,13 +203,13 @@ function Wheel() {
         <ModalComponent handleClose={handleClose} />
       </Modal>
       {showWarning && (
-        <div className="warning">
+        <div className="mt-8 relative bg-purple-100 border border-purple-200 rounded-md p-3">
           <AiFillCloseCircle
-            className="close-btn"
+            className="text-red-500 text-3xl absolute right-1 top-1"
             onClick={handleHideWarning}
           />
-          <h2>Attention</h2>
-          <p>
+          <h2 className="text-red-900 text-lg ">Attention</h2>
+          <p className="text-red-900 text-lg ">
             This project is a test project running on the Mumbai network. Please
             exercise caution while safeguarding your assets.
           </p>
@@ -219,8 +217,8 @@ function Wheel() {
       )}
 
       {isParticipants && participants.length > 0 ? (
-        <div className="chart-wrapper">
-          <div className="chart">
+        <div className="flex flex-row justify-between items-center my-12">
+          <div className="w-4/5 text-[8px]">
             <PieChart
               data={data}
               radius={50}
@@ -228,53 +226,66 @@ function Wheel() {
               label={({ dataEntry }) => `${dataEntry.title}`}
             />
           </div>
-          <div className="participant-list">
-            <h3>Total Deposit:{balance} Matic</h3>
+          <div className="flex flex-col flex-wrap mx-4 w-auto">
+            <h3 className="font-bold">Total Deposit: {balance} Matic</h3>
             {data.map((data) => (
-              <div key={data.title} className="data">
+              <div
+                key={data.title}
+                className="flex flex-row flex-nowrap items-center m-4 w-full"
+              >
                 <div
-                  className="color-box"
+                  className="w-5 h-5 m-1"
                   style={{ backgroundColor: data.color }}
                 />
-                <div className="title">{data.title}...</div>
-                <div className="amount">{data.amount} MATIC</div>
-                <div className="value">%{data.value}</div>
+                <div className="">{data.title}...</div>
+                <div className="">{data.amount} MATIC</div>
+                <div className="font-bold">%{data.value}</div>
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <div className="check">Checking Participants </div>
+        <div className="font-bold text-6xl m-6 animate-pulse ">
+          Checking Participants{" "}
+        </div>
       )}
-      <div className="deposit-container swap__item">
-        <div className="input-wrapper">
+      <div className="flex flex-col justify-center items-center swap__item">
+        <div className="relative mb-5">
           <input
             type="text"
+            class="p-2 w-64 rounded-md shadow-md placeholder-gray-400"
             value={depositAmount}
             placeholder="Deposit"
             onChange={handleDepositSliderChange}
           />
         </div>
         <button
-          className="button swap-btn deposit-btn"
+          className="px-2 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md cursor-pointer shadow-lg transition-all duration-300 ease-linear  "
           onClick={depositAndCalculate}
         >
           Deposit
         </button>
         {showAlert && (
-          <div className="alert">
-            <p>The draw is done every hour</p>
+          <div className="flex flex-row justify-center items-center relative border border-solid border-black rounded  my-4">
+            <p className="bg-red-900 w-full h-full px-8 py-4 text-white">
+              The draw is done every hour
+            </p>
             <AiFillCloseCircle
-              className="close-btn"
+              className="close-btn absolute right-2 top-2"
               onClick={handleHideAlert}
+              color="white"
             />
           </div>
         )}
       </div>
       {lastWinner && (
-        <div className="last">
-          <h5 class="last-winner">Last Winner: {lastWinner}</h5>
-          <h5 class="last-prize">Last Prize: {lastPrize} MATIC</h5>
+        <div className="flex flex-col justify-start items-start my-4">
+          <h5 class="text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl w-full">
+            Last Winner: {lastWinner}
+          </h5>
+          <h5 class="text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl w-full">
+            Last Prize: {lastPrize} MATIC
+          </h5>
         </div>
       )}
     </div>

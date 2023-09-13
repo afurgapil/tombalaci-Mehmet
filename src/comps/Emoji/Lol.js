@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import heros from "../../data/heros";
-import "../../style/lol.scss";
-import { Button } from "@mui/material";
-import RefreshIcon from "@mui/icons-material/Refresh";
 import alertify from "alertifyjs";
 import GoBack from "../../Tools/GoBack";
 import { Helmet } from "react-helmet";
@@ -55,7 +52,7 @@ const Lol = () => {
     }
   }
   return (
-    <div id="lol-game-container">
+    <div className="flex flex-col justify-start items-center min-h-screen mt-10">
       <Helmet>
         <title> LOL| Emojify</title>
         <meta
@@ -64,41 +61,41 @@ const Lol = () => {
         />
       </Helmet>
       <GoBack></GoBack>
-      <p id="l-tittle">Lol Champion Guess Game</p>
-      <div id="lol-game">
-        <div id="lol-emoji-container">
+      <p className="font-[Raleway] my-4 text-6xl border-b border-black">
+        Lol Champion Guess Game
+      </p>
+      <div className="flex flex-col justify-center items-center bg-green-500 py-2 px-4 rounded-xl">
+        <div className="flex flex-row my-4">
           {heroEmojis.map((emoji, index) => (
-            <span
-              className="emoji"
+            <div
+              className="bg-slate-100 border border-black p-1 m-1 "
               key={index}
               style={{ fontSize: "2rem", marginRight: "0.5rem" }}
             >
               {emoji}
-            </span>
+            </div>
           ))}
         </div>
         <input
-          id="lol-input"
+          className="p-2 text-xl border-2   border-green-900 shadow-black font-bold "
           type="text"
           value={userGuess}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <div id="lol-button-container">
-          <Button
-            className="l-play-button"
+        <div className="flex justify-center items-center my-4 w-full">
+          <button
+            className="bg-blue-500 text-center align-middle text-white m-1 py-2 w-1/2"
             onClick={handleGuess}
-            variant="contained"
           >
             Guess
-          </Button>
-          <Button
-            className="l-play-button"
-            variant="contained"
-            color="primary"
-            startIcon={<RefreshIcon />}
+          </button>
+          <button
+            className="bg-blue-500 text-center align-middle text-white m-1 py-2 w-1/2"
             onClick={handlePlayAgain}
-          ></Button>
+          >
+            Refresh
+          </button>
         </div>
 
         {result && <p className="hint">{result}</p>}

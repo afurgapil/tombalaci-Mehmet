@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../style/reset.scss";
 //firebase
 import { auth } from "../Firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
@@ -40,7 +39,7 @@ const Reset = () => {
   };
 
   return (
-    <div id="reset-container">
+    <div className="flex flex-col justify-start pt-20 items-center w-full min-h-screen bg-bg">
       <Helmet>
         <title>Reset| Tombalaci Mehmet</title>
         <meta
@@ -48,14 +47,17 @@ const Reset = () => {
           content="reset password page for the Tombalaci Mehmet"
         />
       </Helmet>
-      <div id="reset-container-items">
-        <div id="reset-text">
-          <p className="bold">😡Hey!😡</p>
+      <div className="flex flex-col justify-center items-center border-3 border-black border-solid w-3/5 p-4 rounded-md">
+        <div className="w-4/5 text-center">
+          <p className="font-bold text-5xl py-2">😡Hey!😡</p>
           <p>The Council did not like this move.</p>
           <p>Be more careful next time.</p>
           <p>There may not be a second chance...</p>
         </div>
-        <form onSubmit={handleResetPassword} id="reset-form">
+        <form
+          onSubmit={handleResetPassword}
+          className="flex flex-col items-center justify-center w-full"
+        >
           <TextField
             type="email"
             name="email"
@@ -66,7 +68,7 @@ const Reset = () => {
             fullWidth
             margin="normal"
           />
-          <div id="button-container">
+          <div className="flex flex-row justify-center items-center">
             <Button variant="contained" type="submit">
               Reset Password
             </Button>

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import agents from "../../data/agents";
-import "../../style/valorant.scss";
-import { Button } from "@mui/material";
-import RefreshIcon from "@mui/icons-material/Refresh";
 import GoBack from "../../Tools/GoBack";
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
@@ -55,50 +52,64 @@ const Valorant = () => {
     }
   }
   return (
-    <div id="valorant-game-container">
+    <div
+      className="flex flex-col justify-start items-center min-h-screen mt-10"
+      id="valorant-game-container"
+    >
       <Helmet>
         <title> Valorant | Emojify</title>
         <meta name="description" content="guess valorant agents emoji game" />
       </Helmet>
       <GoBack></GoBack>
-      <p id="v-tittle">Valorant Agent Guess Game</p>
-      <div id="valorant-game">
-        <div id="valorant-emoji-container">
+      <p
+        className="text-6xl mb-2 border-b border-black font-[Raleway]"
+        id="v-tittle"
+      >
+        Valorant Agent Guess Game
+      </p>
+      <div
+        className="flex flex-col justify-center items-center bg-red-800 p-8 
+        rounded-xl"
+        id="valorant-game"
+      >
+        <div className="flex flex-row mb-8" id="valorant-emoji-container">
           {agentEmojis.map((emoji, index) => (
-            <span
-              className="emoji"
+            <div
+              className="bg-slate-100 border border-black  text-3xl mx-1 p-4"
               key={index}
-              style={{ fontSize: "2rem", marginRight: "0.5rem" }}
+              style={{ fontSize: "2rem" }}
             >
               {emoji}
-            </span>
+            </div>
           ))}
         </div>
         <input
-          id="valorant-input"
+          className="p-2 text-xl border-2   border-red-900 shadow-black font-bold "
           type="text"
           value={userGuess}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <div id="valorant-button-container">
-          <Button
-            className="v-play-button"
+        <div className="flex justify-center items-center w-full mt-4">
+          <button
             onClick={handleGuess}
-            variant="contained"
+            className="bg-blue-500 text-center align-middle text-white m-1 py-2 w-1/2"
           >
             Guess
-          </Button>
-          <Button
-            className="v-play-button"
-            variant="contained"
-            color="primary"
-            startIcon={<RefreshIcon />}
+          </button>
+          <button
             onClick={handlePlayAgain}
-          ></Button>
+            className="bg-blue-500 text-center align-middle text-white m-1 py-2 w-1/2"
+          >
+            Refresh
+          </button>
         </div>
 
-        {result && <p className="hint">{result}</p>}
+        {result && (
+          <p className="my-8 bg-stone-300 p-1 border-2 border-black">
+            {result}
+          </p>
+        )}
         {/* {result && (
           <Button
             onClick={handlePlayAgain}

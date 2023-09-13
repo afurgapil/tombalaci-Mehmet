@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import "../style/hooks.scss";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -48,17 +47,16 @@ function DisplayNameUtils() {
     <div>
       {displayName ? (
         <div>
-          <Button
-            id="basic-button"
+          <button
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
             onMouseOver={handleClick}
-            className="profile-name"
+            className="relative px-3 py-5 color text-white no-underline transition-all duration-200 p-0 font-[Teko] "
           >
             {displayName}
-          </Button>
+          </button>
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}

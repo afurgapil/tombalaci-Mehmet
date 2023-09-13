@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../style/Rps.scss";
 import Rock from "../assets/6.png";
 import Paper from "../assets/7.png";
 import Scissors from "../assets/8.png";
@@ -100,7 +99,7 @@ const Game = () => {
       el.classList.remove("active");
     });
     const element = document.getElementById(choice);
-    element.classList.add("active");
+    element.classList.add("border-blue-600");
   }
 
   useEffect(() => {
@@ -108,38 +107,43 @@ const Game = () => {
   }, [newImage]);
 
   return (
-    <div id="rps-container">
+    <div className="min-h-screen bg-bg flex flex-row justify-center items-center">
       <Helmet>
         <title>RPS | Tombalaci Mehmet</title>
         <meta name="description" content="rock paper scissorss game " />
       </Helmet>
       <GoBack></GoBack>
-      <div id="game-container">
-        <div id="robo">
-          <img id="robot" className="pulse" src={Robot} alt=" "></img>
-          <img id="robot2" alt=" "></img>
+      <div className="flex flex-row justify-center items-center">
+        <div className="flex flex-row justify-center items-center text-center content-center">
+          <img
+            id="robot"
+            className=" animate-pulse  w-52 h-52 "
+            src={Robot}
+            alt=" "
+          ></img>
+          <img id="robot2" className="w-52 h-52" alt=" "></img>
         </div>
         <div id="vs">
-          <h1 className="versus">VS</h1>
+          <h1 className="font-[Teko] text-6xl mx-4">VS</h1>
         </div>
-        <div id="buttons">
+        <div className="flex flex-col justify-center items-center">
           <img
             id="rock"
-            className="button"
+            className="w-32 h-32 m-4 p-1 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
             src={Rock}
             alt="Rock"
             onClick={() => handleClick("rock")}
           ></img>
           <img
             id="paper"
-            className="button"
+            className="w-32 h-32 m-4 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
             src={Paper}
             alt="Paper"
             onClick={() => handleClick("paper")}
           ></img>
           <img
             id="scissors"
-            className="button"
+            className="w-32 h-32 m-4 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
             src={Scissors}
             alt="Scissors"
             onClick={() => handleClick("scissors")}
