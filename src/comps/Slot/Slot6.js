@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import "../../style/slot.scss";
 
 import GoBack from "../../Tools/GoBack";
 //firebase
@@ -474,23 +473,41 @@ function Slot() {
         <title> Abidin| Coin Flip</title>
         <meta name="description" content="easy slot game" />
       </Helmet>
-      <div className="slot-table-container">
-        <div className="table-shadow">
-          <div className="slot-table">
-            <div className="col">
-              <p className="number">{col11}</p>
-              <p className="number">{col12}</p>
-              <p className="number">{col13}</p>
+      <div className="flex flex-row justify-center items-center min-h-screen bg-gradient-to-br from-green-400 via-teal-400 to-red-500">
+        <div className="flex flex-row justify-center items-center p-4 shadow-md">
+          <div className="flex flex-row items-center justify-center text-3xl text-white p-20 rounded-3xl">
+            <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col11}
+              </p>
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col12}
+              </p>
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col13}
+              </p>
             </div>
-            <div className="col">
-              <p className="number">{col21}</p>
-              <p className="number">{col22}</p>
-              <p className="number">{col23}</p>
+            <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col21}
+              </p>
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col22}
+              </p>
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col23}
+              </p>
             </div>
-            <div className="col">
-              <p className="number">{col31}</p>
-              <p className="number">{col32}</p>
-              <p className="number">{col33}</p>
+            <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col31}
+              </p>
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col32}
+              </p>
+              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+                {col33}
+              </p>
             </div>
           </div>
           <Button

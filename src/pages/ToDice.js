@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../style/todice.scss";
 import GoBack from "../Tools/GoBack";
 //firebase
 import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
@@ -363,38 +362,48 @@ export default function ToDice() {
   }, []);
 
   return (
-    <div className="ToDice">
+    <div className="flex justify-center items-start min-h-screen bg-bg pt-20">
       <Helmet>
         <title>To Dice| Tombalaci Mehmet</title>
         <meta name="description" content="to dice game " />
       </Helmet>
       <GoBack></GoBack>
-      <div className="dice-container">
-        <button className="enjoy" onClick={rollDice}>
+      <div className="flex flex-col justify-center items-center text-center">
+        <button
+          className=" text-base w-40 h-10 bg-[#333] hover:bg-[#334] text-white p-2 rounded-md cursor-pointer  outline-none left-0 my-4"
+          onClick={rollDice}
+        >
           Roll Dice
         </button>
-        <div className="dice">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
+        <div className="w-40 h-40 bg-white border-2 border-solid border-black flex justify-center items-center text-7xl font-bold relative my-4">
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute top-2 left-2"></div>
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute top-2 right-2"></div>
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute bottom-2 left-2"></div>
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute bottom-2 right-2"></div>
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute top-15 left-15"></div>
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute top-2 left-15"></div>
+          <div className="dot w-7 h-7 bg-black rounded-full m-1 absolute bottom-2 right-15"></div>
         </div>
-        <div className="buttons">
-          <div className="guess">
+        <div className="flex flex-row justify-center items-start my-4">
+          <div className="flex flex-col justify-center items-center mx-4">
             <button
+              className="w-25 h-12 bg-[#333] text-white text-center text-2xl px-2 py-4 my-4 rounded-md cursor-pointer outline-none left-0  disabled:cursor-not-allowed disabled:opacity-50 "
               onClick={() => {
                 guessNumber();
               }}
             >
               Guess!
             </button>
-            <input type="number" id="guessInput" onKeyPress={handleKeyPress} />
+            <input
+              type="number"
+              id="guessInput"
+              onKeyPress={handleKeyPress}
+              className=" w-24 h-12 text-lg border-2 border-solid border-[#ccc] rounded-xl outline-none focus:border-dodgerblue appearance-none"
+            />
           </div>
-          <div className="oddeven">
+          <div className="flex flex-col justify-center items-center mx-4">
             <button
+              className="w-25 h-12 bg-[#333] text-white text-2xl px-2 py-4 my-4  rounded-md cursor-pointer outline-none left-0 disabled:cursor-not-allowed disabled:opacity-50 "
               onClick={() => {
                 isEven();
               }}
@@ -402,6 +411,7 @@ export default function ToDice() {
               Even!
             </button>
             <button
+              className="w-25 h-12 bg-[#333] text-white text-2xl px-2 py-4 rounded-md cursor-pointer outline-none left-0  disabled:cursor-not-allowed disabled:opacity-50 "
               onClick={() => {
                 isOdd();
               }}
@@ -409,8 +419,9 @@ export default function ToDice() {
               Odd!
             </button>
           </div>
-          <div className="lowhigh">
+          <div className="flex flex-col justify-center items-center mx-4">
             <button
+              className="w-25 h-12 bg-[#333] text-white text-2xl px-2 py-4 my-4  rounded-md cursor-pointer outline-none left-0  disabled:cursor-not-allowed disabled:opacity-50 "
               onClick={() => {
                 isLow();
               }}
@@ -418,6 +429,7 @@ export default function ToDice() {
               Low!
             </button>
             <button
+              className="w-25 h-12 bg-[#333] text-white text-2xl px-2 py-4 rounded-md cursor-pointer outline-none left-0  disabled:cursor-not-allowed disabled:opacity-50 "
               onClick={() => {
                 isHigh();
               }}

@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import agents from "../../data/agents";
-import alertify from "alertifyjs";
-import "../../style/agents.scss";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import GoBack from "../../Tools/GoBack";
 import { Helmet } from "react-helmet";
@@ -12,23 +9,24 @@ function Agents() {
   const [selectedAgentData, setSelectedAgentData] = useState(null);
   const [computerAgent, setComputerAgent] = useState("");
   const [computerAgentData, setComputerAgentData] = useState("");
-  const [userInput, setUserInput] = useState("");
-  const [lastAgent, setLastAgent] = useState();
+  const [userInput, setUserInput] = useState(null);
   const [isTrue, setIsTrue] = useState(false);
   const Ref1 = useRef(null);
   const Ref2 = useRef(null);
   const Ref3 = useRef(null);
   const Ref4 = useRef(null);
-  const [animationParent] = useAutoAnimate();
   const [animationParent1] = useAutoAnimate();
-
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * agents.length);
+    setComputerAgent(agents[randomIndex].name);
+    setComputerAgentData(agents[randomIndex]);
+  }, []);
   const playAgain = () => {
     setSelectedAgents([]);
     setSelectedAgentData(null);
     setComputerAgent("");
     setComputerAgentData("");
     setUserInput("");
-    setLastAgent("");
     setIsTrue(false);
     const randomIndex = Math.floor(Math.random() * agents.length);
     setComputerAgent(agents[randomIndex].name);
@@ -41,20 +39,15 @@ function Agents() {
 
   const handleAddItem = () => {
     setSelectedAgents((prevItems) => [...prevItems, userInput]);
-    setLastAgent(userInput);
     setUserInput("");
     setTimeout(() => {
       compareAgents();
     }, 100);
   };
 
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * agents.length);
-    setComputerAgent(agents[randomIndex].name);
-    setComputerAgentData(agents[randomIndex]);
-  }, []);
-
   const compareAgents = () => {
+    console.log(userInput);
+    console.log(computerAgentData.name);
     const matchingAgent = agents.find((a) => a.name === userInput);
     if (matchingAgent.gender === computerAgentData.gender) {
       Ref1.current.style.backgroundColor = "green";
@@ -94,7 +87,7 @@ function Agents() {
   }
 
   return (
-    <div id="valodle-game-container">
+    <div className="flex flex-col justify-start items-center min-h-screen ">
       <Helmet>
         <title> Valorant| Quiz Boxes</title>
         <meta
@@ -104,90 +97,114 @@ function Agents() {
       </Helmet>
       <GoBack></GoBack>
 
-      <h1 id="vaoldle-title">Valorant Agent Guessing Game</h1>
-      <div id="agent-input">
-        <TextField
-          fullWidth
-          id="filled-basic"
-          label="Choose an Agent"
-          variant="filled"
-          type="text"
-          value={userInput}
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-        />
+      <h1 className="text-3xl font-bold border-b border-black font-[Raleway] my-10">
+        Valorant Agent Guessing Game
+      </h1>
+      {userInput === null ? (
+        <h3 className="font-[Teko] text-8xl text-amber-800">
+          Make a Guess for Start
+        </h3>
+      ) : null}
 
-        <Button id="check-button" variant="contained" onClick={handleAddItem}>
-          Check
-        </Button>
-        {isTrue && (
-          <Button
-            ref={animationParent1}
-            variant="contained"
-            color="secondary"
-            onClick={playAgain}
+      <div className="flex flex-col justify-center items-center w-2/5">
+        <div className="w-full">
+          <TextField
+            fullWidth
+            label="Choose an Agent"
+            variant="filled"
+            type="text"
+            value={userInput}
+            onChange={handleChange}
+            onKeyPress={handleKeyPress}
+          />
+        </div>
+
+        <div className="flex flex-col justify-center items-center mx-4 w-full">
+          <button
+            className="bg-blue-600 hover:bg-blue-800 text-white my-1 px-4 py-2 rounded w-full"
+            onClick={handleAddItem}
           >
-            Play Again
-          </Button>
-        )}
-      </div>
-      {/* <div id="gecici">
-        <p>User Input: {userInput}</p>
-        <p>last Input: {lastAgent}</p>
-        <p>Selected Agents: {selectedAgents}</p>
-        <p>Computer Agent: {computerAgent}</p>
-        <div>
-          {selectedAgentData ? (
-            <p>Name: {selectedAgentData.name}</p>
-          ) : (
-            <p>No agent selected</p>
+            Check
+          </button>
+          {isTrue && (
+            <button
+              className="bg-purple-600 hover:bg-purple-800 text-white my-1 px-4 py-2 rounded w-full"
+              ref={animationParent1}
+              onClick={playAgain}
+            >
+              Play Again
+            </button>
           )}
         </div>
-      </div> */}
+      </div>
       {selectedAgents.length > 0 ? (
-        <table>
+        <table className="border-collapse w-4/5 max-w-800 mx-auto text-base leading-1.4 my-10">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Gender</th>
-              <th>Role</th>
-              <th>Species</th>
-              <th>Region</th>
+              <th className="bg-gray-700 border border-gray-300 font-bold text-white">
+                Agent
+              </th>
+              <th className="bg-gray-700 border border-gray-300 font-bold text-white">
+                Gender
+              </th>
+              <th className="bg-gray-700 border border-gray-300 font-bold text-white">
+                Role
+              </th>
+              <th className="bg-gray-700 border border-gray-300 font-bold text-white">
+                Species
+              </th>
+              <th className="bg-gray-700 border border-gray-300 font-bold text-white">
+                Region
+              </th>
             </tr>
           </thead>
-          <tbody ref={animationParent}>
-            {selectedAgents.map((agent, index) => {
-              const selectedAgentData = agents.find((a) => a.name === agent);
-              if (!selectedAgentData) return null;
-              return (
-                <tr key={index}>
-                  <td id="table-name">
-                    <img
-                      id="agent-icon"
-                      src={selectedAgentData.icon}
-                      alt={selectedAgentData.name}
-                    ></img>
-                  </td>
-                  <td id="table-gender table-item" ref={Ref1}>
-                    {selectedAgentData.gender}
-                  </td>
-                  <td id="table-role table-item" ref={Ref2}>
-                    {selectedAgentData.role}
-                  </td>
-                  <td id="table-species table-item" ref={Ref3}>
-                    {selectedAgentData.species}
-                  </td>
-                  <td id="table-region table-item" ref={Ref4}>
-                    {selectedAgentData.region}
-                  </td>
-                </tr>
-              );
-            })}
+          <tbody x-ref="animationParent">
+            {selectedAgents.length > 0
+              ? selectedAgents.map((agent, index) => {
+                  const selectedAgentData = agents.find(
+                    (a) => a.name === agent
+                  );
+                  if (!selectedAgentData) return null;
+                  return (
+                    <tr key={index}>
+                      <td className="flex justify-center items-center">
+                        <img
+                          className="w-auto h-20 text-center"
+                          src={selectedAgentData.icon}
+                          alt={selectedAgentData.name}
+                        />
+                      </td>
+                      <td
+                        ref={Ref1}
+                        className="border border-gray-300 text-center text-white"
+                      >
+                        {selectedAgentData.gender}
+                      </td>
+                      <td
+                        ref={Ref2}
+                        className="border border-gray-300 text-center text-white"
+                      >
+                        {selectedAgentData.role}
+                      </td>
+                      <td
+                        ref={Ref3}
+                        className="border border-gray-300 text-center text-white"
+                      >
+                        {selectedAgentData.species}
+                      </td>
+                      <td
+                        ref={Ref4}
+                        className="border border-gray-300 text-center text-white"
+                      >
+                        {selectedAgentData.region}
+                      </td>
+                    </tr>
+                  );
+                })
+              : null}
           </tbody>
         </table>
-      ) : (
-        <h3 id="valodle-desc">Make a Guess</h3>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -1,103 +1,67 @@
 import React from "react";
-import "../style/SlotGame.scss";
 import abidin from "../assets/abidin.jpg";
-import abidin1 from "../assets/abidin1.jpg";
-import cakir from "../assets/cakir.jpg";
-import cakir1 from "../assets/cakir1.jpg";
-import muhterem from "../assets/muhterem.jpg";
-import muhterem1 from "../assets/muhterem1.png";
+import cakir from "../assets/cakir1.jpg";
+import muhterem from "../assets/muhterem1.png";
 import { NavLink } from "react-router-dom";
 //scroller
-import {
-  Animator,
-  ScrollContainer,
-  ScrollPage,
-  batch,
-  FadeOut,
-  FadeIn,
-} from "react-scroll-motion";
-import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
+const content = [
+  {
+    title: "Çapsız Abidin",
+    desc: "Just a commanding officer. He does whatever his brother says, he doesn't think too much. Ideal for those who don't want to take risks.",
+    color: "bg-green-500",
+    img: abidin,
+    link: "abidin",
+  },
+  {
+    title: "Süleyman Çakır",
+    desc: "A full duty man. It is rising rapidly in the world. It can ead you to big profits or it can completely sink you.",
+    color: "bg-yellow-500",
+    img: cakir,
+    link: "cakir",
+  },
+  {
+    title: "Muhterem",
+    desc: "   He is the private chef of Tombalacı Mehmet. There is not much information about him, but there is only one known fact, if you want to be rich, you have to be with him.",
+    color: "bg-red-500",
+    img: muhterem,
+    link: "muhterem",
+  },
+];
 const SlotGame = () => {
-  const loginEffect = batch(FadeOut(1, -0.5), FadeIn(0, 1));
-
   return (
     <>
       <Helmet>
         <title>Slot | Tombalaci Mehmet</title>
         <meta name="description" content="slot game" />
       </Helmet>
-      <ScrollContainer className="slot-container">
-        <ScrollPage>
-          <Animator className="slot-section" animation={loginEffect}>
-            <div id="easy-container" className="s-container">
-              <div id="easy-img" className="s-img-container">
-                <img src={abidin} alt="Abidin" className="top" />
-                <img src={abidin1} alt="Abidin" className="bot" />
-              </div>
-              <div id="easy-desc" className="s-desc">
-                <h2 className="s-desc-title">Çapsız Abidin</h2>
-                <p className="s-desc-p">
-                  Just a commanding officer. He does whatever his brother says,
-                  he doesn't think too much. Ideal for those who don't want to
-                  take risks.
-                </p>
-                <NavLink to="abidin">
-                  <Button id="easy-button" variant="contained">
-                    Play
-                  </Button>
-                </NavLink>
-              </div>
-            </div>
-          </Animator>
-        </ScrollPage>
-
-        <ScrollPage>
-          <Animator className="slot-section" animation={loginEffect}>
-            <div id="normal-container" className="s-container">
-              <div id="normal-img" className="s-img-container">
-                <img src={cakir} alt="cakir" className="top" />
-                <img src={cakir1} alt="cakir" className="bot" />
-              </div>
-              <div id="normal-desc" className="s-desc">
-                <h2 className="s-desc-title">Süleyman Çakır</h2>
-                <p className="s-desc-p">
-                  A full duty man. It is rising rapidly in the world. It can
-                  lead you to big profits or it can completely sink you.
-                </p>
-                <NavLink to="cakir">
-                  <Button id="medium-button" variant="contained">
-                    Play
-                  </Button>
-                </NavLink>
-              </div>
-            </div>
-          </Animator>
-        </ScrollPage>
-        <ScrollPage>
-          <Animator className="slot-section" animation={loginEffect}>
-            <div id="hard-container" className="s-container">
-              <div id="hard-img" className="s-img-container">
-                <img src={muhterem} alt="muhterem" className="top" />
-                <img src={muhterem1} alt="muhterem" className="bot" />
-              </div>
-              <div id="hard-desc" className="s-desc">
-                <h2 className="s-desc-title">Muhterem</h2>
-                <p className="s-desc-p">
-                  He is the private chef of Tombalacı Mehmet. There is not much
-                  information about him, but there is only one known fact, if
-                  you want to be rich, you have to be with him.
-                </p>
-                <NavLink to="muhterem">
-                  <Button id="hard-button" variant="contained">
-                    Play
-                  </Button>
-                </NavLink>
-              </div>
-            </div>
-          </Animator>
-        </ScrollPage>
-      </ScrollContainer>
+      {content.map((item) => (
+        <div
+          id="easy-container"
+          className="bg-gradient-to-l from-[#a84d23] to-[#6755ae] min-h-screen w-full flex flex-row justify-center items-center border-b-4 border-black "
+        >
+          <div className="w-2/5">
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-full h-auto rounded-3xl"
+            />
+          </div>
+          <div className="flex flex-col justify-center items-center mx-8">
+            <h2 className="font-bold text-white border-b-2 border-white w-full text-center text-8xl ">
+              {item.title}
+            </h2>
+            <p className="text-white py-4 text-2xl">{item.desc}</p>
+            <NavLink to={item.link}>
+              <button
+                className={`${item.color} rounded-3xl px-8 py-4 text-center italic hover:scale-125 transition-all duration-500 ease-out`}
+              >
+                Play
+              </button>
+            </NavLink>
+          </div>
+        </div>
+      ))}
     </>
   );
 };

@@ -7,7 +7,6 @@ import roulette from "../assets/roulette.png";
 import slot from "../assets/slot.png";
 import emojify from "../assets/emoji.png";
 import quizboxes from "../assets/quizbox.png";
-import "../style/home.scss";
 //scroller
 import {
   Animator,
@@ -28,71 +27,112 @@ function Home() {
       setScore(parseInt(cachedScore));
     }
   }, []);
-  const loginEffect = batch(Fade(), Sticky(), MoveOut(0, -200));
+  const loginEffect = batch(Fade(), MoveOut(0, 400));
   const scrollEffect = batch(MoveIn(1000, 0), Fade(), MoveOut(0, 500));
   const scrollEffect1 = batch(MoveIn(-1000, 0), Fade(0, 1), MoveOut(0, 500));
   const scrollEffect2 = batch(MoveIn(0, -500), Fade());
 
   return (
-    <div id="homepage-main">
+    <div>
       <Helmet>
         <title>Home | Tombalaci Mehmet </title>
         <meta name="description" content="homepage" />
       </Helmet>
       <ScrollContainer>
         <ScrollPage>
-          <div id="section1" className="main-container">
+          <div
+            id="section1"
+            className="bg-gradient-to-br from-[#ffebcd] to-[#00253b] w-full h-screen flex flex-col justify-center items-center p-0"
+          >
             <Animator animation={loginEffect}>
-              <h1>Tombalaci Mehmet</h1>
-              <h2>the only address for fun</h2>
+              <h1 className="mt-0 text-8xl font-[Comfortaa] text-center mb-0">
+                Tombalaci Mehmet
+              </h1>
+              <h2 className="text-4xl font-[Dancing Script] text-center mt-0">
+                the only address for fun
+              </h2>
             </Animator>
           </div>
         </ScrollPage>
         <ScrollPage>
-          <div id="section2">
-            <div id="section2-desc">
+          <div className="flex flex-row justify-between items-center w-full h-screen bg-gradient-to-bl from-[#72ed9b] to-[#edb25a] ">
+            <div className="flex items-center justify-center h-screen ms-8">
               <Animator animation={scrollEffect1}>
-                <h2>Classics</h2>
-                <p>
+                <h2 className="text-8xl m-0 text-white border-b border-black">
+                  Classics
+                </h2>
+                <p className="text-3xl">
                   And here are the Classics of Tombalacı Mehmet. Each game is
                   prepared for you. If you are a fan of the past, these games
                   are for you.
                 </p>
               </Animator>
             </div>
-            <div id="cards" className="cards">
-              <div className="card">
+            <div className="flex flex-wrap justify-between items-center flex-row me-20">
+              <div
+                className="m-2 w-1/4
+              "
+              >
                 <Animator animation={scrollEffect}>
                   <Link to="coinflip">
-                    <img src={coin} alt="Coin Flip" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0  transition-all duration-200 ease-linear"
+                      src={coin}
+                      alt="Coin Flip"
+                    />
                   </Link>
                 </Animator>
               </div>
-              <div className="card">
+              <div
+                className="m-2 w-1/4
+              "
+              >
                 <Animator animation={scrollEffect}>
                   <Link to="todice">
-                    <img src={dice} alt="ToDice" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0 transition-all duration-200 ease-linear"
+                      src={dice}
+                      alt="ToDice"
+                    />
                   </Link>
                 </Animator>
               </div>
-              <div className="card">
+              <div
+                className="m-2 w-1/4
+              "
+              >
                 <Animator animation={scrollEffect}>
                   <Link to="rps">
-                    <img src={rps} alt="RPS" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0 transition-all duration-200 ease-linear"
+                      src={rps}
+                      alt="RPS"
+                    />
                   </Link>
                 </Animator>
               </div>
-              <div className="card">
+              <div
+                className="m-2 w-1/4
+              "
+              >
                 <Animator animation={scrollEffect}>
                   <Link to="roulette">
-                    <img src={roulette} alt="Roulette" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0 transition-all duration-200 ease-linear"
+                      src={roulette}
+                      alt="Roulette"
+                    />
                   </Link>
                 </Animator>
               </div>
-              <div className="card">
+              <div className="m-2 w-1/3">
                 <Animator animation={scrollEffect}>
                   <Link to="slot">
-                    <img src={slot} alt="Slot" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0 transition-all duration-200 ease-linear"
+                      src={slot}
+                      alt="Slot"
+                    />
                   </Link>
                 </Animator>
               </div>
@@ -100,27 +140,37 @@ function Home() {
           </div>
         </ScrollPage>
         <ScrollPage>
-          <div id="section3">
-            <div id="cards" className="cards">
-              <div className="card">
+          <div className="flex flex-row justify-between items-center w-full h-screen bg-gradient-to-br from-[#9842ed] to-[#1793a3]">
+            <div className="flex flex-wrap justify-between flex-row ms-20">
+              <div className="m-2 w-1/3  ">
                 <Animator animation={scrollEffect2}>
                   <Link to="emojify">
-                    <img src={emojify} alt="Emojify" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0  transition-all duration-200 ease-linear"
+                      src={emojify}
+                      alt="Emojify"
+                    />
                   </Link>
                 </Animator>
               </div>
-              <div className="card">
+              <div className="m-2 w-1/3  ">
                 <Animator animation={scrollEffect2}>
                   <Link to="quizboxes">
-                    <img src={quizboxes} alt="Emojify" />
+                    <img
+                      className="w-full h-auto grayscale-[0.5] hover:scale-125 hover:grayscale-0  transition-all duration-200 ease-linear"
+                      src={quizboxes}
+                      alt="Emojify"
+                    />
                   </Link>
                 </Animator>
               </div>
             </div>
-            <div id="section3-desc">
+            <div className="flex justify-center items-center h-screen me-8">
               <Animator animation={scrollEffect2}>
-                <h2>Try it</h2>
-                <p>
+                <h2 className="text-8xl m-0 text-white border-b border-black">
+                  Try it
+                </h2>
+                <p className="text-3xl">
                   If you're tired of ordinary games and looking for something
                   new, don't miss them.
                 </p>

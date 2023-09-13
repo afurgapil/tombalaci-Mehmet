@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../style/header.scss";
 import logo from "../assets/logo.png";
 import { NavLink, Link } from "react-router-dom";
 import DisplayNameUtils from "../comps/DisplayNameUtils";
@@ -26,49 +25,59 @@ function Header() {
 
   function OnLoginHeader() {
     return (
-      <div className="header-container">
-        <div className="logo-container">
-          <img src={logo} alt="logo" />
-          <div className="menu-icon">
-            <MenuIcon onClick={toggleMenu} color="white"></MenuIcon>
+      <header className="flex flex-col md:flex-row justify-between items-center min-h-20 bg-darkBlue px-1 py-5 z-10">
+        <div className="flex flex-row justify-between items-center w-full  md:w-auto">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-10 h-10 md:w-auto md:h-auto"
+          />
+          <div className="md:hidden ">
+            <MenuIcon
+              onClick={toggleMenu}
+              style={{ color: "white" }}
+            ></MenuIcon>
           </div>
         </div>
-        <div className="menu-container">
-          <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
-            <li className="navigation-item">
-              <NavLink to="/" exact="true" className="navigation-item-link">
+        <div className={`${isMenuOpen ? "flex " : "hidden"}  md:block w-full`}>
+          <ul className="w-full flex flex-col md:flex-row md:justify-end items-center list-none ">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/" exact="true" className="flex justify-center">
                 Home
               </NavLink>
             </li>
-            <li className="navigation-item">
-              <NavLink to="/wheel" className="navigation-item-link new">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink
+                to="/wheel"
+                className="flex justify-center text-yellow-400"
+              >
                 Wheel!
               </NavLink>
             </li>
-            <li className="navigation-item">
-              <NavLink to="/classics" className="navigation-item-link">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/classics" className="flex justify-center">
                 Classics
               </NavLink>
             </li>
-            <li className="navigation-item">
-              <NavLink to="/news" className="navigation-item-link">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/news" className="p-1">
                 News
               </NavLink>
             </li>
-            <li className="navigation-item">
-              <NavLink to="/leaderboard" className="navigation-item-link">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/leaderboard" className="p-1">
                 LeaderBoard
               </NavLink>
             </li>
-            <li className="navigation-item">
-              <NavLink to="/contact" className="navigation-item-link">
+            <li className="w-full relative md:w-auto text-center  md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/contact" className="p-1">
                 Contact
               </NavLink>
             </li>
-            <li className="navigation-item">
+            <li className="w-full relative md:w-auto text-center  md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
               <Score></Score>
             </li>
-            <div id="onLogin">
+            <div className="flex flex-row items-center justify-center">
               <Link>
                 <DisplayNameUtils />
               </Link>
@@ -76,45 +85,50 @@ function Header() {
             </div>
           </ul>
         </div>
-      </div>
+      </header>
     );
   }
   function OnNotLoginHeader() {
     return (
-      <div className="header-container">
-        <div className="logo-container">
-          <img src={logo} alt="logo" />
-          <div className="menu-icon">
-            <MenuIcon onClick={toggleMenu} color="white"></MenuIcon>
+      <header className="flex flex-col md:flex-row justify-between items-center min-h-20 bg-darkBlue px-1 py-5 z-10">
+        <div className="flex flex-row justify-between items-center w-full  md:w-auto">
+          <img
+            src={logo}
+            alt="logo"
+            className="w-10 h-10 md:w-auto md:h-auto"
+          />
+          <div className="md:hidden ">
+            <MenuIcon
+              onClick={toggleMenu}
+              style={{ color: "white" }}
+            ></MenuIcon>
           </div>
         </div>
-        <div className="menu-container">
-          <ul className={`navigation ${isMenuOpen ? "open" : ""}`}>
-            <li className="navigation-item">
-              <NavLink to="/" exact="true" className="navigation-item-link">
+        <div className={`${isMenuOpen ? "flex " : "hidden"}  md:block w-full`}>
+          <ul className="w-full flex flex-col md:flex-row md:justify-end items-center list-none ">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/" exact="true" className="p-1">
                 Home
               </NavLink>
             </li>
-            <li className="navigation-item">
-              <NavLink to="/contact" className="navigation-item-link">
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <NavLink to="/contact" className="p-1">
                 Contact
               </NavLink>
             </li>
-            <div id="onNotLogin">
-              <li className="navigation-item">
-                <Link to="/signin" className="navigation-item-link">
-                  SignIn
-                </Link>
-              </li>
-              <li className="navigation-item">
-                <Link to="/signup" className="navigation-item-link">
-                  SignUp
-                </Link>
-              </li>
-            </div>
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <Link to="/signin" className="p-1">
+                SignIn
+              </Link>
+            </li>
+            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+              <Link to="/signup" className="p-1">
+                SignUp
+              </Link>
+            </li>
           </ul>
         </div>
-      </div>
+      </header>
     );
   }
 

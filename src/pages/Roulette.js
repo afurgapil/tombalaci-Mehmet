@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../style/roulette.scss";
 import GoBack from "../Tools/GoBack";
 
 //firebase
@@ -9,6 +8,71 @@ import { auth } from "../Firebase";
 //alertify
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+const numbers = [
+  {
+    col1: [
+      { value: 3, color: "bg-red-500" },
+      { value: 2, color: "bg-black" },
+      { value: 1, color: "bg-red-500" },
+    ],
+    col2: [
+      { value: 6, color: "bg-black" },
+      { value: 5, color: "bg-red-500" },
+      { value: 4, color: "bg-black" },
+    ],
+    col3: [
+      { value: 9, color: "bg-red-500" },
+      { value: 8, color: "bg-black" },
+      { value: 7, color: "bg-red-500" },
+    ],
+    col4: [
+      { value: 12, color: "bg-black" },
+      { value: 11, color: "bg-red-500" },
+      { value: 10, color: "bg-black" },
+    ],
+    col5: [
+      { value: 15, color: "bg-red-500" },
+      { value: 14, color: "bg-black" },
+      { value: 13, color: "bg-red-500" },
+    ],
+    col6: [
+      { value: 18, color: "bg-black" },
+      { value: 17, color: "bg-red-500" },
+      { value: 16, color: "bg-black" },
+    ],
+    col7: [
+      { value: 21, color: "bg-red-500" },
+      { value: 20, color: "bg-black" },
+      { value: 19, color: "bg-red-500" },
+    ],
+    col8: [
+      { value: 24, color: "bg-black" },
+      { value: 23, color: "bg-red-500" },
+      { value: 22, color: "bg-black" },
+    ],
+    col9: [
+      { value: 27, color: "bg-red-500" },
+      { value: 26, color: "bg-black" },
+      { value: 25, color: "bg-red-500" },
+    ],
+    col10: [
+      { value: 30, color: "bg-black" },
+      { value: 29, color: "bg-red-500" },
+      { value: 28, color: "bg-black" },
+    ],
+    col11: [
+      { value: 33, color: "bg-red-500" },
+      { value: 32, color: "bg-black" },
+      { value: 31, color: "bg-red-500" },
+    ],
+    col12: [
+      { value: 36, color: "bg-black" },
+      { value: 35, color: "bg-red-500" },
+      { value: 34, color: "bg-black" },
+    ],
+  },
+];
+
 function Roulette() {
   //breakpoint1
   const [rouletteNumber, setRouletteNumber] = useState(getRandomInt() % 37);
@@ -355,466 +419,178 @@ function Roulette() {
   }
 
   return (
-    <div id="roulette-main">
+    <div
+      id="roulette-main"
+      className="min-h-screen bg-bg flex flex-col justify-center items-center"
+    >
       <Helmet>
         <title>Roulette| Tombalaci Mehmet</title>
         <meta name="description" content="roulette game " />
       </Helmet>
       <GoBack></GoBack>
-      <div className="mainpage">
+      <div className="flex flex-col justify-center items-center">
         {userchoice !== null && (
-          <div className="roulette-guesses">
-            <h1 className="guess-box " id="guesss">
+          <div className="flex flex-row justify-center items-center mb-2 bg-[#dcdcdc] rounded-3xl p-1 border-4 border-black border-solid">
+            <h1
+              className="flex flex-row text-center justify-center items-center p-2 m-1 w-24 h-12 rounded-3xl border-4 border-groove "
+              id="guesss"
+            >
               {userchoice}
             </h1>
-            <h1 className="guess-box" id="resultt">
+            <h1
+              className="flex flex-row text-center justify-center items-center p-2 m-1 w-24 h-12 rounded-3xl border-4 border-groove border-[#daa520]"
+              id="resultt"
+            >
               {intervalNumber}
             </h1>
           </div>
         )}
-        <div className="game-table">
-          <div id="table">
-            <div className="roww">
-              <div className="col1 green">
-                <button
-                  onClick={() => {
-                    isNumber(0);
-                    setChoice(0);
-                  }}
-                >
-                  0
-                </button>
+        <div className="flex flex-row justify-center items-center">
+          <div
+            id="table"
+            className="flex flex-row justify-center items-center text-white text-4xl border-4 border-black border-groove h-full"
+          >
+            <div className="flex justify-center items-center text-center bg-green-600 w-12 h-full  border border-white">
+              <button
+                className="bg-transparent border-none text-white text-4xl cursor-pointer outline-none h-[27rem]"
+                onClick={() => {
+                  isNumber(0);
+                  setChoice(0);
+                }}
+              >
+                0
+              </button>
+            </div>
+            {numbers.map((cols, colIndex) => (
+              <div key={colIndex} className="flex h-full">
+                {Object.keys(cols).map((colKey) => (
+                  <div key={colKey} className="flex flex-col h-full">
+                    {cols[colKey].map((col, index) => (
+                      <div
+                        key={index}
+                        className={`flex justify-center items-center text-center w-14 h-36 ${col.color} text-white border border-white`}
+                      >
+                        <button
+                          className="bg-transparent border-none text-4xl cursor-pointer outline-none w-full h-full"
+                          onClick={() => {
+                            isNumber(col.value);
+                            setChoice(col.value);
+                          }}
+                        >
+                          {col.value}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
-              <div className=" col2">
-                <div className="row">
-                  <div
-                    onClick={() => {
-                      isNumber(3);
-                      setChoice(3);
-                    }}
-                    className="box red"
-                  >
-                    <button>3</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(6);
-                      setChoice(6);
-                    }}
-                    className="box black"
-                  >
-                    <button>6</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(9);
-                      setChoice(9);
-                    }}
-                    className="box red"
-                  >
-                    <button>9</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(12);
-                      setChoice(12);
-                    }}
-                    className="box red"
-                  >
-                    <button>12</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(15);
-                      setChoice(15);
-                    }}
-                    className="box black"
-                  >
-                    <button>15</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(18);
-                      setChoice(18);
-                    }}
-                    className="box red"
-                  >
-                    <button>18</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(21);
-                      setChoice(21);
-                    }}
-                    className="box red"
-                  >
-                    <button>21</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(24);
-                      setChoice(24);
-                    }}
-                    className="box black"
-                  >
-                    <button>24</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(27);
-                      setChoice(27);
-                    }}
-                    className="box red"
-                  >
-                    <button>27</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(30);
-                      setChoice(30);
-                    }}
-                    className="box red"
-                  >
-                    <button>30</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(33);
-                      setChoice(33);
-                    }}
-                    className="box black"
-                  >
-                    <button>33</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(36);
-                      setChoice(36);
-                    }}
-                    className="box red"
-                  >
-                    <button>36</button>
-                  </div>
-                </div>
-                <div className="row">
-                  <div
-                    onClick={() => {
-                      isNumber(2);
-                      setChoice(2);
-                    }}
-                    className="box black "
-                  >
-                    <button>2</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(5);
-                      setChoice(5);
-                    }}
-                    className="box red"
-                  >
-                    <button>5</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(8);
-                      setChoice(8);
-                    }}
-                    className="box black"
-                  >
-                    <button>8</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(11);
-                      setChoice(11);
-                    }}
-                    className="box black"
-                  >
-                    <button>11</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(14);
-                      setChoice(14);
-                    }}
-                    className="box red"
-                  >
-                    <button>14</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(17);
-                      setChoice(17);
-                    }}
-                    className="box black"
-                  >
-                    <button>17</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(20);
-                      setChoice(20);
-                    }}
-                    className="box black"
-                  >
-                    <button>20</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(23);
-                      setChoice(23);
-                    }}
-                    className="box red"
-                  >
-                    <button>23</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(26);
-                      setChoice(26);
-                    }}
-                    className="box black"
-                  >
-                    <button>26</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(29);
-                      setChoice(29);
-                    }}
-                    className="box black"
-                  >
-                    <button>29</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(32);
-                      setChoice(32);
-                    }}
-                    className="box red"
-                  >
-                    <button>32</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(35);
-                      setChoice(35);
-                    }}
-                    className="box black"
-                  >
-                    <button>35</button>
-                  </div>
-                </div>
-                <div className="row">
-                  <div
-                    onClick={() => {
-                      isNumber(1);
-                      setChoice(1);
-                    }}
-                    className="box red"
-                  >
-                    <button>1</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(4);
-                      setChoice(4);
-                    }}
-                    className="box black"
-                  >
-                    <button>4</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(7);
-                      setChoice(7);
-                    }}
-                    className="box red"
-                  >
-                    <button>7</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(10);
-                      setChoice(10);
-                    }}
-                    className="box black"
-                  >
-                    <button>10</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(13);
-                      setChoice(13);
-                    }}
-                    className="box black"
-                  >
-                    <button>13</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(16);
-                      setChoice(16);
-                    }}
-                    className="box red"
-                  >
-                    <button>16</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(19);
-                      setChoice(19);
-                    }}
-                    className="box red"
-                  >
-                    <button>19</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(22);
-                      setChoice(22);
-                    }}
-                    className="box black"
-                  >
-                    <button>22</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(25);
-                      setChoice(25);
-                    }}
-                    className="box red"
-                  >
-                    <button>25</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(28);
-                      setChoice(28);
-                    }}
-                    className="box black"
-                  >
-                    <button>28</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(31);
-                      setChoice(31);
-                    }}
-                    className="box black"
-                  >
-                    <button>31</button>
-                  </div>
-                  <div
-                    onClick={() => {
-                      isNumber(34);
-                      setChoice(34);
-                    }}
-                    className="box red"
-                  >
-                    <button>34</button>
-                  </div>
-                </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-row justify-center items-center my-4 cursor-pointer">
+          <div className="flex flex-col justify-center items-center">
+            <div
+              className="bg-docHeader border text-white border-black  w-72 h-12 flex justify-center items-center font-bold"
+              onClick={() => {
+                isIn(1, 12, 20);
+                setChoice("1 - 12");
+              }}
+            >
+              1-12
+            </div>
+            <div className="flex flex-row justify-center items-center">
+              <div
+                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                onClick={() => {
+                  isIn(1, 18, 10);
+                  setChoice("1 - 18");
+                }}
+              >
+                1-18
+              </div>
+              <div
+                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                onClick={() => {
+                  isOdd();
+                  setChoice("Odd");
+                }}
+              >
+                Odd
               </div>
             </div>
-
-            <div className="roww2">
-              <div className="row row2">
-                <div
-                  onClick={() => {
-                    isIn(1, 12, 20);
-                    setChoice("1 - 12");
-                  }}
-                  className="box"
-                >
-                  <button>1-12</button>
-                </div>
-                <div
-                  onClick={() => {
-                    isIn(13, 24, 20);
-                    setChoice("13 - 24");
-                  }}
-                  className="box"
-                >
-                  <button>13-24</button>
-                </div>
-                <div
-                  onClick={() => {
-                    isIn(25, 36, 20);
-                    setChoice("25 - 36");
-                  }}
-                  className="box"
-                >
-                  <button>25-36</button>
-                </div>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <div
+              className="bg-docHeader border text-white border-black  w-72 h-12 flex justify-center items-center font-bold"
+              onClick={() => {
+                isIn(13, 24, 20);
+                setChoice("13 - 24");
+              }}
+            >
+              13-24
+            </div>
+            <div className="flex flex-row justify-center items-center">
+              <div
+                className="flex justify-center items-center bg-red-500 text-red-500 border border-black  w-36 h-12 font-bold"
+                onClick={() => {
+                  isRed();
+                  setChoice("Red");
+                }}
+              >
+                Red
               </div>
-              <div className="row row3">
-                <div
-                  onClick={() => {
-                    isIn(1, 18, 10);
-                    setChoice("1 - 18");
-                  }}
-                  className="box"
-                >
-                  <button>1-18</button>
-                </div>
-                <div
-                  onClick={() => {
-                    isOdd();
-                    setChoice("Odd");
-                  }}
-                  className="box"
-                >
-                  <button>Odd</button>
-                </div>
-                <div
-                  onClick={() => {
-                    isRed();
-                    setChoice("Red");
-                  }}
-                  className="box red"
-                >
-                  <button></button>
-                </div>
-                <div
-                  onClick={() => {
-                    isBlack();
-                    setChoice("Black");
-                  }}
-                  className="box black"
-                >
-                  <button></button>
-                </div>
-                <div
-                  onClick={() => {
-                    isEven();
-                    setChoice("Even");
-                  }}
-                  className="box"
-                >
-                  <button>Even</button>
-                </div>
-                <div
-                  onClick={() => {
-                    isIn(19, 36, 10);
-                    setChoice("19-36");
-                  }}
-                  className="box"
-                >
-                  <button>19-36</button>
-                </div>
+              <div
+                className="flex justify-center items-center bg-black text-black border border-black  w-36 h-12 font-bold"
+                onClick={() => {
+                  isBlack();
+                  setChoice("Black");
+                }}
+              >
+                Black
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <div
+              className="bg-docHeader border text-white border-black  w-72 h-12 flex justify-center items-center font-bold"
+              onClick={() => {
+                isIn(25, 36, 20);
+                setChoice("25 - 36");
+              }}
+            >
+              25-36
+            </div>
+            <div className="flex flex-row justify-center items-center">
+              <div
+                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                onClick={() => {
+                  isEven();
+                  setChoice("Even");
+                }}
+              >
+                Even
+              </div>
+              <div
+                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                onClick={() => {
+                  isIn(19, 36, 10);
+                  setChoice("19-36");
+                }}
+              >
+                19-36
               </div>
             </div>
           </div>
         </div>
-
-        <div className="last">
-          <h2 className="last-numbers">Last Numbers</h2>
+        <div className="flex justify-center items-center text-center">
+          <h2 className="mt-4 text-7xl mb-1">Last Numbers</h2>
         </div>
-        <div className="number-container">
+        <div className="flex justify-center items-center flex-wrap">
           {drawnNumbers.map((rouletteNumber, index) => (
-            <div className="number-box" key={index}>
+            <div
+              className="flex justify-center items-center text-center w-12 h-12 bg-orange-500 text-antiqueWhite text-4xl border border-white border-solid rounded-xl"
+              key={index}
+            >
               {rouletteNumber}
             </div>
           ))}

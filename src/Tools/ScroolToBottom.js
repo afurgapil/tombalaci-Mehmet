@@ -1,11 +1,10 @@
 import { FaArrowCircleDown } from "react-icons/fa";
-import "./ScroolToBottom.scss";
 import "animate.css/animate.min.css";
 
 const ScroolToBottom = () => {
   return (
     <div
-      className="scroll-to-bottom-icon animate__animated animate__bounce animate__infinite animate__slower"
+      className="fixed bottom-10 right-10 text-3xl cursor-pointer"
       onClick={() => window.scrollTo(0, document.body.scrollHeight)}
     >
       <FaArrowCircleDown />

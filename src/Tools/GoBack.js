@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-import "./goback.scss";
-import "animate.css/animate.min.css";
 
 function GoBack() {
   const navigate = useNavigate();
@@ -13,7 +11,7 @@ function GoBack() {
 
   return (
     <button
-      className="go-back animate__animated animate__bounce animate__infinite animate__slower"
+      className="border-none bg-transparent cursor-pointer text-2xl text-black-600 hover:text-gray-900 underline absolute top-44 left-10 "
       onClick={handleGoBack}
     >
       <FaArrowLeft />

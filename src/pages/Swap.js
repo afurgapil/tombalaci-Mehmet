@@ -3,7 +3,6 @@ import Modal from "react-modal";
 //modal
 import ModalComponent from "../comps/Modal";
 import customStyles from "../style/customStyles";
-import "../style/swap.scss";
 //hooks
 import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
@@ -44,7 +43,7 @@ const Swap = () => {
   };
 
   return (
-    <div className="profile-container">
+    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10 w-full">
       <Helmet>
         <title>Swap | Tombalaci Mehmet</title>
         <meta name="description" content="swap point page " />
@@ -59,7 +58,9 @@ const Swap = () => {
       <>
         {!address && (
           <button
-            className={`button ${address ? "connected" : "inconnect"}`}
+            className={`px-4 py-8 text-4xl bg-color-500 text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear ${
+              address ? "bg-green-500" : "bg-red-500"
+            }`}
             onClick={connect}
           >
             {!address && <p>Connect Wallet</p>}

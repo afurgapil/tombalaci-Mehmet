@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "../style/coinflip.scss";
 import welcomecoin from "../assets/welcomecoin.gif";
 import GoBack from "../Tools/GoBack";
 //firebase
@@ -7,7 +6,6 @@ import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../Firebase";
 //mui
-import { Button } from "@mui/material";
 import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
 import Person4Icon from "@mui/icons-material/Person4";
 //alertify
@@ -75,53 +73,60 @@ const CoinFlip = () => {
     }
   };
   function OnHead() {
-    return <CurrencyBitcoinIcon className="silvercoin"></CurrencyBitcoinIcon>;
+    return (
+      <CurrencyBitcoinIcon
+        fontSize="xlarge"
+        className="text-[#b6b6b6]"
+      ></CurrencyBitcoinIcon>
+    );
   }
   function OnTail() {
-    return <Person4Icon className="silvercoin"></Person4Icon>;
+    return (
+      <Person4Icon fontSize="xlarge" className="text-[#b6b6b6]"></Person4Icon>
+    );
   }
   return (
-    <div>
+    <div className="min-h-screen bg-bg flex flex-col justify-start items-center pt-20 ">
       <Helmet>
         <title>Coin Flip | Tombalaci Mehmet</title>
         <meta name="description" content="coin flip game " />
       </Helmet>
-      <div id="coinflip-container">
+      <div className="flex flex-col justify-center items-center text-center ">
         <GoBack></GoBack>
         {!isGameStart ? (
-          <div id="coinflip-gif-container">
-            <img src={welcomecoin} alt="Coin"></img>
+          <div className="flex justify-center items-center ">
+            <img src={welcomecoin} alt="Coin" className="mt-4"></img>
           </div>
         ) : (
-          <div className="coin-border-out">
-            <div className="coin-border-in">
+          <div className="flex justify-center items-center p-4 bg-[#b6b6b6] rounded-full ">
+            <div className="flex justify-center items-center bg-[#d8d8d8] rounded-full text-8xl p-20">
               {isResultHead ? <OnHead></OnHead> : <OnTail></OnTail>}
             </div>
           </div>
         )}
-        <div id="buttons">
-          <Button
+        <div className="w-50 h-25 text-5xl m-8 text-center">
+          <button
             variant="contained"
             color="primary"
-            className="heads buton"
+            className="bg-[#b39d7d] text-white px-2 py-4 rounded mx-2 hover:bg-[#d3b993] duration-200 transition-all ease-in"
             onClick={() => {
               setChoice("Heads");
               playGame();
             }}
           >
             Heads
-          </Button>
-          <Button
+          </button>
+          <button
             variant="contained"
             color="primary"
-            className="tails buton"
+            className="bg-[#9c86b3] text-white px-2 py-4 rounded mx-2 hover:bg-[#b299cd] duration-200 transition-all ease-in"
             onClick={() => {
               setChoice("Tails");
               playGame();
             }}
           >
             Tails
-          </Button>
+          </button>
         </div>
       </div>
     </div>

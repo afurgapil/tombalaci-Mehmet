@@ -12,7 +12,6 @@ import { showErrorNotification } from "../utils/alertifyUtils";
 import { ethers } from "ethers";
 import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
-import "../style/trade.scss";
 function Trade() {
   const tradeContract = useContract();
   const [depositAmount, setDepositAmount] = useState();
@@ -120,7 +119,7 @@ function Trade() {
     }
   };
   return (
-    <div className="trade-container">
+    <div className="w-full flex flex-col justify-center items-center">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleClose}
@@ -128,14 +127,18 @@ function Trade() {
       >
         <ModalComponent handleClose={handleClose} />
       </Modal>
-      <div className="info-section">
-        <p>Your Balance:{balance} MATIC</p>
-        <p>Pool Balance:{contractBalance} MATIC</p>
+      <div className="flex flex-row justify-around items-center w-9/12 ">
+        <p className="w-2/5 text-center text-xl font-[Oswald] border-b-2 border-black border-solid transition-all duration-300 ease-in-out hover:shadow-xl">
+          Your Balance:{balance} MATIC
+        </p>
+        <p className="w-2/5 text-center text-xl font-[Oswald] border-b-2 border-black border-solid transition-all duration-300 ease-in-out hover:shadow-xl">
+          Pool Balance:{contractBalance} MATIC
+        </p>
       </div>
-      <div className="swap-container">
-        <div className="deposit-container swap__item">
+      <div className="flex flex-row justify-center items-center w-9/12 ">
+        <div className="flex-1 flex flex-col justify-center items-center w-full mx-4">
           <input
-            className="slider"
+            className="w-4/5 h-4 rounded-md bg-[#811c1c] outline-none opacity-70 transition-opacity duration-200 mt-4"
             type="range"
             min={0}
             max={balance}
@@ -144,28 +147,59 @@ function Trade() {
             value={depositAmount}
             onChange={handleDepositSliderChange}
           />
-          <ul className="steps">
-            <li onClick={() => setDepositAmount(0)}>%0</li>
-            <li onClick={() => setDepositAmount(balance / 4)}>%25</li>
-            <li onClick={() => setDepositAmount(balance / 2)}>%50</li>
-            <li onClick={() => setDepositAmount((balance * 3) / 4)}>%75</li>
-            <li onClick={() => setDepositAmount(balance)}>%100</li>
+          <ul className="flex flex-row justify-between items-center w-4/5 list-none ">
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setDepositAmount(0)}
+            >
+              %0
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setDepositAmount(balance / 4)}
+            >
+              %25
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setDepositAmount(balance / 2)}
+            >
+              %50
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setDepositAmount((balance * 3) / 4)}
+            >
+              %75
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setDepositAmount(balance)}
+            >
+              %100
+            </li>
           </ul>
           <input
             type="text"
+            className="w-4/5 p-2 rounded placeholder-gray-400 shadow-md"
             value={depositAmount}
             placeholder="Deposit"
             onChange={handleDepositSliderChange}
           />
-          <p>1 MATIC = 10000 Point</p>
+          <p className="text-[#333] text-3xl text-center">
+            1 MATIC = 10000 Point
+          </p>
 
-          <button className="swap-btn deposit-btn" onClick={deposit}>
+          <button
+            className="px-4 py-8 text-3xl text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear bg-red-500 hover:bg-red-600"
+            onClick={deposit}
+          >
             Deposit
           </button>
         </div>
-        <div className="withdraw-container swap__item">
+        <div className="flex-1 flex flex-col justify-center items-center w-full mx-4">
           <input
-            className="slider"
+            className="w-4/5 h-4 rounded-md bg-[#811c1c] outline-none opacity-70 transition-opacity duration-200 mt-4"
             type="range"
             min={0}
             max={contractBalance}
@@ -173,24 +207,51 @@ function Trade() {
             value={withdrawAmount}
             onChange={handleWithdrawSliderChange}
           />
-          <ul className="steps">
-            <li onClick={() => setWithdrawAmount(0)}>%0</li>
-            <li onClick={() => setWithdrawAmount(contractBalance / 4)}>%25</li>
-            <li onClick={() => setWithdrawAmount(contractBalance / 2)}>%50</li>
-            <li onClick={() => setWithdrawAmount((contractBalance * 3) / 4)}>
+          <ul className="flex flex-row justify-between items-center w-4/5 list-none ">
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setWithdrawAmount(0)}
+            >
+              %0
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setWithdrawAmount(contractBalance / 4)}
+            >
+              %25
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setWithdrawAmount(contractBalance / 2)}
+            >
+              %50
+            </li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setWithdrawAmount((contractBalance * 3) / 4)}
+            >
               %75
             </li>
-            <li onClick={() => setWithdrawAmount(contractBalance)}>%100</li>
+            <li
+              className="text-[#333] cursor-pointer transition-colors duration-200 hover:text-black"
+              onClick={() => setWithdrawAmount(contractBalance)}
+            >
+              %100
+            </li>
           </ul>
           <input
             type="text"
+            className="w-4/5 p-2 rounded placeholder-gray-400 shadow-md"
             value={withdrawAmount}
             placeholder="Withdraw"
             onChange={(event) => setWithdrawAmount(event.target.value)}
           />
           <p>10000 Point = 1 MATIC</p>
 
-          <button className="swap-btn withdraw-btn" onClick={withdraw}>
+          <button
+            className="px-4 py-8 text-3xl text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear bg-blue-500 hover:bg-blue-600 withdraw-btn"
+            onClick={withdraw}
+          >
             Withdraw
           </button>
         </div>
