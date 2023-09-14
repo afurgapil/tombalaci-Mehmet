@@ -3,9 +3,20 @@ import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { Helmet } from "react-helmet";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
 function Stats() {
   const [userStats, setUserStats] = useState({});
   const [name, setName] = useState(null);
+  const [data, setData] = useState([]);
   const auth = getAuth();
   const user = auth.currentUser;
   useEffect(() => {
@@ -21,6 +32,35 @@ function Stats() {
               setUserStats(userData);
               const displayName = userData.displayName;
               setName(displayName);
+              if (userData) {
+                const data = [
+                  {
+                    name: "Coin Flip",
+                    Win: userStats.correctCoinflip || 0,
+                  },
+                  {
+                    name: "To Dice",
+                    Win: userStats.correctDice || 0,
+                  },
+                  {
+                    name: "RPS",
+                    Win: userStats.correctRps || 0,
+                  },
+                  {
+                    name: "Roulette",
+                    Win: userStats.correctRoulette || 0,
+                  },
+                  {
+                    name: "Slot",
+                    Win: userStats.correctSlot || 0,
+                  },
+                  {
+                    name: "Jackpots",
+                    Win: userStats.correctJackpot || 0,
+                  },
+                ];
+                setData(data);
+              }
             } else {
             }
           })
@@ -32,37 +72,25 @@ function Stats() {
       }
     }
   }, [user]);
+
   return (
     <div className="min-h-screen bg-bg p-4 rounded">
       <Helmet>
         <title>Stats | Tombalaci Mehmet</title>
         <meta name="description" content="user stats page " />
       </Helmet>
-      <ul className="p-0 list-none">
-        <li className="my-2">
-          <h2 className="uppercase text-2xl text-gray-800">{name}</h2>
-        </li>
-        <li className="my-2">
-          <p className="text-xl text-gray-700">
-            CoinFlip Wins: {userStats.correctCoinflip || 0}
-          </p>
-        </li>
-        <li className="my-2">
-          <p>ToDice Wins: {userStats.correctDice || 0}</p>
-        </li>
-        <li className="my-2">
-          <p>Rock Paper Scissors Wins: {userStats.correctRps || 0}</p>
-        </li>
-        <li className="my-2">
-          <p>Roulette Wins: {userStats.correctRoulette || 0}</p>
-        </li>
-        <li className="my-2">
-          <p>Slot Wins: {userStats.correctSlot || 0}</p>
-        </li>
-        <li className="my-2">
-          <p>Jackpots: {userStats.correctJackpot || 0}</p>
-        </li>
-      </ul>
+
+      <div className="flex justify-center items-start my-20">
+        <ResponsiveContainer width={"100%"} aspect={3}>
+          <BarChart data={data}>
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Win" fill="#00253b" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }
