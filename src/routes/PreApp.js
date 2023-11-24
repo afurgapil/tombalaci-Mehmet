@@ -12,6 +12,7 @@ import NotFound from "../pages/NotFound";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Reset from "../pages/Reset";
+import ResetCheck from "../pages/ResetCheck";
 import Coin from "../pages/CoinFlip";
 import Dice from "../pages/ToDice";
 import Rps from "../pages/Rps";
@@ -60,13 +61,14 @@ function PreApp() {
     { path: "/emojify/countries", element: CountryEmoji },
     { path: "/quizboxes", element: QuizBox },
     { path: "/quizboxes/valorant", element: ValorantQuizBox },
-    { path: "/wheel", element: Wheel },
+    //  on development { path: "/wheel", element: Wheel },
   ];
   const publicRoutes = [
     { path: "/welcome", element: Welcome },
     { path: "/signup", element: SignUp },
     { path: "/signin", element: SignIn },
     { path: "/reset", element: Reset },
+    { path: "/reset-check", element: ResetCheck },
     { path: "/contact", element: Contact },
   ];
   const protectedRoutes = [{ path: "/dashboard", element: Admin }];

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import agents from "../../data/agents";
 import TextField from "@mui/material/TextField";
@@ -87,7 +88,7 @@ function Agents() {
   }
 
   return (
-    <div className="flex flex-col justify-start items-center min-h-screen ">
+    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10">
       <Helmet>
         <title> Valorant| Quiz Boxes</title>
         <meta

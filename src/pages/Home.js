@@ -16,7 +16,6 @@ import {
   Fade,
   MoveIn,
   MoveOut,
-  Sticky,
 } from "react-scroll-motion";
 import { Helmet } from "react-helmet";
 function Home() {

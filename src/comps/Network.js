@@ -25,7 +25,7 @@ const NetworkSelection = () => {
   }, [wallet]);
 
   if (loading) {
-    return <div>...</div>;
+    return <div></div>;
   }
 
   return (

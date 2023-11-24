@@ -1,7 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-//firestore
-import { getAuth } from "firebase/auth";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { Helmet } from "react-helmet";
 import {
   BarChart,
@@ -12,66 +10,41 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
+import { useStats } from "../hooks/useStats";
 function Stats() {
-  const [userStats, setUserStats] = useState({});
-  const [name, setName] = useState(null);
   const [data, setData] = useState([]);
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const stats = useStats();
   useEffect(() => {
-    if (user) {
-      try {
-        const userId = user.uid;
-        const firestore = getFirestore();
-        const userRef = doc(firestore, "users", userId);
-        getDoc(userRef)
-          .then((doc) => {
-            if (doc.exists()) {
-              const userData = doc.data();
-              setUserStats(userData);
-              const displayName = userData.displayName;
-              setName(displayName);
-              if (userData) {
-                const data = [
-                  {
-                    name: "Coin Flip",
-                    Win: userStats.correctCoinflip || 0,
-                  },
-                  {
-                    name: "To Dice",
-                    Win: userStats.correctDice || 0,
-                  },
-                  {
-                    name: "RPS",
-                    Win: userStats.correctRps || 0,
-                  },
-                  {
-                    name: "Roulette",
-                    Win: userStats.correctRoulette || 0,
-                  },
-                  {
-                    name: "Slot",
-                    Win: userStats.correctSlot || 0,
-                  },
-                  {
-                    name: "Jackpots",
-                    Win: userStats.correctJackpot || 0,
-                  },
-                ];
-                setData(data);
-              }
-            } else {
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) {
-        console.log(error);
-      }
+    if (stats) {
+      const data = [
+        {
+          name: "Coin Flip",
+          Win: stats.correctCoinFlip || 0,
+        },
+        {
+          name: "To Dice",
+          Win: stats.correctDice || 0,
+        },
+        {
+          name: "RPS",
+          Win: stats.correctRps || 0,
+        },
+        {
+          name: "Roulette",
+          Win: stats.correctRoulette || 0,
+        },
+        {
+          name: "Slot",
+          Win: stats.correctSlot || 0,
+        },
+        {
+          name: "Jackpots",
+          Win: stats.correctJackpot || 0,
+        },
+      ];
+      setData(data);
     }
-  }, [user]);
+  }, [stats]);
 
   return (
     <div className="min-h-screen bg-bg p-4 rounded">

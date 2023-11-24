@@ -26,8 +26,8 @@ const sections = [
     desc: "This game, where a two-sided coin is flipped, is where luckturns All you have to do is toss the coin into the air and wait for the result. Now, are you ready to try your luck?",
     href: "/coinflip",
     img: coin,
-    from: "#98fe90",
-    to: "#e4ca40",
+    from: "from-[#98fe90]",
+    to: "to-[#8642be]",
     direction: "bg-gradient-to-br",
   },
   {
@@ -35,8 +35,8 @@ const sections = [
     desc: "Another game where you will test your luck again! Here, rolling a dice is involved. As the way the dice falls on the ground is entirely random, it always offers an exciting experience. Now, get ready to control your fate and roll the dice!",
     href: "/todice",
     img: dice,
-    from: "#98fe90",
-    to: "#e4ca40",
+    from: "from-[#8642be]",
+    to: "to-[#78a89e]",
     direction: "bg-gradient-to-bl",
   },
   {
@@ -44,8 +44,8 @@ const sections = [
     desc: "You won't believe that this legendary game was played in schoolyards years ago! Each player competes against their opponent by choosing their units (Rock, Paper or Scissors) in their hands. It may seem simple, but it requires strategic thinking. Now, prove yourself with your intelligence and win  the game!",
     href: "/rps",
     img: rps,
-    from: "#98fe90",
-    to: "#e4ca40",
+    from: "from-[#78a89e]",
+    to: "to-[#e7f844]",
     direction: "bg-gradient-to-br",
   },
   {
@@ -53,8 +53,8 @@ const sections = [
     desc: "Red or black, odd or even, in a range of numbers, this game is entirely based on chance. Here, we offer you an exciting gambling game! You only need to place a bet on a roulette  wheel and guess the winning number. Are you ready to start spinning the roulette wheel to try your luck?",
     href: "/roulette",
     img: roulette,
-    from: "#98fe90",
-    to: "#e4ca40",
+    from: "from-[#e7f844]",
+    to: "to-[#f0035f]",
     direction: "bg-gradient-to-bl",
   },
   {
@@ -62,8 +62,8 @@ const sections = [
     desc: "   This is a gambling game that requires a bit of luck and skill. By pulling a mechanical lever, you spin the reels and then eagerly await to match the winning symbols. Now, try your own luck with this electronic slot machine and win big prizes!",
     href: "/slot",
     img: slot,
-    from: "#98fe90",
-    to: "#e4ca40",
+    from: "from-[#98fe90]",
+    to: "to-[#e4ca40]",
     direction: "bg-gradient-to-br",
   },
 ];
@@ -179,11 +179,11 @@ function Classics() {
           <div
             key={index}
             id="cs-section2"
-            className={`${section.direction}  from-[${section.from}] to-[${section.to}] w-full min-h-screen flex flex-row justify-between items-center`}
+            className={`${section.direction}  ${section.from} ${section.to} w-full min-h-screen flex flex-row justify-between items-center`}
           >
             <div
               id="cs-section2-item-text"
-              className="m-1 flex flex-col justify-center items-center text-white w-full px-8"
+              className={` m-1 flex flex-col justify-center items-center text-white w-full px-8`}
             >
               <h3 className="font-[Bebas Neue] text-5xl"> {section.title}</h3>
               <p className="font-[Rajdhani] text-3xl p-8 text-black bg-white  bg-opacity-60 border-5 border-solid rounded-2xl my-10">

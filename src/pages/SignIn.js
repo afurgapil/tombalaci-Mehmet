@@ -1,12 +1,5 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
-//firabase
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { app } from "../Firebase";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 //mui
 import Avatar from "@mui/material/Avatar";
@@ -24,33 +17,21 @@ import { Helmet } from "react-helmet";
 const theme = createTheme();
 
 export default function SignIn() {
+  const { signin } = useContext(UserContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const auth = getAuth(app);
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return unsubscribe;
-  }, []);
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
     try {
-      const auth = getAuth(app);
-      await signInWithEmailAndPassword(auth, email, password);
+      await signin(email, password);
       navigate("/");
     } catch (error) {
-      setError(error.message);
+      console.error(error);
     }
   };
 

@@ -14,7 +14,7 @@ const Turkey = () => {
     const randomIndex = Math.floor(Math.random() * turkeyCities.length);
     setSelectedCity(turkeyCities[randomIndex].name);
     setCityEmojis(turkeyCities[randomIndex].emojis);
-  }, [turkeyCities]);
+  }, []);
 
   const handleInputChange = (e) => {
     setUserGuess(e.target.value);
@@ -52,7 +52,7 @@ const Turkey = () => {
     }
   }
   return (
-    <div className="flex flex-col justify-start items-center min-h-screen mt-10">
+    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10">
       <Helmet>
         <title> Turkey | Emojify</title>
         <meta name="description" content="guess turkey cities emoji game" />

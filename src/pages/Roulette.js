@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import GoBack from "../Tools/GoBack";
 
-//firebase
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase";
+import getRandomInt from "../utils/getRandomInt";
+
 //alertify
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+
+import { useUser } from "../hooks/useUser";
+import { UserContext } from "../context/UserContext";
 const numbers = [
   {
     col1: [
@@ -72,39 +73,18 @@ const numbers = [
     ],
   },
 ];
-
 function Roulette() {
   //breakpoint1
+  const user = useUser();
+  const { updateScoreContext } = useContext(UserContext);
+  const { updateStatContext } = useContext(UserContext);
   const [rouletteNumber, setRouletteNumber] = useState(getRandomInt() % 37);
-
   const [drawnNumbers, setDrawnNumbers] = useState([]);
   const [intervalNumber, setIntervalNumber] = useState();
-  const [score, setScore] = useState(null);
-  const [correctRoulette, setCorrectRoulette] = useState(null);
   const [userchoice, setUserChoice] = useState(null);
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const db = getFirestore();
-        const userDocRef = doc(db, "users", user.uid);
-        getDoc(userDocRef).then((doc) => {
-          if (doc.exists()) {
-            setScore(doc.data().score);
-            setCorrectRoulette(doc.data().correctRoulette);
-          } else {
-            updateDoc(userDocRef, { score: 0 });
-            setScore(0);
-            setCorrectRoulette(0);
-          }
-        });
-      }
-    });
-  }, []);
-  function getRandomInt() {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0];
-  }
+  const point = 10;
+  const game = "correctRoulette";
+
   function setChoice(userg) {
     setUserChoice(userg);
     switch (userg) {
@@ -292,21 +272,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (number === rouletteNumber) {
-        const newScore = score + 350;
-        setScore(newScore);
-        const newCorrectRoulette = correctRoulette + 1;
-        setCorrectRoulette(newCorrectRoulette);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-          correctRoulette: newCorrectRoulette,
-        });
         alertify.success("Congrats! +350", 1);
+        updateScoreContext(user.id, 35 * point);
+        updateStatContext(user.id, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -315,18 +285,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber >= a && rouletteNumber <= b) {
-        const newScore = score + rate;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success(`Congrats! ${rate}`, 1);
+        updateScoreContext(user.id, rate);
+        updateStatContext(user.id, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -335,18 +298,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber % 2 === 1) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, point);
+        updateStatContext(user.id, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -355,18 +311,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber % 2 === 0) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, point);
+        updateStatContext(user.id, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -378,18 +327,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (red.includes(rouletteNumber)) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, point);
+        updateStatContext(user.id, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -401,18 +343,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (black.includes(rouletteNumber)) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, point);
+        updateStatContext(user.id, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
