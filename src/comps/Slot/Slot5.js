@@ -12,8 +12,10 @@ import Spinner from "../../Tools/Spinner";
 import { Button } from "@mui/material";
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+import { useToken } from "../../hooks/useToken";
 function Slot() {
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
   const [col11, setCol11] = useState("\uD83D\uDCB0");
@@ -39,7 +41,7 @@ function Slot() {
   const jackpot = process.env.REACT_APP_CORRECT_JACKPOT;
 
   function gameStart() {
-    updateScoreContext(user.id, -point);
+    updateScoreContext(user.id, user.email, token, -point);
   }
 
   function spin() {
@@ -636,20 +638,20 @@ function Slot() {
   useEffect(() => {
     if (row1 === true && row2 === true && row3 === true) {
       alertify.success("JACKPOT! +10000", 1);
-      updateScoreContext(user.id, 1000 * point);
-      updateStatContext(user.id, jackpot);
+      updateScoreContext(user.id, user.email, token, 1000 * point);
+      updateStatContext(user.id, user.email, token, jackpot);
     } else if (row1 === true) {
       alertify.success("ROW1! +625", 1);
-      updateScoreContext(user.id, 62.5 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 62.5 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else if (row2 === true) {
       alertify.success("ROW2! +625", 1);
-      updateScoreContext(user.id, 62.5 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 62.5 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else if (row3 === true) {
       alertify.success("ROW3! +625", 1);
-      updateScoreContext(user.id, 62.5 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 62.5 * point);
+      updateStatContext(user.id, user.email, token, game);
     }
   }, [row1, row2, row3]);
   return (

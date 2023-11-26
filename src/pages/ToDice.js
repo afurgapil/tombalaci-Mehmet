@@ -8,11 +8,13 @@ import { useUser } from "../hooks/useUser";
 
 //alertify
 import alertify from "alertifyjs";
+import { useToken } from "../hooks/useToken";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
 
 export default function ToDice() {
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
   const point = Number(process.env.REACT_APP_POINT);
@@ -93,11 +95,11 @@ export default function ToDice() {
 
     if (randomNumberr === userGuess) {
       alertify.success("Congrats! +50");
-      updateScoreContext(user.id, 5 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 5 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
   function isEven() {
@@ -135,10 +137,10 @@ export default function ToDice() {
 
     if (randomNumberr === 2 || randomNumberr === 4 || randomNumberr === 6) {
       alertify.success("Congrats! +10");
-      updateScoreContext(user.id, point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
     }
   }
@@ -177,11 +179,11 @@ export default function ToDice() {
 
     if (randomNumberr === 1 || randomNumberr === 3 || randomNumberr === 5) {
       alertify.success("Congrats! +10");
-      updateScoreContext(user.id, point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
   function isLow() {
@@ -219,11 +221,11 @@ export default function ToDice() {
 
     if (randomNumberr === 1 || randomNumberr === 2 || randomNumberr === 3) {
       alertify.success("Congrats! +10");
-      updateScoreContext(user.id, point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
   function isHigh() {
@@ -261,11 +263,11 @@ export default function ToDice() {
 
     if (randomNumberr === 4 || randomNumberr === 5 || randomNumberr === 6) {
       alertify.success("Congrats! +10");
-      updateScoreContext(user.id, point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
 

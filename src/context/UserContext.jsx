@@ -16,13 +16,24 @@ const UserProvider = ({ children }) => {
     const storedToken = localStorage.getItem("token");
     const storedScore = localStorage.getItem("score");
     const storedStats = localStorage.getItem("stats");
-    if (storedUser || storedToken || storedScore || storedStats) {
+
+    if (storedUser !== null && storedUser !== undefined) {
       setUser(JSON.parse(storedUser));
+    }
+
+    if (storedToken !== null && storedToken !== undefined) {
       setToken(JSON.parse(storedToken));
+    }
+
+    if (storedScore !== null && storedScore !== undefined) {
       setScore(JSON.parse(storedScore));
+    }
+
+    if (storedStats !== null && storedStats !== undefined) {
       setStats(JSON.parse(storedStats));
     }
   }, []);
+
   const signup = async (name, lastname, email, password) => {
     try {
       const response = await fetch(USER_API.SIGNUP, {
@@ -85,8 +96,8 @@ const UserProvider = ({ children }) => {
     localStorage.removeItem("score");
     localStorage.removeItem("stats");
   };
-  const updateScoreContext = (userId, value) => {
-    updateScore(userId, value)
+  const updateScoreContext = (userId, email, token, value) => {
+    updateScore(userId, email, token, value)
       .then((newScore) => {
         setScore(newScore);
         localStorage.setItem("score", JSON.stringify(newScore));
@@ -95,9 +106,8 @@ const UserProvider = ({ children }) => {
         console.error("Update score error:", error);
       });
   };
-  const updateStatContext = (userId, game) => {
-    console.log("stat", userId, game);
-    updateStat(userId, game)
+  const updateStatContext = (userId, email, token, game) => {
+    updateStat(userId, email, token, game)
       .then((newStat) => {
         setStats(newStat);
         localStorage.setItem("stats", JSON.stringify(newStat));

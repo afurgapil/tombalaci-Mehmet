@@ -9,11 +9,13 @@ import Person4Icon from "@mui/icons-material/Person4";
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
 import { useUser } from "../hooks/useUser";
+import { useToken } from "../hooks/useToken";
 import { UserContext } from "../context/UserContext";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
 const CoinFlip = () => {
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
   const [choice, setChoice] = useState(null);
@@ -32,11 +34,11 @@ const CoinFlip = () => {
     }
     setIsGameStart(true);
     if (choice === newResult) {
-      updateScoreContext(user.id, point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
       alertify.success("Congrats! +10", 1);
     } else {
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
       alertify.error("Ups! Unlucky. -10", 1);
     }
   };

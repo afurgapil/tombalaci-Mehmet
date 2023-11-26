@@ -11,8 +11,10 @@ import { UserContext } from "../context/UserContext";
 //alertify
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+import { useToken } from "../hooks/useToken";
 const Game = () => {
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
   const [newImage, setNewImage] = useState("");
@@ -49,11 +51,11 @@ const Game = () => {
       (player === "scissors" && computer === "paper")
     ) {
       alertify.success("You win!     +20");
-      updateScoreContext(user.id, 2 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 2 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error("Ups -10");
-      updateScoreContext(user.id, -point);
+      updateScoreContext(user.id, user.email, token, -point);
     }
   };
 

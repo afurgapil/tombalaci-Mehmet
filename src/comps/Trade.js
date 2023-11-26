@@ -13,9 +13,11 @@ import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
 import { useUser } from "../hooks/useUser";
 import { UserContext } from "../context/UserContext";
+import { useToken } from "../hooks/useToken";
 
 function Trade() {
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const tradeContract = useContract();
   const [depositAmount, setDepositAmount] = useState();
@@ -72,7 +74,7 @@ function Trade() {
       await txn.wait();
       setIsOpen(false);
       setDepositAmount("");
-      updateScoreContext(user.id, newScore);
+      updateScoreContext(user.id, user.email, token, newScore);
     } catch (error) {
       showErrorNotification("An error occurred while deposit amount.");
       setIsOpen(false);
@@ -87,7 +89,7 @@ function Trade() {
       await txn.wait();
       setIsOpen(false);
       setWithdrawAmount("");
-      updateScoreContext(user.id, -newScore);
+      updateScoreContext(user.id, user.email, token, -newScore);
     } catch (error) {
       showErrorNotification("An error occurred while deposit amount.");
       setIsOpen(false);

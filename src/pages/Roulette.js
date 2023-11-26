@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 
 import { useUser } from "../hooks/useUser";
 import { UserContext } from "../context/UserContext";
+import { useToken } from "../hooks/useToken";
 const numbers = [
   {
     col1: [
@@ -76,6 +77,7 @@ const numbers = [
 function Roulette() {
   //breakpoint1
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
   const [rouletteNumber, setRouletteNumber] = useState(getRandomInt() % 37);
@@ -319,10 +321,10 @@ function Roulette() {
     setTimeout(() => {
       if (number === rouletteNumber) {
         alertify.success("Congrats! +350", 1);
-        updateScoreContext(user.id, 35 * point);
-        updateStatContext(user.id, game);
+        updateScoreContext(user.id, user.email, token, 35 * point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        updateScoreContext(user.id, -point);
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -332,10 +334,10 @@ function Roulette() {
     setTimeout(() => {
       if (rouletteNumber >= a && rouletteNumber <= b) {
         alertify.success(`Congrats! ${rate}`, 1);
-        updateScoreContext(user.id, rate);
-        updateStatContext(user.id, game);
+        updateScoreContext(user.id, user.email, token, rate);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        updateScoreContext(user.id, -point);
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -345,10 +347,10 @@ function Roulette() {
     setTimeout(() => {
       if (rouletteNumber % 2 === 1) {
         alertify.success("Congrats! +10", 1);
-        updateScoreContext(user.id, point);
-        updateStatContext(user.id, game);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        updateScoreContext(user.id, -point);
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -358,10 +360,10 @@ function Roulette() {
     setTimeout(() => {
       if (rouletteNumber % 2 === 0) {
         alertify.success("Congrats! +10", 1);
-        updateScoreContext(user.id, point);
-        updateStatContext(user.id, game);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        updateScoreContext(user.id, -point);
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -374,10 +376,10 @@ function Roulette() {
     setTimeout(() => {
       if (red.includes(rouletteNumber)) {
         alertify.success("Congrats! +10", 1);
-        updateScoreContext(user.id, point);
-        updateStatContext(user.id, game);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        updateScoreContext(user.id, -point);
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -390,10 +392,10 @@ function Roulette() {
     setTimeout(() => {
       if (black.includes(rouletteNumber)) {
         alertify.success("Congrats! +10", 1);
-        updateScoreContext(user.id, point);
-        updateStatContext(user.id, game);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        updateScoreContext(user.id, -point);
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);

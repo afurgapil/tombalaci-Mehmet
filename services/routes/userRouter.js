@@ -13,6 +13,7 @@ const updateCode = require("../utils/updateCode");
 const updatePassword = require("../utils/updatePassword");
 const resetMail = require("../mailOptions/reset");
 const sendMail = require("../utils/sendMail");
+const tokenMiddleware = require("../middleware/tokenMiddleware");
 dotenv.config();
 
 const secretKey = process.env.SECRET_KEY;
@@ -175,10 +176,12 @@ router.get("/get/scoreboard/", async (req, res) => {
     res.status(500).json({ error: "Failed to sign in." });
   }
 });
-router.put("/set/score", async (req, res) => {
+router.put("/set/score", tokenMiddleware, async (req, res) => {
   try {
     const { userId, value } = req.body;
+
     const result = await updateScore(userId, value);
+
     if (result) {
       res
         .status(200)
@@ -191,7 +194,7 @@ router.put("/set/score", async (req, res) => {
     res.status(500).json({ error: "Error updating score" });
   }
 });
-router.put("/set/stat", async (req, res) => {
+router.put("/set/stat", tokenMiddleware, async (req, res) => {
   try {
     const { userId, game } = req.body;
     const result = await updateStat(userId, game);
@@ -260,7 +263,7 @@ router.put("/reset-password/check", async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "User not found." });
     }
-    if (user.verificationCode == verificationCode) {
+    if (user.verificationCode === verificationCode) {
       const bool = await updatePassword(user.id, newPassword);
       console.log(bool);
       if (bool.success) {

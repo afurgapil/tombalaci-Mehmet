@@ -13,8 +13,10 @@ import Spinner from "../../Tools/Spinner";
 import { Button } from "@mui/material";
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+import { useToken } from "../../hooks/useToken";
 function Slot() {
   const user = useUser();
+  const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
   const [col11, setCol11] = useState("\uD83D\uDCB0");
@@ -34,7 +36,7 @@ function Slot() {
   const jackpot = process.env.REACT_APP_CORRECT_JACKPOT;
 
   function gameStart() {
-    updateScoreContext(user.id, -point);
+    updateScoreContext(user.id, user.email, token, -point);
   }
 
   function spin() {
@@ -395,20 +397,20 @@ function Slot() {
   useEffect(() => {
     if (row1 === true && row2 === true && row3 === true) {
       alertify.success("JACKPOT! +3333", 1);
-      updateScoreContext(user.id, 333.3 * point);
-      updateStatContext(user.id, jackpot);
+      updateScoreContext(user.id, user.email, token, 333.3 * point);
+      updateStatContext(user.id, user.email, token, jackpot);
     } else if (row1 === true) {
       alertify.success("ROW1! +100", 1);
-      updateScoreContext(user.id, 10 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 10 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else if (row2 === true) {
       alertify.success("ROW2! +100", 1);
-      updateScoreContext(user.id, 10 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 10 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else if (row3 === true) {
       alertify.success("ROW3! +100", 1);
-      updateScoreContext(user.id, 10 * point);
-      updateStatContext(user.id, game);
+      updateScoreContext(user.id, user.email, token, 10 * point);
+      updateStatContext(user.id, user.email, token, game);
     }
   }, [row1, row2, row3]);
   return (

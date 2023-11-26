@@ -1,12 +1,13 @@
 import { USER_API } from "../urls";
-export const updateStat = async (userId, game) => {
+export const updateStat = async (userId, email, token, game) => {
   try {
     const response = await fetch(USER_API.SET_STAT, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `${token}`,
       },
-      body: JSON.stringify({ userId, game }),
+      body: JSON.stringify({ userId, game, email }),
     });
     if (response.ok) {
       const data = await response.json();
