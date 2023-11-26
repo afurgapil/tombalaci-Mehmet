@@ -19,8 +19,8 @@ const CoinFlip = () => {
   const [choice, setChoice] = useState(null);
   const [isGameStart, setIsGameStart] = useState(false);
   const [isResultHead, setIsResultHead] = useState(null);
-  const point = 10;
-  const game = "correctCoinFlip";
+  const game = process.env.REACT_APP_CORRECT_COINFLIP;
+  const point = Number(process.env.REACT_APP_POINT);
 
   const playGame = () => {
     const randomNum = getRandomInt() / 2 ** 32;

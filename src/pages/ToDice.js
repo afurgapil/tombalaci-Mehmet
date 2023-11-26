@@ -15,8 +15,8 @@ export default function ToDice() {
   const user = useUser();
   const { updateScoreContext } = useContext(UserContext);
   const { updateStatContext } = useContext(UserContext);
-  const point = 10;
-  const game = "correctDice";
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_DICE;
 
   function rollDice() {
     let randomNumber = (getRandomInt() % 6) + 1;

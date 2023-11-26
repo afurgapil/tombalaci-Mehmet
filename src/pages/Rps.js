@@ -18,9 +18,14 @@ const Game = () => {
   const [newImage, setNewImage] = useState("");
   const [isGameStarted, setIsGameStarted] = useState(false);
   const choices = ["rock", "paper", "scissors"];
-  const point = 10;
-  const game = "correctRps";
-
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_RPS;
+  useEffect(() => {
+    const robotElement = document.getElementById("robot2");
+    if (robotElement) {
+      robotElement.src = newImage;
+    }
+  }, [newImage]);
   const handleClick = (choice) => {
     const computerIndex = getRandomInt() % 3;
     checkResult(choice, choices[computerIndex], computerIndex);
@@ -61,10 +66,6 @@ const Game = () => {
     element.classList.add("border-blue-600");
   }
 
-  useEffect(() => {
-    document.getElementById("robot2").src = newImage;
-  }, [newImage]);
-
   return (
     <div className="min-h-screen bg-bg flex flex-row justify-center items-center">
       <Helmet>
@@ -82,8 +83,9 @@ const Game = () => {
               alt=" "
             ></img>
           )}
-
-          <img id="robot2" className="w-52 h-52" alt="Computer"></img>
+          {isGameStarted && (
+            <img id="robot2" className="w-52 h-52" alt=""></img>
+          )}
         </div>
         <div id="vs">
           <h1 className="font-[Teko] text-6xl mx-4">VS</h1>

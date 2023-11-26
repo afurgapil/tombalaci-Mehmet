@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GoBack from "../Tools/GoBack";
 
 import getRandomInt from "../utils/getRandomInt";
@@ -82,10 +82,34 @@ function Roulette() {
   const [drawnNumbers, setDrawnNumbers] = useState([]);
   const [intervalNumber, setIntervalNumber] = useState();
   const [userchoice, setUserChoice] = useState(null);
-  const point = 10;
-  const game = "correctRoulette";
-
+  const [userChoiceColor, setUserChoiceColor] = useState({
+    backgroundColor: "",
+    color: "",
+  });
+  const [resultColor, setResultColor] = useState({
+    backgroundColor: "",
+    color: "",
+  });
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_ROULETTE;
+  useEffect(() => {
+    const guesss = document.getElementById("guesss");
+    if (guesss && userChoiceColor !== null) {
+      console.log(userChoiceColor.backgroundColor);
+      console.log(userChoiceColor.color);
+      guesss.style.backgroundColor = userChoiceColor.backgroundColor;
+      guesss.style.color = userChoiceColor.color;
+    }
+  }, [userChoiceColor]);
+  useEffect(() => {
+    const resultt = document.getElementById("resultt");
+    if (resultt && resultColor !== null) {
+      resultt.style.backgroundColor = resultColor.backgroundColor;
+      resultt.style.color = resultColor.color;
+    }
+  }, [resultColor]);
   function setChoice(userg) {
+    console.log(userg);
     setUserChoice(userg);
     switch (userg) {
       case 1:
@@ -106,8 +130,10 @@ function Roulette() {
       case 32:
       case 34:
       case 36:
-        document.getElementById("guesss").style.backgroundColor = "red";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "red",
+          color: "white",
+        }));
         break;
       case 2:
       case 4:
@@ -127,25 +153,34 @@ function Roulette() {
       case 31:
       case 33:
       case 35:
-        document.getElementById("guesss").style.backgroundColor = "black";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "black",
+          color: "white",
+        }));
         break;
-
       case 0:
-        document.getElementById("guesss").style.backgroundColor = "green";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "green",
+          color: "white",
+        }));
         break;
       case "Red":
-        document.getElementById("guesss").style.backgroundColor = "red";
-        document.getElementById("guesss").style.color = "red";
+        setUserChoiceColor(() => ({
+          backgroundColor: "red",
+          color: "red",
+        }));
         break;
       case "Black":
-        document.getElementById("guesss").style.backgroundColor = "black";
-        document.getElementById("guesss").style.color = "black";
+        setUserChoiceColor(() => ({
+          backgroundColor: "black",
+          color: "black",
+        }));
         break;
       default:
-        document.getElementById("guesss").style.backgroundColor = "goldenrod";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "#d6955d",
+          color: "white",
+        }));
         break;
     }
   }
@@ -175,8 +210,10 @@ function Roulette() {
         case 32:
         case 34:
         case 36:
-          document.getElementById("resultt").style.backgroundColor = "red";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "red",
+            color: "white",
+          }));
           break;
         case 2:
         case 4:
@@ -196,13 +233,16 @@ function Roulette() {
         case 31:
         case 33:
         case 35:
-          document.getElementById("resultt").style.backgroundColor = "black";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "black",
+            color: "white",
+          }));
           break;
-
         case 0:
-          document.getElementById("resultt").style.backgroundColor = "green";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "green",
+            color: "white",
+          }));
           break;
         default:
           break;
@@ -232,8 +272,10 @@ function Roulette() {
         case 32:
         case 34:
         case 36:
-          document.getElementById("resultt").style.backgroundColor = "red";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "red",
+            color: "white",
+          }));
           break;
         case 2:
         case 4:
@@ -253,13 +295,17 @@ function Roulette() {
         case 31:
         case 33:
         case 35:
-          document.getElementById("resultt").style.backgroundColor = "black";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "black",
+            color: "white",
+          }));
           break;
 
         case 0:
-          document.getElementById("resultt").style.backgroundColor = "green";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "green",
+            color: "white",
+          }));
           break;
         default:
           break;

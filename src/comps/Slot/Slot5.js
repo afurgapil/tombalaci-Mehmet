@@ -34,9 +34,9 @@ function Slot() {
   const [row1, setRow1] = useState(false);
   const [row2, setRow2] = useState(false);
   const [row3, setRow3] = useState(false);
-  const point = 10;
-  const game = "correctSlot";
-  const jackpot = "correctJackpot";
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_SLOT;
+  const jackpot = process.env.REACT_APP_CORRECT_JACKPOT;
 
   function gameStart() {
     updateScoreContext(user.id, -point);
