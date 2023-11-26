@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
-
+import { useContext } from "react";
+import { WalletContext } from "../context/WalletContext";
 export const useWheelContract = () => {
-  const wheel = useSelector((state) => state.contracts.wheel);
-  return wheel;
+  const { wheelContract } = useContext(WalletContext);
+  return wheelContract;
 };

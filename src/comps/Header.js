@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { NavLink, Link } from "react-router-dom";
 import DisplayNameUtils from "../comps/DisplayNameUtils";
 import SignOutButton from "../comps/SignOutButton";
-//firebase
-import { auth } from "../Firebase";
 //mui
 import MenuIcon from "@mui/icons-material/Menu";
 import Score from "../comps/Score";
+import { useUser } from "../hooks/useUser";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-
-    return unsubscribe;
-  }, []);
-
+  const user = useUser();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -131,11 +122,13 @@ function Header() {
       </header>
     );
   }
-
   return (
     <div>
-      {user ? <OnLoginHeader></OnLoginHeader> : null}
-      {!user ? <OnNotLoginHeader></OnNotLoginHeader> : null}
+      {user && Object.keys(user).length > 0 ? (
+        <OnLoginHeader></OnLoginHeader>
+      ) : (
+        <OnNotLoginHeader></OnNotLoginHeader>
+      )}
     </div>
   );
 }

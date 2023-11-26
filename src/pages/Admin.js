@@ -1,39 +1,19 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useContext } from "react";
 import { ethers } from "ethers";
 import { useProvider } from "../hooks/useProvider";
-import { useSigner } from "../hooks/useSigner";
-import { useDispatch } from "react-redux";
 import { useWheelContract } from "../hooks/useWheelContract";
-import { setAccount, setAddress } from "../store/slicers/data";
-import { setLastWinner } from "../store/slicers/user";
-import { showErrorNotification } from "../utils/alertifyUtils";
 import { Helmet } from "react-helmet";
+import { WalletContext } from "../context/WalletContext";
+
 function Admin() {
-  const dispatch = useDispatch();
+  const { initializeWallet } = useContext(WalletContext);
   const provider = useProvider();
-  const signer = useSigner();
   const wheelContract = useWheelContract();
   const [amount, setAmount] = useState("");
   const [scheduleInterval, setScheduleInterval] = useState(null);
-
   useEffect(() => {
-    const connect = async () => {
-      if (!window.ethereum) {
-        alert("Metamask is not installed");
-        return;
-      }
-      if (!provider) return;
-      try {
-        const accounts = await provider.send("eth_requestAccounts", []);
-        dispatch(setAccount(accounts[0]));
-        const address = await signer.getAddress();
-        dispatch(setAddress(address));
-      } catch (error) {
-        console.error("Error connecting:", error);
-        showErrorNotification("Çekilişe katılırken bir hata oluştu");
-      }
-    };
-    connect();
+    initializeWallet();
   }, []);
 
   useEffect(() => {
@@ -54,17 +34,11 @@ function Admin() {
     if (!provider) return;
     try {
       const txn1 = await wheelContract.withdrawLockedAmount();
+      console.log(txn1);
       await txn1.wait();
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const setWinner = async () => {
-    try {
-      const txn = await wheelContract.getLastWinner();
-      dispatch(setLastWinner(txn));
-    } catch (error) {}
   };
 
   const playGame = async () => {
@@ -78,7 +52,6 @@ function Admin() {
 
       const txn1 = await wheelContract.connect(operator).drawWinner();
       await txn1.wait();
-      setWinner();
     } catch (error) {
       console.log(error);
     }

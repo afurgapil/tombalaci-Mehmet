@@ -1,51 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import welcomecoin from "../assets/welcomecoin.gif";
 import GoBack from "../Tools/GoBack";
-//firebase
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase";
+import getRandomInt from "../utils/getRandomInt";
 //mui
 import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
 import Person4Icon from "@mui/icons-material/Person4";
 //alertify
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
-
+import { useUser } from "../hooks/useUser";
+import { useToken } from "../hooks/useToken";
+import { UserContext } from "../context/UserContext";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
 const CoinFlip = () => {
+  const user = useUser();
+  const token = useToken();
+  const { updateScoreContext } = useContext(UserContext);
+  const { updateStatContext } = useContext(UserContext);
   const [choice, setChoice] = useState(null);
-  const [correctCoinflip, setCorrectCoinflip] = useState(null);
-  const [score, setScore] = useState(null);
   const [isGameStart, setIsGameStart] = useState(false);
   const [isResultHead, setIsResultHead] = useState(null);
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const db = getFirestore();
-        const userDocRef = doc(db, "users", user.uid);
-        getDoc(userDocRef).then((doc) => {
-          if (doc.exists()) {
-            setScore(doc.data().score);
-            setCorrectCoinflip(doc.data().correctCoinflip);
-          } else {
-            updateDoc(userDocRef, { score: 0 });
-            setScore(0);
-            setCorrectCoinflip(0);
-          }
-        });
-      }
-    });
-  }, []);
-  function getRandomFloat() {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0] / 4294967295;
-  }
+  const game = process.env.REACT_APP_CORRECT_COINFLIP;
+  const point = Number(process.env.REACT_APP_POINT);
 
   const playGame = () => {
-    const randomNum = getRandomFloat();
+    const randomNum = getRandomInt() / 2 ** 32;
     const newResult = randomNum < 0.5 ? "Heads" : "Tails";
     if (randomNum < 0.5) {
       setIsResultHead(true);
@@ -54,21 +34,11 @@ const CoinFlip = () => {
     }
     setIsGameStart(true);
     if (choice === newResult) {
-      const newScore = score + 10;
-      setScore(newScore);
-      const newCorrectCoinflip = correctCoinflip + 1;
-      setCorrectCoinflip(newCorrectCoinflip);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctCoinflip: newCorrectCoinflip,
-      });
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
       alertify.success("Congrats! +10", 1);
     } else {
-      const newScore = score - 10;
-      setScore(newScore);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateScoreContext(user.id, user.email, token, -point);
       alertify.error("Ups! Unlucky. -10", 1);
     }
   };

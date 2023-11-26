@@ -1,32 +1,31 @@
 import { useState, useEffect } from "react";
 import point from "../assets/score.png";
-//firebase
-import {
-  getFirestore,
-  collection,
-  query,
-  orderBy,
-  onSnapshot,
-} from "firebase/firestore";
 import "animate.css";
 import { Helmet } from "react-helmet";
+import { USER_API } from "../urls";
+
 const Scoreboard = () => {
   const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const db = getFirestore();
-    const usersRef = collection(db, "users");
-    const usersQuery = query(usersRef, orderBy("score", "desc"));
-
-    const unsubscribe = onSnapshot(usersQuery, (snapshot) => {
-      const usersData = [];
-      snapshot.forEach((doc) => {
-        usersData.push({ ...doc.data(), id: doc.id });
+  const fetchData = async () => {
+    try {
+      const response = await fetch(USER_API.GET_SCOREBOARD, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      setUsers(usersData);
-    });
 
-    return () => unsubscribe();
+      if (response.ok) {
+        const data = await response.json();
+        const sortedUsers = data.results.sort((a, b) => b.score - a.score);
+        setUsers(sortedUsers);
+      }
+    } catch (error) {
+      console.error();
+    }
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
   return (
     <div className="flex flex-col justify-start items-center min-h-screen bg-bg">
@@ -50,7 +49,7 @@ const Scoreboard = () => {
             className="flex flex-row items-center justify-between bg-[#ffa000] w-full m-2 p-1  list-none first:rounded-t-xl last:rounded-b-xl  animate__animated animate__backInUp"
           >
             <div>
-              {index + 1}. {user.displayName}
+              {index + 1}. {user.name.toUpperCase()}
             </div>
             <div>{user.score}</div>
           </li>

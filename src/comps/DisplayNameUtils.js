@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
+import { useUser } from "../hooks/useUser";
 function DisplayNameUtils() {
   const [displayName, setDisplayName] = useState(null);
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const user = useUser();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,25 +17,11 @@ function DisplayNameUtils() {
 
   useEffect(() => {
     if (user) {
-      try {
-        const userId = user.uid;
-        const firestore = getFirestore();
-        const userRef = doc(firestore, "users", userId);
-        getDoc(userRef)
-          .then((doc) => {
-            if (doc.exists()) {
-              const userData = doc.data();
-              const upperName = userData.displayName.toUpperCase();
-              setDisplayName(upperName);
-            } else {
-              console.log("Something went wrong :(");
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) {
-        console.log(error);
+      if (user.name) {
+        const upperName = user.name.toUpperCase();
+        setDisplayName(upperName);
+      } else {
+        setDisplayName(user.name);
       }
     }
   }, [user]);
@@ -67,10 +50,10 @@ function DisplayNameUtils() {
             }}
           >
             <MenuItem onClick={handleClose}>
-              <Link to="stats">İstatistikler</Link>
+              <Link to="stats">Stats</Link>
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <Link to="swap">Takas</Link>
+              <Link to="swap">Trade</Link>
             </MenuItem>
           </Menu>
         </div>

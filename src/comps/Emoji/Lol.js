@@ -14,7 +14,7 @@ const Lol = () => {
     const randomIndex = Math.floor(Math.random() * heros.length);
     setSelectedHero(heros[randomIndex].name);
     setHeroEmojis(heros[randomIndex].emojis);
-  }, [heros]);
+  }, []);
 
   const handleInputChange = (e) => {
     setUserGuess(e.target.value);
@@ -52,7 +52,7 @@ const Lol = () => {
     }
   }
   return (
-    <div className="flex flex-col justify-start items-center min-h-screen mt-10">
+    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10">
       <Helmet>
         <title> LOL| Emojify</title>
         <meta

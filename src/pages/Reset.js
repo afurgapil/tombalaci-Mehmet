@@ -1,41 +1,37 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-//firebase
-import { auth } from "../Firebase";
-import { sendPasswordResetEmail } from "firebase/auth";
-//mui
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
-import LoginIcon from "@mui/icons-material/Login";
 import { Helmet } from "react-helmet";
+import { USER_API } from "../urls";
+
 const Reset = () => {
   const [email, setEmail] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isVerified, setIsVerified] = useState(false);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleResetPassword = (e) => {
-    e.preventDefault();
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        setSuccessMessage(
-          "An email to reset your password has been sent to your email address."
-        );
-        setErrorMessage("");
-        setEmail("");
-        setIsVerified(true);
-      })
-      .catch((error) => {
-        const userNotFound = "User not found :/";
-        const fberror1 = "Firebase: Error (auth/user-not-found).";
-        if (error.message === fberror1) {
-          setErrorMessage(userNotFound);
-        } else {
-          setErrorMessage(error.message);
-        }
-        setSuccessMessage("");
+  const handleRequestReset = async (e) => {
+    e.preventDefault(); // Prevents default form submission behavior
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(USER_API.RESET_REQUEST, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
       });
+
+      const data = await response.json();
+      setMessage(data.message);
+    } catch (error) {
+      console.error("Error requesting password reset:", error);
+      setMessage("An unexpected error occurred.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -55,7 +51,7 @@ const Reset = () => {
           <p>There may not be a second chance...</p>
         </div>
         <form
-          onSubmit={handleResetPassword}
+          onSubmit={handleRequestReset}
           className="flex flex-col items-center justify-center w-full"
         >
           <TextField
@@ -69,25 +65,12 @@ const Reset = () => {
             margin="normal"
           />
           <div className="flex flex-row justify-center items-center">
-            <Button variant="contained" type="submit">
-              Reset Password
+            <Button variant="contained" type="submit" disabled={loading}>
+              {loading ? "Loading..." : "Reset Password"}
             </Button>
-            {isVerified ? (
-              <Link to="/signin">
-                <Button
-                  className="button"
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<LoginIcon />}
-                >
-                  Sign In
-                </Button>
-              </Link>
-            ) : null}
           </div>
         </form>
-        {successMessage && <Alert severity="success">{successMessage}</Alert>}
-        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {message && <Alert severity="error">{message}</Alert>}
       </div>
     </div>
   );

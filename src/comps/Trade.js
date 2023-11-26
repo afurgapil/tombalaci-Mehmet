@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useContext } from "react";
 import Modal from "react-modal";
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 //hooks
-import { useContract } from "../hooks/useContract";
+import { useTradeContract } from "../hooks/useTradeContract";
 import { parseEther } from "ethers/lib/utils";
 //modal
 import ModalComponent from "../comps/Modal";
@@ -12,41 +11,23 @@ import { showErrorNotification } from "../utils/alertifyUtils";
 import { ethers } from "ethers";
 import { useProvider } from "../hooks/useProvider";
 import { useSigner } from "../hooks/useSigner";
+import { useUser } from "../hooks/useUser";
+import { UserContext } from "../context/UserContext";
+import { useToken } from "../hooks/useToken";
+
 function Trade() {
-  const tradeContract = useContract();
+  const user = useUser();
+  const token = useToken();
+  const { updateScoreContext } = useContext(UserContext);
+  const tradeContract = useTradeContract();
   const [depositAmount, setDepositAmount] = useState();
   const [withdrawAmount, setWithdrawAmount] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [score, setScore] = useState(null);
   const [contractBalance, setContractBalance] = useState();
   const [balance, setBalance] = useState(0);
   const provider = useProvider();
   const signer = useSigner();
   const handleClose = () => setIsOpen(false);
-  const auth = getAuth();
-  const user = auth.currentUser;
-  useEffect(() => {
-    if (user) {
-      try {
-        const userId = user.uid;
-        const firestore = getFirestore();
-        const userRef = doc(firestore, "users", userId);
-        getDoc(userRef)
-          .then((doc) => {
-            if (doc.exists()) {
-              const userData = doc.data();
-              setScore(userData.score);
-            } else {
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }, [user]);
 
   useEffect(() => {
     const checkUserBalance = async () => {
@@ -88,14 +69,12 @@ function Trade() {
     try {
       setIsOpen(true);
       const parsedAmount = parseEther(depositAmount);
-      const newScore = score + depositAmount * 10000;
+      const newScore = depositAmount * 10000;
       const txn = await tradeContract.deposit({ value: parsedAmount });
       await txn.wait();
       setIsOpen(false);
       setDepositAmount("");
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
-      setScore(newScore);
+      updateScoreContext(user.id, user.email, token, newScore);
     } catch (error) {
       showErrorNotification("An error occurred while deposit amount.");
       setIsOpen(false);
@@ -105,14 +84,12 @@ function Trade() {
     try {
       setIsOpen(true);
       const parsedAmount = parseEther(withdrawAmount);
-      const newScore = score - withdrawAmount * 10000;
+      const newScore = withdrawAmount * 10000;
       const txn = await tradeContract.withdraw(parsedAmount);
       await txn.wait();
       setIsOpen(false);
       setWithdrawAmount("");
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
-      setScore(newScore);
+      updateScoreContext(user.id, user.email, token, -newScore);
     } catch (error) {
       showErrorNotification("An error occurred while deposit amount.");
       setIsOpen(false);

@@ -12,6 +12,7 @@ import NotFound from "../pages/NotFound";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Reset from "../pages/Reset";
+import ResetCheck from "../pages/ResetCheck";
 import Coin from "../pages/CoinFlip";
 import Dice from "../pages/ToDice";
 import Rps from "../pages/Rps";
@@ -67,6 +68,7 @@ function PreApp() {
     { path: "/signup", element: SignUp },
     { path: "/signin", element: SignIn },
     { path: "/reset", element: Reset },
+    { path: "/reset-check", element: ResetCheck },
     { path: "/contact", element: Contact },
   ];
   const protectedRoutes = [{ path: "/dashboard", element: Admin }];

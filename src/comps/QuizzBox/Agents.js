@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from "react";
 import agents from "../../data/agents";
 import TextField from "@mui/material/TextField";
@@ -46,8 +47,6 @@ function Agents() {
   };
 
   const compareAgents = () => {
-    console.log(userInput);
-    console.log(computerAgentData.name);
     const matchingAgent = agents.find((a) => a.name === userInput);
     if (matchingAgent.gender === computerAgentData.gender) {
       Ref1.current.style.backgroundColor = "green";
@@ -87,7 +86,7 @@ function Agents() {
   }
 
   return (
-    <div className="flex flex-col justify-start items-center min-h-screen ">
+    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10">
       <Helmet>
         <title> Valorant| Quiz Boxes</title>
         <meta

@@ -14,7 +14,7 @@ const Country = () => {
     const randomIndex = Math.floor(Math.random() * countries.length);
     setSelectedCountry(countries[randomIndex].name);
     setCountryEmojis(countries[randomIndex].emojis);
-  }, [countries]);
+  }, []);
 
   const handleInputChange = (e) => {
     setUserGuess(e.target.value);
@@ -51,7 +51,7 @@ const Country = () => {
     }
   }
   return (
-    <div className="flex flex-col justify-start items-center min-h-screen mt-10">
+    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10">
       <Helmet>
         <title> Countries| Emojify</title>
         <meta name="description" content="guess countries  emoji game" />

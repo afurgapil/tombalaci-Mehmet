@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GoBack from "../Tools/GoBack";
 
-//firebase
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase";
+import getRandomInt from "../utils/getRandomInt";
+
 //alertify
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+
+import { useUser } from "../hooks/useUser";
+import { UserContext } from "../context/UserContext";
+import { useToken } from "../hooks/useToken";
 const numbers = [
   {
     col1: [
@@ -72,40 +74,44 @@ const numbers = [
     ],
   },
 ];
-
 function Roulette() {
   //breakpoint1
+  const user = useUser();
+  const token = useToken();
+  const { updateScoreContext } = useContext(UserContext);
+  const { updateStatContext } = useContext(UserContext);
   const [rouletteNumber, setRouletteNumber] = useState(getRandomInt() % 37);
-
   const [drawnNumbers, setDrawnNumbers] = useState([]);
   const [intervalNumber, setIntervalNumber] = useState();
-  const [score, setScore] = useState(null);
-  const [correctRoulette, setCorrectRoulette] = useState(null);
   const [userchoice, setUserChoice] = useState(null);
+  const [userChoiceColor, setUserChoiceColor] = useState({
+    backgroundColor: "",
+    color: "",
+  });
+  const [resultColor, setResultColor] = useState({
+    backgroundColor: "",
+    color: "",
+  });
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_ROULETTE;
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const db = getFirestore();
-        const userDocRef = doc(db, "users", user.uid);
-        getDoc(userDocRef).then((doc) => {
-          if (doc.exists()) {
-            setScore(doc.data().score);
-            setCorrectRoulette(doc.data().correctRoulette);
-          } else {
-            updateDoc(userDocRef, { score: 0 });
-            setScore(0);
-            setCorrectRoulette(0);
-          }
-        });
-      }
-    });
-  }, []);
-  function getRandomInt() {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0];
-  }
+    const guesss = document.getElementById("guesss");
+    if (guesss && userChoiceColor !== null) {
+      console.log(userChoiceColor.backgroundColor);
+      console.log(userChoiceColor.color);
+      guesss.style.backgroundColor = userChoiceColor.backgroundColor;
+      guesss.style.color = userChoiceColor.color;
+    }
+  }, [userChoiceColor]);
+  useEffect(() => {
+    const resultt = document.getElementById("resultt");
+    if (resultt && resultColor !== null) {
+      resultt.style.backgroundColor = resultColor.backgroundColor;
+      resultt.style.color = resultColor.color;
+    }
+  }, [resultColor]);
   function setChoice(userg) {
+    console.log(userg);
     setUserChoice(userg);
     switch (userg) {
       case 1:
@@ -126,8 +132,10 @@ function Roulette() {
       case 32:
       case 34:
       case 36:
-        document.getElementById("guesss").style.backgroundColor = "red";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "red",
+          color: "white",
+        }));
         break;
       case 2:
       case 4:
@@ -147,25 +155,34 @@ function Roulette() {
       case 31:
       case 33:
       case 35:
-        document.getElementById("guesss").style.backgroundColor = "black";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "black",
+          color: "white",
+        }));
         break;
-
       case 0:
-        document.getElementById("guesss").style.backgroundColor = "green";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "green",
+          color: "white",
+        }));
         break;
       case "Red":
-        document.getElementById("guesss").style.backgroundColor = "red";
-        document.getElementById("guesss").style.color = "red";
+        setUserChoiceColor(() => ({
+          backgroundColor: "red",
+          color: "red",
+        }));
         break;
       case "Black":
-        document.getElementById("guesss").style.backgroundColor = "black";
-        document.getElementById("guesss").style.color = "black";
+        setUserChoiceColor(() => ({
+          backgroundColor: "black",
+          color: "black",
+        }));
         break;
       default:
-        document.getElementById("guesss").style.backgroundColor = "goldenrod";
-        document.getElementById("guesss").style.color = "white";
+        setUserChoiceColor(() => ({
+          backgroundColor: "#d6955d",
+          color: "white",
+        }));
         break;
     }
   }
@@ -195,8 +212,10 @@ function Roulette() {
         case 32:
         case 34:
         case 36:
-          document.getElementById("resultt").style.backgroundColor = "red";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "red",
+            color: "white",
+          }));
           break;
         case 2:
         case 4:
@@ -216,13 +235,16 @@ function Roulette() {
         case 31:
         case 33:
         case 35:
-          document.getElementById("resultt").style.backgroundColor = "black";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "black",
+            color: "white",
+          }));
           break;
-
         case 0:
-          document.getElementById("resultt").style.backgroundColor = "green";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "green",
+            color: "white",
+          }));
           break;
         default:
           break;
@@ -252,8 +274,10 @@ function Roulette() {
         case 32:
         case 34:
         case 36:
-          document.getElementById("resultt").style.backgroundColor = "red";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "red",
+            color: "white",
+          }));
           break;
         case 2:
         case 4:
@@ -273,13 +297,17 @@ function Roulette() {
         case 31:
         case 33:
         case 35:
-          document.getElementById("resultt").style.backgroundColor = "black";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "black",
+            color: "white",
+          }));
           break;
 
         case 0:
-          document.getElementById("resultt").style.backgroundColor = "green";
-          document.getElementById("resultt").style.color = "white";
+          setResultColor(() => ({
+            backgroundColor: "green",
+            color: "white",
+          }));
           break;
         default:
           break;
@@ -292,21 +320,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (number === rouletteNumber) {
-        const newScore = score + 350;
-        setScore(newScore);
-        const newCorrectRoulette = correctRoulette + 1;
-        setCorrectRoulette(newCorrectRoulette);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-          correctRoulette: newCorrectRoulette,
-        });
         alertify.success("Congrats! +350", 1);
+        updateScoreContext(user.id, user.email, token, 35 * point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -315,18 +333,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber >= a && rouletteNumber <= b) {
-        const newScore = score + rate;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success(`Congrats! ${rate}`, 1);
+        updateScoreContext(user.id, user.email, token, rate);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -335,18 +346,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber % 2 === 1) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -355,18 +359,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (rouletteNumber % 2 === 0) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -378,18 +375,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (red.includes(rouletteNumber)) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);
@@ -401,18 +391,11 @@ function Roulette() {
     returnNumber();
     setTimeout(() => {
       if (black.includes(rouletteNumber)) {
-        const newScore = score + 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, {
-          score: newScore,
-        });
         alertify.success("Congrats! +10", 1);
+        updateScoreContext(user.id, user.email, token, point);
+        updateStatContext(user.id, user.email, token, game);
       } else {
-        const newScore = score - 10;
-        setScore(newScore);
-        const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-        updateDoc(userDocRef, { score: newScore });
+        updateScoreContext(user.id, user.email, token, -point);
         alertify.error(`Ups! Unlucky. -10`, 1);
       }
     }, 1100);

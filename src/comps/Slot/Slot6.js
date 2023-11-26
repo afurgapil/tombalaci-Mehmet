@@ -1,17 +1,24 @@
-import { useState, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, useContext } from "react";
 import React from "react";
+import getRandomInt from "../../utils/getRandomInt";
 
 import GoBack from "../../Tools/GoBack";
-//firebase
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../Firebase";
+//db
+import { useUser } from "../../hooks/useUser";
+import { UserContext } from "../../context/UserContext";
+
 //mui
 import Spinner from "../../Tools/Spinner";
 import { Button } from "@mui/material";
 import alertify from "alertifyjs";
 import { Helmet } from "react-helmet";
+import { useToken } from "../../hooks/useToken";
 function Slot() {
+  const user = useUser();
+  const token = useToken();
+  const { updateScoreContext } = useContext(UserContext);
+  const { updateStatContext } = useContext(UserContext);
   const [col11, setCol11] = useState("\uD83D\uDCB0");
   const [col12, setCol12] = useState("\ud83c\udf47");
   const [col13, setCol13] = useState("\uD83D\uDCB0");
@@ -24,39 +31,12 @@ function Slot() {
   const [row1, setRow1] = useState(false);
   const [row2, setRow2] = useState(false);
   const [row3, setRow3] = useState(false);
-  const [score, setScore] = useState(null);
-  const [correctSlot, setCorrectSlot] = useState(null);
-  const [correctJackpot, setCorrectJackpot] = useState(null);
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const db = getFirestore();
-        const userDocRef = doc(db, "users", user.uid);
-        getDoc(userDocRef).then((doc) => {
-          if (doc.exists()) {
-            setScore(doc.data().score);
-            setCorrectSlot(doc.data().correctSlot);
-            setCorrectJackpot(doc.data().correctJackpot);
-          } else {
-            updateDoc(userDocRef, { score: 0 });
-            setScore(0);
-            setCorrectSlot(0);
-            setCorrectJackpot(0);
-          }
-        });
-      }
-    });
-  }, []);
-  function getRandomInt() {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0];
-  }
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_SLOT;
+  const jackpot = process.env.REACT_APP_CORRECT_JACKPOT;
+
   function gameStart() {
-    const newScore = score - 10;
-    setScore(newScore);
-    const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-    updateDoc(userDocRef, { score: newScore });
+    updateScoreContext(user.id, user.email, token, -point);
   }
 
   function spin() {
@@ -417,54 +397,20 @@ function Slot() {
   useEffect(() => {
     if (row1 === true && row2 === true && row3 === true) {
       alertify.success("JACKPOT! +3333", 1);
-      setScore(score + 3333);
-      const newScore = score + 3333;
-      setScore(newScore);
-      const newCorrectSlot = correctSlot + 1;
-      setCorrectSlot(newCorrectSlot);
-      const newCorrectJackpot = correctJackpot + 1;
-      setCorrectJackpot(newCorrectJackpot);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctSlot: newCorrectSlot,
-        correctJackpot: newCorrectJackpot,
-      });
+      updateScoreContext(user.id, user.email, token, 333.3 * point);
+      updateStatContext(user.id, user.email, token, jackpot);
     } else if (row1 === true) {
       alertify.success("ROW1! +100", 1);
-      const newScore = score + 100;
-      setScore(newScore);
-      const newCorrectSlot = correctSlot + 1;
-      setCorrectSlot(newCorrectSlot);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctSlot: newCorrectSlot,
-      });
+      updateScoreContext(user.id, user.email, token, 10 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else if (row2 === true) {
       alertify.success("ROW2! +100", 1);
-      setScore(score + 100);
-      const newScore = score + 100;
-      setScore(newScore);
-      const newCorrectSlot = correctSlot + 1;
-      setCorrectSlot(newCorrectSlot);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctSlot: newCorrectSlot,
-      });
+      updateScoreContext(user.id, user.email, token, 10 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else if (row3 === true) {
       alertify.success("ROW3! +100", 1);
-      setScore(score + 100);
-      const newScore = score + 100;
-      setScore(newScore);
-      const newCorrectSlot = correctSlot + 1;
-      setCorrectSlot(newCorrectSlot);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctSlot: newCorrectSlot,
-      });
+      updateScoreContext(user.id, user.email, token, 10 * point);
+      updateStatContext(user.id, user.email, token, game);
     }
   }, [row1, row2, row3]);
   return (

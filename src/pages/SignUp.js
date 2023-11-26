@@ -1,10 +1,5 @@
-import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-//firebase
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../Firebase";
 //mui
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -18,9 +13,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Helmet } from "react-helmet";
+import { UserContext } from "../context/UserContext";
 const theme = createTheme();
 
 export default function SignUp() {
+  const { signup } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -30,30 +27,11 @@ export default function SignUp() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setError(null);
     try {
-      const { user } = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        displayName: name,
-        displayLastname: lastname,
-        score: 0,
-        correctCoinflip: 0,
-        correctDice: 0,
-        correctRps: 0,
-        correctRoulette: 0,
-        correctSlot: 0,
-        correctJackpot: 0,
-      });
-
-      navigate("/");
+      await signup(name, lastname, email, password);
+      // navigate("/signin");
     } catch (error) {
-      setError(error.message);
+      setError(error);
     }
   };
 

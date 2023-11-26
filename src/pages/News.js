@@ -11,8 +11,6 @@ import {
   ScrollPage,
   batch,
   Fade,
-  MoveIn,
-  MoveOut,
   ZoomOut,
 } from "react-scroll-motion";
 //mui
@@ -25,18 +23,18 @@ const sections = [
     desc: "In this game, you'll see emojis on your screen and you'll have to guess which category they belong to (such as country, city, etc.). Then, you'll need to make your best guess based on the category and see if you can get it right!",
     href: "/emojify",
     img: emojify,
-    from: "#98fe90",
-    to: "#e4ca40",
-    direction: "bg-gradient-to-br",
+    from: "from-[#98fe90]",
+    to: "to-[#343536]",
+    direction: "bg-gradient-to-bl",
   },
   {
     title: "Quiz Boxes ",
     desc: "Put your guessing skills to the test in this fun game! You'll make a guess and see if the correct properties appear in green boxes and incorrect ones in red boxes. Reach the right result by increasing your green boxes!",
     href: "/quizboxes",
     img: quizboxes,
-    from: "#98fe90",
-    to: "#e4ca40",
-    direction: "bg-gradient-to-bl",
+    from: "from-[#343536]",
+    to: "to-[#e4ca40]",
+    direction: "bg-gradient-to-br",
   },
 ];
 function News() {
@@ -110,7 +108,7 @@ function News() {
           <div
             key={index}
             id="cs-section2"
-            className={`${section.direction}  from-[${section.from}] to-[${section.to}] w-full min-h-screen flex flex-row justify-between items-center`}
+            className={`${section.direction}  ${section.from} ${section.to} w-full min-h-screen flex flex-row justify-between items-center`}
           >
             <div
               id="cs-section2-item-text"

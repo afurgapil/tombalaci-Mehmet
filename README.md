@@ -1,19 +1,19 @@
 # Tombalaci Mehmet
 
-This is a simple fun project built using React and Firebase.
+This is a simple fun project built using React and NodeJS.
 Get ready to rack up those points and dominate the leaderboard like a casino champ on a mission! Play our exciting casino games, earn points, and battle it out for the coveted top spot. It's time to unleash your competitive spirit and show off your casino prowess in a showdown for glory!
 
 ## Setup
 
 1. Clone this project: `git clone https://github.com/afurgapil/tombalaci-Mehmet-with-reactjs.git`
 2. Go to the project directory: `cd tombalaci-Mehmet-with-reactjs`
-3. Install required dependencies: `npm install`
-4. Start the application: `npm start`
-5. Configure Firebase
+3. Install required dependencies: `npm install`,`cd services && npm install`
+4. Start the server: `node app.js`
+5. Start the app:`npm start`
 
 ## Use
 
-The application will be running at http://localhost:3000. Open the relevant URL and start using the app!
+The application will be running at http://localhost:3001. Open the relevant URL and start using the app!
 
 ## Contribute
 

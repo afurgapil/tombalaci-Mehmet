@@ -1,47 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import GoBack from "../Tools/GoBack";
-//firebase
-import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../Firebase";
+import getRandomInt from "../utils/getRandomInt";
+
 import { Helmet } from "react-helmet";
+import { UserContext } from "../context/UserContext";
+import { useUser } from "../hooks/useUser";
+
 //alertify
 import alertify from "alertifyjs";
+import { useToken } from "../hooks/useToken";
 alertify.set("notifier", "position", "top-right");
 alertify.set("notifier", "delay", 1);
 
 export default function ToDice() {
-  const [diceNumber, setDiceNumber] = useState(1);
-  const [score, setScore] = useState(null);
-  const [correctDice, setCorrectDice] = useState(null);
+  const user = useUser();
+  const token = useToken();
+  const { updateScoreContext } = useContext(UserContext);
+  const { updateStatContext } = useContext(UserContext);
+  const point = Number(process.env.REACT_APP_POINT);
+  const game = process.env.REACT_APP_CORRECT_DICE;
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const db = getFirestore();
-        const userDocRef = doc(db, "users", user.uid);
-        getDoc(userDocRef).then((doc) => {
-          if (doc.exists()) {
-            setScore(doc.data().score);
-            setCorrectDice(doc.data().correctDice);
-          } else {
-            updateDoc(userDocRef, { score: 0 });
-            setScore(0);
-            setCorrectDice(0);
-          }
-        });
-      }
-    });
-  }, []);
-  function getRandomInt() {
-    const array = new Uint32Array(1);
-    window.crypto.getRandomValues(array);
-    return array[0];
-  }
   function rollDice() {
     let randomNumber = (getRandomInt() % 6) + 1;
-    console.log(randomNumber);
-    setDiceNumber(randomNumber);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
     if (randomNumber === 1) {
@@ -81,9 +61,7 @@ export default function ToDice() {
   }
   function guessNumber() {
     let userGuess = parseInt(document.getElementById("guessInput").value);
-
     let randomNumberr = (getRandomInt() % 6) + 1;
-    setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
     if (randomNumberr === 1) {
@@ -117,26 +95,15 @@ export default function ToDice() {
 
     if (randomNumberr === userGuess) {
       alertify.success("Congrats! +50");
-      const newScore = score + 50;
-      setScore(newScore);
-      const newCorrectDice = correctDice + 1;
-      setCorrectDice(newCorrectDice);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctDice: newCorrectDice,
-      });
+      updateScoreContext(user.id, user.email, token, 5 * point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      const newScore = score - 10;
-      setScore(newScore);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
   function isEven() {
     let randomNumberr = (getRandomInt() % 6) + 1;
-    setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
     if (randomNumberr === 1) {
@@ -169,27 +136,16 @@ export default function ToDice() {
     } //
 
     if (randomNumberr === 2 || randomNumberr === 4 || randomNumberr === 6) {
-      const newScore = score + 10;
-      setScore(newScore);
-      const newCorrectDice = correctDice + 1;
-      setCorrectDice(newCorrectDice);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctDice: newCorrectDice,
-      });
       alertify.success("Congrats! +10");
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
-      const newScore = score - 10;
-      setScore(newScore);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateScoreContext(user.id, user.email, token, -point);
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
     }
   }
   function isOdd() {
     let randomNumberr = (getRandomInt() % 6) + 1;
-    setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
     if (randomNumberr === 1) {
@@ -223,26 +179,15 @@ export default function ToDice() {
 
     if (randomNumberr === 1 || randomNumberr === 3 || randomNumberr === 5) {
       alertify.success("Congrats! +10");
-      const newScore = score + 10;
-      setScore(newScore);
-      const newCorrectDice = correctDice + 1;
-      setCorrectDice(newCorrectDice);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctDice: newCorrectDice,
-      });
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      const newScore = score - 10;
-      setScore(newScore);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
   function isLow() {
     let randomNumberr = (getRandomInt() % 6) + 1;
-    setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
     if (randomNumberr === 1) {
@@ -276,26 +221,15 @@ export default function ToDice() {
 
     if (randomNumberr === 1 || randomNumberr === 2 || randomNumberr === 3) {
       alertify.success("Congrats! +10");
-      const newScore = score + 10;
-      setScore(newScore);
-      const newCorrectDice = correctDice + 1;
-      setCorrectDice(newCorrectDice);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctDice: newCorrectDice,
-      });
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      const newScore = score - 10;
-      setScore(newScore);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
   function isHigh() {
     let randomNumberr = (getRandomInt() % 6) + 1;
-    setDiceNumber(randomNumberr);
     let dots = document.querySelectorAll(".dot");
     dots.forEach((dot) => (dot.style.display = "none"));
     if (randomNumberr === 1) {
@@ -329,21 +263,11 @@ export default function ToDice() {
 
     if (randomNumberr === 4 || randomNumberr === 5 || randomNumberr === 6) {
       alertify.success("Congrats! +10");
-      const newScore = score + 10;
-      setScore(newScore);
-      const newCorrectDice = correctDice + 1;
-      setCorrectDice(newCorrectDice);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, {
-        score: newScore,
-        correctDice: newCorrectDice,
-      });
+      updateScoreContext(user.id, user.email, token, point);
+      updateStatContext(user.id, user.email, token, game);
     } else {
       alertify.error(`Ups! Unlucky, the number was  ${randomNumberr}. -10`);
-      const newScore = score - 10;
-      setScore(newScore);
-      const userDocRef = doc(getFirestore(), "users", auth.currentUser.uid);
-      updateDoc(userDocRef, { score: newScore });
+      updateScoreContext(user.id, user.email, token, -point);
     }
   }
 
@@ -354,12 +278,6 @@ export default function ToDice() {
       event.preventDefault();
     }
   }
-  useEffect(() => {
-    const cachedScore = localStorage.getItem("score");
-    if (cachedScore !== null) {
-      setScore(parseInt(cachedScore));
-    }
-  }, []);
 
   return (
     <div className="flex justify-center items-start min-h-screen bg-bg pt-20">

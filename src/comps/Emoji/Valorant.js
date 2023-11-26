@@ -14,7 +14,7 @@ const Valorant = () => {
     const randomIndex = Math.floor(Math.random() * agents.length);
     setSelectedAgent(agents[randomIndex].name);
     setAgentEmojis(agents[randomIndex].emojis);
-  }, [agents]);
+  }, []);
 
   const handleInputChange = (e) => {
     setUserGuess(e.target.value);
@@ -53,7 +53,7 @@ const Valorant = () => {
   }
   return (
     <div
-      className="flex flex-col justify-start items-center min-h-screen mt-10"
+      className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10"
       id="valorant-game-container"
     >
       <Helmet>
