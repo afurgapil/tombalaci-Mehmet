@@ -61,7 +61,7 @@ function PreApp() {
     { path: "/emojify/countries", element: CountryEmoji },
     { path: "/quizboxes", element: QuizBox },
     { path: "/quizboxes/valorant", element: ValorantQuizBox },
-    //  on development { path: "/wheel", element: Wheel },
+    { path: "/wheel", element: Wheel },
   ];
   const publicRoutes = [
     { path: "/welcome", element: Welcome },

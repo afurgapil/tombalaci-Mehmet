@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import Modal from "react-modal";
 //hooks
-import { useContract } from "../hooks/useContract";
+import { useTradeContract } from "../hooks/useTradeContract";
 import { parseEther } from "ethers/lib/utils";
 //modal
 import ModalComponent from "../comps/Modal";
@@ -19,7 +19,7 @@ function Trade() {
   const user = useUser();
   const token = useToken();
   const { updateScoreContext } = useContext(UserContext);
-  const tradeContract = useContract();
+  const tradeContract = useTradeContract();
   const [depositAmount, setDepositAmount] = useState();
   const [withdrawAmount, setWithdrawAmount] = useState();
   const [modalIsOpen, setIsOpen] = useState(false);

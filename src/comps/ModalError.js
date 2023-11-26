@@ -1,6 +1,6 @@
 import React from "react";
 
-const ErrorModal = ({ error, onClose }) => {
+const ErrorModal = ({ onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <div className="bg-black bg-opacity-50 w-full h-full absolute"></div>
@@ -12,7 +12,7 @@ const ErrorModal = ({ error, onClose }) => {
           &times;
         </button>
         <h2 className="text-2xl font-bold mb-4">Error</h2>
-        <p>{error.message}</p>
+        <p>Metamask is not installed!</p>
       </div>
     </div>
   );

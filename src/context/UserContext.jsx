@@ -45,15 +45,15 @@ const UserProvider = ({ children }) => {
       });
 
       if (response.ok) {
-        console.log("Kullanıcı başarıyla kaydedildi.");
+        console.log("User created succesfully.");
         const data = await response.json();
         console.log(data);
       } else {
         const data = await response.json();
-        console.error("Kullanıcı kaydı başarısız:", data.error);
+        console.error("User can not created:", data.error);
       }
     } catch (error) {
-      console.error("Bir hata oluştu:", error);
+      console.error("An error occured:", error);
     }
   };
   const signin = async (email, password, isChecked) => {

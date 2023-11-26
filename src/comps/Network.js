@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setNetwork } from "../store/slicers/data";
+import React, { useState, useEffect, useContext } from "react";
 import { useAddress } from "../hooks/useAddress";
-
+import { WalletContext } from "../context/WalletContext";
+import { useNetwork } from "../hooks/useNetwork";
 const NetworkSelection = () => {
-  const [selectedNetwork, setSelectedNetwork] = useState("polygon");
+  const { handleNetworkChange, initializeWallet } = useContext(WalletContext);
+  const selectedNetwork = useNetwork();
   const [loading, setLoading] = useState(true);
-  const dispatch = useDispatch();
   const wallet = useAddress();
   const [acc, setAcc] = useState("");
-
-  const handleNetworkChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedNetwork(selectedValue);
-    dispatch(setNetwork(selectedValue));
-  };
-
+  useEffect(() => {
+    initializeWallet();
+  }, [initializeWallet]);
   useEffect(() => {
     if (wallet) {
       const accSubstring = wallet.substring(0, 9);

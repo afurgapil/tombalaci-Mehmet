@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
-
+import { useContext } from "react";
+import { WalletContext } from "../context/WalletContext";
 export const useProvider = () => {
-  const provider = useSelector((state) => state.data.provider);
+  const { provider } = useContext(WalletContext);
   return provider;
 };

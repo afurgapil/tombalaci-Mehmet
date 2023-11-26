@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import { NavLink, Link } from "react-router-dom";
 import DisplayNameUtils from "../comps/DisplayNameUtils";
@@ -10,9 +10,6 @@ import { useUser } from "../hooks/useUser";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const user = useUser();
-  useEffect(() => {
-    console.log("User:", user);
-  }, [user]);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -40,9 +37,6 @@ function Header() {
                 Home
               </NavLink>
             </li>
-
-            {/*
-            on development
             <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
               <NavLink
                 to="/wheel"
@@ -50,7 +44,7 @@ function Header() {
               >
                 Wheel!
               </NavLink>
-            </li> */}
+            </li>
             <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
               <NavLink to="/classics" className="flex justify-center">
                 Classics

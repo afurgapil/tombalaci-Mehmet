@@ -47,8 +47,6 @@ function Agents() {
   };
 
   const compareAgents = () => {
-    console.log(userInput);
-    console.log(computerAgentData.name);
     const matchingAgent = agents.find((a) => a.name === userInput);
     if (matchingAgent.gender === computerAgentData.gender) {
       Ref1.current.style.backgroundColor = "green";
