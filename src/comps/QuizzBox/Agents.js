@@ -96,16 +96,16 @@ function Agents() {
       </Helmet>
       <GoBack></GoBack>
 
-      <h1 className="text-3xl font-bold border-b border-black font-[Raleway] my-10">
+      <h1 className="text-3xl text-center font-bold border-b border-black font-[Raleway] my-10">
         Valorant Agent Guessing Game
       </h1>
       {userInput === null ? (
-        <h3 className="font-[Teko] text-8xl text-amber-800">
+        <h3 className="font-[Teko] text-center text-5xl md:text-8xl text-amber-800">
           Make a Guess for Start
         </h3>
       ) : null}
 
-      <div className="flex flex-col justify-center items-center w-2/5">
+      <div className="flex flex-col justify-center items-center w-11/12 md:w-2/5">
         <div className="w-full">
           <TextField
             fullWidth
@@ -115,6 +115,10 @@ function Agents() {
             value={userInput}
             onChange={handleChange}
             onKeyPress={handleKeyPress}
+            InputProps={{
+              autoComplete: "off",
+              list: "matchingAgents",
+            }}
           />
         </div>
 

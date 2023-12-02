@@ -413,7 +413,7 @@ function Roulette() {
       <GoBack></GoBack>
       <div className="flex flex-col justify-center items-center">
         {userchoice !== null && (
-          <div className="flex flex-row justify-center items-center mb-2 bg-[#dcdcdc] rounded-3xl p-1 border-4 border-black border-solid">
+          <div className="flex flex-row justify-center items-center m-2 bg-[#dcdcdc] rounded-3xl p-1 border-4 border-black border-solid">
             <h1
               className="flex flex-row text-center justify-center items-center p-2 m-1 w-24 h-12 rounded-3xl border-4 border-groove "
               id="guesss"
@@ -431,11 +431,11 @@ function Roulette() {
         <div className="flex flex-row justify-center items-center">
           <div
             id="table"
-            className="flex flex-row justify-center items-center text-white text-4xl border-4 border-black border-groove h-full"
+            className="flex flex-col md:flex-row justify-center items-center text-white text-4xl border-4 border-black border-groove h-full my-2"
           >
-            <div className="flex justify-center items-center text-center bg-green-600 w-12 h-full  border border-white">
+            <div className="flex justify-center items-center text-center bg-green-600 w-full md:w-12 h-full  border border-white">
               <button
-                className="bg-transparent border-none text-white text-4xl cursor-pointer outline-none h-[27rem]"
+                className="bg-transparent border-none text-white text-xl md:text-4xl cursor-pointer outline-none h-12 md:h-[27rem]"
                 onClick={() => {
                   isNumber(0);
                   setChoice(0);
@@ -445,16 +445,19 @@ function Roulette() {
               </button>
             </div>
             {numbers.map((cols, colIndex) => (
-              <div key={colIndex} className="flex h-full">
+              <div key={colIndex} className="flex flex-col md:flex-row h-full">
                 {Object.keys(cols).map((colKey) => (
-                  <div key={colKey} className="flex flex-col h-full">
+                  <div
+                    key={colKey}
+                    className="flex flex-row md:flex-col h-full"
+                  >
                     {cols[colKey].map((col, index) => (
                       <div
                         key={index}
-                        className={`flex justify-center items-center text-center w-14 h-36 ${col.color} text-white border border-white`}
+                        className={`flex justify-center items-center text-center w-12 h-12 md:w-14 md:h-36 ${col.color} text-white border border-white`}
                       >
                         <button
-                          className="bg-transparent border-none text-4xl cursor-pointer outline-none w-full h-full"
+                          className="bg-transparent border-none text-xl md:text-4xl cursor-pointer outline-none w-full h-full"
                           onClick={() => {
                             isNumber(col.value);
                             setChoice(col.value);
@@ -470,7 +473,7 @@ function Roulette() {
             ))}
           </div>
         </div>
-        <div className="flex flex-row justify-center items-center my-4 cursor-pointer">
+        <div className="flex flex-col md:flex-row justify-center items-center my-4 cursor-pointer">
           <div className="flex flex-col justify-center items-center">
             <div
               className="bg-docHeader border text-white border-black  w-72 h-12 flex justify-center items-center font-bold"
@@ -481,9 +484,9 @@ function Roulette() {
             >
               1-12
             </div>
-            <div className="flex flex-row justify-center items-center">
+            <div className="flex flex-col md:flex-row justify-center items-center">
               <div
-                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                className="flex justify-center items-center bg-docHeader border text-white border-black w-72 md:w-36 h-12 font-bold"
                 onClick={() => {
                   isIn(1, 18, 10);
                   setChoice("1 - 18");
@@ -492,7 +495,7 @@ function Roulette() {
                 1-18
               </div>
               <div
-                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                className="flex justify-center items-center bg-docHeader border text-white border-black w-72 md:w-36 h-12 font-bold"
                 onClick={() => {
                   isOdd();
                   setChoice("Odd");
@@ -512,7 +515,7 @@ function Roulette() {
             >
               13-24
             </div>
-            <div className="flex flex-row justify-center items-center">
+            <div className="flex md:flex-row justify-center items-center">
               <div
                 className="flex justify-center items-center bg-red-500 text-red-500 border border-black  w-36 h-12 font-bold"
                 onClick={() => {
@@ -543,9 +546,9 @@ function Roulette() {
             >
               25-36
             </div>
-            <div className="flex flex-row justify-center items-center">
+            <div className="flex flex-col md:flex-row justify-center items-center">
               <div
-                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                className="flex justify-center items-center bg-docHeader border text-white border-black w-72 md:w-36 h-12 font-bold"
                 onClick={() => {
                   isEven();
                   setChoice("Even");
@@ -554,7 +557,7 @@ function Roulette() {
                 Even
               </div>
               <div
-                className="flex justify-center items-center bg-docHeader border text-white border-black  w-36 h-12 font-bold"
+                className="flex justify-center items-center bg-docHeader border text-white border-black w-72 md:w-36 h-12 font-bold"
                 onClick={() => {
                   isIn(19, 36, 10);
                   setChoice("19-36");

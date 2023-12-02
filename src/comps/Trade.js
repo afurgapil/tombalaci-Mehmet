@@ -40,7 +40,6 @@ function Trade() {
         setBalance(subBalance);
       } catch (error) {
         console.error("Error connecting:", error);
-        showErrorNotification("cekilise katilirken bir hata olustu");
       }
     };
     const checkContractBalance = async () => {
@@ -96,7 +95,7 @@ function Trade() {
     }
   };
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col md:flex-row justify-center items-center md:items-start">
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={handleClose}
@@ -104,15 +103,10 @@ function Trade() {
       >
         <ModalComponent handleClose={handleClose} />
       </Modal>
-      <div className="flex flex-row justify-around items-center w-9/12 ">
-        <p className="w-2/5 text-center text-xl font-[Oswald] border-b-2 border-black border-solid transition-all duration-300 ease-in-out hover:shadow-xl">
+      <div className="flex flex-col justify-center space-y-2 items-center w-9/12 py-4">
+        <p className="w-full text-center text-xl font-[Oswald] border-b-2 border-black border-solid transition-all duration-300 ease-in-out hover:shadow-xl">
           Your Balance:{balance} MATIC
         </p>
-        <p className="w-2/5 text-center text-xl font-[Oswald] border-b-2 border-black border-solid transition-all duration-300 ease-in-out hover:shadow-xl">
-          Pool Balance:{contractBalance} MATIC
-        </p>
-      </div>
-      <div className="flex flex-row justify-center items-center w-9/12 ">
         <div className="flex-1 flex flex-col justify-center items-center w-full mx-4">
           <input
             className="w-4/5 h-4 rounded-md bg-[#811c1c] outline-none opacity-70 transition-opacity duration-200 mt-4"
@@ -168,12 +162,17 @@ function Trade() {
           </p>
 
           <button
-            className="px-4 py-8 text-3xl text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear bg-red-500 hover:bg-red-600"
+            className="px-2 py-4 md:px-4 md:py-8 text-3xl text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear bg-red-500 hover:bg-red-600"
             onClick={deposit}
           >
             Deposit
           </button>
         </div>
+      </div>
+      <div className="flex flex-col  justify-center space-y-2 items-center w-9/12 py-4">
+        <p className="w-full text-center text-xl font-[Oswald] border-b-2 border-black border-solid transition-all duration-300 ease-in-out hover:shadow-xl">
+          Pool Balance:{contractBalance} MATIC
+        </p>
         <div className="flex-1 flex flex-col justify-center items-center w-full mx-4">
           <input
             className="w-4/5 h-4 rounded-md bg-[#811c1c] outline-none opacity-70 transition-opacity duration-200 mt-4"
@@ -226,7 +225,7 @@ function Trade() {
           <p>10000 Point = 1 MATIC</p>
 
           <button
-            className="px-4 py-8 text-3xl text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear bg-blue-500 hover:bg-blue-600 withdraw-btn"
+            className="px-2 py-4 md:px-4 md:py-8 text-3xl text-white rounded-lg cursor-pointer transition-all duration-300 ease-linear bg-blue-500 hover:bg-blue-600 withdraw-btn"
             onClick={withdraw}
           >
             Withdraw

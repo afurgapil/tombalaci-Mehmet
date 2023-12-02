@@ -11,11 +11,13 @@ function Contact() {
         />
       </Helmet>
       <div className="flex flex-col justify-center items-center  bg-slate-100 opacity-50 rounded-3xl p-1">
-        <p className="font-[IBM Plex Serif] text-5xl m-0 p-8">
+        <p className="font-[IBM Plex Serif] text-2xl text-center md:text-5xl m-0 p-8">
           The Counsil appreciates your courage
         </p>
-        <p className="font-[IBM Plex Serif] text-5xl m-0 p-8">But...</p>
-        <p className="font-[IBM Plex Serif] text-5xl m-0 p-8">
+        <p className="font-[IBM Plex Serif] text-2xl text-center md:text-5xl m-0 p-8">
+          But...
+        </p>
+        <p className="font-[IBM Plex Serif] text-2xl text-center md:text-5xl m-0 p-8">
           For your own good you better keep your opinions to yourself
         </p>
       </div>

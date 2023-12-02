@@ -2,7 +2,7 @@ import React from "react";
 
 const ErrorModal = ({ onClose }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center">
+    <div className="fixed inset-0 flex items-center justify-center z-20">
       <div className="bg-black bg-opacity-50 w-full h-full absolute"></div>
       <div className="bg-white p-6 rounded-md z-10 relative">
         <button

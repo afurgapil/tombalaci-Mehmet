@@ -53,7 +53,7 @@ const Valorant = () => {
   }
   return (
     <div
-      className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10"
+      className="flex flex-col justify-center md:justify-start items-center min-h-screen bg-bg pt-10"
       id="valorant-game-container"
     >
       <Helmet>
@@ -61,12 +61,12 @@ const Valorant = () => {
         <meta name="description" content="guess valorant agents emoji game" />
       </Helmet>
       <GoBack></GoBack>
-      <p
-        className="text-6xl mb-2 border-b border-black font-[Raleway]"
+      <h2
+        className="font-[Raleway] text-6xl text-center mb-2 border-b border-black"
         id="v-tittle"
       >
         Valorant Agent Guess Game
-      </p>
+      </h2>
       <div
         className="flex flex-col justify-center items-center bg-red-800 p-8 
         rounded-xl"

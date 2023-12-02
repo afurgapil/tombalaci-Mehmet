@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
 function Welcome() {
   return (
-    <div className="bg-gradient-to-b from-[#ffebcd] to-[#00253b] flex flex-row justify-center items-center w-full min-h-screen ">
+    <div className="bg-gradient-to-b to-[#ffebcd] from-[#00253b] flex flex-col-reverse md:flex-row justify-center items-center w-full min-h-full ">
       <Helmet>
         <title> Tombalaci Mehmet</title>
         <meta
@@ -17,16 +17,16 @@ function Welcome() {
         />
       </Helmet>
       <img
-        className="min-h-screen w-1/2 rounded-r-3xl "
+        className=" h-1/2 md:min-h-screen w-full md:w-1/2  md:rounded-r-xl "
         src={wheel}
         alt="Roulette-Wheel"
       ></img>
-      <div className="flex flex-col justify-center items-center w-1/2 h-full text-[#333]">
-        <div className="flex flex-col justify-center items-center text-center text-[#f5f5f5]">
+      <div className="flex flex-col justify-center items-center w-full md:w-1/2 h-1/2 md:h-full text-[#333]">
+        <div className="flex flex-col justify-center items-center text-center text-[#f5f5f5] mt-10 md:mt-10">
           <h2 className="font-[Comfortaa] text-7xl text-center mb-0">
             Tombalaci Mehmet
           </h2>
-          <p className="font-[Dancing Script] text-5xl text-center">
+          <p className="font-[Ephesis] text-5xl text-center">
             the only adress for fun
           </p>
           <div className="flex flex-row justify-center items-center my-8">

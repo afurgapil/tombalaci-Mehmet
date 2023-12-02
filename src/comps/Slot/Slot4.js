@@ -660,60 +660,60 @@ function Slot() {
         <meta name="description" content="hard slot game" />
       </Helmet>
       <div className="flex flex-row justify-center items-center min-h-screen bg-gradient-to-br from-green-400 via-teal-400 to-red-500">
-        <div className="flex flex-row justify-center items-center p-4 shadow-md">
+        <div className="flex flex-col md:flex-row justify-center items-center p-4 ">
           <div className="flex flex-row items-center justify-center text-3xl text-white p-20 rounded-3xl">
             <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col11}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col12}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col13}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col21}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col22}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col23}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col31}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col32}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col33}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col41}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col42}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col43}
               </p>
             </div>
             <div className="flex flex-col justify-center items-center bg-stone-800 border-4 border-yellow-500">
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col51}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col52}
               </p>
-              <p className="flex justify-center items-center h-5 w-24 text-center my-4">
+              <p className="flex justify-center items-center h-4 w-16 md:h-20 md:w-36 md:text-7xl text-center my-4">
                 {col53}
               </p>
             </div>

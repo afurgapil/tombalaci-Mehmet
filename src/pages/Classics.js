@@ -62,8 +62,8 @@ const sections = [
     desc: "   This is a gambling game that requires a bit of luck and skill. By pulling a mechanical lever, you spin the reels and then eagerly await to match the winning symbols. Now, try your own luck with this electronic slot machine and win big prizes!",
     href: "/slot",
     img: slot,
-    from: "from-[#98fe90]",
-    to: "to-[#e4ca40]",
+    from: "from-[#f0035f]",
+    to: "to-[#495043]",
     direction: "bg-gradient-to-br",
   },
 ];
@@ -79,7 +79,7 @@ function Classics() {
         <ScrollPage>
           <div
             id="cs-section1"
-            className="bg-gradient-to-br from-[#b1bfe1] to-[#98fe90] w-full min-h-screen"
+            className="bg-gradient-to-br from-[#b1bfe1] to-[#98fe90] w-full min-h-screen flex flex-col justify-center items-center"
           >
             <div
               id="cs-section1-desc"
@@ -89,10 +89,10 @@ function Classics() {
                 animation={scrollEffect2}
                 className="animate__animated animate__bounceInDown"
               >
-                <h2 className="text-white text-9xl text-center p-4 m-0">
+                <h2 className="text-white text-7xl md:text-9xl text-center p-4 m-0">
                   Classics
                 </h2>
-                <p className="text-white text-2xl text-center p-4 m-0">
+                <p className="text-white texl-xl md:text-2xl text-center p-4 m-0">
                   And here are the Classics of Tombalacı Mehmet. Each game is
                   prepared for you. If you are a fan of the past, these games
                   are for you.
@@ -101,7 +101,7 @@ function Classics() {
             </div>
             <div
               id="cs-cards"
-              className="flex flex-row justify-center items-center  w-full"
+              className="flex flex-col md:flex-row  justify-center items-center  w-full"
             >
               <div className="hover:scale-125 transition-all duration-200 ease-out">
                 <Animator animation={scrollEffect2}>
@@ -110,7 +110,7 @@ function Classics() {
                     className="animate__animated animate__bounceInLeft flex flex-col justify-center items-center"
                   >
                     <img
-                      className="m-1 w-3/5 h-auto"
+                      className="m-1 w-3/12 md:w-3/5 h-auto"
                       src={coin}
                       alt="Coin Flip"
                     />
@@ -126,7 +126,11 @@ function Classics() {
                     to="/todice"
                     className="animate__animated animate__bounceInLeft flex flex-col justify-center items-center"
                   >
-                    <img className="m-1 w-3/5 h-auto" src={dice} alt="ToDice" />
+                    <img
+                      className="m-1 w-3/12 md:w-3/5 h-auto"
+                      src={dice}
+                      alt="ToDice"
+                    />
                     <span className="hidden font-bold hover:block">
                       TO DICE
                     </span>
@@ -139,7 +143,11 @@ function Classics() {
                     to="/rps"
                     className="animate__animated animate__bounceInUp flex flex-col justify-center items-center"
                   >
-                    <img className="m-1 w-3/5 h-auto" src={rps} alt="RPS" />
+                    <img
+                      className="m-1 w-3/12 md:w-3/5 h-auto"
+                      src={rps}
+                      alt="RPS"
+                    />
                     <span className="hidden font-bold hover:block">RPS</span>
                   </Link>
                 </Animator>
@@ -151,7 +159,7 @@ function Classics() {
                     className="animate__animated animate__bounceInRight flex flex-col justify-center items-center"
                   >
                     <img
-                      className="m-1 w-3/5 h-auto"
+                      className="m-1 w-3/12 md:w-3/5 h-auto"
                       src={roulette}
                       alt="Roulette"
                     />
@@ -167,7 +175,11 @@ function Classics() {
                     to="/slot"
                     className="animate__animated animate__bounceInRight flex flex-col justify-center items-center"
                   >
-                    <img className="m-1 w-3/5 h-auto" src={slot} alt="Slot" />
+                    <img
+                      className="m-1 w-3/12 md:w-3/5 h-auto"
+                      src={slot}
+                      alt="Slot"
+                    />
                     <span className="hidden font-bold hover:block">SLOT</span>
                   </Link>
                 </Animator>
@@ -179,13 +191,15 @@ function Classics() {
           <div
             key={index}
             id="cs-section2"
-            className={`${section.direction}  ${section.from} ${section.to} w-full min-h-screen flex flex-row justify-between items-center`}
+            className={`${section.direction}  ${section.from} ${section.to} w-full min-h-screen flex flex-col md:flex-row justify-between items-center py-8`}
           >
             <div
               id="cs-section2-item-text"
               className={` m-1 flex flex-col justify-center items-center text-white w-full px-8`}
             >
-              <h3 className="font-[Bebas Neue] text-5xl"> {section.title}</h3>
+              <h3 className="font-[Bebas Neue] text-5xl text-center py-2">
+                {section.title}
+              </h3>
               <p className="font-[Rajdhani] text-3xl p-8 text-black bg-white  bg-opacity-60 border-5 border-solid rounded-2xl my-10">
                 {section.desc}
               </p>
@@ -198,7 +212,7 @@ function Classics() {
               className="flex justify-center items-center w-5/6"
             >
               <img
-                className="animate__animated animate__pulse animate__infinite"
+                className="animate__animated animate__pulse animate__infinite w-1/2 md:w-auto"
                 animate__slower
                 src={section.img}
                 alt={section.title}

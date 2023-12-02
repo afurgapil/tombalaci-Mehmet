@@ -41,21 +41,21 @@ function Home() {
         <ScrollPage>
           <div
             id="section1"
-            className="bg-gradient-to-br from-[#ffebcd] to-[#00253b] w-full h-screen flex flex-col justify-center items-center p-0"
+            className="bg-gradient-to-br from-[#ffebcd] to-[#00253b] w-full h-screen flex flex-col justify-start md:justify-center items-center pt-40 md:pt-0"
           >
             <Animator animation={loginEffect}>
-              <h1 className="mt-0 text-8xl font-[Comfortaa] text-center mb-0">
+              <h1 className="mt-0 text-6xl  lg:text-8xl font-[Comfortaa] text-center mb-0 mx-10">
                 Tombalaci Mehmet
               </h1>
-              <h2 className="text-4xl font-[Dancing Script] text-center mt-0">
+              <h2 className="text-4xl md:text-6xl font-[Ephesis] text-center mt-0">
                 the only address for fun
               </h2>
             </Animator>
           </div>
         </ScrollPage>
         <ScrollPage>
-          <div className="flex flex-row justify-between items-center w-full h-screen bg-gradient-to-bl from-[#72ed9b] to-[#edb25a] ">
-            <div className="flex items-center justify-center h-screen ms-8">
+          <div className="flex flex-col md:flex-row justify-center md:justify-between items-center w-full h-screen bg-gradient-to-bl from-[#72ed9b] to-[#edb25a] ">
+            <div className="flex items-center justify-center h-auto m-10 md:ms-8">
               <Animator animation={scrollEffect1}>
                 <h2 className="text-8xl m-0 text-white border-b border-black">
                   Classics
@@ -67,7 +67,7 @@ function Home() {
                 </p>
               </Animator>
             </div>
-            <div className="flex flex-wrap justify-between items-center flex-row me-20">
+            <div className="flex flex-wrap justify-between items-center flex-row mx-10 md:me-20">
               <div
                 className="m-2 w-1/4
               "
@@ -139,8 +139,8 @@ function Home() {
           </div>
         </ScrollPage>
         <ScrollPage>
-          <div className="flex flex-row justify-between items-center w-full h-screen bg-gradient-to-br from-[#9842ed] to-[#1793a3]">
-            <div className="flex flex-wrap justify-between flex-row ms-20">
+          <div className="flex flex-col-reverse md:flex-row justify-center md:justify-between items-center w-full h-screen bg-gradient-to-br from-[#9842ed] to-[#1793a3]">
+            <div className="flex flex-wrap justify-between flex-row md:ms-20">
               <div className="m-2 w-1/3  ">
                 <Animator animation={scrollEffect2}>
                   <Link to="emojify">
@@ -164,7 +164,7 @@ function Home() {
                 </Animator>
               </div>
             </div>
-            <div className="flex justify-center items-center h-screen me-8">
+            <div className="flex justify-center items-center h-auto m-10 md:me-8">
               <Animator animation={scrollEffect2}>
                 <h2 className="text-8xl m-0 text-white border-b border-black">
                   Try it

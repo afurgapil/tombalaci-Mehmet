@@ -45,7 +45,7 @@ const Reset = () => {
       </Helmet>
       <div className="flex flex-col justify-center items-center border-3 border-black border-solid w-3/5 p-4 rounded-md">
         <div className="w-4/5 text-center">
-          <p className="font-bold text-5xl py-2">😡Hey!😡</p>
+          <p className="font-bold text-4xl md:text-5xl py-2">😡Hey!😡</p>
           <p>The Council did not like this move.</p>
           <p>Be more careful next time.</p>
           <p>There may not be a second chance...</p>

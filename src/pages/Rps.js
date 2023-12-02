@@ -75,7 +75,7 @@ const Game = () => {
         <meta name="description" content="rock paper scissorss game " />
       </Helmet>
       <GoBack></GoBack>
-      <div className="flex flex-row justify-center items-center">
+      <div className="flex flex-col-reverse md:flex-row justify-center items-center">
         <div className="flex flex-row justify-center items-center text-center content-center">
           {!isGameStarted && (
             <img
@@ -89,27 +89,27 @@ const Game = () => {
             <img id="robot2" className="w-52 h-52" alt=""></img>
           )}
         </div>
-        <div id="vs">
+        <div id="vs" className="flex justify-center items-center">
           <h1 className="font-[Teko] text-6xl mx-4">VS</h1>
         </div>
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-row md:flex-col  justify-center items-center">
           <img
             id="rock"
-            className="w-32 h-32 m-4 p-1 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
+            className="w-24 h-24 md:w-32 md:h-32 m-4  hover:bg-red-500 hover:opacity-50 rounded-[100px]"
             src={Rock}
             alt="Rock"
             onClick={() => handleClick("rock")}
           ></img>
           <img
             id="paper"
-            className="w-32 h-32 m-4 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
+            className="w-24 h-24 md:w-32 md:h-32 m-4 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
             src={Paper}
             alt="Paper"
             onClick={() => handleClick("paper")}
           ></img>
           <img
             id="scissors"
-            className="w-32 h-32 m-4 hover:bg-red-500 hover:opacity-50 rounded-[100px]"
+            className="w-24 h-24 md:w-32 md:h-32 m-4hover:bg-red-500 hover:opacity-50 rounded-[100px]"
             src={Scissors}
             alt="Scissors"
             onClick={() => handleClick("scissors")}

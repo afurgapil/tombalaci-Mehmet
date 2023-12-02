@@ -157,7 +157,7 @@ function Wheel() {
     color: participantColors[participant.address],
   }));
   return (
-    <div className="min-h-screen bg-bg flex flex-col justify-start items-center">
+    <div className="min-h-screen min-w-full bg-bg flex flex-col justify-start items-center">
       <Helmet>
         <title>WOF | Tombalaci Mehmet</title>
         <meta name="description" content="a game built with solidity" />
@@ -175,21 +175,23 @@ function Wheel() {
       </div>
       <div>
         {showWarning && (
-          <div className="mt-8 relative bg-purple-100 border border-purple-200 rounded-md p-3">
-            <AiFillCloseCircle
-              className="text-red-500 text-3xl absolute right-1 top-1"
-              onClick={handleHideWarning}
-            />
-            <h2 className="text-red-900 text-lg ">Attention</h2>
-            <p className="text-red-900 text-lg ">
-              This project is a test project running on the Mumbai network.
-              Please exercise caution while safeguarding your assets.
-            </p>
+          <div className="w-full mt-8 flex justify-center items-center ">
+            <div className="w-3/5 md:4/5 flex justify-center items-center flex-col relative bg-purple-100 border border-purple-200 rounded-md p-3">
+              <AiFillCloseCircle
+                className="text-red-500 text-3xl absolute right-1 top-1"
+                onClick={handleHideWarning}
+              />
+              <h2 className="text-red-900  text-xl md:text-xl ">Attention</h2>
+              <p className="text-red-800 text-lg md:text-lg ">
+                This project is a test project running on the Mumbai network.
+                Please exercise caution while safeguarding your assets.
+              </p>
+            </div>
           </div>
         )}
         {isParticipants && participants.length > 0 ? (
-          <div className="flex flex-row justify-between items-center my-12">
-            <div className="w-4/5 text-[8px]">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 my-12">
+            <div className="w-4/5 text-[8px] md:text-[6px]">
               <PieChart
                 data={data}
                 radius={50}
@@ -209,14 +211,14 @@ function Wheel() {
                     style={{ backgroundColor: data.color }}
                   />
                   <div className="">{data.title}...</div>
-                  <div className="">{data.amount} MATIC</div>
-                  <div className="font-bold">%{data.value}</div>
+                  <div className="">{data.amount} MATIC </div>
+                  <div className="font-bold"> %{data.value}</div>
                 </div>
               ))}
             </div>
           </div>
         ) : (
-          <div className="font-bold text-6xl m-6 animate-pulse text-center ">
+          <div className="font-bold text-2xl md:text-6xl m-6 animate-pulse text-center ">
             No Participant For Now!
           </div>
         )}
@@ -239,22 +241,24 @@ function Wheel() {
             </button>
           </div>
         ) : (
-          <div className="flex flex-col justify-center items-center space-y-4 rounded  border-2 border-black py-4">
-            <h2 className="text-5xl text-center w-full">
-              You are not connected
-            </h2>
-            <button
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 w-4/5"
-              onClick={() => {
-                if (checkMetamask() === true) {
-                  initializeWallet();
-                } else {
-                  setError(true);
-                }
-              }}
-            >
-              CONNECT
-            </button>
+          <div className="min-w-full flex flex-col justify-center items-center  ">
+            <div className="w-3/5 text-center space-y-4 rounded  border-2 border-black py-4 m-10">
+              <h2 className="text-xl md:text-5xl text-center ">
+                You are not connected
+              </h2>
+              <button
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 "
+                onClick={() => {
+                  if (checkMetamask() === true) {
+                    initializeWallet();
+                  } else {
+                    setError(true);
+                  }
+                }}
+              >
+                CONNECT
+              </button>
+            </div>
           </div>
         )}
         <div className="flex flex-col justify-center items-center swap__item">
@@ -272,11 +276,11 @@ function Wheel() {
           )}
         </div>
         {lastWinner && (
-          <div className="flex flex-col justify-start items-start my-4">
-            <h5 class="text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl w-full">
-              Last Winner: {lastWinner}
+          <div className="w-full flex flex-col justify-center items-center my-4">
+            <h5 className="w-4/5 text-l md:text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl ">
+              Last Winner: {lastWinner.slice(0, 10)}...
             </h5>
-            <h5 class="text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl w-full">
+            <h5 className="w-4/5 text-l md:text-2xl font-extrabold mb-4 text-[#811c1c] border border-black shadow-xl p-1 rounded-xl ">
               Last Prize: {lastPrize} MATIC
             </h5>
           </div>

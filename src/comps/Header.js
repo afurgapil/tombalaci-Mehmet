@@ -16,8 +16,8 @@ function Header() {
 
   function OnLoginHeader() {
     return (
-      <header className="flex flex-col md:flex-row justify-between items-center min-h-20 bg-darkBlue px-1 py-5 z-10">
-        <div className="flex flex-row justify-between items-center w-full  md:w-auto">
+      <header className="flex flex-col md:flex-row justify-between items-center min-h-20 bg-darkBlue px-1 py-5 z-100">
+        <div className="flex flex-row justify-between items-center w-full  md:w-auto mx-4 md:mx-2">
           <img
             src={logo}
             alt="Logo"
@@ -32,12 +32,18 @@ function Header() {
         </div>
         <div className={`${isMenuOpen ? "flex " : "hidden"}  md:block w-full`}>
           <ul className="w-full flex flex-col md:flex-row md:justify-end items-center list-none ">
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink to="/" exact="true" className="flex justify-center">
                 Home
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink
                 to="/wheel"
                 className="flex justify-center text-yellow-400"
@@ -45,22 +51,34 @@ function Header() {
                 Wheel!
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink to="/classics" className="flex justify-center">
                 Classics
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink to="/news" className="p-1">
                 News
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink to="/leaderboard" className="p-1">
                 LeaderBoard
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center  md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center  md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink to="/contact" className="p-1">
                 Contact
               </NavLink>
@@ -70,7 +88,7 @@ function Header() {
             </li>
             <div className="flex flex-row items-center justify-center">
               <Link>
-                <DisplayNameUtils />
+                <DisplayNameUtils toggleMenu={toggleMenu} />
               </Link>
               <SignOutButton />
             </div>
@@ -97,22 +115,34 @@ function Header() {
         </div>
         <div className={`${isMenuOpen ? "flex " : "hidden"}  md:block w-full`}>
           <ul className="w-full flex flex-col md:flex-row md:justify-end items-center list-none ">
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
-              <NavLink to="/" exact="true" className="p-1">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
+              <NavLink to="/welcome" exact="true" className="p-1">
                 Home
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <NavLink to="/contact" className="p-1">
                 Contact
               </NavLink>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <Link to="/signin" className="p-1">
                 SignIn
               </Link>
             </li>
-            <li className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear">
+            <li
+              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
+              onClick={toggleMenu}
+            >
               <Link to="/signup" className="p-1">
                 SignUp
               </Link>
