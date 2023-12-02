@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import agents from "../../data/agents";
 import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import GoBack from "../../Tools/GoBack";
 import { Helmet } from "react-helmet";
@@ -10,7 +11,7 @@ function Agents() {
   const [selectedAgentData, setSelectedAgentData] = useState(null);
   const [computerAgent, setComputerAgent] = useState("");
   const [computerAgentData, setComputerAgentData] = useState("");
-  const [userInput, setUserInput] = useState(null);
+  const [userInput, setUserInput] = useState("");
   const [isTrue, setIsTrue] = useState(false);
   const Ref1 = useRef(null);
   const Ref2 = useRef(null);
@@ -22,6 +23,14 @@ function Agents() {
     setComputerAgent(agents[randomIndex].name);
     setComputerAgentData(agents[randomIndex]);
   }, []);
+  const getOptions = () => {
+    if (userInput.trim() === "") {
+      return [];
+    }
+    return agents.filter((agent) =>
+      agent.label.toLowerCase().includes(userInput.toLowerCase())
+    );
+  };
   const playAgain = () => {
     setSelectedAgents([]);
     setSelectedAgentData(null);
@@ -34,8 +43,11 @@ function Agents() {
     setComputerAgentData(agents[randomIndex]);
   };
 
-  const handleChange = (event) => {
-    setUserInput(event.target.value.toLowerCase());
+  const handleChange = (event, newValue) => {
+    setUserInput(newValue.toLowerCase());
+  };
+  const handleInputChange = (_, newInputValue) => {
+    setUserInput(newInputValue.toLowerCase());
   };
 
   const handleAddItem = () => {
@@ -47,33 +59,34 @@ function Agents() {
   };
 
   const compareAgents = () => {
-    const matchingAgent = agents.find((a) => a.name === userInput);
-    if (matchingAgent.gender === computerAgentData.gender) {
-      Ref1.current.style.backgroundColor = "green";
-    }
-    if (matchingAgent.role === computerAgentData.role) {
-      Ref2.current.style.backgroundColor = "green";
-    }
-    if (matchingAgent.species === computerAgentData.species) {
-      Ref3.current.style.backgroundColor = "green";
-    }
-    if (matchingAgent.region === computerAgentData.region) {
-      Ref4.current.style.backgroundColor = "green";
-    }
-    if (matchingAgent.gender !== computerAgentData.gender) {
-      Ref1.current.style.backgroundColor = "red";
-    }
-    if (matchingAgent.role !== computerAgentData.role) {
-      Ref2.current.style.backgroundColor = "red";
-    }
-    if (matchingAgent.species !== computerAgentData.species) {
-      Ref3.current.style.backgroundColor = "red";
-    }
-    if (matchingAgent.region !== computerAgentData.region) {
-      Ref4.current.style.backgroundColor = "red";
-    }
-    if (matchingAgent === computerAgentData) {
-      setIsTrue(true);
+    let matchingAgent;
+    if (agents.find((a) => a.name === userInput)) {
+      matchingAgent = agents.find((a) => a.name === userInput);
+      if (matchingAgent.gender === computerAgentData.gender) {
+        Ref1.current.style.backgroundColor = "green";
+      } else {
+        Ref1.current.style.backgroundColor = "red";
+      }
+      if (matchingAgent.role === computerAgentData.role) {
+        Ref2.current.style.backgroundColor = "green";
+      } else {
+        Ref2.current.style.backgroundColor = "red";
+      }
+      if (matchingAgent.species === computerAgentData.species) {
+        Ref3.current.style.backgroundColor = "green";
+      } else {
+        Ref3.current.style.backgroundColor = "red";
+      }
+      if (matchingAgent.region === computerAgentData.region) {
+        Ref4.current.style.backgroundColor = "green";
+      } else {
+        Ref4.current.style.backgroundColor = "red";
+      }
+      if (matchingAgent === computerAgentData) {
+        setIsTrue(true);
+      }
+    } else {
+      return;
     }
   };
 
@@ -107,18 +120,21 @@ function Agents() {
 
       <div className="flex flex-col justify-center items-center w-11/12 md:w-2/5">
         <div className="w-full">
-          <TextField
-            fullWidth
-            label="Choose an Agent"
-            variant="filled"
-            type="text"
+          <Autocomplete
+            disablePortal
+            options={getOptions()}
             value={userInput}
-            onChange={handleChange}
+            onInputChange={handleInputChange}
             onKeyPress={handleKeyPress}
-            InputProps={{
-              autoComplete: "off",
-              list: "matchingAgents",
-            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                fullWidth
+                label="Choose an Agent"
+                variant="filled"
+                type="text"
+              />
+            )}
           />
         </div>
 
