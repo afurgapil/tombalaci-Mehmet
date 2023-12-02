@@ -17,7 +17,6 @@ const Box = () => {
         <title>Quiz Boxes| Tombalaci Mehmet</title>
         <meta name="description" content="a guess game " />
       </Helmet>
-      <GoBack></GoBack>
       <div className="flex flex-row justify-center items-center w-full  animate__animated animate__backInDown">
         {content.map((item) => (
           <div

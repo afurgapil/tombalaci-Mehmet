@@ -65,7 +65,7 @@ function News() {
             </div>
             <div
               id="n-cards"
-              className="flex flex-row justify-center items-center  w-full"
+              className="flex flex-col md:flex-row justify-center items-center  w-full"
             >
               <div className="hover:scale-125 transition-all duration-200 ease-out">
                 <Animator animation={scrollEffect2}>
@@ -108,7 +108,7 @@ function News() {
           <div
             key={index}
             id="cs-section2"
-            className={`${section.direction}  ${section.from} ${section.to} w-full min-h-screen flex flex-row justify-between items-center`}
+            className={`${section.direction}  ${section.from} ${section.to} w-full min-h-screen flex flex-col md:flex-row justify-between items-center py-8`}
           >
             <div
               id="cs-section2-item-text"
@@ -124,10 +124,10 @@ function News() {
             </div>
             <div
               id="cs-section2-item-img"
-              className="flex justify-center items-center w-5/6"
+              className="flex justify-center items-center w-5/6 py-4"
             >
               <img
-                className="animate__animated animate__pulse animate__infinite"
+                className="animate__animated animate__pulse animate__infinite w-9/12"
                 animate__slower
                 src={section.img}
                 alt={section.title}

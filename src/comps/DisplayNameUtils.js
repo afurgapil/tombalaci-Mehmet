@@ -3,7 +3,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { useUser } from "../hooks/useUser";
-function DisplayNameUtils() {
+function DisplayNameUtils({ toggleMenu }) {
   const [displayName, setDisplayName] = useState(null);
   const user = useUser();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -50,10 +50,14 @@ function DisplayNameUtils() {
             }}
           >
             <MenuItem onClick={handleClose}>
-              <Link to="stats">Stats</Link>
+              <Link onClick={toggleMenu} to="stats">
+                Stats
+              </Link>
             </MenuItem>
             <MenuItem onClick={handleClose}>
-              <Link to="swap">Trade</Link>
+              <Link onClick={toggleMenu} to="swap">
+                Trade
+              </Link>
             </MenuItem>
           </Menu>
         </div>

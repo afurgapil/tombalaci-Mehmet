@@ -11,7 +11,7 @@ function GoBack() {
 
   return (
     <button
-      className="border-none bg-transparent cursor-pointer text-2xl text-black-600 hover:text-gray-900 underline absolute top-44 left-10 "
+      className="border-none bg-transparent cursor-pointer text-2xl text-black-600 hover:text-gray-900 underline absolute top-28 md:top-44 left-8 md:left-10"
       onClick={handleGoBack}
     >
       <FaArrowLeft />

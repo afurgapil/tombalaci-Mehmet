@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&family=Teko:wght@700&family=Comfortaa&family=Dancing+Script&family=Gajraj+One&family=Teko:wght@600&family=Comfortaa&family=Dancing+Script&family=Gajraj+One&family=Bebas+Neue&family=IBM+Plex+Serif:ital,wght@1,600&family=Climate+Crisis&family=Exo+2:ital,wght@1,600&family=Oswald:wght@700&family=Bebas+Neue&family=Rajdhani:wght@300&family=Oswald:wght@300;700&family=Teko:wght@600&family=Gloock&family=Noto+Sans+Lao:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ephesis&family=Handjet:wght@600&display=swap");
 @layer base {
   html {
     @apply scroll-smooth;

@@ -13,7 +13,7 @@ function PrivateRoute({ children }) {
   }, [user]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="bg-bg">Loading...</div>;
   }
 
   if (Object.keys(user).length > 0) {
