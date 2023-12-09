@@ -51,15 +51,15 @@ const Country = () => {
     }
   }
   return (
-    <div className="flex flex-col justify-start items-center min-h-screen bg-bg pt-10">
+    <div className="flex flex-col justify-center md:justify-start items-center min-h-screen bg-bg pt-10">
       <Helmet>
         <title> Countries| Emojify</title>
         <meta name="description" content="guess countries  emoji game" />
       </Helmet>
       <GoBack></GoBack>
-      <p className="font-[Raleway] my-4 text-6xl border-b border-black">
+      <h2 className="font-[Raleway] text-center my-4 text-6xl border-b border-black">
         Country Guess Game
-      </p>
+      </h2>
       <div className="flex flex-col justify-center items-center bg-blue-300 py-2 px-4 rounded-xl">
         <div className="flex flex-row my-4">
           {countryEmojis.map((emoji, index) => (

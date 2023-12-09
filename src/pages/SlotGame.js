@@ -12,6 +12,9 @@ const content = [
     color: "bg-green-500",
     img: abidin,
     link: "abidin",
+    from: "from-[#a84d23]",
+    to: "to-[#6755ae]",
+    direction: "bg-gradient-to-bl",
   },
   {
     title: "Süleyman Çakır",
@@ -19,6 +22,9 @@ const content = [
     color: "bg-yellow-500",
     img: cakir,
     link: "cakir",
+    from: "from-[#6755ae]",
+    to: "to-[#98fe90]",
+    direction: "bg-gradient-to-br",
   },
   {
     title: "Muhterem",
@@ -26,6 +32,9 @@ const content = [
     color: "bg-red-500",
     img: muhterem,
     link: "muhterem",
+    from: "from-[#98fe90]",
+    to: "to-[#8642be]",
+    direction: "bg-gradient-to-bl",
   },
 ];
 const SlotGame = () => {
@@ -37,10 +46,11 @@ const SlotGame = () => {
       </Helmet>
       {content.map((item) => (
         <div
+          key={item.img}
           id="easy-container"
-          className="bg-gradient-to-l from-[#a84d23] to-[#6755ae] min-h-screen w-full flex flex-row justify-center items-center border-b-4 border-black "
+          className={`${item.direction} ${item.from} ${item.to} min-h-screen w-full flex flex-col md:flex-row justify-center items-center  `}
         >
-          <div className="w-2/5">
+          <div className="md:w-2/5 mx-4">
             <img
               src={item.img}
               alt={item.title}
@@ -48,7 +58,7 @@ const SlotGame = () => {
             />
           </div>
           <div className="flex flex-col justify-center items-center mx-8">
-            <h2 className="font-bold text-white border-b-2 border-white w-full text-center text-8xl ">
+            <h2 className="font-bold text-white border-b-2 border-white w-full text-center text-7xl md:text-8xl ">
               {item.title}
             </h2>
             <p className="text-white py-4 text-2xl">{item.desc}</p>

@@ -36,22 +36,52 @@ function Docs() {
         <aside className="w-2/12 bg-docAside min-h-screen flex flex-col justify-start items-start py-2 px-4 fixed top-0 left-0">
           <ul className="flex flex-col justify-start items-start first-letter">
             <li className="list-disc my-2">
-              <a href="#intro">Tombalaci Mehmet</a>
+              <a
+                className="text-sm md:text-2xl font-light md:font-bold"
+                href="#intro"
+              >
+                Tombalaci Mehmet
+              </a>
             </li>
             <li className="list-disc my-2">
-              <a href="#games">Oyunlar</a>
+              <a
+                className="text-sm md:text-2xl font-light md:font-bold"
+                href="#games"
+              >
+                Oyunlar
+              </a>
             </li>
             <li className="list-disc my-2">
-              <a href="#randomnumber">Sayıların Rastgeleliği</a>
+              <a
+                className="text-sm md:text-2xl font-light md:font-bold"
+                href="#randomnumber"
+              >
+                Sayıların Rastgeleliği
+              </a>
             </li>
             <li className="list-disc my-2">
-              <a href="#rates">Kazanç/Kayıp Oranları</a>
+              <a
+                className="text-sm md:text-2xl font-light md:font-bold"
+                href="#rates"
+              >
+                Kazanç/Kayıp Oranları
+              </a>
             </li>
             <li className="list-disc my-2">
-              <a href="#emoji">Emojiler</a>
+              <a
+                className="text-sm md:text-2xl font-light md:font-bold"
+                href="#emoji"
+              >
+                Emojiler
+              </a>
             </li>
             <li className="list-disc my-2">
-              <a href="#swap">Takas</a>
+              <a
+                className="text-sm md:text-2xl font-light md:font-bold"
+                href="#swap"
+              >
+                Takas
+              </a>
             </li>
           </ul>
         </aside>

@@ -47,14 +47,14 @@ function Stats() {
   }, [stats]);
 
   return (
-    <div className="min-h-screen bg-bg p-4 rounded">
+    <div className="min-h-screen bg-bg p-4 flex justify-center items-center ">
       <Helmet>
         <title>Stats | Tombalaci Mehmet</title>
         <meta name="description" content="user stats page " />
       </Helmet>
 
-      <div className="flex justify-center items-start my-20">
-        <ResponsiveContainer width={"100%"} aspect={3}>
+      <div className="flex justify-center items-center md:items-start">
+        <ResponsiveContainer width={"100%"} aspect={2}>
           <BarChart data={data}>
             <XAxis dataKey="name" />
             <YAxis />

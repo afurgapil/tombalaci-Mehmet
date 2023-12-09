@@ -29,7 +29,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       await signup(name, lastname, email, password);
-      // navigate("/signin");
+      navigate("/signin");
     } catch (error) {
       setError(error);
     }
