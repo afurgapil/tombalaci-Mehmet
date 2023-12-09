@@ -81,6 +81,16 @@ const agents = [
     region: "America",
   },
   {
+    icon: "https://media.valorant-api.com/agents/0e38b510-41a8-5780-5e8f-568b2a4f2d6c/displayiconsmall.png",
+    name: "ISO",
+    label: "ISO",
+    emojis: ["🛡️", "🪻", "😑"],
+    gender: "Male",
+    role: "Duelist",
+    species: "Radiant",
+    region: "Asia",
+  },
+  {
     icon: "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/displayiconsmall.png",
     name: "Jett",
     emojis: ["🪂", "🗡️", "🌬️"],
