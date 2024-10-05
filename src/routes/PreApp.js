@@ -36,7 +36,6 @@ import Contact from "../pages/Contact";
 import Welcome from "../pages/Welcome";
 import Docs from "../pages/Docs";
 import PrivateRoute from "./PrivateRoute";
-import Wheel from "../pages/Wheel";
 import Admin from "../pages/Admin";
 import ProtectedRoute from "../routes/ProtectedRoute";
 function PreApp() {
@@ -61,7 +60,6 @@ function PreApp() {
     { path: "/emojify/countries", element: CountryEmoji },
     { path: "/quizboxes", element: QuizBox },
     { path: "/quizboxes/valorant", element: ValorantQuizBox },
-    { path: "/wheel", element: Wheel },
   ];
   const publicRoutes = [
     { path: "/welcome", element: Welcome },

@@ -44,17 +44,6 @@ function Header() {
               className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
               onClick={toggleMenu}
             >
-              <NavLink
-                to="/wheel"
-                className="flex justify-center text-yellow-400"
-              >
-                Wheel!
-              </NavLink>
-            </li>
-            <li
-              className="w-full relative md:w-auto text-center md:border-none md:px-2 border-b border-white py-2 text-antiqueWhite no-underline transition-all duration-200 ease-linear"
-              onClick={toggleMenu}
-            >
               <NavLink to="/classics" className="flex justify-center">
                 Classics
               </NavLink>
